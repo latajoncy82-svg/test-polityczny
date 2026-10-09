@@ -29,7 +29,7 @@ if (typeof module !== "undefined" && module.exports) {
 `;
 
 fs.writeFileSync(path.join(__dirname, '../questions.js'), questionsFileContent, 'utf-8');
-console.log("✓ Successfully generated questions.js (100 questions, 12 categories, 5 answer options)");
+console.log("✓ Successfully generated questions.js (100 questions, 12 categories, 6 answer options)");
 
 // 2. Build worldData.js
 const worldDataContent = `/**
@@ -50,7 +50,7 @@ if (typeof module !== "undefined" && module.exports) {
 `;
 
 fs.writeFileSync(path.join(__dirname, '../worldData.js'), worldDataContent, 'utf-8');
-console.log("✓ Successfully generated worldData.js (32 ideologies, 24 politicians, 12 world parties)");
+console.log("✓ Successfully generated worldData.js (32 ideologies, 28 politicians, 15 world parties)");
 
 // 3. Build translations.js
 const translationsContent = `/**
@@ -66,6 +66,6 @@ if (typeof module !== "undefined" && module.exports) {
 `;
 
 fs.writeFileSync(path.join(__dirname, '../translations.js'), translationsContent, 'utf-8');
-console.log("✓ Successfully generated translations.js (67 UI keys in 4 languages)");
+console.log("✓ Successfully generated translations.js (89 UI keys in 4 languages)");
 
 console.log("== Build Completed Successfully ==");

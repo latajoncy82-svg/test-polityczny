@@ -78,52 +78,140 @@ const categories = {
 const answerOptions = [
   {
     value: 2,
+    code: "strongly-agree",
     className: "btn-strongly-agree",
     label: {
       pl: "Zdecydowanie się zgadzam",
       en: "Strongly Agree",
       ru: "Полностью согласен",
       fr: "Tout à fait d'accord"
+    },
+    hint: {
+      pl: "+2 pkt (silne poparcie)",
+      en: "+2 pts (strong support)",
+      ru: "+2 балла (полное согласие)",
+      fr: "+2 pts (adhésion totale)"
+    },
+    badge: {
+      pl: "+2",
+      en: "+2",
+      ru: "+2",
+      fr: "+2"
     }
   },
   {
     value: 1,
+    code: "agree",
     className: "btn-agree",
     label: {
       pl: "Raczej się zgadzam",
       en: "Agree",
       ru: "Скорее согласен",
       fr: "Plutôt d'accord"
+    },
+    hint: {
+      pl: "+1 pkt (umiarkowane poparcie)",
+      en: "+1 pt (moderate support)",
+      ru: "+1 балл (умеренное согласие)",
+      fr: "+1 pt (adhésion modérée)"
+    },
+    badge: {
+      pl: "+1",
+      en: "+1",
+      ru: "+1",
+      fr: "+1"
     }
   },
   {
     value: 0,
+    code: "neutral",
     className: "btn-neutral",
     label: {
-      pl: "Nie mam zdania",
-      en: "Neutral / No opinion",
-      ru: "Нейтрально / Нет мнения",
-      fr: "Neutre / Sans avis"
+      pl: "Neutralny / Umiarkowany",
+      en: "Neutral / Moderate",
+      ru: "Нейтрально / Умеренно",
+      fr: "Neutre / Modéré"
+    },
+    hint: {
+      pl: "0 pkt (pozycja pośrodku – wliczana do wyniku)",
+      en: "0 pts (balanced center – included in score)",
+      ru: "0 баллов (баланс по центру – учитывается в расчете)",
+      fr: "0 pt (position centriste – prise en compte)"
+    },
+    badge: {
+      pl: "0",
+      en: "0",
+      ru: "0",
+      fr: "0"
     }
   },
   {
     value: -1,
+    code: "disagree",
     className: "btn-disagree",
     label: {
       pl: "Raczej się nie zgadzam",
       en: "Disagree",
       ru: "Скорее не согласен",
       fr: "Plutôt pas d'accord"
+    },
+    hint: {
+      pl: "-1 pkt (umiarkowany sprzeciw)",
+      en: "-1 pt (moderate disagreement)",
+      ru: "-1 балл (умеренное несогласие)",
+      fr: "-1 pt (désaccord modéré)"
+    },
+    badge: {
+      pl: "-1",
+      en: "-1",
+      ru: "-1",
+      fr: "-1"
     }
   },
   {
     value: -2,
+    code: "strongly-disagree",
     className: "btn-strongly-disagree",
     label: {
       pl: "Zdecydowanie się nie zgadzam",
       en: "Strongly Disagree",
       ru: "Полностью не согласен",
       fr: "Pas du tout d'accord"
+    },
+    hint: {
+      pl: "-2 pkt (silny sprzeciw)",
+      en: "-2 pts (strong disagreement)",
+      ru: "-2 балла (полное несогласие)",
+      fr: "-2 pts (désaccord total)"
+    },
+    badge: {
+      pl: "-2",
+      en: "-2",
+      ru: "-2",
+      fr: "-2"
+    }
+  },
+  {
+    value: "skip",
+    code: "skip",
+    className: "btn-skip",
+    label: {
+      pl: "Nie mam zdania / Nie obchodzi mnie to",
+      en: "No opinion / Indifferent",
+      ru: "Нет мнения / Безразлично",
+      fr: "Sans avis / Peu importe"
+    },
+    hint: {
+      pl: "Pomiń temat (wyłączone z kalkulacji, nie rozwadnia wyniku)",
+      en: "Skip topic (excluded from score, does not dilute result)",
+      ru: "Пропустить тему (исключено из расчёта, не искажает итог)",
+      fr: "Ignorer le sujet (exclu du calcul, n'altère pas le score)"
+    },
+    badge: {
+      pl: "—",
+      en: "—",
+      ru: "—",
+      fr: "—"
     }
   }
 ];
@@ -146,9 +234,12 @@ const uiTranslations = {
     featureResults: "📊 Dokładny kompas 2D, 32 ideologie, światowi politycy i partie",
     startBtn: "Rozpocznij test teraz (100 pytań) ➔",
     prevBtn: "← Poprzednie",
+    nextBtn: "Następne →",
+    resumeBtn: "Kontynuuj test (pytanie {current}/{total}) ➔",
     questionCounter: "Pytanie {current} z {total}",
-    keyboardHint: "Wskazówka: Możesz używać klawiszy 1-5 na klawiaturze do szybkiego wyboru.",
+    keyboardHint: "Wskazówka: Klawisze 1-5 to wybór (3 = Neutralny), klawisz 6 = Nie mam zdania (pomiń).",
     resultBadge: "Twoje Wyniki",
+    primaryIdeologyMatch: "Zgodność:",
     legendRed: "Lewica Tradycyjna",
     legendGreen: "Socjalliberalizm",
     legendBlue: "Konserwatywny Liberalizm",
@@ -187,6 +278,8 @@ const uiTranslations = {
     closeBtn: "✕ Zamknij",
     yourAnswerLabel: "Twoja odpowiedź:",
     noAnswerLabel: "Brak odpowiedzi",
+    neutralBadge: "Neutralny / Umiarkowany (0)",
+    skipBadge: "Pominięte (bez wpływu)",
     footerText: "Globalny Test Polityczny © 2026 • 100 Pytań • Model dwuosiowy z katalogiem 32 ideologii, liderów i partii świata.",
     canvasTop: "▲ PROGRESYWIZM SPOŁECZNY",
     canvasBottom: "▼ KONSERWATYZM SPOŁECZNY",
@@ -196,7 +289,28 @@ const uiTranslations = {
     canvasQ2: "LIBERTARIANIZM",
     canvasQ3: "LEWICA TRADYCYJNA",
     canvasQ4: "KONSERWATYWNY LIBERALIZM",
-    canvasUserLabel: "TY"
+    canvasUserLabel: "TY",
+    // Setup Panel
+    setupTitle: "⚙️ Personalizacja i Ustawienia Testu",
+    setupDesc: "Dostosuj język, wygląd, kontrast oraz kolor akcentu przed rozpoczęciem testu.",
+    setupLangLabel: "Język testu",
+    setupThemeLabel: "Motyw kolorystyczny",
+    themeDark: "🌙 Ciemny (Dark)",
+    themeLight: "☀️ Jasny (Light)",
+    setupToneLabel: "Jasność i Kontrast",
+    toneStandard: "🔆 Standardowy",
+    toneContrast: "⚡ Wysoki kontrast",
+    toneSoft: "🕯️ Łagodny (Nocny)",
+    setupAccentLabel: "Kolor akcentu interfejsu",
+    accentBlue: "Błękitny",
+    accentEmerald: "Szmaragdowy",
+    accentPurple: "Fioletowy",
+    accentAmber: "Bursztynowy",
+    accentCrimson: "Karmazynowy",
+    accentRose: "Różowy",
+    headerEditionBadge: "100 Pytań • Model 2D",
+    clickLeaderHint: "Kliknij profil lidera, aby poznać szczegóły",
+    clickPartyHint: "Kliknij partię, aby poznać założenia"
   },
   en: {
     appTitle: "Political Compass",
@@ -215,9 +329,12 @@ const uiTranslations = {
     featureResults: "📊 High-precision 2D compass, 32 ideologies, world leaders & parties",
     startBtn: "Start Test Now (100 questions) ➔",
     prevBtn: "← Previous",
+    nextBtn: "Next →",
+    resumeBtn: "Resume Quiz (question {current}/{total}) ➔",
     questionCounter: "Question {current} of {total}",
-    keyboardHint: "Pro-tip: You can use keys 1-5 on your keyboard for rapid answer selection.",
+    keyboardHint: "Pro-tip: Keys 1-5 scale your agreement (3 = Neutral), key 6 = No opinion (skip).",
     resultBadge: "Your Results",
+    primaryIdeologyMatch: "Alignment:",
     legendRed: "Traditional Left",
     legendGreen: "Social Liberalism",
     legendBlue: "Conservative Liberalism",
@@ -256,6 +373,8 @@ const uiTranslations = {
     closeBtn: "✕ Close",
     yourAnswerLabel: "Your answer:",
     noAnswerLabel: "No response",
+    neutralBadge: "Neutral / Moderate (0)",
+    skipBadge: "Skipped (no effect)",
     footerText: "Global Political Compass Test © 2026 • 100 Questions • 2D model with 32 ideologies, world politicians and global party families.",
     canvasTop: "▲ SOCIAL PROGRESSIVISM",
     canvasBottom: "▼ SOCIAL CONSERVATISM",
@@ -265,7 +384,28 @@ const uiTranslations = {
     canvasQ2: "LIBERTARIANISM",
     canvasQ3: "TRADITIONAL LEFT",
     canvasQ4: "CONSERVATIVE LIBERALISM",
-    canvasUserLabel: "YOU"
+    canvasUserLabel: "YOU",
+    // Setup Panel
+    setupTitle: "⚙️ Quiz Setup & Personalization",
+    setupDesc: "Customize your language, appearance, contrast, and accent color before you begin.",
+    setupLangLabel: "Language",
+    setupThemeLabel: "Theme Mode",
+    themeDark: "🌙 Dark",
+    themeLight: "☀️ Light",
+    setupToneLabel: "Brightness & Contrast",
+    toneStandard: "🔆 Standard",
+    toneContrast: "⚡ High Contrast",
+    toneSoft: "🕯️ Soft (Night)",
+    setupAccentLabel: "Accent Color Palette",
+    accentBlue: "Ocean Blue",
+    accentEmerald: "Emerald Green",
+    accentPurple: "Royal Purple",
+    accentAmber: "Amber",
+    accentCrimson: "Crimson Red",
+    accentRose: "Neon Rose",
+    headerEditionBadge: "100 Questions • 2D Model",
+    clickLeaderHint: "Click a leader's profile to view full details",
+    clickPartyHint: "Click a movement to explore its manifesto"
   },
   ru: {
     appTitle: "Политический Компас",
@@ -284,9 +424,12 @@ const uiTranslations = {
     featureResults: "📊 Точный 2D компас, 32 идеологии, мировые политики и партии",
     startBtn: "Начать тест сейчас (100 вопросов) ➔",
     prevBtn: "← Назад",
+    nextBtn: "Далее →",
+    resumeBtn: "Продолжить тест (вопрос {current}/{total}) ➔",
     questionCounter: "Вопрос {current} из {total}",
-    keyboardHint: "Подсказка: Для быстрого ответа можно использовать клавиши 1-5 на клавиатуре.",
+    keyboardHint: "Подсказка: Клавиши 1-5 шкала согласия (3 = Нейтрально), клавиша 6 = пропустить вопрос.",
     resultBadge: "Ваши Результаты",
+    primaryIdeologyMatch: "Совпадение:",
     legendRed: "Традиционные левые",
     legendGreen: "Социал-либерализм",
     legendBlue: "Консервативный либерализм",
@@ -325,6 +468,8 @@ const uiTranslations = {
     closeBtn: "✕ Закрыть",
     yourAnswerLabel: "Ваш ответ:",
     noAnswerLabel: "Нет ответа",
+    neutralBadge: "Нейтрально / Умеренно (0)",
+    skipBadge: "Пропущено (без влияния)",
     footerText: "Глобальный Политический Компас © 2026 • 100 Вопросов • 2D модель с каталогом 32 идеологий, мировых лидеров и партий.",
     canvasTop: "▲ СОЦИАЛЬНЫЙ ПРОГРЕССИВИЗМ",
     canvasBottom: "▼ СОЦИАЛЬНЫЙ КОНСЕРВАТИЗМ",
@@ -334,7 +479,28 @@ const uiTranslations = {
     canvasQ2: "ЛИБЕРТАРИАНСТВО",
     canvasQ3: "ТРАДИЦИОННЫЕ ЛЕВЫЕ",
     canvasQ4: "КОНСЕРВАТИВНЫЙ ЛИБЕРАЛИЗМ",
-    canvasUserLabel: "ВЫ"
+    canvasUserLabel: "ВЫ",
+    // Setup Panel
+    setupTitle: "⚙️ Настройки и персонализация теста",
+    setupDesc: "Настройте язык, тему, контрастность и цвет акцента перед началом.",
+    setupLangLabel: "Язык теста",
+    setupThemeLabel: "Тема оформления",
+    themeDark: "🌙 Тёмная",
+    themeLight: "☀️ Светлая",
+    setupToneLabel: "Яркость и контраст",
+    toneStandard: "🔆 Стандартный",
+    toneContrast: "⚡ Высокий контраст",
+    toneSoft: "🕯️ Мягкий (Ночной)",
+    setupAccentLabel: "Цвет акцента",
+    accentBlue: "Синий",
+    accentEmerald: "Изумрудный",
+    accentPurple: "Фиолетовый",
+    accentAmber: "Янтарный",
+    accentCrimson: "Малиновый",
+    accentRose: "Розовый",
+    headerEditionBadge: "100 Вопросов • 2D Модель",
+    clickLeaderHint: "Нажмите на лидера, чтобы узнать подробности",
+    clickPartyHint: "Нажмите на движение, чтобы изучить программу"
   },
   fr: {
     appTitle: "Boussole Politique",
@@ -353,9 +519,12 @@ const uiTranslations = {
     featureResults: "📊 Boussole 2D précise, 32 idéologies, dirigeants et partis mondiaux",
     startBtn: "Commencer le test (100 questions) ➔",
     prevBtn: "← Précédent",
+    nextBtn: "Suivant →",
+    resumeBtn: "Reprendre le test (question {current}/{total}) ➔",
     questionCounter: "Question {current} sur {total}",
-    keyboardHint: "Astuce : Vous pouvez utiliser les touches 1 à 5 du clavier pour répondre rapidement.",
+    keyboardHint: "Astuce : Touches 1-5 échelle d'accord (3 = Neutre), touche 6 = Sans avis (passer).",
     resultBadge: "Vos Résultats",
+    primaryIdeologyMatch: "Affinité :",
     legendRed: "Gauche traditionnelle",
     legendGreen: "Social-libéralisme",
     legendBlue: "Libéralisme conservateur",
@@ -394,6 +563,8 @@ const uiTranslations = {
     closeBtn: "✕ Fermer",
     yourAnswerLabel: "Votre réponse :",
     noAnswerLabel: "Sans réponse",
+    neutralBadge: "Neutre / Modéré (0)",
+    skipBadge: "Ignoré (sans impact)",
     footerText: "Boussole Politique Mondiale © 2026 • 100 Questions • Modèle à 2 dimensions avec 32 idéologies, leaders et partis du monde.",
     canvasTop: "▲ PROGRESSISME SOCIAL",
     canvasBottom: "▼ CONSERVATISME SOCIAL",
@@ -403,7 +574,28 @@ const uiTranslations = {
     canvasQ2: "LIBERTARISME",
     canvasQ3: "GAUCHE TRADITIONNELLE",
     canvasQ4: "LIBÉRALISME CONSERVATEUR",
-    canvasUserLabel: "VOUS"
+    canvasUserLabel: "VOUS",
+    // Setup Panel
+    setupTitle: "⚙️ Configuration et personnalisation",
+    setupDesc: "Personnalisez la langue, le thème, le contraste et la couleur d'accent avant de démarrer.",
+    setupLangLabel: "Langue du test",
+    setupThemeLabel: "Thème visuel",
+    themeDark: "🌙 Sombre",
+    themeLight: "☀️ Clair",
+    setupToneLabel: "Luminosité et contraste",
+    toneStandard: "🔆 Standard",
+    toneContrast: "⚡ Contraste élevé",
+    toneSoft: "🕯️ Doux (Nuit)",
+    setupAccentLabel: "Couleur d'accent",
+    accentBlue: "Bleu océan",
+    accentEmerald: "Émeraude",
+    accentPurple: "Violet royal",
+    accentAmber: "Ambre",
+    accentCrimson: "Cramoisi",
+    accentRose: "Rose néon",
+    headerEditionBadge: "100 Questions • Modèle 2D",
+    clickLeaderHint: "Cliquez sur un profil pour afficher les détails",
+    clickPartyHint: "Cliquez sur un mouvement pour voir son manifeste"
   }
 };
 

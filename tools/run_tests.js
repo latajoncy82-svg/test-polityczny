@@ -67,14 +67,23 @@ Object.entries(categories).forEach(([key, val]) => {
 });
 assert(missingCategoryTranslations === 0, "All 12 categories have complete translations in 4 languages");
 
-assert(answerOptions.length === 5, "Exactly 5 answer options configured");
+assert(answerOptions.length === 6, "Exactly 6 answer options configured (including distinct Neutral and Skip)");
+const neutralOpt = answerOptions.find(o => o.value === 0);
+assert(!!neutralOpt, "Neutral answer option (value: 0) present in dataset");
+const skipOpt = answerOptions.find(o => o.value === "skip");
+assert(!!skipOpt, "Skip / Indifference answer option (value: 'skip') present in dataset");
+
 let missingOptionTranslations = 0;
+let missingOptionHintsBadges = 0;
 answerOptions.forEach(opt => {
   langs.forEach(lang => {
     if (!opt.label[lang]) missingOptionTranslations++;
+    if (opt.hint && !opt.hint[lang]) missingOptionHintsBadges++;
+    if (opt.badge && !opt.badge[lang]) missingOptionHintsBadges++;
   });
 });
-assert(missingOptionTranslations === 0, "All 5 answer options translated in PL, EN, RU, FR");
+assert(missingOptionTranslations === 0, "All 6 answer options translated in PL, EN, RU, FR");
+assert(missingOptionHintsBadges === 0, "All 6 answer options have complete hints and badges in 4 languages");
 
 // 3. Validate World Data (Ideologies, Politicians, Parties)
 console.log("\n[2] Testing worldData.js (Ideologies, Politicians, Parties):");
@@ -154,6 +163,11 @@ function runScoringSimulation(answerPattern) {
 
   questions.forEach((q, idx) => {
     const ans = answerPattern(q, idx);
+    // If skipped, exclude entirely from calculation
+    if (ans === "skip" || ans === null || ans === undefined) {
+      return;
+    }
+    // Neutral (0) adds 0 to raw, but increments max by 2 (included in denominator)
     if (q.axis === "econ") {
       econRaw += ans * q.multiplier;
       econMax += 2;
@@ -163,8 +177,8 @@ function runScoringSimulation(answerPattern) {
     }
   });
 
-  const econScore = Math.max(-100, Math.min(100, Math.round((econRaw / econMax) * 100)));
-  const socScore = Math.max(-100, Math.min(100, Math.round((socRaw / socMax) * 100)));
+  const econScore = econMax > 0 ? Math.max(-100, Math.min(100, Math.round((econRaw / econMax) * 100))) : 0;
+  const socScore = socMax > 0 ? Math.max(-100, Math.min(100, Math.round((socRaw / socMax) * 100))) : 0;
   return { econScore, socScore };
 }
 
@@ -180,7 +194,63 @@ assert(maxLeftCons.econScore === -100 && maxLeftCons.socScore === -100, `Max Sta
 const neutral = runScoringSimulation(() => 0);
 assert(neutral.econScore === 0 && neutral.socScore === 0, `Neutral answers yield (0%, 0%) center [got (${neutral.econScore}, ${neutral.socScore})]`);
 
-// Case D: Pure Agree (+1 on all questions) -> since multipliers are 25 (+1) and 25 (-1), sum must be 0!
+// Case D: Pure Skip ('skip' on all questions)
+const allSkipped = runScoringSimulation(() => "skip");
+assert(allSkipped.econScore === 0 && allSkipped.socScore === 0, `All skipped answers yield safe center (0%, 0%) without zero-division error`);
+
+// Case E: Distinct Neutral (0 in denominator) vs. Skip (excluded from denominator)
+// Answer +2 on 10 econ questions (with multiplier=1).
+// Scenario 1: Answer Neutral (0) on remaining 40 questions -> score must dilute towards 0: 20/100 = 20%
+const diluteNeutral = runScoringSimulation((q) => {
+  if (q.axis === "econ") {
+    if (q.id <= 10 && q.multiplier === 1) return 2;
+    return 0; // Neutral: included in denominator
+  }
+  return 0;
+});
+
+// Scenario 2: Answer Skip ('skip') on remaining 40 questions -> score stays undiluted at 100%!
+const pureSkip = runScoringSimulation((q) => {
+  if (q.axis === "econ") {
+    if (q.id <= 10 && q.multiplier === 1) return 2;
+    return "skip"; // Skip: excluded from denominator
+  }
+  return "skip";
+});
+
+assert(diluteNeutral.econScore === 10 && pureSkip.econScore === 100, `Mathematical proof: Neutral (0) dilutes score towards center (${diluteNeutral.econScore}%), while Skip excludes question without diluting (${pureSkip.econScore}%)`);
+
+// Sector breakdown calculation validation (12 sectors)
+function calculateMockSectorBreakdown(answers) {
+  const scores = {};
+  Object.keys(categories).forEach(catKey => {
+    const catQs = questions.filter(q => q.categoryKey === catKey);
+    let raw = 0, max = 0, answered = 0;
+    catQs.forEach(q => {
+      const a = answers[q.id - 1];
+      if (a === "skip" || a === null || a === undefined) return;
+      raw += a * q.multiplier;
+      max += 2;
+      answered++;
+    });
+    scores[catKey] = { scorePct: max > 0 ? Math.round((raw / max) * 100) : 0, answered };
+  });
+  return scores;
+}
+
+const mockAnswersSkip = new Array(100).fill("skip");
+mockAnswersSkip[0] = 2; // Q1 is economy with multiplier 1
+const sectorSkipResult = calculateMockSectorBreakdown(mockAnswersSkip);
+assert(sectorSkipResult.economy.scorePct === 100 && sectorSkipResult.economy.answered === 1, `Sector breakdown: Skip excludes unanswered questions, preserving 100% sector score for single answered question`);
+
+const mockAnswersNeutral = new Array(100).fill("skip");
+mockAnswersNeutral[0] = 2;
+// answer neutral (0) on other 9 economy questions (Q2 - Q10)
+for (let i = 1; i < 10; i++) mockAnswersNeutral[i] = 0;
+const sectorNeutralResult = calculateMockSectorBreakdown(mockAnswersNeutral);
+assert(sectorNeutralResult.economy.scorePct === 10 && sectorNeutralResult.economy.answered === 10, `Sector breakdown: Neutral (0) dilutes sector score towards center (10% with 10 questions factored)`);
+
+// Case F: Pure Agree (+1 on all questions) cancels out due to symmetric 25(+1) / 25(-1) questions
 const allAgree = runScoringSimulation(() => 1);
 assert(allAgree.econScore === 0 && allAgree.socScore === 0, `Agreeing to everything cancels out to (0%, 0%) due to symmetric questions`);
 
@@ -226,7 +296,6 @@ assert(matchForSanders.id === "bernie_sanders" && matchForSanders.similarity >= 
 const matchForLeeKuanYew = findClosestPolitician(45, -65);
 assert(matchForLeeKuanYew.id === "lee_kuan_yew" && matchForLeeKuanYew.similarity >= 95, `Coordinates (45, -65) correctly match Lee Kuan Yew (${matchForLeeKuanYew.similarity}% similarity)`);
 
-// Test Q3 matching (Left, Conservative / Traditional Left)
 const matchForPeron = findClosestPolitician(-55, -50);
 assert(matchForPeron.id === "juan_peron" && matchForPeron.similarity >= 98, `Coordinates (-55, -50) correctly match Juan Perón (${matchForPeron.similarity}% similarity)`);
 

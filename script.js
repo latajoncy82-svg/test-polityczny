@@ -1,18 +1,24 @@
 /**
  * TEST POLITYCZNY - GŁÓWNA LOGIKA APLIKACJI (WERSJA GLOBALNA 2026)
- * Obsługa 100 pytań, 32 ideologii, 24 światowych liderów, 12 partii międzynarodowych
+ * Obsługa 100 pytań, 32 ideologii, 28 światowych liderów, 15 partii międzynarodowych
+ * 6 opcji odpowiedzi (w tym Neutralny / Umiarkowany vs. Nie mam zdania / Pomiń)
  * oraz 4 języków: PL, EN, RU, FR.
  */
 
 // Stan testu
 let currentLang = localStorage.getItem("ptp_lang") || "pl";
+let currentTheme = localStorage.getItem("ptp_theme") || "theme-dark";
+let currentTone = localStorage.getItem("ptp_tone") || "standard";
+let currentAccent = localStorage.getItem("ptp_accent") || "blue";
+
 let currentQuestionIndex = 0;
 let userAnswers = new Array(questions.length).fill(null);
 let animationFrameId = null;
 let currentEconScore = 0;
 let currentSocScore = 0;
+let isTransitioning = false;
 
-// Elementy DOM
+// Elementy DOM - Ekrany
 const welcomeScreen = document.getElementById("welcomeScreen");
 const questionScreen = document.getElementById("questionScreen");
 const resultScreen = document.getElementById("resultScreen");
@@ -20,11 +26,37 @@ const resultScreen = document.getElementById("resultScreen");
 // Header
 const headerAppTitle = document.getElementById("headerAppTitle");
 const headerAppSubtitle = document.getElementById("headerAppSubtitle");
+const headerEditionBadge = document.getElementById("headerEditionBadge");
 const themeToggleBtn = document.getElementById("themeToggleBtn");
 const themeIcon = document.getElementById("themeIcon");
 
-// Welcome Screen
+// Welcome Screen & Setup Panel
+const setupTitle = document.getElementById("setupTitle");
+const setupDesc = document.getElementById("setupDesc");
 const langSelectLabel = document.getElementById("langSelectLabel");
+const setupThemeLabel = document.getElementById("setupThemeLabel");
+const setupToneLabel = document.getElementById("setupToneLabel");
+const setupAccentLabel = document.getElementById("setupAccentLabel");
+
+const themeDarkBtn = document.getElementById("themeDarkBtn");
+const themeLightBtn = document.getElementById("themeLightBtn");
+const themeDarkText = document.getElementById("themeDarkText");
+const themeLightText = document.getElementById("themeLightText");
+
+const toneStandardBtn = document.getElementById("toneStandardBtn");
+const toneContrastBtn = document.getElementById("toneContrastBtn");
+const toneSoftBtn = document.getElementById("toneSoftBtn");
+const toneStandardText = document.getElementById("toneStandardText");
+const toneContrastText = document.getElementById("toneContrastText");
+const toneSoftText = document.getElementById("toneSoftText");
+
+const accentBlueText = document.getElementById("accentBlueText");
+const accentEmeraldText = document.getElementById("accentEmeraldText");
+const accentPurpleText = document.getElementById("accentPurpleText");
+const accentAmberText = document.getElementById("accentAmberText");
+const accentCrimsonText = document.getElementById("accentCrimsonText");
+const accentRoseText = document.getElementById("accentRoseText");
+
 const badgePill = document.getElementById("badgePill");
 const heroTitle = document.getElementById("heroTitle");
 const heroDesc = document.getElementById("heroDesc");
@@ -122,9 +154,11 @@ const closeReviewBtn = document.getElementById("closeReviewBtn");
 const reviewList = document.getElementById("reviewList");
 const footerText = document.getElementById("footerText");
 
-// Inicjalizacja aplikacji
+// =========================================================================
+// INICJALIZACJA APLIKACJI
+// =========================================================================
 document.addEventListener("DOMContentLoaded", () => {
-  setupTheme();
+  setupAppearance();
   applyLanguage(currentLang);
   setupEventListeners();
   setupKeyboardNavigation();
@@ -132,32 +166,101 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // =========================================================================
-// OBSŁUGA MOTYWU (DARK / LIGHT)
+// INTERAKTYWNE ANIMACJE KLIKANIA (RIPPLE EFFECT)
 // =========================================================================
-function setupTheme() {
-  const savedTheme = localStorage.getItem("ptp_theme") || "theme-dark";
-  document.body.className = savedTheme;
-  updateThemeIcon(savedTheme);
+function createRippleEffect(e, forcedEl = null) {
+  const btn = forcedEl || (e ? (e.currentTarget || (e.target && e.target.closest ? (e.target.closest("button, .setup-pill-btn, .accent-color-btn, .podium-mini-card, .btn-action, .answer-btn") || e.target) : e.target)) : null);
+  if (!btn) return;
+
+  const rect = btn.getBoundingClientRect();
+  const circle = document.createElement("span");
+  const diameter = Math.max(rect.width, rect.height) * 1.8;
+  const radius = diameter / 2;
+
+  let clientX, clientY;
+  if (e && typeof e.clientX === "number" && e.clientX !== 0) {
+    clientX = e.clientX;
+    clientY = e.clientY;
+  } else {
+    clientX = rect.left + rect.width / 2;
+    clientY = rect.top + rect.height / 2;
+  }
+
+  circle.style.width = circle.style.height = `${diameter}px`;
+  circle.style.left = `${clientX - rect.left - radius}px`;
+  circle.style.top = `${clientY - rect.top - radius}px`;
+  circle.className = "ripple-wave";
+
+  btn.appendChild(circle);
+  setTimeout(() => circle.remove(), 600);
 }
 
-function toggleTheme() {
-  const isDark = document.body.classList.contains("theme-dark");
-  const newTheme = isDark ? "theme-light" : "theme-dark";
-  document.body.className = newTheme;
-  localStorage.setItem("ptp_theme", newTheme);
-  updateThemeIcon(newTheme);
+// =========================================================================
+// KONFIGURACJA WYGLĄDU (MOTYW, KONTRAST, AKCENT)
+// =========================================================================
+function setupAppearance() {
+  applyTheme(currentTheme, false);
+  applyTone(currentTone, false);
+  applyAccent(currentAccent, false);
+}
 
-  if (resultScreen.classList.contains("active")) {
+function applyTheme(theme, save = true) {
+  currentTheme = theme;
+  document.body.classList.remove("theme-dark", "theme-light");
+  document.body.classList.add(theme);
+
+  if (save) localStorage.setItem("ptp_theme", theme);
+
+  if (themeIcon) {
+    themeIcon.textContent = theme === "theme-dark" ? "☀️" : "🌙";
+  }
+
+  if (themeDarkBtn && themeLightBtn) {
+    themeDarkBtn.classList.toggle("active", theme === "theme-dark");
+    themeLightBtn.classList.toggle("active", theme === "theme-light");
+  }
+
+  if (resultScreen && resultScreen.classList.contains("active")) {
     drawCompass(currentEconScore, currentSocScore);
   }
 }
 
-function updateThemeIcon(theme) {
-  themeIcon.textContent = theme === "theme-dark" ? "☀️" : "🌙";
+function toggleTheme() {
+  const next = currentTheme === "theme-dark" ? "theme-light" : "theme-dark";
+  applyTheme(next);
+}
+
+function applyTone(tone, save = true) {
+  currentTone = tone;
+  document.body.classList.remove("tone-standard", "tone-contrast", "tone-soft");
+  document.body.classList.add(`tone-${tone}`);
+
+  if (save) localStorage.setItem("ptp_tone", tone);
+
+  document.querySelectorAll(".tone-choice-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.tone === tone);
+  });
+}
+
+function applyAccent(accent, save = true) {
+  currentAccent = accent;
+  const palettes = ["blue", "emerald", "purple", "amber", "crimson", "rose"];
+  palettes.forEach(p => document.body.classList.remove(`theme-${p}`));
+  document.body.classList.add(`theme-${accent}`);
+
+  if (save) localStorage.setItem("ptp_accent", accent);
+
+  document.querySelectorAll(".accent-color-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.accent === accent);
+  });
+
+  if (resultScreen && resultScreen.classList.contains("active")) {
+    drawCompass(currentEconScore, currentSocScore);
+  }
 }
 
 // =========================================================================
-// OBSŁUGA WIELOJĘZYCZNOŚCI (I18N: PL, EN, RU, FR)
+// WIELOJĘZYCZNOŚĆ (I18N: PL, EN, RU, FR)
 // =========================================================================
 function setLanguage(lang) {
   if (!uiTranslations[lang]) return;
@@ -165,13 +268,11 @@ function setLanguage(lang) {
   localStorage.setItem("ptp_lang", lang);
   applyLanguage(lang);
 
-  // Jeśli jesteśmy na ekranie pytań, przerysuj aktualne pytanie
-  if (questionScreen.classList.contains("active")) {
+  if (questionScreen && questionScreen.classList.contains("active")) {
     renderQuestion();
   }
 
-  // Jeśli jesteśmy na ekranie wyników, przerysuj wyniki i kompas
-  if (resultScreen.classList.contains("active")) {
+  if (resultScreen && resultScreen.classList.contains("active")) {
     showResults(false);
   }
 }
@@ -180,131 +281,246 @@ function applyLanguage(lang) {
   const t = uiTranslations[lang];
   if (!t) return;
 
-  // Dynamiczny tytuł strony w karcie przeglądarki
-  document.title = `${t.appTitle} – ${t.appSubtitle}`;
+  // Nagłówek
+  if (headerAppTitle) headerAppTitle.textContent = t.appTitle;
+  if (headerAppSubtitle) headerAppSubtitle.textContent = t.appSubtitle;
+  if (headerEditionBadge && t.headerEditionBadge) headerEditionBadge.textContent = t.headerEditionBadge;
+  if (themeToggleBtn) themeToggleBtn.title = t.themeToggleTitle;
 
-  // Aktywne przyciski wyboru języka
-  document.querySelectorAll(".lang-card-btn, .header-lang-btn").forEach(btn => {
+  // Setup Panel na ekranie startowym
+  if (setupTitle && t.setupTitle) setupTitle.textContent = t.setupTitle;
+  if (setupDesc && t.setupDesc) setupDesc.textContent = t.setupDesc;
+  if (langSelectLabel) langSelectLabel.textContent = t.langSelectLabel;
+  if (setupThemeLabel && t.setupThemeLabel) setupThemeLabel.textContent = t.setupThemeLabel;
+  if (setupToneLabel && t.setupToneLabel) setupToneLabel.textContent = t.setupToneLabel;
+  if (setupAccentLabel && t.setupAccentLabel) setupAccentLabel.textContent = t.setupAccentLabel;
+
+  if (themeDarkText && t.themeDark) themeDarkText.textContent = t.themeDark.replace("🌙 ", "");
+  if (themeLightText && t.themeLight) themeLightText.textContent = t.themeLight.replace("☀️ ", "");
+
+  if (toneStandardText && t.toneStandard) toneStandardText.textContent = t.toneStandard.replace("🔆 ", "");
+  if (toneContrastText && t.toneContrast) toneContrastText.textContent = t.toneContrast.replace("⚡ ", "");
+  if (toneSoftText && t.toneSoft) toneSoftText.textContent = t.toneSoft.replace("🕯️ ", "");
+
+  if (accentBlueText && t.accentBlue) accentBlueText.textContent = t.accentBlue;
+  if (accentEmeraldText && t.accentEmerald) accentEmeraldText.textContent = t.accentEmerald;
+  if (accentPurpleText && t.accentPurple) accentPurpleText.textContent = t.accentPurple;
+  if (accentAmberText && t.accentAmber) accentAmberText.textContent = t.accentAmber;
+  if (accentCrimsonText && t.accentCrimson) accentCrimsonText.textContent = t.accentCrimson;
+  if (accentRoseText && t.accentRose) accentRoseText.textContent = t.accentRose;
+
+  // Welcome Screen
+  if (badgePill) badgePill.textContent = t.badgePill;
+  if (heroTitle) heroTitle.textContent = t.heroTitle;
+  if (heroDesc) heroDesc.textContent = t.heroDesc;
+  if (axisEconTitle) axisEconTitle.textContent = t.axisEconTitle;
+  if (axisEconDesc) axisEconDesc.textContent = t.axisEconDesc;
+  if (axisSocTitle) axisSocTitle.textContent = t.axisSocTitle;
+  if (axisSocDesc) axisSocDesc.textContent = t.axisSocDesc;
+  if (featureTime) featureTime.textContent = t.featureTime;
+  if (featureAnon) featureAnon.textContent = t.featureAnon;
+  if (featureResults) featureResults.textContent = t.featureResults;
+  if (startTestBtn) startTestBtn.textContent = t.startBtn;
+
+  // Quiz Screen
+  if (prevBtn) prevBtn.textContent = t.prevBtn;
+  if (nextBtn) nextBtn.textContent = t.nextBtn || "Następne →";
+  if (keyboardHint) keyboardHint.textContent = t.keyboardHint;
+
+  // Results Screen
+  if (resultBadge) resultBadge.textContent = t.resultBadge;
+  if (legendRedText) legendRedText.textContent = t.legendRed;
+  if (legendGreenText) legendGreenText.textContent = t.legendGreen;
+  if (legendBlueText) legendBlueText.textContent = t.legendBlue;
+  if (legendYellowText) legendYellowText.textContent = t.legendYellow;
+  if (econMeterLeft) econMeterLeft.textContent = t.econMeterLeft;
+  if (econMeterRight) econMeterRight.textContent = t.econMeterRight;
+  if (socMeterLeft) socMeterLeft.textContent = t.socMeterLeft;
+  if (socMeterRight) socMeterRight.textContent = t.socMeterRight;
+  if (ideologySectionTitle) ideologySectionTitle.textContent = t.ideologySectionTitle;
+  if (keyFiguresLabel) keyFiguresLabel.textContent = t.keyFiguresLabel;
+  if (secondaryIdeologiesTitle) secondaryIdeologiesTitle.textContent = t.secondaryIdeologiesTitle;
+  if (politicianCardTitle) politicianCardTitle.textContent = t.politicianCardTitle;
+  if (politicianCardSubtitle) politicianCardSubtitle.textContent = t.politicianCardSubtitle;
+  if (politicianWhyVoteLabel) politicianWhyVoteLabel.textContent = t.politicianWhyVoteLabel;
+  if (politicianQuoteLabel) politicianQuoteLabel.textContent = t.politicianQuoteLabel;
+  if (otherPoliticiansTitle) otherPoliticiansTitle.textContent = t.otherPoliticiansTitle;
+  if (clickLeaderHint && t.clickLeaderHint) clickLeaderHint.textContent = t.clickLeaderHint;
+  if (partyCardTitle) partyCardTitle.textContent = t.partyCardTitle;
+  if (partyCardSubtitle) partyCardSubtitle.textContent = t.partyCardSubtitle;
+  if (partyTypeLabel) partyTypeLabel.textContent = t.partyTypeLabel;
+  if (partyManifestoLabel) partyManifestoLabel.textContent = t.partyManifestoLabel;
+  if (otherPartiesTitle) otherPartiesTitle.textContent = t.otherPartiesTitle;
+  if (clickPartyHint && t.clickPartyHint) clickPartyHint.textContent = t.clickPartyHint;
+  if (categoryBreakdownTitle) categoryBreakdownTitle.textContent = t.categoryBreakdownTitle;
+  if (downloadResultBtn) downloadResultBtn.textContent = t.downloadBtn;
+  if (copyShareBtn) copyShareBtn.textContent = t.copyBtn;
+  if (toggleAnswersBtn) toggleAnswersBtn.textContent = t.reviewBtn;
+  if (restartBtn) restartBtn.textContent = t.restartBtn;
+  if (reviewTitle) reviewTitle.textContent = t.reviewTitle;
+  if (closeReviewBtn) closeReviewBtn.textContent = t.closeBtn;
+  if (footerText) footerText.textContent = t.footerText;
+
+  // Aktywne przyciski języka w panelu
+  document.querySelectorAll(".lang-card-btn").forEach(btn => {
     btn.classList.toggle("active", btn.dataset.lang === lang);
   });
 
-  // Header & Welcome
-  headerAppTitle.textContent = t.appTitle;
-  headerAppSubtitle.textContent = t.appSubtitle;
-  themeToggleBtn.title = t.themeToggleTitle;
-  langSelectLabel.textContent = t.langSelectLabel;
-  badgePill.textContent = t.badgePill;
-  heroTitle.textContent = t.heroTitle;
-  heroDesc.textContent = t.heroDesc;
-  axisEconTitle.textContent = t.axisEconTitle;
-  axisEconDesc.textContent = t.axisEconDesc;
-  axisSocTitle.textContent = t.axisSocTitle;
-  axisSocDesc.textContent = t.axisSocDesc;
-  featureTime.textContent = t.featureTime;
-  featureAnon.textContent = t.featureAnon;
-  featureResults.textContent = t.featureResults;
-  startTestBtn.textContent = t.startBtn;
-
-  // Question controls
-  prevBtn.textContent = t.prevBtn;
-  if (nextBtn) nextBtn.textContent = t.nextBtn;
-  keyboardHint.textContent = `⌨️ ${t.keyboardHint}`;
-
-  // Results UI
-  resultBadge.textContent = t.resultBadge;
-  legendRedText.textContent = t.legendRed;
-  legendGreenText.textContent = t.legendGreen;
-  legendBlueText.textContent = t.legendBlue;
-  legendYellowText.textContent = t.legendYellow;
-  econMeterLeft.textContent = t.econMeterLeft;
-  econMeterRight.textContent = t.econMeterRight;
-  socMeterLeft.textContent = t.socMeterLeft;
-  socMeterRight.textContent = t.socMeterRight;
-  ideologySectionTitle.textContent = t.ideologySectionTitle;
-  keyFiguresLabel.textContent = t.keyFiguresLabel;
-  secondaryIdeologiesTitle.textContent = t.secondaryIdeologiesTitle;
-  politicianCardTitle.textContent = t.politicianCardTitle;
-  politicianCardSubtitle.textContent = t.politicianCardSubtitle;
-  politicianWhyVoteLabel.textContent = t.politicianWhyVoteLabel;
-  if (politicianQuoteLabel) politicianQuoteLabel.textContent = t.politicianQuoteLabel;
-  if (clickLeaderHint) clickLeaderHint.textContent = t.clickToViewDetail;
-  otherPoliticiansTitle.textContent = t.otherPoliticiansTitle;
-  partyCardTitle.textContent = t.partyCardTitle;
-  partyCardSubtitle.textContent = t.partyCardSubtitle;
-  if (partyTypeLabel) partyTypeLabel.textContent = t.partyTypeLabel;
-  partyManifestoLabel.textContent = t.partyManifestoLabel;
-  if (clickPartyHint) clickPartyHint.textContent = t.clickToViewParty;
-  otherPartiesTitle.textContent = t.otherPartiesTitle;
-  categoryBreakdownTitle.textContent = t.categoryBreakdownTitle;
-  downloadResultBtn.textContent = t.downloadBtn;
-  copyShareBtn.textContent = t.copyBtn;
-  toggleAnswersBtn.textContent = t.reviewBtn;
-  restartBtn.textContent = t.restartBtn;
-  reviewTitle.textContent = t.reviewTitle;
-  closeReviewBtn.textContent = t.closeBtn;
-  footerText.textContent = t.footerText;
-
   updateResumeButtonText();
-  document.documentElement.lang = lang;
 }
 
 // =========================================================================
 // ZDARZENIA I INTERAKCJA
 // =========================================================================
 function setupEventListeners() {
-  themeToggleBtn.addEventListener("click", toggleTheme);
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener("click", (e) => {
+      createRippleEffect(e);
+      toggleTheme();
+    });
+  }
 
-  // Przełączniki języków
-  document.querySelectorAll(".lang-card-btn, .header-lang-btn").forEach(btn => {
+  // Panel wyboru języka
+  document.querySelectorAll(".lang-card-btn").forEach(btn => {
     btn.addEventListener("click", (e) => {
-      const selectedLang = e.currentTarget.dataset.lang;
-      setLanguage(selectedLang);
+      createRippleEffect(e);
+      setLanguage(e.currentTarget.dataset.lang);
     });
   });
 
-  startTestBtn.addEventListener("click", () => {
-    resetProgress();
-    startQuiz();
+  // Panel wyboru motywu (Ciemny / Jasny)
+  document.querySelectorAll(".theme-choice-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      createRippleEffect(e);
+      applyTheme(e.currentTarget.dataset.theme);
+    });
   });
+
+  // Panel wyboru jasności i kontrastu
+  document.querySelectorAll(".tone-choice-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      createRippleEffect(e);
+      applyTone(e.currentTarget.dataset.tone);
+    });
+  });
+
+  // Panel wyboru koloru akcentu
+  document.querySelectorAll(".accent-color-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      createRippleEffect(e);
+      applyAccent(e.currentTarget.dataset.accent);
+    });
+  });
+
+  // Przyciski akcji
+  if (startTestBtn) {
+    startTestBtn.addEventListener("click", (e) => {
+      createRippleEffect(e);
+      resetProgress();
+      startQuiz();
+    });
+  }
+
   if (resumeTestBtn) {
-    resumeTestBtn.addEventListener("click", resumeQuiz);
+    resumeTestBtn.addEventListener("click", (e) => {
+      createRippleEffect(e);
+      resumeQuiz();
+    });
   }
-  prevBtn.addEventListener("click", goToPreviousQuestion);
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", (e) => {
+      createRippleEffect(e);
+      goToPreviousQuestion();
+    });
+  }
+
   if (nextBtn) {
-    nextBtn.addEventListener("click", goToNextQuestion);
+    nextBtn.addEventListener("click", (e) => {
+      createRippleEffect(e);
+      goToNextQuestion();
+    });
   }
-  restartBtn.addEventListener("click", resetQuiz);
-  downloadResultBtn.addEventListener("click", downloadResultImage);
-  copyShareBtn.addEventListener("click", copyResultSummary);
-  toggleAnswersBtn.addEventListener("click", toggleReview);
-  closeReviewBtn.addEventListener("click", () => answersReviewSection.classList.add("hidden"));
+
+  if (restartBtn) {
+    restartBtn.addEventListener("click", (e) => {
+      createRippleEffect(e);
+      resetQuiz();
+    });
+  }
+
+  if (downloadResultBtn) {
+    downloadResultBtn.addEventListener("click", (e) => {
+      createRippleEffect(e);
+      downloadResultImage();
+    });
+  }
+
+  if (copyShareBtn) {
+    copyShareBtn.addEventListener("click", (e) => {
+      createRippleEffect(e);
+      copyResultSummary();
+    });
+  }
+
+  if (toggleAnswersBtn) {
+    toggleAnswersBtn.addEventListener("click", (e) => {
+      createRippleEffect(e);
+      toggleReview();
+    });
+  }
+
+  if (closeReviewBtn) {
+    closeReviewBtn.addEventListener("click", (e) => {
+      createRippleEffect(e);
+      answersReviewSection.classList.add("hidden");
+    });
+  }
 }
 
 function setupKeyboardNavigation() {
   window.addEventListener("keydown", (e) => {
-    if (!questionScreen.classList.contains("active")) return;
+    if (!questionScreen || !questionScreen.classList.contains("active")) return;
+    if (isTransitioning) return;
 
-    if (e.key === "1") handleAnswerSelect(2);
-    else if (e.key === "2") handleAnswerSelect(1);
-    else if (e.key === "3") handleAnswerSelect(0);
-    else if (e.key === "4") handleAnswerSelect(-1);
-    else if (e.key === "5") handleAnswerSelect(-2);
+    let targetIdx = -1;
+    let targetVal = null;
+
+    if (e.key === "1") { targetIdx = 0; targetVal = 2; }
+    else if (e.key === "2") { targetIdx = 1; targetVal = 1; }
+    else if (e.key === "3") { targetIdx = 2; targetVal = 0; } // Neutralny / Umiarkowany (wliczany do mianownika)
+    else if (e.key === "4") { targetIdx = 3; targetVal = -1; }
+    else if (e.key === "5") { targetIdx = 4; targetVal = -2; }
+    else if (e.key === "6" || e.key.toLowerCase() === "s" || e.key === "0") { targetIdx = 5; targetVal = "skip"; } // Pomiń / Nie mam zdania
     else if (e.key === "ArrowLeft" || e.key === "Backspace") {
       goToPreviousQuestion();
+      return;
     } else if (e.key === "ArrowRight") {
       goToNextQuestion();
+      return;
+    }
+
+    if (targetIdx !== -1) {
+      const btns = answersContainer.querySelectorAll(".answer-btn");
+      const targetBtn = btns[targetIdx];
+      if (targetBtn) {
+        createRippleEffect(null, targetBtn);
+        handleAnswerSelect(targetVal, targetBtn);
+      } else {
+        handleAnswerSelect(targetVal);
+      }
     }
   });
 }
 
 function switchScreen(activeScreen) {
-  [welcomeScreen, questionScreen, resultScreen].forEach(s => s.classList.remove("active"));
-  activeScreen.classList.add("active");
+  [welcomeScreen, questionScreen, resultScreen].forEach(s => s && s.classList.remove("active"));
+  if (activeScreen) activeScreen.classList.add("active");
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 // =========================================================================
-// ZARZĄDZANIE STANEM I ZAPIS POSTĘPÓW (LOCAL STORAGE)
+// ZAPIS POSTĘPÓW (LOCAL STORAGE)
 // =========================================================================
 function saveProgress() {
   try {
@@ -333,7 +549,7 @@ function updateResumeButtonText() {
   const saved = checkSavedProgress();
   if (saved) {
     const t = uiTranslations[currentLang];
-    const resumeTxt = (t.resumeBtn || "Kontynuuj test")
+    const resumeTxt = (t.resumeBtn || "Kontynuuj test ({current}/{total}) ➔")
       .replace("{current}", saved.currentIndex + 1)
       .replace("{total}", questions.length);
     resumeTestBtn.textContent = resumeTxt;
@@ -364,8 +580,6 @@ function resumeQuiz() {
 // =========================================================================
 // PRZEBIEG TESTU (QUIZ ENGINE)
 // =========================================================================
-let isTransitioning = false;
-
 function startQuiz() {
   currentQuestionIndex = 0;
   userAnswers.fill(null);
@@ -400,25 +614,55 @@ function renderQuestion() {
     nextBtn.disabled = currentQuestionIndex === questions.length - 1 || userAnswers[currentQuestionIndex] === null;
   }
 
-  // Generowanie przycisków 5 odpowiedzi
+  // Generowanie przycisków 6 odpowiedzi (Zgoda, Lekka zgoda, Neutralny 0, Lekki sprzeciw, Sprzeciw, Skip)
   answersContainer.innerHTML = "";
   answerOptions.forEach((opt, idx) => {
     const btn = document.createElement("button");
+    btn.type = "button";
     btn.className = `answer-btn ${opt.className}`;
 
     const labelText = opt.label[currentLang] || opt.label.pl;
-    btn.innerHTML = `<span class="answer-shortcut-tag">${idx + 1}</span><span>${labelText}</span>`;
+    const hintText = opt.hint ? (opt.hint[currentLang] || opt.hint.pl) : "";
+    const badgeText = opt.badge ? (opt.badge[currentLang] || opt.badge.pl) : `${idx + 1}`;
+
+    btn.innerHTML = `
+      <div class="answer-left">
+        <span class="answer-shortcut-tag">${idx + 1}</span>
+        <div class="answer-text-group">
+          <span class="answer-label-text">${labelText}</span>
+          ${hintText ? `<span class="answer-hint-sub">${hintText}</span>` : ""}
+        </div>
+      </div>
+      <div class="answer-right">
+        <span class="answer-badge-pill">${badgeText}</span>
+        <span class="answer-check-icon">✓</span>
+      </div>
+    `;
 
     // Zaznaczenie wybranej uprzednio odpowiedzi
     if (userAnswers[currentQuestionIndex] === opt.value) {
-      btn.style.borderColor = "var(--accent-primary)";
-      btn.style.boxShadow = "0 0 0 2px var(--accent-glow)";
       btn.classList.add("selected-answer");
     }
 
-    btn.addEventListener("click", () => handleAnswerSelect(opt.value, btn));
+    btn.addEventListener("click", (e) => {
+      createRippleEffect(e);
+      handleAnswerSelect(opt.value, btn);
+    });
+
     answersContainer.appendChild(btn);
   });
+
+  // Animacja wejścia pytania i opcji odpowiedzi
+  if (questionText) {
+    questionText.classList.remove("animating-in");
+    void questionText.offsetWidth;
+    questionText.classList.add("animating-in");
+  }
+  if (answersContainer) {
+    answersContainer.classList.remove("animating-in");
+    void answersContainer.offsetWidth;
+    answersContainer.classList.add("animating-in");
+  }
 }
 
 function handleAnswerSelect(val, clickedBtn = null) {
@@ -438,10 +682,10 @@ function handleAnswerSelect(val, clickedBtn = null) {
       renderQuestion();
     } else {
       progressBar.style.width = "100%";
-      setTimeout(() => showResults(true), 200);
+      setTimeout(() => showResults(true), 150);
     }
     isTransitioning = false;
-  }, 100);
+  }, 220);
 }
 
 function goToNextQuestion() {
@@ -459,7 +703,7 @@ function goToPreviousQuestion() {
 }
 
 // =========================================================================
-// KALKULACJA PUNKTÓW I DOPASOWANIA (MATCHING ENGINE)
+// KALKULACJA PUNKTÓW (DISTINCT NEUTRAL VS. INDEPENDENT SKIP)
 // =========================================================================
 function calculateScores() {
   let econRaw = 0;
@@ -468,7 +712,16 @@ function calculateScores() {
   let socMax = 0;
 
   questions.forEach((q, idx) => {
-    const ans = userAnswers[idx] ?? 0;
+    const ans = userAnswers[idx];
+
+    // Jeśli odpowiedź to "skip" (Nie mam zdania / Pomiń) lub brak odpowiedzi:
+    // Pytanie jest całkowicie wyłączone z kalkulacji — nie rozwadnia wyniku!
+    if (ans === "skip" || ans === null || ans === undefined) {
+      return;
+    }
+
+    // Jeśli odpowiedź to 0 (Neutralny / Umiarkowany):
+    // ans * q.multiplier wynosi 0, ale max rośnie o 2 -> wliczane do mianownika (pozycja centrowa!)
     if (q.axis === "econ") {
       econRaw += ans * q.multiplier;
       econMax += 2;
@@ -478,22 +731,19 @@ function calculateScores() {
     }
   });
 
-  const econScore = Math.max(-100, Math.min(100, Math.round((econRaw / econMax) * 100)));
-  const socScore = Math.max(-100, Math.min(100, Math.round((socRaw / socMax) * 100)));
+  const econScore = econMax > 0 ? Math.max(-100, Math.min(100, Math.round((econRaw / econMax) * 100))) : 0;
+  const socScore = socMax > 0 ? Math.max(-100, Math.min(100, Math.round((socRaw / socMax) * 100))) : 0;
 
   return { econScore, socScore };
 }
 
-// Obliczenie zgodności (0% do 100%) na podstawie odległości euklidesowej
 function calculateSimilarity(userEcon, userSoc, targetEcon, targetSoc) {
   const dist = Math.hypot(userEcon - targetEcon, userSoc - targetSoc);
-  // Maksymalna możliwa odległość na siatce [-100..100] wynosi sqrt(200^2 + 200^2) ≈ 282.84
   const maxDist = 282.84;
   const similarity = Math.max(0, Math.min(100, Math.round(100 - (dist / maxDist) * 100)));
   return { dist, similarity };
 }
 
-// Obliczenie rozbicia w 12 kategoriach tematycznych
 function calculateSectorBreakdown() {
   const sectorScores = {};
 
@@ -501,17 +751,22 @@ function calculateSectorBreakdown() {
     const catQuestions = questions.filter(q => q.categoryKey === catKey);
     let raw = 0;
     let max = 0;
+    let answeredCount = 0;
 
     catQuestions.forEach(q => {
       const idx = q.id - 1;
-      const ans = userAnswers[idx] ?? 0;
+      const ans = userAnswers[idx];
+      if (ans === "skip" || ans === null || ans === undefined) {
+        return;
+      }
       raw += ans * q.multiplier;
       max += 2;
+      answeredCount++;
     });
 
     const scorePct = max > 0 ? Math.round((raw / max) * 100) : 0;
     const axis = catQuestions[0] ? catQuestions[0].axis : "econ";
-    sectorScores[catKey] = { scorePct, axis, count: catQuestions.length };
+    sectorScores[catKey] = { scorePct, axis, count: catQuestions.length, answeredCount };
   });
 
   return sectorScores;
@@ -602,7 +857,7 @@ function showResults(animated = true) {
     secondaryIdeologiesList.appendChild(card);
   });
 
-  // 2. Dopasowanie Światowego Lidera Politycznego (28 liderów)
+  // 2. Dopasowanie Światowego Lidera (28 liderów)
   currentRankedPoliticians = worldPoliticians.map(pol => {
     const { dist, similarity } = calculateSimilarity(econScore, socScore, pol.coordinates.econ, pol.coordinates.soc);
     return { ...pol, dist, similarity };
@@ -612,7 +867,6 @@ function showResults(animated = true) {
   const runnerUpPoliticians = currentRankedPoliticians.slice(1, 4);
   renderPoliticianProfile(topPolitician, true);
 
-  // Kolejne dopasowania liderów z interaktywnym podglądem
   otherPoliticiansList.innerHTML = "";
   runnerUpPoliticians.forEach(pol => {
     const item = document.createElement("div");
@@ -627,11 +881,14 @@ function showResults(animated = true) {
       </div>
       <div class="podium-mini-match">${pol.similarity}%</div>
     `;
-    item.addEventListener("click", () => renderPoliticianProfile(pol));
+    item.addEventListener("click", (e) => {
+      createRippleEffect(e);
+      renderPoliticianProfile(pol);
+    });
     otherPoliticiansList.appendChild(item);
   });
 
-  // 3. Dopasowanie Międzynarodowej Partii / Ruchu (15 partii)
+  // 3. Dopasowanie Międzynarodowej Partii (15 partii)
   currentRankedParties = worldParties.map(pty => {
     const { dist, similarity } = calculateSimilarity(econScore, socScore, pty.coordinates.econ, pty.coordinates.soc);
     return { ...pty, dist, similarity };
@@ -641,7 +898,6 @@ function showResults(animated = true) {
   const runnerUpParties = currentRankedParties.slice(1, 4);
   renderPartyProfile(topParty, true);
 
-  // Kolejne rodziny partyjne z interaktywnym podglądem
   otherPartiesList.innerHTML = "";
   runnerUpParties.forEach(pty => {
     const item = document.createElement("div");
@@ -656,11 +912,14 @@ function showResults(animated = true) {
       </div>
       <div class="podium-mini-match">${pty.similarity}%</div>
     `;
-    item.addEventListener("click", () => renderPartyProfile(pty));
+    item.addEventListener("click", (e) => {
+      createRippleEffect(e);
+      renderPartyProfile(pty);
+    });
     otherPartiesList.appendChild(item);
   });
 
-  // 4. Teksty wskaźników osi i pozycjonowanie pinów
+  // 4. Paski osi
   const econSide = econScore > 0 ? t.econLabelRight : econScore < 0 ? t.econLabelLeft : t.centerLabel;
   const socSide = socScore > 0 ? t.socLabelRight : socScore < 0 ? t.socLabelLeft : t.centerLabel;
 
@@ -670,7 +929,6 @@ function showResults(animated = true) {
   const econPercentPosition = ((econScore + 100) / 200) * 100;
   const socPercentPosition = ((socScore + 100) / 200) * 100;
 
-  // Bipolarny pasek gospodarczy:
   econFillBar.className = "meter-fill econ-bar";
   if (econScore < 0) {
     econFillBar.classList.add("left-fill");
@@ -686,7 +944,6 @@ function showResults(animated = true) {
   }
   if (econPin) econPin.style.left = `${econPercentPosition}%`;
 
-  // Bipolarny pasek społeczny:
   socFillBar.className = "meter-fill soc-bar";
   if (socScore < 0) {
     socFillBar.classList.add("left-fill");
@@ -702,7 +959,7 @@ function showResults(animated = true) {
   }
   if (socPin) socPin.style.left = `${socPercentPosition}%`;
 
-  // 5. Rozbicie sektorowe (12 sektorów)
+  // 5. Rozbicie sektorowe
   renderSectorBreakdown();
 
   // 6. Przełączenie ekranu i rysowanie kompasu
@@ -736,27 +993,24 @@ function renderSectorBreakdown() {
 
     let fillLeft = "50%";
     let fillWidth = "0%";
-    let biasClass = "";
 
     if (scoreVal < 0) {
-      biasClass = "left-fill";
       fillLeft = `${50 - Math.abs(scoreVal) / 2}%`;
       fillWidth = `${Math.abs(scoreVal) / 2}%`;
     } else if (scoreVal > 0) {
-      biasClass = "right-fill";
       fillLeft = "50%";
       fillWidth = `${scoreVal / 2}%`;
     }
 
     const item = document.createElement("div");
-    item.className = "sector-item-box";
+    item.className = "sector-item";
     item.innerHTML = `
-      <div class="sector-labels-row">
-        <span class="sector-title">${catName}</span>
-        <span class="sector-score-tag">${scoreVal > 0 ? '+' : ''}${scoreVal}%</span>
+      <div class="sector-header">
+        <span class="sector-name">${catName}</span>
+        <span class="sector-pct">${scoreVal > 0 ? '+' : ''}${scoreVal}%</span>
       </div>
       <div class="sector-bar-track">
-        <div class="sector-bar-fill ${isEcon ? 'sector-bar-econ' : 'sector-bar-soc'} ${biasClass}" style="left: ${fillLeft}; width: ${fillWidth};"></div>
+        <div class="sector-bar-fill" style="left: ${fillLeft}; width: ${fillWidth};"></div>
         <div class="sector-bar-dot" style="left: ${dotPos}%;"></div>
         <div class="sector-bar-center"></div>
       </div>
@@ -775,7 +1029,7 @@ function renderSectorBreakdown() {
 function drawCompassAnimated(targetEcon, targetSoc) {
   if (animationFrameId) cancelAnimationFrame(animationFrameId);
 
-  const duration = 50;
+  const duration = 45;
   let frame = 0;
 
   function animate() {
@@ -797,6 +1051,7 @@ function drawCompassAnimated(targetEcon, targetSoc) {
 }
 
 function drawCompass(econ, soc, isFinal = true) {
+  if (!compassCanvas) return;
   const ctx = compassCanvas.getContext("2d");
   const w = compassCanvas.width;
   const h = compassCanvas.height;
@@ -814,24 +1069,20 @@ function drawCompass(econ, soc, isFinal = true) {
   ctx.fillRect(0, 0, w, h);
 
   // 4 Ćwiartki kompasu
-  // 1. Lewa Góra: Socjalliberalizm (Zieleń)
   ctx.fillStyle = isDark ? "rgba(16, 185, 129, 0.18)" : "rgba(16, 185, 129, 0.12)";
   ctx.fillRect(pad, pad, chartW / 2, chartH / 2);
 
-  // 2. Prawa Góra: Libertarianizm (Żółć / Złoto)
   ctx.fillStyle = isDark ? "rgba(245, 158, 11, 0.18)" : "rgba(245, 158, 11, 0.12)";
   ctx.fillRect(cx, pad, chartW / 2, chartH / 2);
 
-  // 3. Lewy Dół: Lewica Tradycyjna (Czerwień)
   ctx.fillStyle = isDark ? "rgba(239, 68, 68, 0.18)" : "rgba(239, 68, 68, 0.12)";
   ctx.fillRect(pad, cy, chartW / 2, chartH / 2);
 
-  // 4. Prawy Dół: Prawica Konserwatywna (Błękit)
   ctx.fillStyle = isDark ? "rgba(59, 130, 246, 0.18)" : "rgba(59, 130, 246, 0.12)";
   ctx.fillRect(cx, cy, chartW / 2, chartH / 2);
 
   // Siatka 10x10
-  ctx.strokeStyle = isDark ? "rgba(255, 255, 255, 0.05)" : "rgba(0, 0, 0, 0.06)";
+  ctx.strokeStyle = isDark ? "rgba(255, 255, 255, 0.06)" : "rgba(0, 0, 0, 0.06)";
   ctx.lineWidth = 1;
   const gridSteps = 10;
   for (let i = 1; i < gridSteps; i++) {
@@ -849,90 +1100,78 @@ function drawCompass(econ, soc, isFinal = true) {
     ctx.stroke();
   }
 
-  // Ramka
-  ctx.strokeStyle = isDark ? "#263556" : "#cbd5e1";
+  // Ramka zewnętrzna
+  ctx.strokeStyle = isDark ? "#2b3c61" : "#cbd5e1";
   ctx.lineWidth = 2;
   ctx.strokeRect(pad, pad, chartW, chartH);
 
-  // Główne Osie (Krzyż w centrum)
-  ctx.strokeStyle = isDark ? "#64748b" : "#94a3b8";
-  ctx.lineWidth = 2;
+  // Główne osie X i Y
+  ctx.strokeStyle = isDark ? "#64748b" : "#475569";
+  ctx.lineWidth = 2.5;
 
-  // Oś pionowa
   ctx.beginPath();
   ctx.moveTo(cx, pad);
   ctx.lineTo(cx, pad + chartH);
   ctx.stroke();
 
-  // Oś pozioma
   ctx.beginPath();
   ctx.moveTo(pad, cy);
   ctx.lineTo(pad + chartW, cy);
   ctx.stroke();
 
-  // Etykiety ćwiartek
-  ctx.fillStyle = isDark ? "rgba(255, 255, 255, 0.40)" : "rgba(0, 0, 0, 0.35)";
+  // Etykiety osi
+  ctx.fillStyle = isDark ? "#94a3b8" : "#475569";
   ctx.font = "bold 11px 'Plus Jakarta Sans', sans-serif";
   ctx.textAlign = "center";
-  ctx.fillText(t.canvasQ1, pad + chartW * 0.25, pad + 24);
-  ctx.fillText(t.canvasQ2, pad + chartW * 0.75, pad + 24);
-  ctx.fillText(t.canvasQ3, pad + chartW * 0.25, pad + chartH - 12);
-  ctx.fillText(t.canvasQ4, pad + chartW * 0.75, pad + chartH - 12);
 
-  // Etykiety osi ze strzałkami
-  ctx.fillStyle = isDark ? "#94a3b8" : "#475569";
-  ctx.font = "bold 12px 'Plus Jakarta Sans', sans-serif";
-
-  // Góra
-  ctx.textAlign = "center";
   ctx.fillText(t.canvasTop, cx, pad - 12);
+  ctx.fillText(t.canvasBottom, cx, pad + chartH + 20);
 
-  // Dół
-  ctx.fillText(t.canvasBottom, cx, pad + chartH + 24);
-
-  // Lewo
   ctx.save();
-  ctx.translate(pad - 14, cy);
+  ctx.translate(pad - 12, cy);
   ctx.rotate(-Math.PI / 2);
-  ctx.textAlign = "center";
   ctx.fillText(t.canvasLeft, 0, 0);
   ctx.restore();
 
-  // Prawo
   ctx.save();
-  ctx.translate(pad + chartW + 16, cy);
+  ctx.translate(pad + chartW + 14, cy);
   ctx.rotate(Math.PI / 2);
-  ctx.textAlign = "center";
   ctx.fillText(t.canvasRight, 0, 0);
   ctx.restore();
 
-  // Pozycja punktu użytkownika
+  // Etykiety ćwiartek
+  ctx.font = "bold 13px 'Plus Jakarta Sans', sans-serif";
+  ctx.fillStyle = isDark ? "rgba(16, 185, 129, 0.7)" : "rgba(5, 150, 105, 0.75)";
+  ctx.fillText(t.canvasQ1, pad + chartW * 0.25, pad + chartH * 0.25);
+
+  ctx.fillStyle = isDark ? "rgba(245, 158, 11, 0.7)" : "rgba(217, 119, 6, 0.75)";
+  ctx.fillText(t.canvasQ2, pad + chartW * 0.75, pad + chartH * 0.25);
+
+  ctx.fillStyle = isDark ? "rgba(239, 68, 68, 0.7)" : "rgba(220, 38, 38, 0.75)";
+  ctx.fillText(t.canvasQ3, pad + chartW * 0.25, pad + chartH * 0.75);
+
+  ctx.fillStyle = isDark ? "rgba(59, 130, 246, 0.7)" : "rgba(37, 99, 235, 0.75)";
+  ctx.fillText(t.canvasQ4, pad + chartW * 0.75, pad + chartH * 0.75);
+
+  // Punkt użytkownika
   const userX = cx + (econ / 100) * (chartW / 2);
   const userY = cy - (soc / 100) * (chartH / 2);
 
-  // Cień i efekt glow dla punktu
-  ctx.shadowColor = "#ef4444";
-  ctx.shadowBlur = 14;
-
-  // Pulsacyjny okrąg
+  // Poświata punktu
   ctx.beginPath();
-  ctx.arc(userX, userY, 15, 0, Math.PI * 2);
-  ctx.fillStyle = "rgba(239, 68, 68, 0.25)";
+  ctx.arc(userX, userY, 14, 0, Math.PI * 2);
+  ctx.fillStyle = "rgba(239, 68, 68, 0.35)";
   ctx.fill();
 
-  // Zewnętrzny pierścień
   ctx.beginPath();
-  ctx.arc(userX, userY, 9, 0, Math.PI * 2);
+  ctx.arc(userX, userY, 8, 0, Math.PI * 2);
   ctx.fillStyle = "#ffffff";
   ctx.fill();
 
-  // Rdzeń punktu
   ctx.beginPath();
-  ctx.arc(userX, userY, 6, 0, Math.PI * 2);
+  ctx.arc(userX, userY, 5.5, 0, Math.PI * 2);
   ctx.fillStyle = "#ef4444";
   ctx.fill();
-
-  ctx.shadowBlur = 0;
 
   // Etykieta przy punkcie
   ctx.fillStyle = isDark ? "#ffffff" : "#0f172a";
@@ -955,13 +1194,32 @@ function buildAnswersReview() {
     const catObj = categories[q.categoryKey];
     const catName = catObj ? (catObj[currentLang] || catObj.pl) : q.categoryKey;
     const qText = q.text[currentLang] || q.text.pl;
-    const optText = opt ? (opt.label[currentLang] || opt.label.pl) : t.noAnswerLabel;
+
+    let optText = t.noAnswerLabel;
+    let badgeClass = "badge-neutral";
+
+    if (val === "skip") {
+      optText = t.skipBadge || "Pominięte (bez wpływu)";
+      badgeClass = "badge-skip";
+    } else if (val === 0) {
+      optText = t.neutralBadge || "Neutralny / Umiarkowany (0)";
+      badgeClass = "badge-neutral";
+    } else if (val === 2 || val === 1) {
+      optText = opt ? (opt.label[currentLang] || opt.label.pl) : "";
+      badgeClass = "badge-agree";
+    } else if (val === -1 || val === -2) {
+      optText = opt ? (opt.label[currentLang] || opt.label.pl) : "";
+      badgeClass = "badge-disagree";
+    }
 
     const item = document.createElement("div");
     item.className = "review-item";
     item.innerHTML = `
       <div class="review-item-q">${idx + 1}. [${catName}] ${qText}</div>
-      <div class="review-item-a">${t.yourAnswerLabel} <strong>${optText}</strong></div>
+      <div class="review-item-a">
+        <span>${t.yourAnswerLabel}</span>
+        <span class="review-badge ${badgeClass}">${optText}</span>
+      </div>
     `;
     reviewList.appendChild(item);
   });
@@ -1022,7 +1280,6 @@ function downloadResultImage() {
   const pol = currentRankedPoliticians[0] || worldPoliticians[0];
   const party = currentRankedParties[0] || worldParties[0];
 
-  // Renderowanie wysokiej rozdzielczości karty wynikowej do mediów społecznościowych (1080 x 1280)
   const exportCanvas = document.createElement("canvas");
   exportCanvas.width = 1080;
   exportCanvas.height = 1280;
@@ -1032,9 +1289,8 @@ function downloadResultImage() {
   ctx.fillStyle = "#0c1322";
   ctx.fillRect(0, 0, 1080, 1280);
 
-  // Akcent w tle
   const grad = ctx.createRadialGradient(540, 200, 50, 540, 200, 600);
-  grad.addColorStop(0, "rgba(59, 130, 246, 0.12)");
+  grad.addColorStop(0, "rgba(59, 130, 246, 0.15)");
   grad.addColorStop(1, "rgba(12, 19, 34, 0)");
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, 1080, 1280);
@@ -1065,24 +1321,21 @@ function downloadResultImage() {
   const midX = cx + cw / 2;
   const midY = cy + ch / 2;
 
-  // Tło kompasu
   ctx.fillStyle = "#131b2e";
   ctx.fillRect(cx, cy, cw, ch);
 
-  // Ćwiartki
-  ctx.fillStyle = "rgba(16, 185, 129, 0.22)"; // Q1 Lewo-Góra (Socjal-liberalizm)
+  ctx.fillStyle = "rgba(16, 185, 129, 0.22)";
   ctx.fillRect(cx, cy, cw / 2, ch / 2);
 
-  ctx.fillStyle = "rgba(245, 158, 11, 0.22)"; // Q2 Prawo-Góra (Libertarianizm)
+  ctx.fillStyle = "rgba(245, 158, 11, 0.22)";
   ctx.fillRect(midX, cy, cw / 2, ch / 2);
 
-  ctx.fillStyle = "rgba(239, 68, 68, 0.22)"; // Q3 Lewo-Dół (Lewica tradycyjna)
+  ctx.fillStyle = "rgba(239, 68, 68, 0.22)";
   ctx.fillRect(cx, midY, cw / 2, ch / 2);
 
-  ctx.fillStyle = "rgba(59, 130, 246, 0.22)"; // Q4 Prawo-Dół (Konserwatywny liberalizm)
+  ctx.fillStyle = "rgba(59, 130, 246, 0.22)";
   ctx.fillRect(midX, midY, cw / 2, ch / 2);
 
-  // Siatka
   ctx.strokeStyle = "rgba(255, 255, 255, 0.08)";
   ctx.lineWidth = 1;
   for (let i = 1; i < 10; i++) {
@@ -1098,7 +1351,6 @@ function downloadResultImage() {
     ctx.stroke();
   }
 
-  // Ramka i osie
   ctx.strokeStyle = "#263556";
   ctx.lineWidth = 2;
   ctx.strokeRect(cx, cy, cw, ch);
@@ -1114,13 +1366,11 @@ function downloadResultImage() {
   ctx.lineTo(cx + cw, midY);
   ctx.stroke();
 
-  // Etykiety osi
   ctx.fillStyle = "#94a3b8";
   ctx.font = "bold 13px 'Plus Jakarta Sans', sans-serif";
   ctx.fillText(t.canvasTop, midX, cy - 8);
   ctx.fillText(t.canvasBottom, midX, cy + ch + 20);
 
-  // Lewa i prawa etykieta
   ctx.save();
   ctx.translate(cx - 12, midY);
   ctx.rotate(-Math.PI / 2);
@@ -1133,7 +1383,6 @@ function downloadResultImage() {
   ctx.fillText(t.canvasRight, 0, 0);
   ctx.restore();
 
-  // Punkt użytkownika
   const userX = midX + (econScore / 100) * (cw / 2);
   const userY = midY - (socScore / 100) * (ch / 2);
 
@@ -1158,7 +1407,7 @@ function downloadResultImage() {
   const offset = userX > midX ? -22 : 22;
   ctx.fillText(`${t.canvasUserLabel} (${Math.round(econScore)}, ${Math.round(socScore)})`, userX + offset, userY + 5);
 
-  // 5. Paski wyników osi
+  // 5. Paski osi
   ctx.textAlign = "center";
   ctx.fillStyle = "#38bdf8";
   ctx.font = "bold 20px 'Plus Jakarta Sans', sans-serif";
@@ -1166,12 +1415,11 @@ function downloadResultImage() {
   const socSide = socScore > 0 ? t.socLabelRight : socScore < 0 ? t.socLabelLeft : t.centerLabel;
   ctx.fillText(`📈 ${t.axisEconTitle}: ${econScore > 0 ? '+' : ''}${econScore}% (${econSide})   •   🏛️ ${t.axisSocTitle}: ${socScore > 0 ? '+' : ''}${socScore}% (${socSide})`, 540, 770);
 
-  // 6. Karty dopasowania Lidera i Partii
+  // 6. Karty Lidera i Partii
   const cardW = 460;
   const cardH = 180;
   const cardY = 820;
 
-  // Karta Lidera (lewa)
   ctx.fillStyle = "#131b2e";
   ctx.strokeStyle = "#3b82f6";
   ctx.lineWidth = 1.5;
@@ -1199,7 +1447,6 @@ function downloadResultImage() {
   ctx.font = "bold 17px 'Plus Jakarta Sans', sans-serif";
   ctx.fillText(`${t.politicianMatchLabel} ${pol.similarity}%`, 85, cardY + 145);
 
-  // Karta Partii (prawa)
   ctx.fillStyle = "#131b2e";
   ctx.strokeStyle = "#10b981";
   ctx.lineWidth = 1.5;
@@ -1227,14 +1474,13 @@ function downloadResultImage() {
   ctx.font = "bold 17px 'Plus Jakarta Sans', sans-serif";
   ctx.fillText(`${t.partyMatchLabel} ${party.similarity}%`, 585, cardY + 145);
 
-  // 7. Stopka i znak wodny
+  // 7. Stopka
   ctx.textAlign = "center";
   ctx.fillStyle = "#64748b";
   ctx.font = "500 15px 'Plus Jakarta Sans', sans-serif";
   ctx.fillText("Globalny Kompas Poglądów 2026 • 100 Pytań • 32 Ideologie • 28 Liderów • 15 Rodzin Partyjnych", 540, 1070);
   ctx.fillText("Wykonaj test online i poznaj swoje miejsce na politycznej mapie świata!", 540, 1100);
 
-  // Pobranie
   const link = document.createElement("a");
   link.download = `political_compass_${currentLang}_${Date.now()}.png`;
   link.href = exportCanvas.toDataURL("image/png");

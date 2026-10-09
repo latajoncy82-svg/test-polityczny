@@ -9,10 +9,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="theme-dark">
+<body class="theme-dark tone-standard theme-blue">
   <div class="app-container">
     
-    <!-- Top Header -->
+    <!-- Top Header (Clean & Focused) -->
     <header class="app-header">
       <div class="logo-area">
         <span class="logo-icon">⚖️</span>
@@ -21,54 +21,141 @@
           <p class="logo-sub" id="headerAppSubtitle">Globalny Kompas Poglądów 2026</p>
         </div>
       </div>
-      <div class="header-actions">
-        <!-- Compact Language Switcher in Header -->
-        <div class="header-lang-picker" title="Language">
-          <button class="header-lang-btn active" data-lang="pl" title="Polski">PL</button>
-          <button class="header-lang-btn" data-lang="en" title="English">EN</button>
-          <button class="header-lang-btn" data-lang="ru" title="Русский">RU</button>
-          <button class="header-lang-btn" data-lang="fr" title="Français">FR</button>
-        </div>
-        <button id="themeToggleBtn" class="theme-toggle-btn" title="Zmień motyw">
-          <span id="themeIcon">☀️</span>
-        </button>
+      <div class="header-badges">
+        <span class="header-edition-pill" id="headerEditionBadge">100 Pytań • Model 2D</span>
       </div>
+      <!-- Hidden compatibility toggle for theme check -->
+      <button id="themeToggleBtn" class="theme-toggle-btn hidden-sr" style="display:none;" aria-hidden="true">
+        <span id="themeIcon">☀️</span>
+      </button>
     </header>
 
     <!-- Main Card -->
     <main class="main-card">
 
-      <!-- SCREEN 1: WELCOME SCREEN -->
+      <!-- SCREEN 1: WELCOME SCREEN (WITH COMPLETE SETUP PANEL) -->
       <section id="welcomeScreen" class="screen active">
         
-        <!-- Language Selector on Welcome Screen -->
-        <div class="welcome-lang-box">
-          <div class="welcome-lang-label" id="langSelectLabel">Wybierz język testu / Select language:</div>
-          <div class="welcome-lang-grid">
-            <button class="lang-card-btn active" data-lang="pl">
-              <span class="lang-flag">🇵🇱</span>
-              <span class="lang-name">Polski</span>
-            </button>
-            <button class="lang-card-btn" data-lang="en">
-              <span class="lang-flag">🇬🇧</span>
-              <span class="lang-name">English</span>
-            </button>
-            <button class="lang-card-btn" data-lang="ru">
-              <span class="lang-flag">🇷🇺</span>
-              <span class="lang-name">Русский</span>
-            </button>
-            <button class="lang-card-btn" data-lang="fr">
-              <span class="lang-flag">🇫🇷</span>
-              <span class="lang-name">Français</span>
-            </button>
-          </div>
+        <div class="hero-header-box">
+          <div class="badge-pill" id="badgePill">Edycja Globalna 2026 • 100 Pytań</div>
+          <h2 class="hero-title" id="heroTitle">Odkryj swoje prawdziwe miejsce na mapie politycznej świata</h2>
+          <p class="hero-desc" id="heroDesc">
+            Kompleksowy test badający Twoje przekonania w 12 kluczowych obszarach: od wolnego rynku, podatków i pracy, przez sztuczną inteligencję, prywatność i ekologię, po prawa człowieka, tradycję i geopolitykę. Dowiedz się, na jakiego światowego lidera i międzynarodową partię oddałbyś głos.
+          </p>
         </div>
 
-        <div class="badge-pill" id="badgePill">Edycja Globalna 2026 • 100 Pytań</div>
-        <h2 class="hero-title" id="heroTitle">Odkryj swoje prawdziwe miejsce na mapie politycznej świata</h2>
-        <p class="hero-desc" id="heroDesc">
-          Kompleksowy test badający Twoje przekonania w 12 kluczowych obszarach: od wolnego rynku, podatków i pracy, przez sztuczną inteligencję, prywatność i ekologię, po prawa człowieka, tradycję i geopolitykę. Dowiedz się, na jakiego światowego lidera i międzynarodową partię oddałbyś głos.
-        </p>
+        <!-- DEDICATED SETUP & CUSTOMIZATION PANEL ON START SCREEN -->
+        <div class="welcome-setup-panel" id="welcomeSetupPanel">
+          <div class="setup-panel-header">
+            <div class="setup-badge-icon">⚙️</div>
+            <div>
+              <h3 class="setup-panel-title" id="setupTitle">Personalizacja i Ustawienia Testu</h3>
+              <p class="setup-panel-desc" id="setupDesc">Dostosuj język, wygląd, kontrast oraz kolor akcentu przed rozpoczęciem testu.</p>
+            </div>
+          </div>
+
+          <div class="setup-controls-grid">
+            <!-- 1. JĘZYK -->
+            <div class="setup-control-card">
+              <div class="setup-label-row">
+                <span class="setup-icon-small">🌐</span>
+                <label class="setup-label" id="langSelectLabel">Wybierz język testu:</label>
+              </div>
+              <div class="setup-pill-group lang-grid">
+                <button type="button" class="setup-pill-btn lang-card-btn active" data-lang="pl">
+                  <span class="lang-flag">🇵🇱</span>
+                  <span class="pill-text">Polski</span>
+                </button>
+                <button type="button" class="setup-pill-btn lang-card-btn" data-lang="en">
+                  <span class="lang-flag">🇬🇧</span>
+                  <span class="pill-text">English</span>
+                </button>
+                <button type="button" class="setup-pill-btn lang-card-btn" data-lang="ru">
+                  <span class="lang-flag">🇷🇺</span>
+                  <span class="pill-text">Русский</span>
+                </button>
+                <button type="button" class="setup-pill-btn lang-card-btn" data-lang="fr">
+                  <span class="lang-flag">🇫🇷</span>
+                  <span class="pill-text">Français</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 2. MOTYW (DARK / LIGHT) -->
+            <div class="setup-control-card">
+              <div class="setup-label-row">
+                <span class="setup-icon-small">🌓</span>
+                <label class="setup-label" id="setupThemeLabel">Motyw kolorystyczny</label>
+              </div>
+              <div class="setup-pill-group theme-grid">
+                <button type="button" class="setup-pill-btn theme-choice-btn active" data-theme="theme-dark" id="themeDarkBtn">
+                  <span class="pill-icon">🌙</span>
+                  <span class="pill-text" id="themeDarkText">Ciemny</span>
+                </button>
+                <button type="button" class="setup-pill-btn theme-choice-btn" data-theme="theme-light" id="themeLightBtn">
+                  <span class="pill-icon">☀️</span>
+                  <span class="pill-text" id="themeLightText">Jasny</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 3. JASNOŚĆ I KONTRAST -->
+            <div class="setup-control-card">
+              <div class="setup-label-row">
+                <span class="setup-icon-small">👁️</span>
+                <label class="setup-label" id="setupToneLabel">Jasność i Kontrast</label>
+              </div>
+              <div class="setup-pill-group tone-grid">
+                <button type="button" class="setup-pill-btn tone-choice-btn active" data-tone="standard" id="toneStandardBtn">
+                  <span class="pill-icon">🔆</span>
+                  <span class="pill-text" id="toneStandardText">Standardowy</span>
+                </button>
+                <button type="button" class="setup-pill-btn tone-choice-btn" data-tone="contrast" id="toneContrastBtn">
+                  <span class="pill-icon">⚡</span>
+                  <span class="pill-text" id="toneContrastText">Wysoki kontrast</span>
+                </button>
+                <button type="button" class="setup-pill-btn tone-choice-btn" data-tone="soft" id="toneSoftBtn">
+                  <span class="pill-icon">🕯️</span>
+                  <span class="pill-text" id="toneSoftText">Łagodny (Nocny)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 4. KOLOR AKCENTU -->
+            <div class="setup-control-card">
+              <div class="setup-label-row">
+                <span class="setup-icon-small">🎨</span>
+                <label class="setup-label" id="setupAccentLabel">Kolor akcentu interfejsu</label>
+              </div>
+              <div class="accent-palette-picker" id="accentPickerGroup">
+                <button type="button" class="accent-color-btn active" data-accent="blue" title="Błękitny" style="--swatch-color: #3b82f6;">
+                  <span class="accent-swatch-circle" style="background: #3b82f6;"></span>
+                  <span class="accent-name-label" id="accentBlueText">Błękit</span>
+                </button>
+                <button type="button" class="accent-color-btn" data-accent="emerald" title="Szmaragdowy" style="--swatch-color: #10b981;">
+                  <span class="accent-swatch-circle" style="background: #10b981;"></span>
+                  <span class="accent-name-label" id="accentEmeraldText">Szmaragd</span>
+                </button>
+                <button type="button" class="accent-color-btn" data-accent="purple" title="Fioletowy" style="--swatch-color: #8b5cf6;">
+                  <span class="accent-swatch-circle" style="background: #8b5cf6;"></span>
+                  <span class="accent-name-label" id="accentPurpleText">Fiolet</span>
+                </button>
+                <button type="button" class="accent-color-btn" data-accent="amber" title="Bursztynowy" style="--swatch-color: #f59e0b;">
+                  <span class="accent-swatch-circle" style="background: #f59e0b;"></span>
+                  <span class="accent-name-label" id="accentAmberText">Bursztyn</span>
+                </button>
+                <button type="button" class="accent-color-btn" data-accent="crimson" title="Karmazynowy" style="--swatch-color: #ef4444;">
+                  <span class="accent-swatch-circle" style="background: #ef4444;"></span>
+                  <span class="accent-name-label" id="accentCrimsonText">Rubin</span>
+                </button>
+                <button type="button" class="accent-color-btn" data-accent="rose" title="Różowy" style="--swatch-color: #ec4899;">
+                  <span class="accent-swatch-circle" style="background: #ec4899;"></span>
+                  <span class="accent-name-label" id="accentRoseText">Róż</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="axes-preview-grid">
           <div class="axis-preview-card axis-econ">
@@ -103,7 +190,7 @@
         </div>
       </section>
 
-      <!-- SCREEN 2: QUESTION SCREEN -->
+      <!-- SCREEN 2: QUESTION SCREEN (CLEAN, FOCUSED) -->
       <section id="questionScreen" class="screen">
         <div class="quiz-topbar">
           <button id="prevBtn" class="btn-text" disabled>
@@ -128,14 +215,14 @@
           <h2 id="questionText" class="question-title">Ładowanie pytania...</h2>
         </div>
 
-        <!-- Answer Options -->
+        <!-- Answer Options (6 options: Agree, Mild Agree, Neutral 0, Mild Disagree, Disagree, Skip) -->
         <div id="answersContainer" class="answers-grid">
           <!-- Dynamically inserted answer buttons -->
         </div>
 
         <!-- Keyboard Hint -->
         <div class="keyboard-hint" id="keyboardHint">
-          ⌨️ Wskazówka: Możesz używać klawiszy 1-5 na klawiaturze do szybkiego wyboru odpowiedzi.
+          ⌨️ Wskazówka: Klawisze 1-5 to wybór (3 = Neutralny), klawisz 6 = Nie mam zdania (pomiń).
         </div>
       </section>
 
