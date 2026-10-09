@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Polski Test Polityczny – Kompas Poglądów</title>
+  <title>Test Polityczny – Globalny Kompas Poglądów 2026</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,13 +17,22 @@
       <div class="logo-area">
         <span class="logo-icon">⚖️</span>
         <div>
-          <h1 class="logo-title">Test Polityczny</h1>
-          <p class="logo-sub">Polski Kompas Poglądów</p>
+          <h1 class="logo-title" id="headerAppTitle">Test Polityczny</h1>
+          <p class="logo-sub" id="headerAppSubtitle">Globalny Kompas Poglądów 2026</p>
         </div>
       </div>
-      <button id="themeToggleBtn" class="theme-toggle-btn" title="Zmień motyw">
-        <span id="themeIcon">☀️</span>
-      </button>
+      <div class="header-actions">
+        <!-- Compact Language Switcher in Header -->
+        <div class="header-lang-picker" title="Language">
+          <button class="header-lang-btn active" data-lang="pl" title="Polski">PL</button>
+          <button class="header-lang-btn" data-lang="en" title="English">EN</button>
+          <button class="header-lang-btn" data-lang="ru" title="Русский">RU</button>
+          <button class="header-lang-btn" data-lang="fr" title="Français">FR</button>
+        </div>
+        <button id="themeToggleBtn" class="theme-toggle-btn" title="Zmień motyw">
+          <span id="themeIcon">☀️</span>
+        </button>
+      </div>
     </header>
 
     <!-- Main Card -->
@@ -31,38 +40,67 @@
 
       <!-- SCREEN 1: WELCOME SCREEN -->
       <section id="welcomeScreen" class="screen active">
-        <div class="badge-pill">Wersja 2026 • 20 Pytań</div>
-        <h2 class="hero-title">Odkryj swoje prawdziwe miejsce na mapie politycznej</h2>
-        <p class="hero-desc">
-          Test bada Twoje poglądy w dwóch kluczowych wymiarach: <strong>gospodarczym</strong> (rola państwa i podatków vs. wolny rynek) oraz <strong>światopoglądowym</strong> (tradycja i porządek vs. wolność obyczajowa i prawa jednostki).
+        
+        <!-- Language Selector on Welcome Screen -->
+        <div class="welcome-lang-box">
+          <div class="welcome-lang-label" id="langSelectLabel">Wybierz język testu / Select language:</div>
+          <div class="welcome-lang-grid">
+            <button class="lang-card-btn active" data-lang="pl">
+              <span class="lang-flag">🇵🇱</span>
+              <span class="lang-name">Polski</span>
+            </button>
+            <button class="lang-card-btn" data-lang="en">
+              <span class="lang-flag">🇬🇧</span>
+              <span class="lang-name">English</span>
+            </button>
+            <button class="lang-card-btn" data-lang="ru">
+              <span class="lang-flag">🇷🇺</span>
+              <span class="lang-name">Русский</span>
+            </button>
+            <button class="lang-card-btn" data-lang="fr">
+              <span class="lang-flag">🇫🇷</span>
+              <span class="lang-name">Français</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="badge-pill" id="badgePill">Edycja Globalna 2026 • 100 Pytań</div>
+        <h2 class="hero-title" id="heroTitle">Odkryj swoje prawdziwe miejsce na mapie politycznej świata</h2>
+        <p class="hero-desc" id="heroDesc">
+          Kompleksowy test badający Twoje przekonania w 12 kluczowych obszarach: od wolnego rynku, podatków i pracy, przez sztuczną inteligencję, prywatność i ekologię, po prawa człowieka, tradycję i geopolitykę. Dowiedz się, na jakiego światowego lidera i międzynarodową partię oddałbyś głos.
         </p>
 
         <div class="axes-preview-grid">
           <div class="axis-preview-card axis-econ">
             <div class="axis-icon">📈</div>
             <div class="axis-info">
-              <h3>Oś Gospodarcza</h3>
-              <p>Lewica (solidaryzm, państwo opiekuńcze) ⟷ Prawica (wolny rynek, niskie podatki)</p>
+              <h3 id="axisEconTitle">Oś Gospodarcza</h3>
+              <p id="axisEconDesc">Lewica (usługi publiczne, solidaryzm) ⟷ Prawica (wolny rynek, deregulacja)</p>
             </div>
           </div>
           <div class="axis-preview-card axis-soc">
             <div class="axis-icon">🏛️</div>
             <div class="axis-info">
-              <h3>Oś Światopoglądowa</h3>
-              <p>Konserwatyzm (tradycja, naród, religia) ⟷ Progresywizm (swobody, sekularyzm, UE)</p>
+              <h3 id="axisSocTitle">Oś Społeczno-Światopoglądowa</h3>
+              <p id="axisSocDesc">Konserwatyzm (tradycja, porządek, suwerenność) ⟷ Progresywizm (swobody, sekularyzm, globalizm)</p>
             </div>
           </div>
         </div>
 
         <div class="test-features">
-          <div class="feature-item">⏱️ Czas: ok. 3-4 minuty</div>
-          <div class="feature-item">🔒 W 100% anonimowe</div>
-          <div class="feature-item">📊 Dokładny wykres 2D i profil ideowy</div>
+          <div class="feature-item" id="featureTime">⏱️ Czas: ok. 10-15 minut (100 pytań)</div>
+          <div class="feature-item" id="featureAnon">🔒 W 100% anonimowe i bez rejestracji</div>
+          <div class="feature-item" id="featureResults">📊 Dokładny kompas 2D, 32 ideologie, światowi politycy i partie</div>
         </div>
 
-        <button id="startTestBtn" class="primary-btn btn-large pulse-animation">
-          Rozpocznij test teraz ➔
-        </button>
+        <div class="start-actions-group">
+          <button id="resumeTestBtn" class="primary-btn btn-large resume-btn hidden">
+            Kontynuuj test ➔
+          </button>
+          <button id="startTestBtn" class="primary-btn btn-large pulse-animation">
+            Rozpocznij test teraz (100 pytań) ➔
+          </button>
+        </div>
       </section>
 
       <!-- SCREEN 2: QUESTION SCREEN -->
@@ -72,14 +110,17 @@
             ← Poprzednie
           </button>
           <div class="quiz-counter">
-            <span id="currentQuestionNum">1</span> z <span id="totalQuestionsNum">20</span>
+            <span id="questionCounterText">Pytanie 1 z 100</span>
           </div>
+          <button id="nextBtn" class="btn-text" disabled>
+            Następne →
+          </button>
           <span id="questionCategory" class="badge-category">Gospodarka</span>
         </div>
 
         <!-- Progress bar -->
         <div class="progress-track">
-          <div id="progressBar" class="progress-fill" style="width: 5%;"></div>
+          <div id="progressBar" class="progress-fill" style="width: 1%;"></div>
         </div>
 
         <!-- Question Box -->
@@ -91,12 +132,20 @@
         <div id="answersContainer" class="answers-grid">
           <!-- Dynamically inserted answer buttons -->
         </div>
+
+        <!-- Keyboard Hint -->
+        <div class="keyboard-hint" id="keyboardHint">
+          ⌨️ Wskazówka: Możesz używać klawiszy 1-5 na klawiaturze do szybkiego wyboru odpowiedzi.
+        </div>
       </section>
 
       <!-- SCREEN 3: RESULTS SCREEN -->
       <section id="resultScreen" class="screen">
         <div class="result-header">
-          <span class="badge-pill">Twoje Wyniki</span>
+          <div class="result-badge-row">
+            <span class="badge-pill" id="resultBadge">Twoje Wyniki</span>
+            <span class="match-percentage-badge ideology-badge" id="ideologyMatchBadge">Zgodność: 98%</span>
+          </div>
           <h2 id="ideologyTitle" class="result-ideology-name">Obliczanie...</h2>
           <p id="ideologySubtitle" class="result-ideology-subtitle"></p>
         </div>
@@ -105,10 +154,10 @@
         <div class="canvas-wrapper">
           <canvas id="compassCanvas" width="560" height="560"></canvas>
           <div class="canvas-legend">
-            <div class="legend-item"><span class="color-dot dot-red"></span> Lewica Tradycyjna</div>
-            <div class="legend-item"><span class="color-dot dot-green"></span> Socjalliberalizm</div>
-            <div class="legend-item"><span class="color-dot dot-blue"></span> Konserwatyzm Wolnorynkowy</div>
-            <div class="legend-item"><span class="color-dot dot-yellow"></span> Libertarianizm</div>
+            <div class="legend-item"><span class="color-dot dot-red"></span> <span id="legendRedText">Lewica Tradycyjna</span></div>
+            <div class="legend-item"><span class="color-dot dot-green"></span> <span id="legendGreenText">Socjalliberalizm</span></div>
+            <div class="legend-item"><span class="color-dot dot-blue"></span> <span id="legendBlueText">Konserwatywny Liberalizm</span></div>
+            <div class="legend-item"><span class="color-dot dot-yellow"></span> <span id="legendYellowText">Libertarianizm</span></div>
           </div>
         </div>
 
@@ -116,24 +165,26 @@
         <div class="meters-container">
           <div class="meter-box">
             <div class="meter-labels">
-              <span class="left-label">Lewica Gospodarcza</span>
+              <span class="left-label" id="econMeterLeft">Lewica Gospodarcza</span>
               <strong id="econScoreText" class="score-center">0%</strong>
-              <span class="right-label">Prawica Wolnorynkowa</span>
+              <span class="right-label" id="econMeterRight">Prawica Wolnorynkowa</span>
             </div>
             <div class="meter-track">
               <div id="econFillBar" class="meter-fill econ-bar"></div>
+              <div id="econPin" class="meter-pin econ-pin"></div>
               <div class="meter-center-tick"></div>
             </div>
           </div>
 
           <div class="meter-box">
             <div class="meter-labels">
-              <span class="left-label">Konserwatyzm Społeczny</span>
+              <span class="left-label" id="socMeterLeft">Konserwatyzm Społeczny</span>
               <strong id="socScoreText" class="score-center">0%</strong>
-              <span class="right-label">Progresywizm Społeczny</span>
+              <span class="right-label" id="socMeterRight">Progresywizm Społeczny</span>
             </div>
             <div class="meter-track">
               <div id="socFillBar" class="meter-fill soc-bar"></div>
+              <div id="socPin" class="meter-pin soc-pin"></div>
               <div class="meter-center-tick"></div>
             </div>
           </div>
@@ -141,13 +192,107 @@
 
         <!-- Ideology Details Card -->
         <div class="ideology-card">
-          <h3>Charakterystyka Twoich poglądów</h3>
+          <h3 id="ideologySectionTitle">Charakterystyka Twoich poglądów</h3>
           <p id="ideologyDescription" class="ideology-text"></p>
           
-          <div class="parties-affinity-box">
-            <h4>Poglądowe dopasowanie w polskiej polityce:</h4>
-            <p id="partiesAffinity" class="parties-affinity-text"></p>
-            <small class="disclaimer-note">* Dopasowanie ma charakter czysto poglądowy i edukacyjny. Polskie partie polityczne zawierają w sobie różne frakcje i rzadko są jednolite ideologicznie.</small>
+          <div class="key-figures-box" id="keyFiguresBox">
+            <h4 id="keyFiguresLabel">Kluczowi myśliciele i postacie nurtu:</h4>
+            <div id="keyFiguresList" class="key-figures-tags"></div>
+          </div>
+
+          <!-- Secondary/Alternative Ideologies -->
+          <div class="secondary-ideologies-box" id="secondaryIdeologiesBox">
+            <h4 id="secondaryIdeologiesTitle">Bliskie nurty pokrewne:</h4>
+            <div id="secondaryIdeologiesList" class="secondary-ideologies-grid"></div>
+          </div>
+        </div>
+
+        <!-- World Politician Match Card -->
+        <div class="world-match-card politician-match-card">
+          <div class="match-card-header">
+            <div class="match-card-titles">
+              <h3 id="politicianCardTitle">🌐 Twój Światowy Lider Polityczny</h3>
+              <p id="politicianCardSubtitle" class="match-card-subtitle">Światowy przywódca o najbardziej zbliżonym kompasie poglądów:</p>
+            </div>
+            <div class="match-percentage-badge" id="politicianMatchBadge">95%</div>
+          </div>
+
+          <div class="politician-profile-body">
+            <div class="politician-hero-row">
+              <span class="politician-flag" id="politicianFlag">🇦🇷</span>
+              <div>
+                <h4 class="politician-name" id="politicianName">Javier Milei</h4>
+                <div class="politician-meta">
+                  <span id="politicianCountry">Argentyna</span> • <span id="politicianRole">Prezydent</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="politician-quote-bubble">
+              <div class="quote-header-tag" id="politicianQuoteLabel">Motto polityczne:</div>
+              <span class="quote-icon">“</span>
+              <p id="politicianQuote" class="quote-text"></p>
+            </div>
+
+            <div class="politician-why-vote">
+              <h5 id="politicianWhyVoteLabel">Dlaczego oddałbyś na niego głos:</h5>
+              <p id="politicianWhyVoteText"></p>
+            </div>
+
+            <!-- Other global politicians -->
+            <div class="other-matches-section">
+              <div class="section-hint-row">
+                <h5 id="otherPoliticiansTitle">Kolejne dopasowania ze świata:</h5>
+                <small class="click-hint" id="clickLeaderHint">Kliknij profil lidera, aby poznać szczegóły</small>
+              </div>
+              <div id="otherPoliticiansList" class="other-matches-grid"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- World Party / International Movement Match Card -->
+        <div class="world-match-card party-match-card">
+          <div class="match-card-header">
+            <div class="match-card-titles">
+              <h3 id="partyCardTitle">🏛️ Międzynarodowa Partia / Ruch Polityczny</h3>
+              <p id="partyCardSubtitle" class="match-card-subtitle">Światowa rodzina polityczna najlepiej reprezentująca Twój program:</p>
+            </div>
+            <div class="match-percentage-badge party-badge" id="partyMatchBadge">92%</div>
+          </div>
+
+          <div class="party-profile-body">
+            <div class="party-hero-row">
+              <span class="party-emblem" id="partyEmblem">🗽</span>
+              <div>
+                <h4 class="party-name" id="partyName">International Alliance of Libertarian Parties</h4>
+                <div class="party-meta-line">
+                  <span id="partyTypeLabel" class="party-type-label">Profil ruchu:</span>
+                  <span class="party-type-text" id="partyType">Ruch wolnościowy</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="party-manifesto-box">
+              <h5 id="partyManifestoLabel">Główne założenia programowe:</h5>
+              <p id="partyManifestoText"></p>
+            </div>
+
+            <!-- Other global parties -->
+            <div class="other-matches-section">
+              <div class="section-hint-row">
+                <h5 id="otherPartiesTitle">Kolejne międzynarodowe rodziny partyjne:</h5>
+                <small class="click-hint" id="clickPartyHint">Kliknij ruch, aby poznać założenia</small>
+              </div>
+              <div id="otherPartiesList" class="other-matches-grid"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detailed Sector Breakdown (12 Domains) -->
+        <div class="sectors-card">
+          <h3 id="categoryBreakdownTitle">📊 Profil w poszczególnych dziedzinach (12 sektorów)</h3>
+          <div id="sectorsGrid" class="sectors-grid">
+            <!-- Dynamically inserted category meter items -->
           </div>
         </div>
 
@@ -160,7 +305,7 @@
             📋 Kopiuj podsumowanie
           </button>
           <button id="toggleAnswersBtn" class="btn-action">
-            📝 Zobacz swoje odpowiedzi
+            📝 Zobacz swoje odpowiedzi (100)
           </button>
           <button id="restartBtn" class="btn-action btn-primary-outline">
             🔄 Rozwiąż ponownie
@@ -170,7 +315,7 @@
         <!-- Answers Review Modal / Drawer -->
         <div id="answersReviewSection" class="review-answers-box hidden">
           <div class="review-header">
-            <h3>Twoje odpowiedzi na pytania</h3>
+            <h3 id="reviewTitle">Twoje odpowiedzi na 100 pytań</h3>
             <button id="closeReviewBtn" class="btn-text">✕ Zamknij</button>
           </div>
           <div id="reviewList" class="review-list"></div>
@@ -182,13 +327,15 @@
 
     <!-- Footer -->
     <footer class="app-footer">
-      <p>Polski Test Polityczny &copy; 2026 • Oparty na modelu dwuosiowego kompasu politycznego.</p>
+      <p id="footerText">Globalny Test Polityczny &copy; 2026 • 100 Pytań • Model dwuosiowy z katalogiem 32 ideologii, liderów i partii świata.</p>
     </footer>
 
   </div>
 
   <!-- Scripts -->
+  <script src="translations.js"></script>
   <script src="questions.js"></script>
+  <script src="worldData.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
