@@ -29,6 +29,9 @@ const headerAppSubtitle = document.getElementById("headerAppSubtitle");
 const headerEditionBadge = document.getElementById("headerEditionBadge");
 const themeToggleBtn = document.getElementById("themeToggleBtn");
 const themeIcon = document.getElementById("themeIcon");
+const openSettingsBtn = document.getElementById("openSettingsBtn");
+const closeSettingsBtn = document.getElementById("closeSettingsBtn");
+const appearanceModal = document.getElementById("appearanceModal");
 
 // Welcome Screen & Setup Panel
 const setupTitle = document.getElementById("setupTitle");
@@ -422,6 +425,29 @@ function setupEventListeners() {
     });
   });
 
+  // Otwieranie i zamykanie okna personalizacji (modal)
+  if (openSettingsBtn && appearanceModal) {
+    openSettingsBtn.addEventListener("click", (e) => {
+      createRippleEffect(e);
+      appearanceModal.classList.toggle("hidden");
+    });
+  }
+
+  if (closeSettingsBtn && appearanceModal) {
+    closeSettingsBtn.addEventListener("click", (e) => {
+      createRippleEffect(e);
+      appearanceModal.classList.add("hidden");
+    });
+  }
+
+  if (appearanceModal) {
+    appearanceModal.addEventListener("click", (e) => {
+      if (e.target === appearanceModal) {
+        appearanceModal.classList.add("hidden");
+      }
+    });
+  }
+
   // Przyciski akcji
   if (startTestBtn) {
     startTestBtn.addEventListener("click", (e) => {
@@ -490,6 +516,16 @@ function setupEventListeners() {
 
 function setupKeyboardNavigation() {
   window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      if (appearanceModal && !appearanceModal.classList.contains("hidden")) {
+        appearanceModal.classList.add("hidden");
+        return;
+      }
+      if (answersReviewSection && !answersReviewSection.classList.contains("hidden")) {
+        answersReviewSection.classList.add("hidden");
+        return;
+      }
+    }
     if (!questionScreen || !questionScreen.classList.contains("active")) return;
     if (isTransitioning) return;
 

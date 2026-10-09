@@ -4,6 +4,8 @@ echo ========================================================
 echo   Wysyłanie najnowszego kodu na GitHub...
 echo ========================================================
 echo.
+git add .
+git commit -m "Ultra-premium UI update: modern header flags, glassmorphic layout, glitch-free design" 2>nul
 git push -f origin main
 echo.
 if %errorlevel% equ 0 (
