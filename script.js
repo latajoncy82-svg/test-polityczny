@@ -12,7 +12,7 @@ let currentTone = localStorage.getItem("ptp_tone") || "standard";
 let currentAccent = localStorage.getItem("ptp_accent") || "blue";
 
 let currentQuestionIndex = 0;
-let userAnswers = new Array(questions.length).fill(null);
+let userAnswers = (typeof questions !== "undefined" && Array.isArray(questions)) ? new Array(questions.length).fill(null) : [];
 let animationFrameId = null;
 let currentEconScore = 0;
 let currentSocScore = 0;
@@ -157,13 +157,19 @@ const footerText = document.getElementById("footerText");
 // =========================================================================
 // INICJALIZACJA APLIKACJI
 // =========================================================================
-document.addEventListener("DOMContentLoaded", () => {
-  setupAppearance();
-  applyLanguage(currentLang);
-  setupEventListeners();
-  setupKeyboardNavigation();
-  updateResumeButtonText();
-});
+function initApp() {
+  try { setupAppearance(); } catch (e) { console.error("setupAppearance error:", e); }
+  try { applyLanguage(currentLang); } catch (e) { console.error("applyLanguage error:", e); }
+  try { setupEventListeners(); } catch (e) { console.error("setupEventListeners error:", e); }
+  try { setupKeyboardNavigation(); } catch (e) { console.error("setupKeyboardNavigation error:", e); }
+  try { updateResumeButtonText(); } catch (e) { console.error("updateResumeButtonText error:", e); }
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initApp);
+} else {
+  initApp();
+}
 
 // =========================================================================
 // INTERAKTYWNE ANIMACJE KLIKANIA (RIPPLE EFFECT)
@@ -320,7 +326,11 @@ function applyLanguage(lang) {
   if (featureTime) featureTime.textContent = t.featureTime;
   if (featureAnon) featureAnon.textContent = t.featureAnon;
   if (featureResults) featureResults.textContent = t.featureResults;
-  if (startTestBtn) startTestBtn.textContent = t.startBtn;
+  if (startTestBtn) {
+    const rawStart = t.startBtn || "Rozpocznij test teraz (100 pytań)";
+    const cleanStart = rawStart.replace(/\s*➔\s*$/, "");
+    startTestBtn.innerHTML = `<span class="cta-btn-text">${cleanStart}</span><span class="cta-btn-arrow" aria-hidden="true">➔</span>`;
+  }
 
   // Quiz Screen
   if (prevBtn) prevBtn.textContent = t.prevBtn;
@@ -547,15 +557,19 @@ function checkSavedProgress() {
 function updateResumeButtonText() {
   if (!resumeTestBtn) return;
   const saved = checkSavedProgress();
+  const resumeContainer = document.getElementById("resumePromptContainer");
   if (saved) {
-    const t = uiTranslations[currentLang];
+    const t = uiTranslations[currentLang] || uiTranslations.pl;
     const resumeTxt = (t.resumeBtn || "Kontynuuj test ({current}/{total}) ➔")
       .replace("{current}", saved.currentIndex + 1)
       .replace("{total}", questions.length);
-    resumeTestBtn.textContent = resumeTxt;
+    const cleanResume = resumeTxt.replace(/\s*➔\s*$/, "");
+    resumeTestBtn.innerHTML = `<span class="resume-btn-text">${cleanResume}</span><span class="resume-btn-arrow" aria-hidden="true">➔</span>`;
     resumeTestBtn.classList.remove("hidden");
+    if (resumeContainer) resumeContainer.classList.remove("hidden");
   } else {
     resumeTestBtn.classList.add("hidden");
+    if (resumeContainer) resumeContainer.classList.add("hidden");
   }
 }
 
@@ -563,6 +577,9 @@ function resetProgress() {
   try {
     localStorage.removeItem("ptp_progress");
   } catch (e) {}
+  const resumeContainer = document.getElementById("resumePromptContainer");
+  if (resumeContainer) resumeContainer.classList.add("hidden");
+  if (resumeTestBtn) resumeTestBtn.classList.add("hidden");
 }
 
 function resumeQuiz() {

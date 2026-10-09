@@ -1,10 +1,19 @@
 @echo off
 chcp 65001 >nul
 echo ========================================================
-echo   Wysyłanie projektu Polski Test Polityczny na GitHub
+echo   Wysyłanie najnowszego kodu na GitHub...
 echo ========================================================
 echo.
-git push -u origin main
+git push -f origin main
 echo.
-echo Gotowe!
+if %errorlevel% equ 0 (
+    echo ========================================================
+    echo   SUKCES! Wszystkie zmiany zostaly zapisane na GitHubie!
+    echo ========================================================
+) else (
+    echo ========================================================
+    echo   Wystapil problem z autoryzacja. Sprawdz logowanie.
+    echo ========================================================
+)
+echo.
 pause
