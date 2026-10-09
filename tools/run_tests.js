@@ -121,6 +121,24 @@ worldPoliticians.forEach(pol => {
 assert(missingPoliticianFields === 0, "All politicians have complete translations (country, role, quote, whyVote) in 4 languages");
 assert(invalidPoliticianCoords === 0, "All politician coordinates fall within valid [-100, 100] bounds");
 
+let missingPoliticianMeta = 0;
+worldPoliticians.forEach(pol => {
+  if (!pol.photoUrl || !pol.color || !pol.gradient || !pol.color.startsWith('#')) {
+    missingPoliticianMeta++;
+  }
+});
+assert(missingPoliticianMeta === 0, "All politicians have distinct photos (photoUrl) and signature colors/gradients");
+
+const uniqueColors = new Set(worldPoliticians.map(p => p.color.toLowerCase()));
+assert(uniqueColors.size === worldPoliticians.length, `All ${worldPoliticians.length} politicians have 100% unique signature colors (found ${uniqueColors.size})`);
+
+const mlk = worldPoliticians.find(p => p.id === "martin_luther_king");
+assert(!!mlk, "Historical figure Martin Luther King Jr. present in dataset");
+const gandhi = worldPoliticians.find(p => p.id === "mahatma_gandhi");
+assert(!!gandhi, "Historical activist Mahatma Gandhi present in dataset");
+const churchill = worldPoliticians.find(p => p.id === "winston_churchill");
+assert(!!churchill, "Historical leader Winston Churchill present in dataset");
+
 assert(worldParties.length >= 10, `Rich world party families catalog: found ${worldParties.length} parties (>= 10 required)`);
 let missingPartyFields = 0;
 let invalidPartyCoords = 0;

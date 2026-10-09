@@ -30,7 +30,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": 92,
       "soc": 35
-    }
+    },
+    "color": "#f59e0b",
+    "gradient": "linear-gradient(135deg, #f59e0b, #d97706)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Javier_Milei_in_pull-aside_meeting_at_the_United_Nations_Headquarters_%283x4_cropped%29.jpg/330px-Javier_Milei_in_pull-aside_meeting_at_the_United_Nations_Headquarters_%283x4_cropped%29.jpg",
+    "localPhoto": "assets/politicians/javier_milei.jpg"
   },
   {
     "id": "ron_paul",
@@ -63,7 +67,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": 85,
       "soc": 65
-    }
+    },
+    "color": "#10b981",
+    "gradient": "linear-gradient(135deg, #10b981, #059669)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Ron_Paul_2023_%283x4_cropped%29.jpg/330px-Ron_Paul_2023_%283x4_cropped%29.jpg",
+    "localPhoto": "assets/politicians/ron_paul.jpg"
   },
   {
     "id": "margaret_thatcher",
@@ -96,7 +104,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": 80,
       "soc": -50
-    }
+    },
+    "color": "#1d4ed8",
+    "gradient": "linear-gradient(135deg, #2563eb, #1e40af)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/Margaret_Thatcher_stock_portrait_%28cropped%29.jpg/330px-Margaret_Thatcher_stock_portrait_%28cropped%29.jpg",
+    "localPhoto": "assets/politicians/margaret_thatcher.jpg"
   },
   {
     "id": "ronald_reagan",
@@ -129,7 +141,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": 75,
       "soc": -55
-    }
+    },
+    "color": "#dc2626",
+    "gradient": "linear-gradient(135deg, #ef4444, #b91c1c)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Official_Portrait_of_President_Reagan_1981.jpg/330px-Official_Portrait_of_President_Reagan_1981.jpg",
+    "localPhoto": "assets/politicians/ronald_reagan.jpg"
   },
   {
     "id": "milton_friedman",
@@ -162,7 +178,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": 90,
       "soc": 50
-    }
+    },
+    "color": "#0284c7",
+    "gradient": "linear-gradient(135deg, #0ea5e9, #0369a1)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Portrait_of_Milton_Friedman_%284x5_cropped%29.jpg/330px-Portrait_of_Milton_Friedman_%284x5_cropped%29.jpg",
+    "localPhoto": "assets/politicians/milton_friedman.jpg"
   },
   {
     "id": "emmanuel_macron",
@@ -195,7 +215,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": 25,
       "soc": 30
-    }
+    },
+    "color": "#6366f1",
+    "gradient": "linear-gradient(135deg, #818cf8, #4f46e5)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Emmanuel_Macron_2025_%28cropped%29.jpg/330px-Emmanuel_Macron_2025_%28cropped%29.jpg",
+    "localPhoto": "assets/politicians/emmanuel_macron.jpg"
   },
   {
     "id": "justin_trudeau",
@@ -228,7 +252,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": -25,
       "soc": 70
-    }
+    },
+    "color": "#ef4444",
+    "gradient": "linear-gradient(135deg, #f87171, #dc2626)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Prime_Minister_Trudeau%27s_message_on_Christmas_2023_%280m29s%29_%28cropped%29.jpg/330px-Prime_Minister_Trudeau%27s_message_on_Christmas_2023_%280m29s%29_%28cropped%29.jpg",
+    "localPhoto": "assets/politicians/justin_trudeau.jpg"
   },
   {
     "id": "bernie_sanders",
@@ -261,7 +289,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": -80,
       "soc": 65
-    }
+    },
+    "color": "#06b6d4",
+    "gradient": "linear-gradient(135deg, #22d3ee, #0891b2)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/Bernie_Sanders_February_2026_%28cropped%29.jpg/330px-Bernie_Sanders_February_2026_%28cropped%29.jpg",
+    "localPhoto": "assets/politicians/bernie_sanders.jpg"
   },
   {
     "id": "lula_da_silva",
@@ -294,7 +326,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": -65,
       "soc": 20
-    }
+    },
+    "color": "#e11d48",
+    "gradient": "linear-gradient(135deg, #fb7185, #be123c)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28ombros%29_denoise_%28cropped%29.jpg/330px-Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28ombros%29_denoise_%28cropped%29.jpg",
+    "localPhoto": "assets/politicians/lula_da_silva.jpg"
   },
   {
     "id": "olof_palme",
@@ -327,7 +363,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": -75,
       "soc": 45
-    }
+    },
+    "color": "#ea580c",
+    "gradient": "linear-gradient(135deg, #f97316, #c2410c)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/%28Olof_Palme%29_Felipe_Gonz%C3%A1lez_ofrece_una_rueda_de_prensa_junto_al_primer_ministro_de_Suecia._Pool_Moncloa._28_de_septiembre_de_1984_%28cropped%29.jpeg/330px-%28Olof_Palme%29_Felipe_Gonz%C3%A1lez_ofrece_una_rueda_de_prensa_junto_al_primer_ministro_de_Suecia._Pool_Moncloa._28_de_septiembre_de_1984_%28cropped%29.jpeg",
+    "localPhoto": "assets/politicians/olof_palme.jpg"
   },
   {
     "id": "lee_kuan_yew",
@@ -360,7 +400,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": 45,
       "soc": -60
-    }
+    },
+    "color": "#475569",
+    "gradient": "linear-gradient(135deg, #64748b, #334155)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Prime_Minister_Lee_Kuan_Yew_of_Singapore_Making_a_Toast_at_a_State_Dinner_Held_in_His_Honor%2C_1975.jpg/330px-Prime_Minister_Lee_Kuan_Yew_of_Singapore_Making_a_Toast_at_a_State_Dinner_Held_in_His_Honor%2C_1975.jpg",
+    "localPhoto": "assets/politicians/lee_kuan_yew.jpg"
   },
   {
     "id": "nayib_bukele",
@@ -393,7 +437,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": 35,
       "soc": -75
-    }
+    },
+    "color": "#0ea5e9",
+    "gradient": "linear-gradient(135deg, #38bdf8, #0284c7)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Presidente_Nayib_Bukele_%28cropped%29.jpg/330px-Presidente_Nayib_Bukele_%28cropped%29.jpg",
+    "localPhoto": "assets/politicians/nayib_bukele.jpg"
   },
   {
     "id": "angela_merkel",
@@ -426,7 +474,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": 15,
       "soc": -20
-    }
+    },
+    "color": "#4338ca",
+    "gradient": "linear-gradient(135deg, #6366f1, #3730a3)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Angela_Merkel_2019_cropped.jpg/330px-Angela_Merkel_2019_cropped.jpg",
+    "localPhoto": "assets/politicians/angela_merkel.jpg"
   },
   {
     "id": "narendra_modi",
@@ -459,7 +511,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": 20,
       "soc": -75
-    }
+    },
+    "color": "#f97316",
+    "gradient": "linear-gradient(135deg, #fb923c, #ea580c)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/The_official_portrait_of_Shri_Narendra_Modi%2C_the_Prime_Minister_of_the_Republic_of_India.jpg/330px-The_official_portrait_of_Shri_Narendra_Modi%2C_the_Prime_Minister_of_the_Republic_of_India.jpg",
+    "localPhoto": "assets/politicians/narendra_modi.jpg"
   },
   {
     "id": "jacinda_ardern",
@@ -492,7 +548,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": -45,
       "soc": 75
-    }
+    },
+    "color": "#ec4899",
+    "gradient": "linear-gradient(135deg, #f472b6, #db2777)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/New_Zealand_Prime_Minister_Jacinda_Ardern_in_2018.jpg/330px-New_Zealand_Prime_Minister_Jacinda_Ardern_in_2018.jpg",
+    "localPhoto": "assets/politicians/jacinda_ardern.jpg"
   },
   {
     "id": "pepe_mujica",
@@ -525,7 +585,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": -70,
       "soc": 80
-    }
+    },
+    "color": "#84cc16",
+    "gradient": "linear-gradient(135deg, #a3e635, #65a30d)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Mujica.jpg/330px-Mujica.jpg",
+    "localPhoto": "assets/politicians/pepe_mujica.jpg"
   },
   {
     "id": "yanis_varoufakis",
@@ -558,7 +622,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": -85,
       "soc": 85
-    }
+    },
+    "color": "#a855f7",
+    "gradient": "linear-gradient(135deg, #c084fc, #9333ea)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/2019-04-13_Yanis_Varoufakis_by_Olaf_Kosinsky-0658_%28cropped%29.jpg/330px-2019-04-13_Yanis_Varoufakis_by_Olaf_Kosinsky-0658_%28cropped%29.jpg",
+    "localPhoto": "assets/politicians/yanis_varoufakis.jpg"
   },
   {
     "id": "volodymyr_zelenskyy",
@@ -591,7 +659,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": 15,
       "soc": 20
-    }
+    },
+    "color": "#3b82f6",
+    "gradient": "linear-gradient(135deg, #60a5fa, #2563eb)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Volodymyr_Zelensky_2022_official_portrait_%28cropped%29.jpg/330px-Volodymyr_Zelensky_2022_official_portrait_%28cropped%29.jpg",
+    "localPhoto": "assets/politicians/volodymyr_zelenskyy.jpg"
   },
   {
     "id": "keir_starmer",
@@ -624,7 +696,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": -35,
       "soc": 25
-    }
+    },
+    "color": "#be123c",
+    "gradient": "linear-gradient(135deg, #e11d48, #9f1239)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Prime_Minister_Keir_Starmer_Portrait_%28cropped%29.jpg/330px-Prime_Minister_Keir_Starmer_Portrait_%28cropped%29.jpg",
+    "localPhoto": "assets/politicians/keir_starmer.jpg"
   },
   {
     "id": "fumio_kishida",
@@ -657,7 +733,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": 10,
       "soc": -30
-    }
+    },
+    "color": "#059669",
+    "gradient": "linear-gradient(135deg, #10b981, #047857)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Fumio_Kishida_20211005_%28cropped%29.jpg/330px-Fumio_Kishida_20211005_%28cropped%29.jpg",
+    "localPhoto": "assets/politicians/fumio_kishida.jpg"
   },
   {
     "id": "thomas_sankara",
@@ -690,7 +770,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": -90,
       "soc": -10
-    }
+    },
+    "color": "#15803d",
+    "gradient": "linear-gradient(135deg, #22c55e, #166534)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Thomas_Sankara_in_Harlem_%281984%29.png/330px-Thomas_Sankara_in_Harlem_%281984%29.png",
+    "localPhoto": "assets/politicians/thomas_sankara.jpg"
   },
   {
     "id": "nelson_mandela",
@@ -723,7 +807,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": -45,
       "soc": 60
-    }
+    },
+    "color": "#d97706",
+    "gradient": "linear-gradient(135deg, #f59e0b, #b45309)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Nelson_Mandela_1994.jpg/330px-Nelson_Mandela_1994.jpg",
+    "localPhoto": "assets/politicians/nelson_mandela.jpg"
   },
   {
     "id": "murray_rothbard",
@@ -756,7 +844,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": 100,
       "soc": 90
-    }
+    },
+    "color": "#eab308",
+    "gradient": "linear-gradient(135deg, #facc15, #ca8a04)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Murray_Rothbard_Portrait.jpg/330px-Murray_Rothbard_Portrait.jpg",
+    "localPhoto": "assets/politicians/murray_rothbard.jpg"
   },
   {
     "id": "noam_chomsky",
@@ -789,7 +881,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": -90,
       "soc": 95
-    }
+    },
+    "color": "#14b8a6",
+    "gradient": "linear-gradient(135deg, #2dd4bf, #0f766e)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Noam_Chomsky_portrait_2017_retouched.jpg/330px-Noam_Chomsky_portrait_2017_retouched.jpg",
+    "localPhoto": "assets/politicians/noam_chomsky.jpg"
   },
   {
     "id": "juan_peron",
@@ -822,7 +918,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": -55,
       "soc": -50
-    }
+    },
+    "color": "#2563eb",
+    "gradient": "linear-gradient(135deg, #3b82f6, #1d4ed8)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Juan_Domingo_Per%C3%B3n_%28cropped%29.jpg/330px-Juan_Domingo_Per%C3%B3n_%28cropped%29.jpg",
+    "localPhoto": "assets/politicians/juan_peron.jpg"
   },
   {
     "id": "sahra_wagenknecht",
@@ -855,7 +955,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": -70,
       "soc": -45
-    }
+    },
+    "color": "#9333ea",
+    "gradient": "linear-gradient(135deg, #a855f7, #7e22ce)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/2025-04-29-Sahra_Wagenknecht-Maischberger-3049_%28cropped_2%29.jpg/330px-2025-04-29-Sahra_Wagenknecht-Maischberger-3049_%28cropped_2%29.jpg",
+    "localPhoto": "assets/politicians/sahra_wagenknecht.jpg"
   },
   {
     "id": "clement_attlee",
@@ -888,7 +992,11 @@ const rawPoliticians = [
     "coordinates": {
       "econ": -65,
       "soc": -35
-    }
+    },
+    "color": "#b91c1c",
+    "gradient": "linear-gradient(135deg, #dc2626, #991b1b)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Person_attlee2.jpg/330px-Person_attlee2.jpg",
+    "localPhoto": "assets/politicians/clement_attlee.jpg"
   },
   {
     "id": "evo_morales",
@@ -921,8 +1029,310 @@ const rawPoliticians = [
     "coordinates": {
       "econ": -75,
       "soc": -35
-    }
+    },
+    "color": "#ca8a04",
+    "gradient": "linear-gradient(135deg, #eab308, #a16207)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Evo_Morales_Ayma_%28cropped_3%29.jpg/330px-Evo_Morales_Ayma_%28cropped_3%29.jpg",
+    "localPhoto": "assets/politicians/evo_morales.jpg"
+  },
+  {
+    "id": "martin_luther_king",
+    "name": "Martin Luther King Jr.",
+    "flag": "🇺🇸",
+    "country": {
+      "pl": "Stany Zjednoczone",
+      "en": "United States",
+      "ru": "США",
+      "fr": "États-Unis"
+    },
+    "role": {
+      "pl": "Lider ruchu praw obywatelskich, laureat Pokojowej Nagrody Nobla",
+      "en": "Civil rights movement leader, Nobel Peace Prize laureate",
+      "ru": "Лидер движения за гражданские права, лауреат Нобелевской премии мира",
+      "fr": "Leader du mouvement des droits civiques, prix Nobel de la paix"
+    },
+    "quote": {
+      "pl": "„Mam marzenie, że pewnego dnia ten naród powstanie i będzie żył w zgodzie z prawdziwym sensem swojego powołania.”",
+      "en": "“I have a dream that one day this nation will rise up and live out the true meaning of its creed.”",
+      "ru": "«У меня есть мечта, что однажды эта нация восстанет и воплотит истинный смысл своего кредо.»",
+      "fr": "« J'ai fait un rêve qu'un jour cette nation se lèvera et vivra la vraie signification de son credo. »"
+    },
+    "whyVote": {
+      "pl": "Głosowałbyś na niego za niestrudzoną walkę z dyskryminacją rasową, obronę praw pracowniczych i uboższych, sprzeciw wobec militaryzmu oraz wiarę w pokojowe braterstwo i godność człowieka.",
+      "en": "You would vote for him for his tireless battle against racial injustice, championing worker rights and poverty alleviation, non-violent resistance, and moral leadership.",
+      "ru": "Вы бы проголосовали за него за неустанную борьбу с расовой сегрегацией, защиту прав трудящихся, ненасильственный протест и веру в человеческое братство.",
+      "fr": "Vous voteriez pour lui pour sa lutte acharnée contre les injustices raciales, sa défense des travailleurs et des plus démunis, et son attachement à la non-violence."
+    },
+    "coordinates": {
+      "econ": -55,
+      "soc": 80
+    },
+    "color": "#8b5cf6",
+    "gradient": "linear-gradient(135deg, #a78bfa, #7c3aed)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Martin_Luther_King%2C_Jr._and_Lyndon_Johnson_%28cropped%29.jpg/330px-Martin_Luther_King%2C_Jr._and_Lyndon_Johnson_%28cropped%29.jpg",
+    "localPhoto": "assets/politicians/martin_luther_king.jpg"
+  },
+  {
+    "id": "mahatma_gandhi",
+    "name": "Mahatma Gandhi",
+    "flag": "🇮🇳",
+    "country": {
+      "pl": "Indie",
+      "en": "India",
+      "ru": "Индия",
+      "fr": "Inde"
+    },
+    "role": {
+      "pl": "Ojciec niepodległych Indii, prekursor filozofii ahinsy (bezprzemocy)",
+      "en": "Father of the Indian Nation, pioneer of Satyagraha and non-violent resistance",
+      "ru": "Отец нации Индии, создатель философии сатьяграхи (ненасилия)",
+      "fr": "Père de la nation indienne, apôtre de la non-violence (Satyagraha)"
+    },
+    "quote": {
+      "pl": "„Bądź zmianą, którą pragniesz ujrzeć w świecie.”",
+      "en": "“Be the change that you wish to see in the world.”",
+      "ru": "«Будь тем изменением, которое ты хочешь видеть в этом мире.»",
+      "fr": "« Soyez le changement que vous voulez voir dans le monde. »"
+    },
+    "whyVote": {
+      "pl": "Oddałbyś na niego głos za obronę samowystarczalności lokalnych wspólnot, odrzucenie przemocy, tolerancję religijną, skromność osobistą i zrzucenie kolonialnego jarzma.",
+      "en": "You would vote for him for village-level economic democracy, radical pacifism, anti-imperialism, religious pluralism, and ethical leadership.",
+      "ru": "Вы бы проголосовали за него за развитие местного самоуправления, абсолютный пацифизм, борьбу против колониального гнёта и нравственную стойкость.",
+      "fr": "Vous voteriez pour lui pour son modèle de démocratie villageoise, son pacifisme intégral, son rejet de l'impérialisme et son éthique exemplaire."
+    },
+    "coordinates": {
+      "econ": -40,
+      "soc": 85
+    },
+    "color": "#f57c00",
+    "gradient": "linear-gradient(135deg, #f57c00, #d84315)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Mahatma-Gandhi%2C_studio%2C_1931.jpg/330px-Mahatma-Gandhi%2C_studio%2C_1931.jpg",
+    "localPhoto": "assets/politicians/mahatma_gandhi.jpg"
+  },
+  {
+    "id": "rosa_luxemburg",
+    "name": "Rosa Luxemburg",
+    "flag": "🇩🇪",
+    "country": {
+      "pl": "Polska / Niemcy",
+      "en": "Poland / Germany",
+      "ru": "Польша / Германия",
+      "fr": "Pologne / Allemagne"
+    },
+    "role": {
+      "pl": "Działaczka socjalistyczna, teoretyczka marksizmu i pacyfistka",
+      "en": "Marxist theorist, anti-war activist, revolutionary socialist",
+      "ru": "Теоретик марксизма, антивоенная активистка, социалистка",
+      "fr": "Théoricienne marxiste, militante pacifiste et socialiste révolutionnaire"
+    },
+    "quote": {
+      "pl": "„Wolność jest zawsze wolnością dla tego, który myśli inaczej.”",
+      "en": "“Freedom is always and exclusively freedom for the one who thinks differently.”",
+      "ru": "«Свобода — это всегда свобода для того, кто мыслит иначе.»",
+      "fr": "« La liberté, c'est toujours la liberté de celui qui pense autrement. »"
+    },
+    "whyVote": {
+      "pl": "Oddałbyś na nią głos za bezkompromisowy sprzeciw wobec wojen imperialistycznych, wierność oddolnej demokracji rad robotniczych, krytykę autorytaryzmu i obronę wolności słowa.",
+      "en": "You would vote for her for courageously opposing imperialist warfare, defending bottom-up council democracy, and warning against autocratic bureaucratic control.",
+      "ru": "Вы бы проголосовали за неё за отважную борьбу против империалистической бойни, верность рабочей демократии и защиту свободы мысли.",
+      "fr": "Vous voteriez pour elle pour son opposition farouche aux guerres impérialistes, sa défense de la démocratie de conseil et sa vigilance contre l'autoritarisme."
+    },
+    "coordinates": {
+      "econ": -95,
+      "soc": 30
+    },
+    "color": "#991b1b",
+    "gradient": "linear-gradient(135deg, #991b1b, #7f1d1d)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Rosa_Luxemburg_%28cropped%29.jpg/330px-Rosa_Luxemburg_%28cropped%29.jpg",
+    "localPhoto": "assets/politicians/rosa_luxemburg.jpg"
+  },
+  {
+    "id": "vaclav_havel",
+    "name": "Václav Havel",
+    "flag": "🇨🇿",
+    "country": {
+      "pl": "Czechy",
+      "en": "Czech Republic",
+      "ru": "Чехия",
+      "fr": "République tchèque"
+    },
+    "role": {
+      "pl": "Pisarz, dysydent, przywódca Aksamitnej Rewolucji, Prezydent Czech",
+      "en": "Playwright, dissident, Velvet Revolution leader, President of the Czech Republic",
+      "ru": "Писатель, диссидент, лидер Бархатной революции, президент Чехии",
+      "fr": "Écrivain, dissident, dirigeant de la Révolution de velours, président de la République tchèque"
+    },
+    "quote": {
+      "pl": "„Prawda i miłość muszą zatriumfować nad kłamstwem i nienawiścią.”",
+      "en": "“Truth and love must prevail over lies and hatred.”",
+      "ru": "«Правда и любовь должны победить ложь и ненависть.»",
+      "fr": "« La vérité et l'amour doivent triompher du mensonge et de la haine. »"
+    },
+    "whyVote": {
+      "pl": "Głosowałbyś na niego za życie w prawdzie, obronę praw człowieka, pacyfistyczny demontaż totalitaryzmu, zakorzenienie w kulturze europejskiej i głęboki humanizm.",
+      "en": "You would vote for him for living in truth, dismantling communist dictatorship without violence, defending civil rights, and championing European moral integration.",
+      "ru": "Вы бы проголосовали за него за жизнь не по лжи, ненасильственный демонтаж тоталитаризма, европейский гуманизм и защиту фундаментальных прав личности.",
+      "fr": "Vous voteriez pour lui pour son courage moral de vivre dans la vérité, le démantèlement pacifique du totalitarisme et son dévouement aux droits humains."
+    },
+    "coordinates": {
+      "econ": 15,
+      "soc": 75
+    },
+    "color": "#0891b2",
+    "gradient": "linear-gradient(135deg, #0891b2, #0e7490)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Vaclav_Havel.jpg/330px-Vaclav_Havel.jpg",
+    "localPhoto": "assets/politicians/vaclav_havel.jpg"
+  },
+  {
+    "id": "winston_churchill",
+    "name": "Winston Churchill",
+    "flag": "🇬🇧",
+    "country": {
+      "pl": "Wielka Brytania",
+      "en": "United Kingdom",
+      "ru": "Великобритания",
+      "fr": "Royaume-Uni"
+    },
+    "role": {
+      "pl": "Premier Wielkiej Brytanii w czasie II wojny światowej, mąż stanu",
+      "en": "British Prime Minister during World War II, historic statesman",
+      "ru": "Премьер-министр Великобритании во Второй мировой войне, государственный деятель",
+      "fr": "Premier ministre britannique pendant la Seconde Guerre mondiale, homme d'État"
+    },
+    "quote": {
+      "pl": "„Nigdy w historii ludzkich konfliktów tak wielu nie zawdzięczało tak wiele tak nielicznym.”",
+      "en": "“Never in the field of human conflict was so much owed by so many to so few.”",
+      "ru": "«Никогда в истории человеческих конфликтов столь многие не были обязаны столь немногим.»",
+      "fr": "« Jamais dans l'histoire des conflits tant de gens n'ont dû autant à si peu. »"
+    },
+    "whyVote": {
+      "pl": "Oddałbyś na niego głos za niezłomność wobec tyranii faszyzmu, bezkompromisowy patriotyzm, silną obronność państwa, wiarę w zachodnią cywilizację i wolny rynek.",
+      "en": "You would vote for him for heroic defiance against totalitarian aggression, resolute defense of national sovereignty, classic parliamentary conservatism, and strong defense.",
+      "ru": "Вы бы проголосовали за него за несокрушимое сопротивление фашистской тирании, верность британской монархии и сильную оборонную политику.",
+      "fr": "Vous voteriez pour lui pour son refus absolu de capituler devant le fascisme, son courage héroïque, son conservatisme parlementaire et sa puissance militaire."
+    },
+    "coordinates": {
+      "econ": 60,
+      "soc": -60
+    },
+    "color": "#334155",
+    "gradient": "linear-gradient(135deg, #475569, #1e293b)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Sir_Winston_Churchill_-_19086236948_%28restored%29.jpg/330px-Sir_Winston_Churchill_-_19086236948_%28restored%29.jpg",
+    "localPhoto": "assets/politicians/winston_churchill.jpg"
+  },
+  {
+    "id": "thomas_jefferson",
+    "name": "Thomas Jefferson",
+    "flag": "🇺🇸",
+    "country": {
+      "pl": "Stany Zjednoczone",
+      "en": "United States",
+      "ru": "США",
+      "fr": "États-Unis"
+    },
+    "role": {
+      "pl": "Główny autor Deklaracji Niepodległości, 3. Prezydent USA",
+      "en": "Principal author of the Declaration of Independence, 3rd US President",
+      "ru": "Автор Декларации независимости, 3-й президент США",
+      "fr": "Rédacteur principal de la Déclaration d'indépendance, 3e président des États-Unis"
+    },
+    "quote": {
+      "pl": "„Uważamy te prawdy za oczywiste: że wszyscy ludzie stworzeni są równymi, że zostali obdarzeni przez Stwórcę niezbywalnymi Prawami.”",
+      "en": "“We hold these truths to be self-evident, that all men are created equal, that they are endowed by their Creator with certain unalienable Rights.”",
+      "ru": "«Мы исходим из той самоочевидной истины, что все люди созданы равными и наделены неотчуждаемыми правами.»",
+      "fr": "« Nous tenons ces vérités pour évidentes en elles-mêmes : que tous les hommes sont créés égaux et dotés de droits inaliénables. »"
+    },
+    "whyVote": {
+      "pl": "Głosowałbyś na niego za obronę wolności słowa i prasy, rozdział kościoła od państwa, decentralizację władzy, minimalny aparat rządu i wiarę w prawa jednostki.",
+      "en": "You would vote for him for enshrining individual liberty, freedom of speech, separation of church and state, strict limits on federal government power, and agrarian republicanism.",
+      "ru": "Вы бы проголосовали за него за провозглашение неотчуждаемых прав человека, свободу слова, отделение церкви от государства и минимальное вмешательство властей.",
+      "fr": "Vous voteriez pour lui pour la consécration des libertés individuelles, la laïcité de l'État, la décentralisation républicaine et la primauté de la liberté d'expression."
+    },
+    "coordinates": {
+      "econ": 65,
+      "soc": 60
+    },
+    "color": "#16a34a",
+    "gradient": "linear-gradient(135deg, #16a34a, #15803d)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Official_Presidential_portrait_of_Thomas_Jefferson_%28by_Rembrandt_Peale%2C_1800%29.jpg/330px-Official_Presidential_portrait_of_Thomas_Jefferson_%28by_Rembrandt_Peale%2C_1800%29.jpg",
+    "localPhoto": "assets/politicians/thomas_jefferson.jpg"
+  },
+  {
+    "id": "lech_walesa",
+    "name": "Lech Wałęsa",
+    "flag": "🇵🇱",
+    "country": {
+      "pl": "Polska",
+      "en": "Poland",
+      "ru": "Польша",
+      "fr": "Pologne"
+    },
+    "role": {
+      "pl": "Przywódca NSZZ „Solidarność”, laureat Pokojowej Nagrody Nobla, Prezydent RP",
+      "en": "Leader of Solidarity, Nobel Peace Prize laureate, President of Poland",
+      "ru": "Лидер профсоюза «Солидарность», лауреат Нобелевской премии мира, президент Польши",
+      "fr": "Leader de Solidarność, prix Nobel de la paix, président de la Pologne"
+    },
+    "quote": {
+      "pl": "„Nie chcem, ale muszem. Zrobiliśmy to bez użycia ani jednego naboju.”",
+      "en": "“We did it without firing a single shot and without violence.”",
+      "ru": "«Мы сделали это мирно, не сделав ни единого выстрела.»",
+      "fr": "« Nous l'avons fait pacifiquement, sans tirer un seul coup de feu. »"
+    },
+    "whyVote": {
+      "pl": "Oddałbyś na niego głos za przełamanie żelaznej kurtyny, obronę praw robotników przeciwko komunistycznej partii, wierność wartościom chrześcijańskim i pokojowy demontaż imperium radzieckiego.",
+      "en": "You would vote for him for toppling the Soviet sphere of influence through labor solidarity, courage against communist dictatorship, and peaceful democratic transition.",
+      "ru": "Вы бы проголосовали за него за объединение рабочих против коммунистической номенклатуры, свержение тоталитарного режима и мирный переход к демократии.",
+      "fr": "Vous voteriez pour lui pour avoir fait tomber le rideau de fer grâce à la solidarité ouvrière, son courage face à la dictature et sa transition démocratique pacifique."
+    },
+    "coordinates": {
+      "econ": -10,
+      "soc": -35
+    },
+    "color": "#e11d2a",
+    "gradient": "linear-gradient(135deg, #e11d2a, #b91c1c)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/03.17_%E7%B8%BD%E7%B5%B1%E6%8E%A5%E8%A6%8B%E3%80%8C%E6%B3%A2%E8%98%AD%E5%89%8D%E7%B8%BD%E7%B5%B1%E8%8F%AF%E5%8B%92%E6%B2%99%E4%B9%99%E8%A1%8C%E3%80%8D_-_55151702432_%28cropped%29.jpg/330px-03.17_%E7%B8%BD%E7%B5%B1%E6%8E%A5%E8%A6%8B%E3%80%8C%E6%B3%A2%E8%98%AD%E5%89%8D%E7%B8%BD%E7%B5%B1%E8%8F%AF%E5%8B%92%E6%B2%99%E4%B9%99%E8%A1%8C%E3%80%8D_-_55151702432_%28cropped%29.jpg",
+    "localPhoto": "assets/politicians/lech_walesa.jpg"
+  },
+  {
+    "id": "adam_smith",
+    "name": "Adam Smith",
+    "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+    "country": {
+      "pl": "Szkocja / Wielka Brytania",
+      "en": "Scotland / United Kingdom",
+      "ru": "Шотландия / Великобритания",
+      "fr": "Écosse / Royaume-Uni"
+    },
+    "role": {
+      "pl": "Filozof Oświecenia, ojciec nowożytnej ekonomii, autor „Bogactwa narodów”",
+      "en": "Enlightenment philosopher, father of modern economics, author of 'The Wealth of Nations'",
+      "ru": "Философ Просвещения, основоположник классической политэкономии",
+      "fr": "Philosophe des Lumières, père de l'économie moderne, auteur de « La Richesse des nations »"
+    },
+    "quote": {
+      "pl": "„Nie od przychylności rzeźnika, piwowara czy piekarza oczekujemy naszego obiadu, lecz od ich dbałości o własny interes.”",
+      "en": "“It is not from the benevolence of the butcher, the brewer, or the baker that we expect our dinner, but from their regard to their own interest.”",
+      "ru": "«Не от благожелательности мясника, пивовара или булочника ожидаем мы получить свой обед, а от соблюдения ими своих собственных интересов.»",
+      "fr": "« Ce n'est pas de la bienveillance du boucher, du brasseur ou du boulanger que nous attendons notre dîner, mais de l'attention qu'ils portent à leur propre intérêt. »"
+    },
+    "whyVote": {
+      "pl": "Oddałbyś na niego głos za stworzenie podstaw wolnego handlu, podziału pracy, walkę z merkantylistycznymi monopolami oraz wiarę w niewidzialną rękę rynku i moralną sympatię.",
+      "en": "You would vote for him for establishing free trade theory, dismantling state-granted cartels, championing market competition, and articulating the division of labor.",
+      "ru": "Вы бы проголосовали за него за доказательство преимуществ свободной торговли, разделения труда, борьбу с государственными монополиями и веру в рыночные стимулы.",
+      "fr": "Vous voteriez pour lui pour avoir fondé la théorie du libre-échange, combattu les monopoles mercantilistes d'État et valorisé la division du travail."
+    },
+    "coordinates": {
+      "econ": 80,
+      "soc": 15
+    },
+    "color": "#0d9488",
+    "gradient": "linear-gradient(135deg, #14b8a6, #0f766e)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Adam_Smith_The_Muir_portrait.jpg/330px-Adam_Smith_The_Muir_portrait.jpg",
+    "localPhoto": "assets/politicians/adam_smith.jpg"
   }
 ];
 
-module.exports = { rawPoliticians };
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { rawPoliticians };
+}

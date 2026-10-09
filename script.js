@@ -1,6 +1,6 @@
 /**
  * TEST POLITYCZNY - GŁÓWNA LOGIKA APLIKACJI (WERSJA GLOBALNA 2026)
- * Obsługa 100 pytań, 32 ideologii, 28 światowych liderów, 15 partii międzynarodowych
+ * Obsługa 100 pytań, 32 ideologii, 36 światowych liderów i postaci historycznych, 15 partii międzynarodowych
  * 6 opcji odpowiedzi (w tym Neutralny / Umiarkowany vs. Nie mam zdania / Pomiń)
  * oraz 4 języków: PL, EN, RU, FR.
  */
@@ -17,6 +17,7 @@ let animationFrameId = null;
 let currentEconScore = 0;
 let currentSocScore = 0;
 let isTransitioning = false;
+let transitionTimeoutId = null;
 
 // Elementy DOM - Ekrany
 const welcomeScreen = document.getElementById("welcomeScreen");
@@ -99,6 +100,8 @@ const secondaryIdeologiesList = document.getElementById("secondaryIdeologiesList
 const politicianCardTitle = document.getElementById("politicianCardTitle");
 const politicianCardSubtitle = document.getElementById("politicianCardSubtitle");
 const politicianMatchBadge = document.getElementById("politicianMatchBadge");
+const politicianAvatarContainer = document.getElementById("politicianAvatarContainer");
+const politicianPhoto = document.getElementById("politicianPhoto");
 const politicianFlag = document.getElementById("politicianFlag");
 const politicianName = document.getElementById("politicianName");
 const politicianCountry = document.getElementById("politicianCountry");
@@ -181,27 +184,31 @@ function createRippleEffect(e, forcedEl = null) {
   const btn = forcedEl || (e ? (e.currentTarget || (e.target && e.target.closest ? (e.target.closest("button, .setup-pill-btn, .accent-color-btn, .podium-mini-card, .btn-action, .answer-btn") || e.target) : e.target)) : null);
   if (!btn) return;
 
-  const rect = btn.getBoundingClientRect();
-  const circle = document.createElement("span");
-  const diameter = Math.max(rect.width, rect.height) * 1.8;
+  // Clean up any lingering ripple on the same button first
+  const oldRipple = btn.querySelector(".ripple-wave");
+  if (oldRipple) oldRipple.remove();
+
+  const width = btn.clientWidth || 100;
+  const height = btn.clientHeight || 48;
+  const diameter = Math.max(width, height) * 1.5;
   const radius = diameter / 2;
 
-  let clientX, clientY;
-  if (e && typeof e.clientX === "number" && e.clientX !== 0) {
-    clientX = e.clientX;
-    clientY = e.clientY;
-  } else {
-    clientX = rect.left + rect.width / 2;
-    clientY = rect.top + rect.height / 2;
+  let posX = width / 2;
+  let posY = height / 2;
+  if (e && typeof e.offsetX === "number" && e.offsetX > 0) {
+    posX = e.offsetX;
+    posY = e.offsetY;
   }
 
-  circle.style.width = circle.style.height = `${diameter}px`;
-  circle.style.left = `${clientX - rect.left - radius}px`;
-  circle.style.top = `${clientY - rect.top - radius}px`;
+  const circle = document.createElement("span");
   circle.className = "ripple-wave";
+  circle.style.width = circle.style.height = `${diameter}px`;
+  circle.style.left = `${posX - radius}px`;
+  circle.style.top = `${posY - radius}px`;
 
   btn.appendChild(circle);
-  setTimeout(() => circle.remove(), 600);
+  circle.addEventListener("animationend", () => circle.remove(), { once: true });
+  setTimeout(() => circle.remove(), 260);
 }
 
 // =========================================================================
@@ -380,6 +387,10 @@ function applyLanguage(lang) {
   });
 
   updateResumeButtonText();
+  if (answersContainer) answersContainer.innerHTML = "";
+  if (questionScreen && questionScreen.classList.contains("active")) {
+    renderQuestion();
+  }
 }
 
 // =========================================================================
@@ -527,7 +538,6 @@ function setupKeyboardNavigation() {
       }
     }
     if (!questionScreen || !questionScreen.classList.contains("active")) return;
-    if (isTransitioning) return;
 
     let targetIdx = -1;
     let targetVal = null;
@@ -547,7 +557,7 @@ function setupKeyboardNavigation() {
     }
 
     if (targetIdx !== -1) {
-      const btns = answersContainer.querySelectorAll(".answer-btn");
+      const btns = answersContainer.children;
       const targetBtn = btns[targetIdx];
       if (targetBtn) {
         createRippleEffect(null, targetBtn);
@@ -667,78 +677,84 @@ function renderQuestion() {
     nextBtn.disabled = currentQuestionIndex === questions.length - 1 || userAnswers[currentQuestionIndex] === null;
   }
 
-  // Generowanie przycisków 6 odpowiedzi (Zgoda, Lekka zgoda, Neutralny 0, Lekki sprzeciw, Sprzeciw, Skip)
-  answersContainer.innerHTML = "";
-  answerOptions.forEach((opt, idx) => {
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = `answer-btn ${opt.className}`;
-
-    const labelText = opt.label[currentLang] || opt.label.pl;
-    const hintText = opt.hint ? (opt.hint[currentLang] || opt.hint.pl) : "";
-    const badgeText = opt.badge ? (opt.badge[currentLang] || opt.badge.pl) : `${idx + 1}`;
-
-    btn.innerHTML = `
-      <div class="answer-left">
-        <span class="answer-shortcut-tag">${idx + 1}</span>
-        <div class="answer-text-group">
-          <span class="answer-label-text">${labelText}</span>
-          ${hintText ? `<span class="answer-hint-sub">${hintText}</span>` : ""}
-        </div>
-      </div>
-      <div class="answer-right">
-        <span class="answer-badge-pill">${badgeText}</span>
-        <span class="answer-check-icon">✓</span>
-      </div>
-    `;
-
-    // Zaznaczenie wybranej uprzednio odpowiedzi
-    if (userAnswers[currentQuestionIndex] === opt.value) {
-      btn.classList.add("selected-answer");
+  // Generowanie lub błyskawiczna aktualizacja przycisków 6 odpowiedzi (zero layout thrashing)
+  const existingBtns = answersContainer.children;
+  if (existingBtns.length === answerOptions.length) {
+    for (let idx = 0; idx < answerOptions.length; idx++) {
+      existingBtns[idx].classList.toggle("selected-answer", userAnswers[currentQuestionIndex] === answerOptions[idx].value);
     }
+  } else {
+    answersContainer.innerHTML = "";
+    answerOptions.forEach((opt, idx) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = `answer-btn ${opt.className}`;
 
-    btn.addEventListener("click", (e) => {
-      createRippleEffect(e);
-      handleAnswerSelect(opt.value, btn);
+      const labelText = opt.label[currentLang] || opt.label.pl;
+      const hintText = opt.hint ? (opt.hint[currentLang] || opt.hint.pl) : "";
+      const badgeText = opt.badge ? (opt.badge[currentLang] || opt.badge.pl) : `${idx + 1}`;
+
+      btn.innerHTML = `
+        <div class="answer-left">
+          <span class="answer-shortcut-tag">${idx + 1}</span>
+          <div class="answer-text-group">
+            <span class="answer-label-text">${labelText}</span>
+            <span class="answer-hint-sub" style="${hintText ? '' : 'display:none;'}">${hintText}</span>
+          </div>
+        </div>
+        <div class="answer-right">
+          <span class="answer-badge-pill">${badgeText}</span>
+          <span class="answer-check-icon">✓</span>
+        </div>
+      `;
+
+      if (userAnswers[currentQuestionIndex] === opt.value) {
+        btn.classList.add("selected-answer");
+      }
+
+      btn.addEventListener("click", (e) => {
+        createRippleEffect(e, btn);
+        handleAnswerSelect(opt.value, btn);
+      });
+
+      answersContainer.appendChild(btn);
     });
-
-    answersContainer.appendChild(btn);
-  });
-
-  // Animacja wejścia pytania i opcji odpowiedzi
-  if (questionText) {
-    questionText.classList.remove("animating-in");
-    void questionText.offsetWidth;
-    questionText.classList.add("animating-in");
-  }
-  if (answersContainer) {
-    answersContainer.classList.remove("animating-in");
-    void answersContainer.offsetWidth;
-    answersContainer.classList.add("animating-in");
   }
 }
 
 function handleAnswerSelect(val, clickedBtn = null) {
-  if (isTransitioning) return;
-  isTransitioning = true;
+  // If user answers quickly while a timeout is already ticking, immediately advance previous question
+  if (transitionTimeoutId) {
+    clearTimeout(transitionTimeoutId);
+    transitionTimeoutId = null;
+    if (currentQuestionIndex < questions.length - 1) {
+      currentQuestionIndex++;
+    }
+  }
+
   userAnswers[currentQuestionIndex] = val;
   saveProgress();
 
   if (clickedBtn) {
-    document.querySelectorAll(".answer-btn").forEach(b => b.classList.remove("selected-answer"));
+    const btns = answersContainer.children;
+    for (let i = 0; i < btns.length; i++) {
+      btns[i].classList.remove("selected-answer");
+    }
     clickedBtn.classList.add("selected-answer");
   }
 
-  setTimeout(() => {
+  isTransitioning = true;
+  transitionTimeoutId = setTimeout(() => {
+    transitionTimeoutId = null;
+    isTransitioning = false;
     if (currentQuestionIndex < questions.length - 1) {
       currentQuestionIndex++;
       renderQuestion();
     } else {
       progressBar.style.width = "100%";
-      setTimeout(() => showResults(true), 150);
+      setTimeout(() => showResults(true), 50);
     }
-    isTransitioning = false;
-  }, 220);
+  }, 50);
 }
 
 function goToNextQuestion() {
@@ -833,6 +849,35 @@ let activePartyId = null;
 let currentRankedPoliticians = [];
 let currentRankedParties = [];
 
+function createSvgAvatar(name, color = "#3b82f6") {
+  let initials = "";
+  if (name.includes("Martin Luther King")) {
+    initials = "MLK";
+  } else {
+    const parts = name.replace(/[^a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ\s]/g, "").trim().split(/\s+/).filter(p => !['jr', 'sr', 'ii', 'iii'].includes(p.toLowerCase()));
+    if (parts.length >= 2) {
+      initials = (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+    } else if (parts[0]) {
+      initials = parts[0].substring(0, 2).toUpperCase();
+    } else {
+      initials = "P";
+    }
+  }
+  const cleanInitials = initials || "P";
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+    <defs>
+      <linearGradient id="g_${encodeURIComponent(cleanInitials)}" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="${color}" />
+        <stop offset="100%" stop-color="#0f172a" />
+      </linearGradient>
+    </defs>
+    <rect width="100" height="100" rx="50" fill="url(#g_${encodeURIComponent(cleanInitials)})" />
+    <circle cx="50" cy="50" r="46" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="2.5"/>
+    <text x="50" y="58" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="34" font-weight="800" fill="#ffffff" text-anchor="middle" dominant-baseline="middle">${cleanInitials}</text>
+  </svg>`;
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+}
+
 function renderPoliticianProfile(pol, isTop = false) {
   const t = uiTranslations[currentLang];
   politicianMatchBadge.textContent = `${t.politicianMatchLabel} ${pol.similarity}%`;
@@ -843,6 +888,46 @@ function renderPoliticianProfile(pol, isTop = false) {
   politicianQuote.textContent = pol.quote[currentLang] || pol.quote.pl;
   politicianWhyVoteText.textContent = pol.whyVote[currentLang] || pol.whyVote.pl;
   activePoliticianId = pol.id;
+
+  const color = pol.color || "#3b82f6";
+  const gradient = pol.gradient || `linear-gradient(135deg, ${color}, #1d4ed8)`;
+
+  if (politicianPhoto) {
+    politicianPhoto.alt = pol.name;
+    const localSrc = pol.localPhoto || `assets/politicians/${pol.id}.jpg`;
+    const remoteSrc = pol.photoUrl || createSvgAvatar(pol.name, color);
+
+    politicianPhoto.dataset.fallbackTried = "0";
+    politicianPhoto.onerror = function() {
+      if (this.dataset.fallbackTried === "1") {
+        this.onerror = null;
+        this.src = createSvgAvatar(pol.name, color);
+      } else {
+        this.dataset.fallbackTried = "1";
+        this.src = remoteSrc;
+      }
+    };
+    politicianPhoto.src = localSrc;
+  }
+
+  if (politicianAvatarContainer) {
+    politicianAvatarContainer.style.setProperty("--politician-color", color);
+    politicianAvatarContainer.style.borderColor = color;
+    politicianAvatarContainer.style.boxShadow = `0 0 22px ${color}55, 0 4px 14px rgba(0, 0, 0, 0.35)`;
+  }
+
+  const cardWrapper = document.querySelector(".politician-match-card");
+  if (cardWrapper) {
+    cardWrapper.style.setProperty("--politician-card-color", color);
+    cardWrapper.style.borderColor = `${color}45`;
+    cardWrapper.style.boxShadow = `0 12px 36px -8px ${color}28, 0 4px 16px rgba(0, 0, 0, 0.25)`;
+  }
+
+  if (politicianMatchBadge) {
+    politicianMatchBadge.style.background = gradient;
+    politicianMatchBadge.style.boxShadow = `0 4px 14px ${color}50`;
+    politicianMatchBadge.style.borderColor = `${color}80`;
+  }
 
   document.querySelectorAll(".podium-mini-card.politician-card-item").forEach(card => {
     card.classList.toggle("active-podium", card.dataset.id === pol.id);
@@ -910,7 +995,7 @@ function showResults(animated = true) {
     secondaryIdeologiesList.appendChild(card);
   });
 
-  // 2. Dopasowanie Światowego Lidera (28 liderów)
+  // 2. Dopasowanie Światowego Lidera (36 liderów i postaci historycznych)
   currentRankedPoliticians = worldPoliticians.map(pol => {
     const { dist, similarity } = calculateSimilarity(econScore, socScore, pol.coordinates.econ, pol.coordinates.soc);
     return { ...pol, dist, similarity };
@@ -926,16 +1011,40 @@ function showResults(animated = true) {
     item.className = "podium-mini-card politician-card-item";
     item.dataset.id = pol.id;
     const countryName = pol.country[currentLang] || pol.country.pl;
+    const color = pol.color || "#3b82f6";
+    item.style.setProperty("--mini-color", color);
+
+    const localSrc = pol.localPhoto || `assets/politicians/${pol.id}.jpg`;
+    const remoteSrc = pol.photoUrl || createSvgAvatar(pol.name, color);
+
     item.innerHTML = `
-      <div class="podium-mini-flag">${pol.flag}</div>
+      <div class="podium-mini-avatar-wrap" style="border-color: ${color};">
+        <img class="podium-mini-avatar-img" src="${localSrc}" alt="${pol.name}" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="podium-mini-flag-badge">${pol.flag}</span>
+      </div>
       <div class="podium-mini-info">
         <strong>${pol.name}</strong>
         <span>${countryName}</span>
       </div>
-      <div class="podium-mini-match">${pol.similarity}%</div>
+      <div class="podium-mini-match" style="background: ${color}20; color: ${color}; border: 1px solid ${color}45;">${pol.similarity}%</div>
     `;
+
+    const img = item.querySelector(".podium-mini-avatar-img");
+    if (img) {
+      img.dataset.fallbackTried = "0";
+      img.onerror = function() {
+        if (this.dataset.fallbackTried === "1") {
+          this.onerror = null;
+          this.src = createSvgAvatar(pol.name, color);
+        } else {
+          this.dataset.fallbackTried = "1";
+          this.src = remoteSrc;
+        }
+      };
+    }
+
     item.addEventListener("click", (e) => {
-      createRippleEffect(e);
+      createRippleEffect(e, item);
       renderPoliticianProfile(pol);
     });
     otherPoliticiansList.appendChild(item);
@@ -1082,7 +1191,7 @@ function renderSectorBreakdown() {
 function drawCompassAnimated(targetEcon, targetSoc) {
   if (animationFrameId) cancelAnimationFrame(animationFrameId);
 
-  const duration = 45;
+  const duration = 24;
   let frame = 0;
 
   function animate() {
@@ -1473,8 +1582,9 @@ function downloadResultImage() {
   const cardH = 180;
   const cardY = 820;
 
+  const polColor = pol.color || "#3b82f6";
   ctx.fillStyle = "#131b2e";
-  ctx.strokeStyle = "#3b82f6";
+  ctx.strokeStyle = polColor;
   ctx.lineWidth = 1.5;
   ctx.beginPath();
   ctx.roundRect(60, cardY, cardW, cardH, 16);
@@ -1482,7 +1592,7 @@ function downloadResultImage() {
   ctx.stroke();
 
   ctx.textAlign = "left";
-  ctx.fillStyle = "#38bdf8";
+  ctx.fillStyle = polColor;
   ctx.font = "bold 15px 'Plus Jakarta Sans', sans-serif";
   ctx.fillText(`🌐 ${t.politicianCardTitle}`, 85, cardY + 36);
 
@@ -1531,7 +1641,7 @@ function downloadResultImage() {
   ctx.textAlign = "center";
   ctx.fillStyle = "#64748b";
   ctx.font = "500 15px 'Plus Jakarta Sans', sans-serif";
-  ctx.fillText("Globalny Kompas Poglądów 2026 • 100 Pytań • 32 Ideologie • 28 Liderów • 15 Rodzin Partyjnych", 540, 1070);
+  ctx.fillText("Globalny Kompas Poglądów 2026 • 100 Pytań • 32 Ideologie • 36 Liderów i Myślicieli • 15 Rodzin Partyjnych", 540, 1070);
   ctx.fillText("Wykonaj test online i poznaj swoje miejsce na politycznej mapie świata!", 540, 1100);
 
   const link = document.createElement("a");
