@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polski Test Polityczny – Kompas Poglądów</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="theme-dark">
+  <div class="app-container">
+    
+    <!-- Top Header -->
+    <header class="app-header">
+      <div class="logo-area">
+        <span class="logo-icon">⚖️</span>
+        <div>
+          <h1 class="logo-title">Test Polityczny</h1>
+          <p class="logo-sub">Polski Kompas Poglądów</p>
+        </div>
+      </div>
+      <button id="themeToggleBtn" class="theme-toggle-btn" title="Zmień motyw">
+        <span id="themeIcon">☀️</span>
+      </button>
+    </header>
+
+    <!-- Main Card -->
+    <main class="main-card">
+
+      <!-- SCREEN 1: WELCOME SCREEN -->
+      <section id="welcomeScreen" class="screen active">
+        <div class="badge-pill">Wersja 2026 • 20 Pytań</div>
+        <h2 class="hero-title">Odkryj swoje prawdziwe miejsce na mapie politycznej</h2>
+        <p class="hero-desc">
+          Test bada Twoje poglądy w dwóch kluczowych wymiarach: <strong>gospodarczym</strong> (rola państwa i podatków vs. wolny rynek) oraz <strong>światopoglądowym</strong> (tradycja i porządek vs. wolność obyczajowa i prawa jednostki).
+        </p>
+
+        <div class="axes-preview-grid">
+          <div class="axis-preview-card axis-econ">
+            <div class="axis-icon">📈</div>
+            <div class="axis-info">
+              <h3>Oś Gospodarcza</h3>
+              <p>Lewica (solidaryzm, państwo opiekuńcze) ⟷ Prawica (wolny rynek, niskie podatki)</p>
+            </div>
+          </div>
+          <div class="axis-preview-card axis-soc">
+            <div class="axis-icon">🏛️</div>
+            <div class="axis-info">
+              <h3>Oś Światopoglądowa</h3>
+              <p>Konserwatyzm (tradycja, naród, religia) ⟷ Progresywizm (swobody, sekularyzm, UE)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="test-features">
+          <div class="feature-item">⏱️ Czas: ok. 3-4 minuty</div>
+          <div class="feature-item">🔒 W 100% anonimowe</div>
+          <div class="feature-item">📊 Dokładny wykres 2D i profil ideowy</div>
+        </div>
+
+        <button id="startTestBtn" class="primary-btn btn-large pulse-animation">
+          Rozpocznij test teraz ➔
+        </button>
+      </section>
+
+      <!-- SCREEN 2: QUESTION SCREEN -->
+      <section id="questionScreen" class="screen">
+        <div class="quiz-topbar">
+          <button id="prevBtn" class="btn-text" disabled>
+            ← Poprzednie
+          </button>
+          <div class="quiz-counter">
+            <span id="currentQuestionNum">1</span> z <span id="totalQuestionsNum">20</span>
+          </div>
+          <span id="questionCategory" class="badge-category">Gospodarka</span>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="progress-track">
+          <div id="progressBar" class="progress-fill" style="width: 5%;"></div>
+        </div>
+
+        <!-- Question Box -->
+        <div class="question-container">
+          <h2 id="questionText" class="question-title">Ładowanie pytania...</h2>
+        </div>
+
+        <!-- Answer Options -->
+        <div id="answersContainer" class="answers-grid">
+          <!-- Dynamically inserted answer buttons -->
+        </div>
+      </section>
+
+      <!-- SCREEN 3: RESULTS SCREEN -->
+      <section id="resultScreen" class="screen">
+        <div class="result-header">
+          <span class="badge-pill">Twoje Wyniki</span>
+          <h2 id="ideologyTitle" class="result-ideology-name">Obliczanie...</h2>
+          <p id="ideologySubtitle" class="result-ideology-subtitle"></p>
+        </div>
+
+        <!-- Compass Visual Canvas -->
+        <div class="canvas-wrapper">
+          <canvas id="compassCanvas" width="560" height="560"></canvas>
+          <div class="canvas-legend">
+            <div class="legend-item"><span class="color-dot dot-red"></span> Lewica Tradycyjna</div>
+            <div class="legend-item"><span class="color-dot dot-green"></span> Socjalliberalizm</div>
+            <div class="legend-item"><span class="color-dot dot-blue"></span> Konserwatyzm Wolnorynkowy</div>
+            <div class="legend-item"><span class="color-dot dot-yellow"></span> Libertarianizm</div>
+          </div>
+        </div>
+
+        <!-- Axis Breakdown Meters -->
+        <div class="meters-container">
+          <div class="meter-box">
+            <div class="meter-labels">
+              <span class="left-label">Lewica Gospodarcza</span>
+              <strong id="econScoreText" class="score-center">0%</strong>
+              <span class="right-label">Prawica Wolnorynkowa</span>
+            </div>
+            <div class="meter-track">
+              <div id="econFillBar" class="meter-fill econ-bar"></div>
+              <div class="meter-center-tick"></div>
+            </div>
+          </div>
+
+          <div class="meter-box">
+            <div class="meter-labels">
+              <span class="left-label">Konserwatyzm Społeczny</span>
+              <strong id="socScoreText" class="score-center">0%</strong>
+              <span class="right-label">Progresywizm Społeczny</span>
+            </div>
+            <div class="meter-track">
+              <div id="socFillBar" class="meter-fill soc-bar"></div>
+              <div class="meter-center-tick"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ideology Details Card -->
+        <div class="ideology-card">
+          <h3>Charakterystyka Twoich poglądów</h3>
+          <p id="ideologyDescription" class="ideology-text"></p>
+          
+          <div class="parties-affinity-box">
+            <h4>Poglądowe dopasowanie w polskiej polityce:</h4>
+            <p id="partiesAffinity" class="parties-affinity-text"></p>
+            <small class="disclaimer-note">* Dopasowanie ma charakter czysto poglądowy i edukacyjny. Polskie partie polityczne zawierają w sobie różne frakcje i rzadko są jednolite ideologicznie.</small>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons-group">
+          <button id="downloadResultBtn" class="btn-action">
+            📥 Pobierz wykres (PNG)
+          </button>
+          <button id="copyShareBtn" class="btn-action">
+            📋 Kopiuj podsumowanie
+          </button>
+          <button id="toggleAnswersBtn" class="btn-action">
+            📝 Zobacz swoje odpowiedzi
+          </button>
+          <button id="restartBtn" class="btn-action btn-primary-outline">
+            🔄 Rozwiąż ponownie
+          </button>
+        </div>
+
+        <!-- Answers Review Modal / Drawer -->
+        <div id="answersReviewSection" class="review-answers-box hidden">
+          <div class="review-header">
+            <h3>Twoje odpowiedzi na pytania</h3>
+            <button id="closeReviewBtn" class="btn-text">✕ Zamknij</button>
+          </div>
+          <div id="reviewList" class="review-list"></div>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>Polski Test Polityczny &copy; 2026 • Oparty na modelu dwuosiowego kompasu politycznego.</p>
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="questions.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
