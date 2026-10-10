@@ -19,6 +19,16 @@ let currentSocScore = 0;
 let isTransitioning = false;
 let transitionTimeoutId = null;
 
+// Stan wyników i rankingów
+let activePoliticianId = null;
+let activePartyId = null;
+let activeIdeologyId = null;
+let isPoliticiansExpanded = false;
+let isIdeologiesExpanded = false;
+let currentRankedPoliticians = [];
+let currentRankedParties = [];
+let currentRankedIdeologies = [];
+
 // Elementy DOM - Ekrany
 const welcomeScreen = document.getElementById("welcomeScreen");
 const questionScreen = document.getElementById("questionScreen");
@@ -99,11 +109,18 @@ const clickIdeologyHint = document.getElementById("clickIdeologyHint");
 const toggleMoreIdeologiesBtn = document.getElementById("toggleMoreIdeologiesBtn");
 const toggleMoreIdeologiesText = document.getElementById("toggleMoreIdeologiesText");
 const toggleIdeologiesIcon = document.getElementById("toggleIdeologiesIcon");
+const ideologyCardActiveBadge = document.getElementById("ideologyCardActiveBadge");
+const ideologyActiveBanner = document.getElementById("ideologyActiveBanner");
+const ideologyActiveIconWrap = document.getElementById("ideologyActiveIconWrap");
+const ideologyActiveIcon = document.getElementById("ideologyActiveIcon");
+const ideologyActiveName = document.getElementById("ideologyActiveName");
+const ideologyActiveSub = document.getElementById("ideologyActiveSub");
 
 // World Politician
 const politicianCardTitle = document.getElementById("politicianCardTitle");
 const politicianCardSubtitle = document.getElementById("politicianCardSubtitle");
 const politicianMatchBadge = document.getElementById("politicianMatchBadge");
+const politicianHeroRow = document.getElementById("politicianHeroRow");
 const politicianAvatarContainer = document.getElementById("politicianAvatarContainer");
 const politicianPhoto = document.getElementById("politicianPhoto");
 const politicianFlag = document.getElementById("politicianFlag");
@@ -873,15 +890,6 @@ function calculateSectorBreakdown() {
 // =========================================================================
 // WYŚWIETLANIE WYNIKÓW
 // =========================================================================
-let activePoliticianId = null;
-let activePartyId = null;
-let activeIdeologyId = null;
-let isPoliticiansExpanded = false;
-let isIdeologiesExpanded = false;
-let currentRankedPoliticians = [];
-let currentRankedParties = [];
-let currentRankedIdeologies = [];
-
 const svgFlags = {
   ar: `<svg viewBox="0 0 640 480" width="100%" height="100%"><path fill="#74acdf" d="M0 0h640v480H0z"/><path fill="#fff" d="M0 160h640v160H0z"/><g transform="translate(320 240)"><circle r="36" fill="#f6b40e"/><circle r="28" fill="#e89c0b"/><circle r="20" fill="#f6b40e"/><g stroke="#f6b40e" stroke-width="4"><path d="M0-48V-36M0 36v12M-48 0h12M36 0h12M-34-34l8 8M26 26l8 8M-34 34l8-8M26-26l8-8"/></g></g></svg>`,
   us: `<svg viewBox="0 0 640 480" width="100%" height="100%"><path fill="#b22234" d="M0 0h640v480H0z"/><path fill="#fff" d="M0 36.9h640v36.9H0zm0 73.8h640v36.9H0zm0 73.8h640v36.9H0zm0 73.8h640v36.9H0zm0 73.8h640v36.9H0zm0 73.8h640v36.9H0z"/><path fill="#3c3b6e" d="M0 0h256v258.5H0z"/><g fill="#fff"><circle cx="32" cy="28" r="7"/><circle cx="96" cy="28" r="7"/><circle cx="160" cy="28" r="7"/><circle cx="224" cy="28" r="7"/><circle cx="64" cy="58" r="7"/><circle cx="128" cy="58" r="7"/><circle cx="192" cy="58" r="7"/><circle cx="32" cy="88" r="7"/><circle cx="96" cy="88" r="7"/><circle cx="160" cy="88" r="7"/><circle cx="224" cy="88" r="7"/><circle cx="64" cy="118" r="7"/><circle cx="128" cy="118" r="7"/><circle cx="192" cy="118" r="7"/><circle cx="32" cy="148" r="7"/><circle cx="96" cy="148" r="7"/><circle cx="160" cy="148" r="7"/><circle cx="224" cy="148" r="7"/><circle cx="64" cy="178" r="7"/><circle cx="128" cy="178" r="7"/><circle cx="192" cy="178" r="7"/><circle cx="32" cy="208" r="7"/><circle cx="96" cy="208" r="7"/><circle cx="160" cy="208" r="7"/><circle cx="224" cy="208" r="7"/><circle cx="64" cy="238" r="7"/><circle cx="128" cy="238" r="7"/><circle cx="192" cy="238" r="7"/></g></svg>`,
@@ -1005,7 +1013,27 @@ function getPoliticianName(pol) {
 function renderPoliticianProfile(pol, isTop = false) {
   const t = uiTranslations[currentLang] || {};
   const displayName = getPoliticianName(pol);
-  if (politicianMatchBadge) politicianMatchBadge.textContent = `${t.politicianMatchLabel || 'Zgodność poglądów:'} ${pol.similarity}%`;
+  activePoliticianId = pol.id;
+
+  const topPol = (currentRankedPoliticians && currentRankedPoliticians[0]) || pol;
+  const isActuallyTop = (pol.id === topPol.id);
+  const polRank = (currentRankedPoliticians && currentRankedPoliticians.findIndex(p => p.id === pol.id) + 1) || 1;
+
+  if (politicianCardTitle) {
+    politicianCardTitle.textContent = isActuallyTop
+      ? (t.politicianCardTitle || "🌐 Twój Światowy Lider Polityczny")
+      : `🌐 ${displayName}`;
+  }
+  if (politicianCardSubtitle) {
+    politicianCardSubtitle.textContent = isActuallyTop
+      ? (t.politicianCardSubtitle || "Światowy przywódca o najbardziej zbliżonym kompasie poglądów:")
+      : `${t.spotlightLeaderTitle || "Szczegółowy profil wybranego lidera:"} (#${polRank})`;
+  }
+  if (politicianMatchBadge) {
+    politicianMatchBadge.textContent = isActuallyTop
+      ? `${t.politicianMatchLabel || 'Zgodność poglądów:'} ${pol.similarity}%`
+      : `#${polRank} • ${t.politicianMatchLabel || 'Zgodność:'} ${pol.similarity}%`;
+  }
   if (politicianFlag) politicianFlag.innerHTML = getSvgFlagBadgeHtml(pol, "politician-flag-svg-badge");
   if (politicianName) politicianName.textContent = displayName;
   if (politicianCountry) {
@@ -1015,7 +1043,6 @@ function renderPoliticianProfile(pol, isTop = false) {
   if (politicianRole) politicianRole.textContent = pol.role[currentLang] || pol.role.pl;
   if (politicianQuote) politicianQuote.textContent = pol.quote[currentLang] || pol.quote.pl;
   if (politicianWhyVoteText) politicianWhyVoteText.textContent = pol.whyVote[currentLang] || pol.whyVote.pl;
-  activePoliticianId = pol.id;
 
   const color = pol.color || "#3b82f6";
   const gradient = pol.gradient || `linear-gradient(135deg, ${color}, #1d4ed8)`;
@@ -1069,12 +1096,10 @@ function updatePoliticiansToggleButton() {
     toggleMorePoliticiansBtn.classList.add("is-expanded");
     toggleMorePoliticiansBtn.setAttribute("aria-expanded", "true");
     toggleMorePoliticiansText.textContent = t.showFewerPoliticians || "Zwiń listę liderów";
-    if (togglePoliticiansIcon) togglePoliticiansIcon.textContent = "▲";
   } else {
     toggleMorePoliticiansBtn.classList.remove("is-expanded");
     toggleMorePoliticiansBtn.setAttribute("aria-expanded", "false");
-    toggleMorePoliticiansText.textContent = t.showMorePoliticians || "Pokaż więcej liderów ze świata (Top 20)";
-    if (togglePoliticiansIcon) togglePoliticiansIcon.textContent = "▼";
+    toggleMorePoliticiansText.textContent = t.showAllPoliticians || "Pokaż wszystkich liderów (katalog 43 postaci)";
   }
 }
 
@@ -1082,12 +1107,12 @@ function renderPoliticiansRanking() {
   if (!otherPoliticiansList || !currentRankedPoliticians.length) return;
   const t = uiTranslations[currentLang] || {};
   const visiblePoliticians = isPoliticiansExpanded
-    ? currentRankedPoliticians.slice(1)
-    : currentRankedPoliticians.slice(1, 10);
+    ? currentRankedPoliticians
+    : currentRankedPoliticians.slice(0, 10);
 
   otherPoliticiansList.innerHTML = "";
   visiblePoliticians.forEach((pol, index) => {
-    const rankNum = index + 2;
+    const rankNum = index + 1;
     const item = document.createElement("div");
     item.className = "podium-mini-card politician-card-item";
     item.dataset.id = pol.id;
@@ -1142,11 +1167,18 @@ function renderPoliticiansRanking() {
     item.addEventListener("click", (e) => {
       createRippleEffect(e, item);
       renderPoliticianProfile(pol);
-      const mainCard = document.querySelector(".politician-match-card");
-      if (mainCard) {
-        mainCard.classList.remove("spotlight-pulse");
-        void mainCard.offsetWidth;
-        mainCard.classList.add("spotlight-pulse");
+      const heroRow = document.getElementById("politicianHeroRow");
+      if (heroRow) {
+        heroRow.classList.remove("spotlight-pulse");
+        void heroRow.offsetWidth;
+        heroRow.classList.add("spotlight-pulse");
+      }
+      const cardWrapper = document.querySelector(".politician-match-card");
+      if (cardWrapper) {
+        const cardRect = cardWrapper.getBoundingClientRect();
+        if (cardRect.top < -30) {
+          cardWrapper.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
       }
     });
 
@@ -1166,8 +1198,14 @@ function renderIdeologyProfile(ideo, isTop = false) {
   const gradient = ideo.gradient || `linear-gradient(135deg, ${color}, #1d4ed8)`;
   const icon = ideo.icon || "🏛️";
 
+  const topIdeo = (currentRankedIdeologies && currentRankedIdeologies[0]) || ideo;
+  const isActuallyTop = (ideo.id === topIdeo.id);
+  const ideoRank = (currentRankedIdeologies && currentRankedIdeologies.findIndex(i => i.id === ideo.id) + 1) || 1;
+
   if (ideologyMatchBadge) {
-    ideologyMatchBadge.textContent = `${t.primaryIdeologyMatch || 'Zgodność:'} ${ideo.similarity}%`;
+    ideologyMatchBadge.textContent = isActuallyTop
+      ? `${t.primaryIdeologyMatch || 'Zgodność:'} ${ideo.similarity}%`
+      : `#${ideoRank} • ${t.primaryIdeologyMatch || 'Zgodność:'} ${ideo.similarity}%`;
     ideologyMatchBadge.style.background = gradient;
   }
   if (ideologyTitle) {
@@ -1175,6 +1213,32 @@ function renderIdeologyProfile(ideo, isTop = false) {
   }
   if (ideologySubtitle) ideologySubtitle.textContent = ideoSubtitle;
   if (ideologyDescription) ideologyDescription.textContent = ideoDesc;
+
+  // Active Ideology Spotlight Banner in ideology-card
+  if (ideologyCardActiveBadge) {
+    ideologyCardActiveBadge.textContent = isActuallyTop
+      ? `${t.ideologyMatchLabel || 'Zgodność:'} ${ideo.similarity}%`
+      : `#${ideoRank} • ${t.ideologyMatchLabel || 'Zgodność:'} ${ideo.similarity}%`;
+    ideologyCardActiveBadge.style.background = gradient;
+  }
+  if (ideologyActiveName) {
+    ideologyActiveName.textContent = ideoName;
+  }
+  if (ideologyActiveSub) {
+    ideologyActiveSub.textContent = ideoSubtitle;
+  }
+  if (ideologyActiveIcon) {
+    ideologyActiveIcon.textContent = icon;
+  }
+  if (ideologyActiveBanner) {
+    ideologyActiveBanner.style.setProperty("--ideology-color", color);
+    ideologyActiveBanner.style.borderColor = `${color}80`;
+    ideologyActiveBanner.style.boxShadow = `0 4px 18px ${color}25`;
+  }
+  if (ideologyActiveIconWrap) {
+    ideologyActiveIconWrap.style.borderColor = color;
+    ideologyActiveIconWrap.style.boxShadow = `0 0 16px ${color}50`;
+  }
 
   const ideologyCard = document.querySelector(".ideology-card");
   if (ideologyCard) {
@@ -1205,12 +1269,10 @@ function updateIdeologiesToggleButton() {
     toggleMoreIdeologiesBtn.classList.add("is-expanded");
     toggleMoreIdeologiesBtn.setAttribute("aria-expanded", "true");
     toggleMoreIdeologiesText.textContent = t.showFewerIdeologies || "Zwiń listę poglądów";
-    if (toggleIdeologiesIcon) toggleIdeologiesIcon.textContent = "▲";
   } else {
     toggleMoreIdeologiesBtn.classList.remove("is-expanded");
     toggleMoreIdeologiesBtn.setAttribute("aria-expanded", "false");
-    toggleMoreIdeologiesText.textContent = t.showMoreIdeologies || "Pokaż więcej poglądów (Top 12)";
-    if (toggleIdeologiesIcon) toggleIdeologiesIcon.textContent = "▼";
+    toggleMoreIdeologiesText.textContent = t.showAllIdeologies || "Pokaż wszystkie poglądy (katalog 32 nurtów)";
   }
 }
 
@@ -1261,11 +1323,18 @@ function renderIdeologiesRanking() {
     card.addEventListener("click", (e) => {
       createRippleEffect(e, card);
       renderIdeologyProfile(ideo);
-      const ideologyCard = document.querySelector(".ideology-card");
-      if (ideologyCard) {
-        ideologyCard.classList.remove("spotlight-pulse");
-        void ideologyCard.offsetWidth;
-        ideologyCard.classList.add("spotlight-pulse");
+      const banner = document.getElementById("ideologyActiveBanner");
+      if (banner) {
+        banner.classList.remove("spotlight-pulse");
+        void banner.offsetWidth;
+        banner.classList.add("spotlight-pulse");
+      }
+      const ideoCard = document.querySelector(".ideology-card");
+      if (ideoCard) {
+        const rect = ideoCard.getBoundingClientRect();
+        if (rect.top < -30) {
+          ideoCard.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
       }
     });
 

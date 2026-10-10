@@ -476,6 +476,178 @@ const testRankedPols = rankPoliticians(70, -40);
 assert(testRankedPols.length === 43, "Politician ranking returns complete catalog of 43 world politicians");
 assert(testRankedPols[0].similarity >= testRankedPols[1].similarity && testRankedPols[1].similarity >= testRankedPols[2].similarity, "Politician ranking is strictly sorted in descending match order");
 
+// Verify ranking UI logic in script.js
+const updatePolMatch = scriptContent.match(/function updatePoliticiansToggleButton\(\)\s*\{([\s\S]*?)\nfunction /);
+assert(updatePolMatch && !updatePolMatch[1].includes('toggleIdeologiesIcon'), "updatePoliticiansToggleButton independently targets politicians icon without mutating ideology icon");
+
+const renderPolMatch = scriptContent.match(/function renderPoliticiansRanking\(\)\s*\{([\s\S]*?)\nfunction /);
+assert(renderPolMatch && renderPolMatch[1].includes('slice(0, 10)') && !renderPolMatch[1].includes('slice(1'), "renderPoliticiansRanking includes rank #1 (starts at index 0) allowing full podium return");
+
+assert(scriptContent.includes('spotlightLeaderTitle'), "spotlightLeaderTitle is actively utilized for runner-up leader spotlights");
+assert(scriptContent.includes('showAllPoliticians') && scriptContent.includes('showAllIdeologies'), "showAllPoliticians and showAllIdeologies keys are actively used on toggle controls");
+assert(scriptContent.includes('ideologyActiveBanner') && scriptContent.includes('ideologyCardActiveBadge'), "Active ideology spotlight banner inside ideology-card is actively rendered and updated");
+
+// 8. Section [7]: Interactive Simulated DOM Runtime & Lifecycle
+console.log("\n[7] Testing Simulated DOM Runtime, Interactive Spotlighting & Multi-Language Toggle:");
+
+const vm = require('vm');
+
+class MockElement {
+  constructor(id = '', tag = 'div') {
+    this.id = id;
+    this.tagName = tag.toUpperCase();
+    this.classList = {
+      _classes: new Set(),
+      add: (c) => this.classList._classes.add(c),
+      remove: (c) => this.classList._classes.delete(c),
+      contains: (c) => this.classList._classes.has(c),
+      toggle: (c, force) => {
+        if (force === undefined) {
+          if (this.classList._classes.has(c)) this.classList._classes.delete(c);
+          else this.classList._classes.add(c);
+        } else if (force) {
+          this.classList._classes.add(c);
+        } else {
+          this.classList._classes.delete(c);
+        }
+      }
+    };
+    this.children = [];
+    this.dataset = {};
+    this.style = {
+      setProperty: (k, v) => { this.style[k] = v; },
+      getPropertyValue: (k) => this.style[k]
+    };
+    this.textContent = '';
+    this._innerHTML = '';
+    this._listeners = {};
+    this.attributes = {};
+  }
+  get innerHTML() { return this._innerHTML; }
+  set innerHTML(val) {
+    this._innerHTML = val;
+    this.children = [];
+  }
+  setAttribute(k, v) { this.attributes[k] = v; }
+  getAttribute(k) { return this.attributes[k]; }
+  addEventListener(event, fn) {
+    if (!this._listeners[event]) this._listeners[event] = [];
+    this._listeners[event].push(fn);
+  }
+  click() {
+    (this._listeners['click'] || []).forEach(fn => fn({ currentTarget: this, target: this }));
+  }
+  remove() {}
+  appendChild(child) {
+    this.children.push(child);
+  }
+  querySelector() { return new MockElement(); }
+  querySelectorAll() { return []; }
+  getBoundingClientRect() { return { top: 0, bottom: 0, left: 0, right: 0 }; }
+  scrollIntoView() {}
+}
+
+const simElements = {};
+const simHtml = fs.readFileSync(path.join(__dirname, '../index.html'), 'utf8');
+const simIdMatches = [...simHtml.matchAll(/id="([^"]+)"/g)].map(m => m[1]);
+simIdMatches.forEach(id => {
+  simElements[id] = new MockElement(id);
+});
+
+simElements['compassCanvas'].getContext = () => ({
+  clearRect: () => {}, fillRect: () => {}, strokeRect: () => {},
+  beginPath: () => {}, moveTo: () => {}, lineTo: () => {}, stroke: () => {},
+  arc: () => {}, fill: () => {}, fillText: () => {}, save: () => {}, restore: () => {},
+  translate: () => {}, rotate: () => {}, createRadialGradient: () => ({ addColorStop: () => {} }),
+  roundRect: () => {}
+});
+
+const simContext = {
+  window: {
+    addEventListener: () => {},
+    scrollTo: () => {},
+    innerHeight: 800,
+    innerWidth: 1200
+  },
+  document: {
+    getElementById: (id) => simElements[id] || new MockElement(id),
+    querySelector: () => new MockElement(),
+    querySelectorAll: () => [],
+    createElement: (tag) => new MockElement('', tag),
+    body: new MockElement('body'),
+    readyState: 'complete'
+  },
+  localStorage: {
+    store: {},
+    getItem: (k) => simContext.localStorage.store[k] || null,
+    setItem: (k, v) => { simContext.localStorage.store[k] = v; }
+  },
+  console: { log: () => {}, error: () => {}, warn: () => {} },
+  setTimeout: (fn) => setTimeout(fn, 0),
+  clearTimeout: () => {},
+  Math: Math
+};
+
+vm.createContext(simContext);
+
+let vmInitError = null;
+try {
+  vm.runInContext(fs.readFileSync(path.join(__dirname, '../questions.js'), 'utf8'), simContext);
+  vm.runInContext(fs.readFileSync(path.join(__dirname, '../worldData.js'), 'utf8'), simContext);
+  vm.runInContext(fs.readFileSync(path.join(__dirname, '../translations.js'), 'utf8'), simContext);
+  vm.runInContext(fs.readFileSync(path.join(__dirname, '../script.js'), 'utf8'), simContext);
+} catch (err) {
+  vmInitError = err;
+}
+assert(vmInitError === null, "Script loads without ReferenceError or Temporal Dead Zone exceptions during initApp");
+
+// Simulate quiz completion and results view
+vm.runInContext('userAnswers = new Array(100).fill(2);', simContext);
+vm.runInContext('showResults(false);', simContext);
+
+const getSim = (code) => vm.runInContext(code, simContext);
+
+assert(getSim('currentRankedPoliticians.length') === 43, "Simulation ranks all 43 politicians");
+assert(getSim('currentRankedIdeologies.length') === 32, "Simulation ranks all 32 ideologies");
+assert(simElements['otherPoliticiansList'].children.length === 10, "Politicians ranking initially renders top 10 (including #1)");
+assert(simElements['secondaryIdeologiesList'].children.length === 8, "Ideology ranking initially renders top 8 (including #1)");
+
+// Check Rank #1 presence and spotlighting in politicians ranking
+const simPolCard1 = simElements['otherPoliticiansList'].children[0];
+const topPolId = getSim('currentRankedPoliticians[0].id');
+assert(simPolCard1.dataset.id === topPolId, "First politician in ranking list is exactly Rank #1");
+
+// Click runner-up #4
+const simPolCard4 = simElements['otherPoliticiansList'].children[3];
+simPolCard4.click();
+assert(getSim('activePoliticianId') === simPolCard4.dataset.id, "Clicking runner-up correctly updates activePoliticianId");
+assert(simElements['politicianCardSubtitle'].textContent.includes('#4'), "Spotlight subtitle correctly displays '#4' position and translation");
+
+// Click back to Rank #1
+simPolCard1.click();
+assert(getSim('activePoliticianId') === topPolId, "Clicking Rank #1 card restores Top Match activePoliticianId seamlessly");
+assert(simElements['politicianCardTitle'].textContent === uiTranslations.pl.politicianCardTitle, "Card title reverts to primary Top Match title");
+
+// Test Expand politicians
+simElements['toggleMorePoliticiansBtn'].click();
+assert(simElements['otherPoliticiansList'].children.length === 43, "Clicking expand on politicians renders all 43 politicians");
+assert(simElements['toggleMorePoliticiansText'].textContent === uiTranslations.pl.showFewerPoliticians, "Toggle button text updates to collapse label");
+
+// Test Expand ideologies
+simElements['toggleMoreIdeologiesBtn'].click();
+assert(simElements['secondaryIdeologiesList'].children.length === 32, "Clicking expand on ideologies renders all 32 ideologies");
+assert(simElements['toggleMoreIdeologiesText'].textContent === uiTranslations.pl.showFewerIdeologies, "Toggle button text updates to collapse label");
+
+// Test Language toggling maintains parity and does not break state
+let langTogglesPassed = true;
+['en', 'ru', 'fr', 'pl'].forEach(l => {
+  vm.runInContext(`setLanguage('${l}');`, simContext);
+  if (simElements['toggleMorePoliticiansText'].textContent !== uiTranslations[l].showFewerPoliticians) {
+    langTogglesPassed = false;
+  }
+});
+assert(langTogglesPassed, "Language toggling updates expand button labels across all 4 languages dynamically");
+
 // Results summary
 console.log(`\n======================================================`);
 console.log(`TEST SUMMARY: ${passedTests} PASSED, ${failedTests} FAILED`);

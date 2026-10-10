@@ -1616,6 +1616,57 @@ body.theme-light .ripple-wave {
   margin-bottom: 20px;
 }
 
+.ideology-active-banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--bg-hover);
+  border: 1.5px solid var(--ideology-color, var(--accent-primary));
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 18px var(--ideology-color, rgba(59, 130, 246, 0.2));
+  transition: all 0.3s ease;
+}
+
+.ideology-active-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid var(--ideology-color, var(--accent-primary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.ideology-active-icon {
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.ideology-active-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.ideology-active-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 4px 0;
+  line-height: 1.25;
+}
+
+.ideology-active-sub {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
 .key-figures-box {
   margin-bottom: 20px;
 }
@@ -1809,16 +1860,15 @@ body.theme-light .ripple-wave {
 
 @keyframes spotlightPulse {
   0% {
-    transform: scale(0.995);
+    transform: scale(0.99);
     box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5);
   }
   50% {
-    transform: scale(1.012);
-    box-shadow: 0 0 28px 4px rgba(59, 130, 246, 0.4);
+    transform: scale(1.02);
+    box-shadow: 0 0 28px 4px var(--politician-color, var(--ideology-color, rgba(59, 130, 246, 0.45)));
   }
   100% {
     transform: scale(1);
-    box-shadow: 0 12px 36px -8px rgba(0, 0, 0, 0.25);
   }
 }
 
@@ -2086,9 +2136,22 @@ body.theme-light .ripple-wave {
 }
 
 .podium-mini-card:nth-child(1) .podium-rank-tag {
+  background: linear-gradient(135deg, #fbbf24, #d97706);
+  color: #000;
+  border-color: #f59e0b;
+  font-weight: 900;
+}
+
+.podium-mini-card:nth-child(2) .podium-rank-tag {
   background: linear-gradient(135deg, #94a3b8, #64748b);
   color: #fff;
   border-color: #64748b;
+}
+
+.podium-mini-card:nth-child(3) .podium-rank-tag {
+  background: linear-gradient(135deg, #d97706, #92400e);
+  color: #fff;
+  border-color: #b45309;
 }
 
 .podium-mini-avatar-wrap {

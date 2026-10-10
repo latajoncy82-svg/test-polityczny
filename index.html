@@ -276,7 +276,23 @@
 
         <!-- Ideology Details Card -->
         <div class="ideology-card">
-          <h3 id="ideologySectionTitle">Charakterystyka Twoich poglądów</h3>
+          <div class="match-card-header">
+            <div class="match-card-titles">
+              <h3 id="ideologySectionTitle">Charakterystyka Twoich poglądów</h3>
+            </div>
+            <div class="match-percentage-badge ideology-badge" id="ideologyCardActiveBadge">Zgodność: 98%</div>
+          </div>
+
+          <div class="ideology-active-banner" id="ideologyActiveBanner">
+            <div class="ideology-active-icon-wrap" id="ideologyActiveIconWrap">
+              <span class="ideology-active-icon" id="ideologyActiveIcon">🏛️</span>
+            </div>
+            <div class="ideology-active-details">
+              <h4 class="ideology-active-name" id="ideologyActiveName">Neokapitalizm</h4>
+              <p class="ideology-active-sub" id="ideologyActiveSub">Nowoczesny Wolny Rynek</p>
+            </div>
+          </div>
+
           <p id="ideologyDescription" class="ideology-text"></p>
           
           <div class="key-figures-box" id="keyFiguresBox">
@@ -293,7 +309,7 @@
             <div id="secondaryIdeologiesList" class="secondary-ideologies-grid"></div>
             <div class="expand-controls-row">
               <button id="toggleMoreIdeologiesBtn" class="btn-toggle-expand" type="button" aria-expanded="false">
-                <span id="toggleMoreIdeologiesText">Pokaż więcej poglądów (Top 12)</span>
+                <span id="toggleMoreIdeologiesText">Pokaż wszystkie poglądy (katalog 32 nurtów)</span>
                 <span class="toggle-icon" id="toggleIdeologiesIcon" aria-hidden="true">▼</span>
               </button>
             </div>
@@ -311,7 +327,7 @@
           </div>
 
           <div class="politician-profile-body">
-            <div class="politician-hero-row">
+            <div class="politician-hero-row" id="politicianHeroRow">
               <div class="politician-avatar-container" id="politicianAvatarContainer">
                 <img id="politicianPhoto" class="politician-photo" src="" alt="Portret lidera" loading="lazy" referrerpolicy="no-referrer" />
                 <span class="politician-flag" id="politicianFlag">🇦🇷</span>
@@ -344,7 +360,7 @@
               <div id="otherPoliticiansList" class="other-matches-grid"></div>
               <div class="expand-controls-row">
                 <button id="toggleMorePoliticiansBtn" class="btn-toggle-expand" type="button" aria-expanded="false">
-                  <span id="toggleMorePoliticiansText">Pokaż więcej liderów ze świata</span>
+                  <span id="toggleMorePoliticiansText">Pokaż wszystkich liderów (katalog 43 postaci)</span>
                   <span class="toggle-icon" id="togglePoliticiansIcon" aria-hidden="true">▼</span>
                 </button>
               </div>
