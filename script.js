@@ -498,6 +498,8 @@ function applyLanguage(lang) {
   if (filterAllPol && t.filterAllPoliticians) filterAllPol.textContent = t.filterAllPoliticians;
   const filterWw2Pol = document.getElementById("filterWw2PoliticiansBtn");
   if (filterWw2Pol && t.filterWw2) filterWw2Pol.textContent = t.filterWw2;
+  const filterHistPol = document.getElementById("filterHistoryPoliticiansBtn");
+  if (filterHistPol && t.filterHistory) filterHistPol.textContent = t.filterHistory;
   const filterActPol = document.getElementById("filterActivistsPoliticiansBtn");
   if (filterActPol && t.filterActivists) filterActPol.textContent = t.filterActivists;
   const filterContPol = document.getElementById("filterContemporaryPoliticiansBtn");
@@ -1391,7 +1393,7 @@ function updatePoliticiansToggleButton() {
   } else {
     toggleMorePoliticiansBtn.classList.remove("is-expanded");
     toggleMorePoliticiansBtn.setAttribute("aria-expanded", "false");
-    toggleMorePoliticiansText.textContent = t.showAllPoliticians || "Pokaż wszystkich liderów (katalog 43 postaci)";
+    toggleMorePoliticiansText.textContent = t.showAllPoliticians || "Pokaż wszystkich liderów (katalog 89 postaci)";
   }
 }
 
@@ -1399,16 +1401,51 @@ function renderPoliticiansRanking() {
   if (!otherPoliticiansList || !currentRankedPoliticians.length) return;
   const t = uiTranslations[currentLang] || {};
 
-  const ww2Ids = new Set(["franklin_roosevelt", "charles_de_gaulle", "wladyslaw_sikorski", "dwight_eisenhower", "joseph_stalin", "benito_mussolini", "chiang_kaishek"]);
-  const activistIds = new Set(["martin_luther_king", "mahatma_gandhi", "nelson_mandela", "rosa_luxemburg", "milton_friedman", "vaclav_havel", "winston_churchill", "thomas_jefferson", "lech_walesa", "juan_peron"]);
+  const ww2Ids = new Set([
+    "winston_churchill", "franklin_d_roosevelt", "adolf_hitler", "joseph_stalin",
+    "benito_mussolini", "charles_de_gaulle", "hideki_tojo", "wladyslaw_sikorski",
+    "dwight_d_eisenhower", "chiang_kai_shek", "neville_chamberlain"
+  ]);
+
+  const activistIds = new Set([
+    "martin_luther_king", "mahatma_gandhi", "nelson_mandela", "rosa_luxemburg",
+    "milton_friedman", "adam_smith", "murray_rothbard", "noam_chomsky",
+    "thomas_jefferson", "vaclav_havel", "lech_walesa", "thomas_sankara",
+    "greta_thunberg", "elon_musk"
+  ]);
+
+  const historyIds = new Set([
+    "woodrow_wilson", "david_lloyd_george", "georges_clemenceau", "wilhelm_ii",
+    "vladimir_lenin", "mustafa_kemal_ataturk", "otto_von_bismarck", "abraham_lincoln",
+    "theodore_roosevelt", "harry_s_truman", "nikita_khrushchev", "john_f_kennedy",
+    "lyndon_b_johnson", "richard_nixon", "mao_zedong", "mikhail_gorbachev",
+    "helmut_kohl", "francois_mitterrand", "indira_gandhi", "margaret_thatcher",
+    "ronald_reagan", "konrad_adenauer", "deng_xiaoping", "olof_palme",
+    "lee_kuan_yew", "clement_attlee", "juan_peron"
+  ]);
+
+  const contemporaryIds = new Set([
+    "bill_clinton", "george_w_bush", "barack_obama", "donald_trump",
+    "joe_biden", "angela_merkel", "emmanuel_macron", "vladimir_putin",
+    "xi_jinping", "narendra_modi", "boris_johnson", "justin_trudeau",
+    "jair_bolsonaro", "lula_da_silva", "olaf_scholz", "giorgia_meloni",
+    "pedro_sanchez", "viktor_orban", "jaroslaw_kaczynski", "mateusz_morawiecki",
+    "ursula_von_der_leyen", "tony_blair", "silvio_berlusconi", "alexandria_ocasio_cortez",
+    "marine_le_pen", "javier_milei", "ron_paul", "bernie_sanders",
+    "nayib_bukele", "jacinda_ardern", "pepe_mujica", "yanis_varoufakis",
+    "volodymyr_zelenskyy", "keir_starmer", "fumio_kishida", "sahra_wagenknecht",
+    "evo_morales"
+  ]);
 
   let filtered = currentRankedPoliticians;
   if (activePoliticianFilter === "ww2") {
     filtered = currentRankedPoliticians.filter(p => ww2Ids.has(p.id));
+  } else if (activePoliticianFilter === "history") {
+    filtered = currentRankedPoliticians.filter(p => historyIds.has(p.id));
   } else if (activePoliticianFilter === "activists") {
     filtered = currentRankedPoliticians.filter(p => activistIds.has(p.id));
   } else if (activePoliticianFilter === "contemporary") {
-    filtered = currentRankedPoliticians.filter(p => !ww2Ids.has(p.id) && !activistIds.has(p.id));
+    filtered = currentRankedPoliticians.filter(p => contemporaryIds.has(p.id));
   } else if (activePoliticianFilter === "all" || isPoliticiansExpanded) {
     filtered = currentRankedPoliticians;
   } else {
@@ -1578,7 +1615,7 @@ function updateIdeologiesToggleButton() {
   } else {
     toggleMoreIdeologiesBtn.classList.remove("is-expanded");
     toggleMoreIdeologiesBtn.setAttribute("aria-expanded", "false");
-    toggleMoreIdeologiesText.textContent = t.showAllIdeologies || "Pokaż wszystkie poglądy (katalog 32 nurtów)";
+    toggleMoreIdeologiesText.textContent = t.showAllIdeologies || "Pokaż wszystkie poglądy (katalog 44 nurtów)";
   }
 }
 
@@ -1789,7 +1826,7 @@ function showResults(animated = true) {
   currentSocScore = socScore;
   const t = uiTranslations[currentLang];
 
-  // 1. Dopasowanie Ideologii (32 ideologie)
+  // 1. Dopasowanie Ideologii (44 ideologie)
   currentRankedIdeologies = worldIdeologies.map(ideo => {
     const { dist, similarity } = calculateSimilarity(econScore, socScore, ideo.coordinates.econ, ideo.coordinates.soc);
     return { ...ideo, dist, similarity };

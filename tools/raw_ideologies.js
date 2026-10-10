@@ -361,8 +361,8 @@ const rawIdeologies = [
       "soc": -35
     },
     "icon": "🕊️",
-    "color": "#0284c7",
-    "gradient": "linear-gradient(135deg, #0284c7, #075985)"
+    "color": "#1e40af",
+    "gradient": "linear-gradient(135deg, #1e40af, #1d4ed8)"
   },
   {
     "id": "distributism",
@@ -795,8 +795,8 @@ const rawIdeologies = [
       "soc": 85
     },
     "icon": "Ⓐ",
-    "color": "#be123c",
-    "gradient": "linear-gradient(135deg, #be123c, #9f1239)"
+    "color": "#c026d3",
+    "gradient": "linear-gradient(135deg, #c026d3, #a21caf)"
   },
   {
     "id": "mutualism",
@@ -894,8 +894,8 @@ const rawIdeologies = [
       "soc": -35
     },
     "icon": "🚩",
-    "color": "#b91c1c",
-    "gradient": "linear-gradient(135deg, #b91c1c, #881337)"
+    "color": "#ef4444",
+    "gradient": "linear-gradient(135deg, #ef4444, #dc2626)"
   },
   {
     "id": "state_capitalism",
@@ -1027,8 +1027,8 @@ const rawIdeologies = [
       "soc": -20
     },
     "icon": "🏭",
-    "color": "#0284c7",
-    "gradient": "linear-gradient(135deg, #0284c7, #0369a1)"
+    "color": "#0d9488",
+    "gradient": "linear-gradient(135deg, #0d9488, #0f766e)"
   },
   {
     "id": "turbo_capitalism",

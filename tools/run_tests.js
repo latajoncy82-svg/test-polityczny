@@ -467,8 +467,10 @@ worldIdeologies.forEach(ideo => {
   if (!ideo.color || !ideo.color.startsWith('#') || !ideo.gradient) missingIdeoColors++;
   if (!ideo.icon || typeof ideo.icon !== 'string') missingIdeoIcons++;
 });
-assert(missingIdeoColors === 0, `All ${worldIdeologies.length} ideologies have distinct signature hex colors and gradients`);
+assert(missingIdeoColors === 0, `All ${worldIdeologies.length} ideologies have defined signature hex colors and gradients`);
 assert(missingIdeoIcons === 0, `All ${worldIdeologies.length} ideologies have distinctive icons/emblems`);
+const distinctIdeoColors = new Set(worldIdeologies.map(i => i.color.toLowerCase()));
+assert(distinctIdeoColors.size === worldIdeologies.length, `All ${worldIdeologies.length} ideologies have 100% unique signature hex colors (found ${distinctIdeoColors.size})`);
 
 // Politician countryCode mapping to genuine SVG flags
 let missingPolCountryCodes = 0;
@@ -500,7 +502,8 @@ const requiredNewUiKeys = [
   'ideologyRankingTitle',
   'ideologyMatchLabel',
   'spotlightLeaderTitle',
-  'viewAllRankings'
+  'viewAllRankings',
+  'filterHistory'
 ];
 let missingNewUiKeys = 0;
 requiredNewUiKeys.forEach(key => {
@@ -511,7 +514,7 @@ requiredNewUiKeys.forEach(key => {
     }
   });
 });
-assert(missingNewUiKeys === 0, `All 11 new ranking & expand UI strings have 100% translation parity in 4 languages`);
+assert(missingNewUiKeys === 0, `All ${requiredNewUiKeys.length} new ranking & expand UI strings have 100% translation parity in 4 languages`);
 
 // Verify test mode UI keys parity (Quick vs Full modes)
 const requiredModeKeys = [
@@ -636,6 +639,16 @@ simIdMatches.forEach(id => {
   simElements[id] = new MockElement(id);
 });
 
+// Populate dataset.filter for filter pill elements
+const pillFilterMatches = [...simHtml.matchAll(/<button[^>]*id="([^"]+)"[^>]*data-filter="([^"]+)"/g)];
+pillFilterMatches.forEach(m => {
+  if (simElements[m[1]]) simElements[m[1]].dataset.filter = m[2];
+});
+const pillFilterMatches2 = [...simHtml.matchAll(/<button[^>]*data-filter="([^"]+)"[^>]*id="([^"]+)"/g)];
+pillFilterMatches2.forEach(m => {
+  if (simElements[m[2]]) simElements[m[2]].dataset.filter = m[1];
+});
+
 simElements['compassCanvas'].getContext = () => ({
   clearRect: () => {}, fillRect: () => {}, strokeRect: () => {},
   beginPath: () => {}, moveTo: () => {}, lineTo: () => {}, stroke: () => {},
@@ -654,7 +667,19 @@ const simContext = {
   document: {
     getElementById: (id) => simElements[id] || new MockElement(id),
     querySelector: () => new MockElement(),
-    querySelectorAll: () => [],
+    querySelectorAll: (sel) => {
+      if (sel && sel.includes('#politicianFilterPills')) {
+        return [
+          simElements['filterTopPoliticiansBtn'],
+          simElements['filterAllPoliticiansBtn'],
+          simElements['filterContemporaryPoliticiansBtn'],
+          simElements['filterWw2PoliticiansBtn'],
+          simElements['filterHistoryPoliticiansBtn'],
+          simElements['filterActivistsPoliticiansBtn']
+        ].filter(Boolean);
+      }
+      return [];
+    },
     createElement: (tag) => new MockElement('', tag),
     body: new MockElement('body'),
     readyState: 'complete'
@@ -727,6 +752,45 @@ assert(simElements['politicianCardTitle'].textContent === uiTranslations.pl.poli
 simElements['toggleMorePoliticiansBtn'].click();
 assert(simElements['otherPoliticiansList'].children.length === worldPoliticians.length, `Clicking expand on politicians renders all ${worldPoliticians.length} politicians`);
 assert(simElements['toggleMorePoliticiansText'].textContent === uiTranslations.pl.showFewerPoliticians, "Toggle button text updates to collapse label");
+
+// Collapse politicians back to test category filtering
+simElements['toggleMorePoliticiansBtn'].click();
+assert(getSim('isPoliticiansExpanded') === false, "Politicians list collapsed successfully");
+
+// Test interactive category filter pills
+simElements['filterWw2PoliticiansBtn'].click();
+assert(getSim('activePoliticianFilter') === 'ww2', "Clicking WWII filter pill updates activePoliticianFilter to 'ww2'");
+assert(simElements['otherPoliticiansList'].children.length === 11, `WWII category filter renders all 11 WWII leaders (found ${simElements['otherPoliticiansList'].children.length})`);
+
+simElements['filterHistoryPoliticiansBtn'].click();
+assert(getSim('activePoliticianFilter') === 'history', "Clicking History filter pill updates activePoliticianFilter to 'history'");
+assert(simElements['otherPoliticiansList'].children.length === 27, `History & 20th century filter renders all 27 leaders (found ${simElements['otherPoliticiansList'].children.length})`);
+
+simElements['filterActivistsPoliticiansBtn'].click();
+assert(getSim('activePoliticianFilter') === 'activists', "Clicking Activists filter pill updates activePoliticianFilter to 'activists'");
+assert(simElements['otherPoliticiansList'].children.length === 14, `Activists and thinkers filter renders all 14 figures (found ${simElements['otherPoliticiansList'].children.length})`);
+
+simElements['filterContemporaryPoliticiansBtn'].click();
+assert(getSim('activePoliticianFilter') === 'contemporary', "Clicking Contemporary filter pill updates activePoliticianFilter to 'contemporary'");
+assert(simElements['otherPoliticiansList'].children.length === 37, `Contemporary filter renders all 37 modern leaders (found ${simElements['otherPoliticiansList'].children.length})`);
+
+simElements['filterTopPoliticiansBtn'].click();
+assert(getSim('activePoliticianFilter') === 'top', "Clicking Top 12 filter pill updates activePoliticianFilter to 'top'");
+assert(simElements['otherPoliticiansList'].children.length === 12, "Top 12 filter restores top 12 leaders view");
+
+simElements['filterAllPoliticiansBtn'].click();
+assert(getSim('activePoliticianFilter') === 'all', "Clicking All filter pill updates activePoliticianFilter to 'all'");
+assert(simElements['otherPoliticiansList'].children.length === 89, `All filter renders all 89 leaders (found ${simElements['otherPoliticiansList'].children.length})`);
+
+// Verify that neither index.html nor UI translations contain outdated catalog counts
+for (const l of ['pl', 'en', 'ru', 'fr']) {
+  assert(!uiTranslations[l].showAllPoliticians.includes('43'), `showAllPoliticians in ${l} does not reference outdated 43`);
+  assert(!uiTranslations[l].showAllIdeologies.includes('32'), `showAllIdeologies in ${l} does not reference outdated 32`);
+  assert(!uiTranslations[l].filterAllPoliticians.includes('43'), `filterAllPoliticians in ${l} does not reference outdated 43`);
+  assert(!uiTranslations[l].filterIdeoAll.includes('32'), `filterIdeoAll in ${l} does not reference outdated 32`);
+}
+assert(!simHtml.includes('(43)') && !simHtml.includes('43 postaci'), "index.html has no outdated '43' count references");
+assert(!simHtml.includes('(32)') && !simHtml.includes('32 nurtów') && !simHtml.includes('32 ideologi'), "index.html has no outdated '32' count references");
 
 // Test Expand ideologies
 simElements['toggleMoreIdeologiesBtn'].click();
