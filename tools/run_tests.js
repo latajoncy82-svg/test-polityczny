@@ -24,23 +24,23 @@ const { uiTranslations } = require('../translations.js');
 
 // 2. Validate Questions
 console.log("\n[1] Testing questions.js dataset:");
-assert(Array.isArray(questions) && questions.length === 140, "Dataset contains exactly 140 questions");
+assert(Array.isArray(questions) && questions.length === 150, "Dataset contains exactly 150 questions");
 
 const ids = questions.map(q => q.id);
 const uniqueIds = new Set(ids);
-assert(uniqueIds.size === 140 && ids[0] === 1 && ids[139] === 140, "Question IDs are sequential from 1 to 140");
+assert(uniqueIds.size === 150 && ids[0] === 1 && ids[149] === 150, "Question IDs are sequential from 1 to 150");
 
 const econQuestions = questions.filter(q => q.axis === "econ");
 const socQuestions = questions.filter(q => q.axis === "soc");
-assert(econQuestions.length === 70 && socQuestions.length === 70, "Perfect 70:70 balance between Economic and Social axes");
+assert(econQuestions.length === 75 && socQuestions.length === 75, "Perfect 75:75 balance between Economic and Social axes");
 
 const econPos = econQuestions.filter(q => q.multiplier === 1).length;
 const econNeg = econQuestions.filter(q => q.multiplier === -1).length;
-assert(econPos === 35 && econNeg === 35, "Economic axis has exactly 35 (+1) and 35 (-1) questions");
+assert(econPos === 38 && econNeg === 37, "Economic axis has exactly 38 (+1) and 37 (-1) questions");
 
 const socPos = socQuestions.filter(q => q.multiplier === 1).length;
 const socNeg = socQuestions.filter(q => q.multiplier === -1).length;
-assert(socPos === 35 && socNeg === 35, "Social axis has exactly 35 (+1) and 35 (-1) questions");
+assert(socPos === 37 && socNeg === 38, "Social axis has exactly 37 (+1) and 38 (-1) questions");
 
 // Validate questions per category have balanced pos and neg (+1 and -1)
 let categoryBalanceErrors = 0;
@@ -48,9 +48,9 @@ Object.keys(categories).forEach(catKey => {
   const catQs = questions.filter(q => q.categoryKey === catKey);
   const pos = catQs.filter(q => q.multiplier === 1).length;
   const neg = catQs.filter(q => q.multiplier === -1).length;
-  if (catQs.length < 10 || pos !== neg) categoryBalanceErrors++;
+  if (catQs.length < 12 || Math.abs(pos - neg) > 1) categoryBalanceErrors++;
 });
-assert(categoryBalanceErrors === 0, "All 12 categories have balanced questions with 1:1 pos and neg multiplier balance");
+assert(categoryBalanceErrors === 0, "All 12 categories have balanced questions with symmetrical pos and neg multiplier distribution");
 
 // Validate Quick Mode questions (30 questions)
 const quickQuestions = questions.filter(q => q.isQuick === true);
@@ -76,7 +76,7 @@ questions.forEach(q => {
     invalidCategoryKeys++;
   }
 });
-assert(missingQuestionTexts === 0, "All 140 questions have complete, non-empty translations in PL, EN, ES, DE, RU, FR");
+assert(missingQuestionTexts === 0, "All 150 questions have complete, non-empty translations in PL, EN, ES, DE, RU, FR");
 assert(invalidCategoryKeys === 0, "All questions reference valid category keys");
 
 assert(Object.keys(categories).length === 12, "Exactly 12 distinct categories/sectors present");
@@ -317,8 +317,8 @@ const allSkipped = runScoringSimulation(() => "skip");
 assert(allSkipped.econScore === 0 && allSkipped.socScore === 0, `All skipped answers yield safe center (0%, 0%) without zero-division error`);
 
 // Case E: Distinct Neutral (0 in denominator) vs. Skip (excluded from denominator)
-// Answer +2 on 6 econ questions (with multiplier=1). Total econ questions = 70.
-// Scenario 1: Answer Neutral (0) on remaining 64 econ questions -> score must dilute towards 0: 12/140 = 9%
+// Answer +2 on 6 econ questions (with multiplier=1). Total econ questions = 75.
+// Scenario 1: Answer Neutral (0) on remaining 69 econ questions -> score must dilute towards 0: 12/150 = 8%
 const diluteNeutral = runScoringSimulation((q) => {
   if (q.axis === "econ") {
     if (q.id <= 12 && q.multiplier === 1) return 2; // IDs 1, 3, 5, 7, 9, 11 (6 questions)
@@ -327,7 +327,7 @@ const diluteNeutral = runScoringSimulation((q) => {
   return 0;
 });
 
-// Scenario 2: Answer Skip ('skip') on remaining 64 questions -> score stays undiluted at 100%!
+// Scenario 2: Answer Skip ('skip') on remaining 69 questions -> score stays undiluted at 100%!
 const pureSkip = runScoringSimulation((q) => {
   if (q.axis === "econ") {
     if (q.id <= 12 && q.multiplier === 1) return 2;
@@ -336,7 +336,7 @@ const pureSkip = runScoringSimulation((q) => {
   return "skip";
 });
 
-assert(diluteNeutral.econScore === Math.round((12 / 140) * 100) && pureSkip.econScore === 100, `Mathematical proof: Neutral (0) dilutes score towards center (${diluteNeutral.econScore}%), while Skip excludes question without diluting (${pureSkip.econScore}%)`);
+assert(diluteNeutral.econScore === Math.round((12 / 150) * 100) && pureSkip.econScore === 100, `Mathematical proof: Neutral (0) dilutes score towards center (${diluteNeutral.econScore}%), while Skip excludes question without diluting (${pureSkip.econScore}%)`);
 
 // Sector breakdown calculation validation (12 sectors)
 function calculateMockSectorBreakdown(answers) {
@@ -356,21 +356,21 @@ function calculateMockSectorBreakdown(answers) {
   return scores;
 }
 
-const mockAnswersSkip = new Array(140).fill("skip");
+const mockAnswersSkip = new Array(150).fill("skip");
 mockAnswersSkip[0] = 2; // Q1 is economy with multiplier 1
 const sectorSkipResult = calculateMockSectorBreakdown(mockAnswersSkip);
 assert(sectorSkipResult.economy.scorePct === 100 && sectorSkipResult.economy.answered === 1, `Sector breakdown: Skip excludes unanswered questions, preserving 100% sector score for single answered question`);
 
-const mockAnswersNeutral = new Array(140).fill("skip");
+const mockAnswersNeutral = new Array(150).fill("skip");
 mockAnswersNeutral[0] = 2;
 // answer neutral (0) on other 9 economy questions (Q2 - Q10)
 for (let i = 1; i < 10; i++) mockAnswersNeutral[i] = 0;
 const sectorNeutralResult = calculateMockSectorBreakdown(mockAnswersNeutral);
 assert(sectorNeutralResult.economy.scorePct === 10 && sectorNeutralResult.economy.answered === 10, `Sector breakdown: Neutral (0) dilutes sector score towards center (10% with 10 questions factored)`);
 
-// Case F: Pure Agree (+1 on all questions) cancels out due to symmetric 30(+1) / 30(-1) questions
+// Case F: Pure Agree (+1 on all questions) yields virtual center (<=1% deviation due to 38/37 split, net 0 overall)
 const allAgree = runScoringSimulation(() => 1);
-assert(allAgree.econScore === 0 && allAgree.socScore === 0, `Agreeing to everything cancels out to (0%, 0%) due to symmetric questions`);
+assert(Math.abs(allAgree.econScore) <= 1 && Math.abs(allAgree.socScore) <= 1, `Agreeing to everything yields virtual center (${allAgree.econScore}%, ${allAgree.socScore}%) due to balanced questions`);
 
 // Quadrant coverage assertions
 function getQuadrant(e, s) {
@@ -749,7 +749,7 @@ assert(simElements['modeQuickBtn'].classList.contains('active') && !simElements[
 
 vm.runInContext('setTestMode("full");', simContext);
 assert(getSim('currentTestMode') === 'full', "Setting test mode to full updates currentTestMode");
-assert(getSim('getActiveQuestions().length') === 140, "Full mode provides exactly 140 active questions");
+assert(getSim('getActiveQuestions().length') === 150, "Full mode provides exactly 150 active questions");
 assert(simElements['modeFullBtn'].classList.contains('active') && !simElements['modeQuickBtn'].classList.contains('active'), "Full mode button is active and Quick mode button is inactive");
 
 // Simulate quiz completion and results view
