@@ -1,4 +1,4 @@
-// Baza 32 ideologii politycznych w 4 językach (PL, EN, RU, FR)
+// Baza 44 ideologii politycznych w 4 językach (PL, EN, RU, FR)
 const rawIdeologies = [
   {
     "id": "neocapitalism",
@@ -1062,6 +1062,395 @@ const rawIdeologies = [
     "icon": "🚀",
     "color": "#f43f5e",
     "gradient": "linear-gradient(135deg, #f43f5e, #e11d48)"
+  },
+  {
+    "id": "national_socialism",
+    "name": {
+      "pl": "Narodowy Socjalizm (Nazizm)",
+      "en": "National Socialism (Nazism)",
+      "ru": "Национал-социализм (Нацизм)",
+      "fr": "National-socialisme (Nazisme)"
+    },
+    "subtitle": {
+      "pl": "Totalitarny etatyzm, skrajny rasizm biologiczny, antysemityzm i militarystyczna autarkia",
+      "en": "Totalitarian statism, extreme biological racism, antisemitism, and militarized autarky",
+      "ru": "Тоталитарный этатизм, крайний биологический расизм, антисемитизм и милитаристская автаркия",
+      "fr": "Étatisme totalitaire, racisme biologique extrême, antisémitisme et autarcie militarisée"
+    },
+    "desc": {
+      "pl": "Ideologia III Rzeszy oparta na bezwzględnym podporządkowaniu jednostki totalitarnemu państwu (Führerprinzip), biologicznej teorii rasowej, likwidacji wolności obywatelskich, zbrojeniach i agresywnej ekspansji wojennej (Lebensraum). Gospodarka była ściśle podporządkowana machinie wojennej pod nadzorem państwa.",
+      "en": "The totalitarian ideology of Nazi Germany built on absolute subservience to the Führer, racial purity doctrines, annihilation of civil liberties, autarky, and genocidal expansionism (Lebensraum). The economy was directed toward militarized production.",
+      "ru": "Тоталитарная идеология нацистской Германии, основанная на культе вождя (фюрерпринцип), расовой теории, уничтожении гражданских свобод и агрессивной военной экспансии. Экономика подчинялась военной машине.",
+      "fr": "L'idéologie totalitaire du Troisième Reich fondée sur le principe du chef (Führerprinzip), le racisme biologique, la suppression des libertés et l'expansionnisme militaire génocidaire (Lebensraum)."
+    },
+    "keyFigures": [
+      "Adolf Hitler",
+      "Joseph Goebbels",
+      "Alfred Rosenberg"
+    ],
+    "coordinates": {
+      "econ": -25,
+      "soc": -98
+    },
+    "icon": "⚡",
+    "color": "#450a0a",
+    "gradient": "linear-gradient(135deg, #450a0a, #1f0505)"
+  },
+  {
+    "id": "classical_fascism",
+    "name": {
+      "pl": "Klasyczny Faszyzm (Włoski)",
+      "en": "Classical Fascism (Italian)",
+      "ru": "Классический фашизм (Итальянский)",
+      "fr": "Fascisme classique (Italien)"
+    },
+    "subtitle": {
+      "pl": "Totalitarny korporacjonizm, prymat państwa nad jednostką i zbrojny nacjonalizm",
+      "en": "Totalitarian corporatism, supremacy of the state over the individual, and militarized nationalism",
+      "ru": "Тоталитарный корпоративизм, примат государства над личностью и милитаристский национализм",
+      "fr": "Corporatisme totalitaire, suprématie de l'État sur l'individu et nationalisme armé"
+    },
+    "desc": {
+      "pl": "„Wszystko w państwie, nic poza państwem, nic przeciw państwu”. Faszyzm odrzucał liberalną demokrację, indywidualizm i marksizm, zastępując je dyktaturą wodza, zorganizowanym w korporacje społeczeństwem oraz kultem heroizmu i wojny.",
+      "en": "“Everything in the State, nothing outside the State, nothing against the State.” Classical fascism rejected liberal democracy, individualism, and Marxism in favor of a one-party dictatorship, corporatist economic organization, and imperial conquest.",
+      "ru": "«Всё в государстве, ничего вне государства, ничего против государства». Фашизм отвергает либеральную демократию, индивидуализм и марксизм в пользу культа вождя, корпоративного строя и имперской экспансии.",
+      "fr": "« Tout dans l'État, rien hors de l'État, rien contre l'État ». Le fascisme classique rejetait la démocratie libérale et le marxisme au profit de la dictature du chef et de l'organisation corporatiste."
+    },
+    "keyFigures": [
+      "Benito Mussolini",
+      "Giovanni Gentile"
+    ],
+    "coordinates": {
+      "econ": -20,
+      "soc": -92
+    },
+    "icon": "🏛️",
+    "color": "#1c1917",
+    "gradient": "linear-gradient(135deg, #1c1917, #09090b)"
+  },
+  {
+    "id": "militarism_imperialism",
+    "name": {
+      "pl": "Imperializm i Militaryzm",
+      "en": "Imperialism & Militarism",
+      "ru": "Империализм и милитаризм",
+      "fr": "Impérialisme et militarisme"
+    },
+    "subtitle": {
+      "pl": "Potęga zbrojna, ekspansja terytorialna mocarstwa i hierarchiczny porządek państwowy",
+      "en": "Armed strength, territorial expansion of great powers, and hierarchical state discipline",
+      "ru": "Военная мощь, территориальная экспансия великих держав и строгая государственная дисциплина",
+      "fr": "Puissance armée, expansion territoriale des empires et discipline étatique hiérarchique"
+    },
+    "desc": {
+      "pl": "Pogląd, wedle którego miarą wielkości narodu i państwa jest jego siła militarna, zdolność do prowadzenia wojen oraz podporządkowywania sobie innych terytoriów. Gospodarka i społeczeństwo są zorganizowane hierarchicznie z prymatem armii.",
+      "en": "The political doctrine holding that national greatness is defined by armed power, conquest, and dominating spheres of influence. Civil society and industry are subordinated to military preparedness and imperial ambition.",
+      "ru": "Доктрина, согласно которой величие нации измеряется военной мощью, завоеваниями и геополитическим доминированием. Промышленность и общество подчинены военным целям.",
+      "fr": "Doctrine politique considérant que la grandeur d'une nation repose sur la puissance militaire, la conquête coloniale et la subordination de la société aux impératifs armés."
+    },
+    "keyFigures": [
+      "Kaiser Wilhelm II",
+      "Hideki Tojo",
+      "Otto von Bismarck"
+    ],
+    "coordinates": {
+      "econ": 20,
+      "soc": -85
+    },
+    "icon": "🎖️",
+    "color": "#3f3f46",
+    "gradient": "linear-gradient(135deg, #3f3f46, #18181b)"
+  },
+  {
+    "id": "bolshevism",
+    "name": {
+      "pl": "Bolszewizm (Marksizm-Leninizm)",
+      "en": "Bolshevism (Marxism-Leninism)",
+      "ru": "Большевизм (Марксизм-ленинизм)",
+      "fr": "Bolchevisme (Marxisme-léninisme)"
+    },
+    "subtitle": {
+      "pl": "Awangarda partii robotniczej, dyktatura proletariatu, likwidacja własności prywatnej i centralne planowanie",
+      "en": "Vanguard party rule, dictatorship of the proletariat, abolition of private capital, and central planning",
+      "ru": "Авангардная партия, диктатура пролетариата, ликвидация частной собственности и плановая экономика",
+      "fr": "Parti d'avant-garde, dictature du prolétariat, abolition du capital privé et planification centrale"
+    },
+    "desc": {
+      "pl": "Radykalny nurt rewolucyjnego komunizmu stworzony przez Włodzimierza Lenina. Zakładał obalenie kapitalizmu drogą zbrojnej rewolucji, monopol władzy partii komunistycznej, nacjonalizację całego przemysłu i bezwzględną walkę z klasami posiadającymi.",
+      "en": "The revolutionary communist doctrine formulated by Vladimir Lenin. It advocated violent overthrow of bourgeois capitalism, a disciplined vanguard party monopoly, total nationalization of production, and suppressing class enemies.",
+      "ru": "Революционное коммунистическое учение, созданное Лениным. Предусматривает свержение буржуазии путем вооруженной революции, монополию партии, тотальное обобществление средств производства и классовую борьбу.",
+      "fr": "Doctrine communiste révolutionnaire fondée par Lénine, préconisant le renversement du capitalisme par la force, le rôle dirigeant du parti d'avant-garde et la nationalisation intégrale de l'économie."
+    },
+    "keyFigures": [
+      "Vladimir Lenin",
+      "Joseph Stalin",
+      "Leon Trotsky"
+    ],
+    "coordinates": {
+      "econ": -96,
+      "soc": -85
+    },
+    "icon": "🚩",
+    "color": "#7f1d1d",
+    "gradient": "linear-gradient(135deg, #7f1d1d, #450a0a)"
+  },
+  {
+    "id": "kemalism",
+    "name": {
+      "pl": "Kemalizm (Republikański Sekularyzm)",
+      "en": "Kemalism (Turkish Republicanism)",
+      "ru": "Кемализм (Республиканский секуляризм)",
+      "fr": "Kémalisme (Sécularisme républicain)"
+    },
+    "subtitle": {
+      "pl": "Radykalny laicyzm, modernizacja, republikanizm i reformizm narodowy",
+      "en": "Radical secularism, rapid state-led modernization, republicanism, and civic reformism",
+      "ru": "Радикальный секуляризм, форсированная модернизация, республиканизм и реформизм",
+      "fr": "Laïcité républicaine stricte, modernisation rapide impulsée par l'État et réformisme national"
+    },
+    "desc": {
+      "pl": "Fundament ustrojowy Republiki Turcji oparty na Sześciu Strzałach Atatürka: republikanizmie, nacjonalizmie obywatelskim, ludowizmie, etatyzmie gospodarczym, laicyzmie i rewolucyjnym reformizmie. Dążył do przekształcenia tradycyjnego społeczeństwa w nowoczesny naród europejskiego typu.",
+      "en": "The founding ideology of modern Turkey based on Atatürk's Six Arrows: republicanism, civic nationalism, populism, statism, strict secularism (laicism), and reformism. It aimed to transform a feudal imperial realm into a progressive, secular nation-state.",
+      "ru": "Основополагающая идеология Турции, базирующаяся на «Шести стрелах» Ататюрка: республиканизм, национализм, народность, лаицизм (светскость), этатизм и реформизм. Превратила страну в современное светское государство.",
+      "fr": "L'idéologie fondatrice de la Turquie moderne reposant sur les « Six Flèches » d'Atatürk : républicanisme, nationalisme civique, populisme, étatisme, laïcité intransigeante et réformisme permanent."
+    },
+    "keyFigures": [
+      "Mustafa Kemal Atatürk",
+      "İsmet İnönü"
+    ],
+    "coordinates": {
+      "econ": -10,
+      "soc": 25
+    },
+    "icon": "🏹",
+    "color": "#0369a1",
+    "gradient": "linear-gradient(135deg, #0369a1, #0284c7)"
+  },
+  {
+    "id": "maoism",
+    "name": {
+      "pl": "Maoizm (Marksizm-Leninizm-Maoizm)",
+      "en": "Maoism (Marxism-Leninism-Maoism)",
+      "ru": "Маоизм (Идеи Мао Цзэдуна)",
+      "fr": "Maoïsme"
+    },
+    "subtitle": {
+      "pl": "Wiejska rewolucja chłopska, wojna ludowa, nieustanna walka klasowa i rewolucja kulturalna",
+      "en": "Peasant-based agrarian communism, protracted people's war, continuous cultural revolution",
+      "ru": "Опора на крестьянство, народная война, непрерывная классовая борьба и культурная революция",
+      "fr": "Communisme agraire paysan, guerre populaire prolongée et révolution culturelle permanente"
+    },
+    "desc": {
+      "pl": "Wariant komunizmu rozwinięty przez Mao Zedonga w Chinach. W przeciwieństwie do marksizmu radzieckiego, główną siłą napędową rewolucji uczynił chłopstwo. Charakteryzował się masową mobilizacją społeczną, wojną partyzancką i dążeniem do wykorzenienia „burżuazyjnych naleciałości” w kulturze.",
+      "en": "Chinese variant of revolutionary communism adapted by Mao Zedong. Centered on the peasantry as the primary revolutionary class rather than urban proletariat, it championed continuous class struggle, guerrilla people's war, and anti-revisionism.",
+      "ru": "Китайская адаптация марксизма-ленинизма Мао Цзэдуном. Сделала ставку на крестьянские массы, народную войну, непрерывную чистку от «буржуазного перерождения» и мобилизационную экономику.",
+      "fr": "Adaptation chinoise du marxisme-léninisme par Mao Zedong, plaçant la paysannerie au cœur de la révolution et préconisant la guerre populaire ainsi que la révolution culturelle."
+    },
+    "keyFigures": [
+      "Mao Zedong",
+      "Lin Biao"
+    ],
+    "coordinates": {
+      "econ": -96,
+      "soc": -75
+    },
+    "icon": "⭐",
+    "color": "#9f1239",
+    "gradient": "linear-gradient(135deg, #9f1239, #881337)"
+  },
+  {
+    "id": "neoconservatism",
+    "name": {
+      "pl": "Neokonserwatyzm (Interwencjonizm Hawkish)",
+      "en": "Neoconservatism (Hawkish Global Leadership)",
+      "ru": "Неоконсерватизм (Геополитический интервенционизм)",
+      "fr": "Néo-conservatisme (Interventionnisme libéral)"
+    },
+    "subtitle": {
+      "pl": "Amerykańskie przywództwo moralne, wolny rynek i zbrojna promocja demokracji na świecie",
+      "en": "Moral realism, free enterprise, assertive defense buildup, and promoting democracy abroad",
+      "ru": "Американское лидерство, свободный рынок, мощный ВПК и продвижение демократии силой",
+      "fr": "Leadership géopolitique affirmé, libre entreprise et interventionnisme militaire démocratique"
+    },
+    "desc": {
+      "pl": "Nurt polityczny łączący wiarę w wolny rynek i tradycyjne wartości z agresywną, interwencjonistyczną polityką zagraniczną. Odrzuca izolacjonizm, uznając, że wolny świat musi aktywnie eliminować reżimy autorytarne i terroryzm za pomocą potęgi militarnej.",
+      "en": "A political philosophy combining free-market economics with hawkish, interventionist foreign policy. Neoconservatives reject isolationism, arguing that democracies have a moral obligation and strategic need to project military strength against rogue regimes.",
+      "ru": "Политическое направление, сочетающее рыночную экономику с жестким внешнеполитическим интервенционизмом. Сторонники выступают за превентивные военные удары против диктатур и глобальную роль США.",
+      "fr": "Courant politique alliant libéralisme économique et politique étrangère interventionniste inflexible. Il soutient l'usage de la force militaire pour renverser les régimes autoritaires."
+    },
+    "keyFigures": [
+      "George W. Bush",
+      "Dick Cheney",
+      "Paul Wolfowitz"
+    ],
+    "coordinates": {
+      "econ": 55,
+      "soc": -40
+    },
+    "icon": "🦅",
+    "color": "#1e3a8a",
+    "gradient": "linear-gradient(135deg, #1e3a8a, #172554)"
+  },
+  {
+    "id": "right_wing_populism",
+    "name": {
+      "pl": "Prawicowy Populizm (Suwerenizm Ludowy)",
+      "en": "Right-Wing Populism (National Sovereignism)",
+      "ru": "Правый популизм (Национальный суверенизм)",
+      "fr": "Populisme de droite (Souverainisme populaire)"
+    },
+    "subtitle": {
+      "pl": "Sprzeciw wobec globalistycznych elit, obrona granic, tożsamości kulturowej i interesu zwykłych obywateli",
+      "en": "Rejection of globalist elites, strict borders, defense of cultural identity, and working-class patriotism",
+      "ru": "Борьба с глобалистскими элитами, закрытие границ, защита традиционной культуры и интересов народа",
+      "fr": "Rejet des élites mondialistes, contrôle strict des frontières, identité nationale et patriotisme populaire"
+    },
+    "desc": {
+      "pl": "Ruch polityczny przeciwstawiający „uczciwy lud” skorumpowanym elitom, instytucjom ponadnarodowym i masowej imigracji. Łączy patriotyzm gospodarczy z bezkompromisową ochroną granic narodowych i sprzeciwem wobec ideologii progresywnych.",
+      "en": "A populist ideology pitting 'the virtuous people' against detached globalist establishments, multinational bureaucrats, and open-border policies. It combines national protectionism or deregulation with strict border security and cultural patriotism.",
+      "ru": "Движение, противопоставляющее интересы простого народа наднациональным институтам и либеральным элитам. Требует пресечения нелегальной миграции, протекционизма и защиты национального суверенитета.",
+      "fr": "Mouvement politique opposant le peuple aux oligarchies mondialistes et aux institutions supranationales. Il défend la souveraineté des frontières, la priorité nationale et l'identité culturelle."
+    },
+    "keyFigures": [
+      "Donald Trump",
+      "Marine Le Pen",
+      "Jair Bolsonaro"
+    ],
+    "coordinates": {
+      "econ": 40,
+      "soc": -75
+    },
+    "icon": "📢",
+    "color": "#c2410c",
+    "gradient": "linear-gradient(135deg, #c2410c, #9a3412)"
+  },
+  {
+    "id": "radical_green_left",
+    "name": {
+      "pl": "Radykalna Lewica Klimatyczna (Eko-Sprawiedliwość)",
+      "en": "Radical Climate Left (Climate Justice)",
+      "ru": "Радикальные левые климатисты (Эко-справедливость)",
+      "fr": "Gauche radicale écologiste (Justice climatique)"
+    },
+    "subtitle": {
+      "pl": "Konieczność zmiany systemu, odejście od wzrostu gospodarczego (degrowth), dekarbonizacja i sprawiedliwość społeczna",
+      "en": "System change over climate change, post-growth economics (degrowth), rapid decarbonization, and social justice",
+      "ru": "Смена системы вместо изменения климата, концепция антироста (degrowth) и немедленный запрет ископаемого топлива",
+      "fr": "Changement de système, décroissance, neutralité carbone immédiate et justice écologique"
+    },
+    "desc": {
+      "pl": "„System change, not climate change”. Uznajesz, że kryzys klimatyczny jest bezpośrednim skutkiem kapitalistycznej eksploatacji i dążenia do nieskończonego zysku. Wymagasz natychmiastowego zamknięcia energetyki kopalnej, drastycznej redystrybucji bogactwa i podporządkowania gospodarki planecie.",
+      "en": "“System change, not climate change.” This philosophy asserts that global ecological breakdown is an inevitable outcome of capitalist profit motives. It demands immediate halting of fossil fuels, radical wealth redistribution, and post-growth ecological planning.",
+      "ru": "Убеждение, что климатический кризис порожден капиталистической погоней за прибылью. Требует немедленного отказа от нефти и газа, введения жестких климатических налогов и экологического социализма.",
+      "fr": "Ce courant affirme que le dérèglement climatique découle de la prédation capitaliste. Il exige l'arrêt immédiat des énergies fossiles, une redistribution radicale et la décroissance planifiée."
+    },
+    "keyFigures": [
+      "Greta Thunberg",
+      "Alexandria Ocasio-Cortez"
+    ],
+    "coordinates": {
+      "econ": -78,
+      "soc": 90
+    },
+    "icon": "🌍",
+    "color": "#15803d",
+    "gradient": "linear-gradient(135deg, #15803d, #166534)"
+  },
+  {
+    "id": "illiberal_democracy",
+    "name": {
+      "pl": "Nieliberalna Demokracja (Konserwatywny Suwerenizm)",
+      "en": "Illiberal Democracy (Conservative Sovereignism)",
+      "ru": "Нелиберальная демократия (Суверенная демократия)",
+      "fr": "Démocratie illibérale (Souverainisme conservateur)"
+    },
+    "subtitle": {
+      "pl": "Rządy większości bez liberalnych dogmatów, tradycyjna rodzina, suwerenność i prorodzinny etatyzm",
+      "en": "Majoritarian rule free from progressive dogmas, traditional family policy, and national constitutional supremacy",
+      "ru": "Правление большинства без навязанного либерализма, традиционные ценности и примат национального права",
+      "fr": "Gouvernement majoritaire souverain affranchi du libéralisme sociétal, politique familiale et primauté constitutionnelle"
+    },
+    "desc": {
+      "pl": "Koncepcja ustrojowa odrzucająca zachodni liberalizm światopoglądowy na rzecz tożsamości narodowej i wartości chrześcijańskich. Podkreśla, że państwo ma prawo bronić swojej kultury, wspierać dzietność rodzimych obywateli i podporządkowywać instytucje woli większości wyborców.",
+      "en": "A governing model arguing that democratic legitimacy does not require adopting Western social liberalism. It prioritizes Christian cultural heritage, strong pronatalist family subsidies, judicial independence from foreign courts, and state defense of national identity.",
+      "ru": "Концепция, утверждающая право суверенного государства защищать национальные и религиозные традиции от давления транснациональных органов, поддерживать рождаемость и защищать границы.",
+      "fr": "Modèle institutionnel affirmant que la démocratie populaire n'implique pas le libéralisme sociétal. Il met en avant les racines chrétiennes, l'aide massive aux familles et l'autorité souveraine face aux instances internationales."
+    },
+    "keyFigures": [
+      "Viktor Orbán",
+      "Jarosław Kaczyński"
+    ],
+    "coordinates": {
+      "econ": -15,
+      "soc": -85
+    },
+    "icon": "🏰",
+    "color": "#a16207",
+    "gradient": "linear-gradient(135deg, #a16207, #78350f)"
+  },
+  {
+    "id": "gaullism",
+    "name": {
+      "pl": "Gaullizm (Niezależność i Wielkość Państwa)",
+      "en": "Gaullism (National Grandeur & Dirigisme)",
+      "ru": "Голлизм (Величие нации и дирижизм)",
+      "fr": "Gaullisme (Grandeur nationale et dirigisme)"
+    },
+    "subtitle": {
+      "pl": "Wielkość narodu, strategiczna autonomia geopolityczna, silna władza wykonawcza i państwowy planizm",
+      "en": "National independence, strategic geopolitical autonomy, strong presidential executive, and economic dirigisme",
+      "ru": "Национальное величие («грандёр»), независимая внешняя политика, сильный президент и государственное планирование",
+      "fr": "Indépendance nationale, souveraineté stratégique, exécutif fort et dirigisme économique"
+    },
+    "desc": {
+      "pl": "Francuska doktryna polityczna sformułowana przez Charles'a de Gaulle'a. Oparta na niezależności militarnej (własny arsenał nuklearny), odrzuceniu dominacji supermocarstw, silnej roli prezydenta w konstytucji oraz państwowym sterowaniu strategicznymi sektorami przemysłu (dirigisme).",
+      "en": "The political legacy of Charles de Gaulle centered on French national sovereignty, nuclear independence, rejecting subservience to foreign powers, an assertive presidential executive, and state-directed economic planning (dirigisme).",
+      "ru": "Французская доктрина, созданная Шарлем де Голлем. Базируется на ядерном сдерживании, независимости от сверхдержав, сильной президентской власти и государственном участии в стратегической индустрии (дирижизм).",
+      "fr": "Héritage politique de Charles de Gaulle fondé sur la souveraineté absolue de la France, la dissuasion nucléaire indépendante, le refus des hégémonies et la planification économique stratégique."
+    },
+    "keyFigures": [
+      "Charles de Gaulle",
+      "Georges Pompidou"
+    ],
+    "coordinates": {
+      "econ": -15,
+      "soc": -55
+    },
+    "icon": "⚜️",
+    "color": "#312e81",
+    "gradient": "linear-gradient(135deg, #312e81, #1e1b4b)"
+  },
+  {
+    "id": "dengism",
+    "name": {
+      "pl": "Dengizm (Socjalizm z Chińską Charakterystyką)",
+      "en": "Dengism (Socialism with Chinese Characteristics)",
+      "ru": "Дэнсизм (Социализм с китайской спецификой)",
+      "fr": "Dengisme (Socialisme aux caractéristiques chinoises)"
+    },
+    "subtitle": {
+      "pl": "Pragmatyczny rynek, Specjalne Strefy Ekonomiczne, cztery modernizacje i monopol partii komunistycznej",
+      "en": "Pragmatic market mechanisms, Special Economic Zones, rapid industrialization under Communist Party rule",
+      "ru": "Прагматичные рыночные реформы, специальные экономические зоны и сохранение монополии компартии",
+      "fr": "Pragmatisme économique de marché, zones économiques spéciales et monopole politique du parti"
+    },
+    "desc": {
+      "pl": "Architektura współczesnego rozwoju Chin stworzona przez Deng Xiaopinga. Oparta na haśle: „Nieważne, czy kot jest czarny, czy biały, byle łapał myszy”. Połączyła reformy wolnorynkowe, prywatną przedsiębiorczość i zagraniczne inwestycje z żelaznym monopolem władzy Komunistycznej Partii Chin.",
+      "en": "The governing philosophy pioneered by Deng Xiaoping: 'It doesn't matter whether a cat is black or white, as long as it catches mice.' It introduced free-market incentives, foreign capital, and Special Economic Zones while preserving total political hegemony of the Communist Party.",
+      "ru": "Курс реформ и открытости Дэн Сяопина. Сочетание элементов рыночного капитализма, частной инициативы и привлечения иностранных инвестиций при незыблемой политической монополии Компартии Китая.",
+      "fr": "Philosophie de développement impulsée par Deng Xiaoping : « Peu importe qu'un chat soit noir ou blanc, pourvu qu'il attrape les souris ». Alliance du dynamisme capitaliste et de la poigne du Parti communiste."
+    },
+    "keyFigures": [
+      "Deng Xiaoping",
+      "Xi Jinping"
+    ],
+    "coordinates": {
+      "econ": 35,
+      "soc": -80
+    },
+    "icon": "🐲",
+    "color": "#881337",
+    "gradient": "linear-gradient(135deg, #881337, #4c0519)"
   }
 ];
 

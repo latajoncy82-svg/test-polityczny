@@ -161,7 +161,7 @@ assert(!!gandhi, "Historical activist Mahatma Gandhi present in dataset");
 const churchill = worldPoliticians.find(p => p.id === "winston_churchill");
 assert(!!churchill, "Historical leader Winston Churchill present in dataset");
 
-// Validate WWII leaders present
+// Validate WWII leaders present (Allies and Axis uncensored)
 const wwiiLeaderIds = [
   { id: "franklin_d_roosevelt", name: "Franklin D. Roosevelt" },
   { id: "charles_de_gaulle", name: "Charles de Gaulle" },
@@ -169,7 +169,9 @@ const wwiiLeaderIds = [
   { id: "dwight_d_eisenhower", name: "Dwight D. Eisenhower" },
   { id: "joseph_stalin", name: "Joseph Stalin" },
   { id: "benito_mussolini", name: "Benito Mussolini" },
-  { id: "chiang_kai_shek", name: "Chiang Kai-shek" }
+  { id: "chiang_kai_shek", name: "Chiang Kai-shek" },
+  { id: "adolf_hitler", name: "Adolf Hitler" },
+  { id: "hideki_tojo", name: "Hideki Tojo" }
 ];
 
 let missingWwiiLeaders = 0;
@@ -183,6 +185,44 @@ wwiiLeaderIds.forEach(wl => {
   }
 });
 assert(missingWwiiLeaders === 0, `All ${wwiiLeaderIds.length} prominent WWII leaders successfully present in dataset with exact historical names`);
+
+// Validate WWI, Cold War, Modern, and Additional figures requested
+const requiredNewFigures = [
+  "woodrow_wilson", "david_lloyd_george", "georges_clemenceau", "wilhelm_ii",
+  "vladimir_lenin", "mustafa_kemal_ataturk", "harry_s_truman", "nikita_khrushchev",
+  "john_f_kennedy", "lyndon_b_johnson", "richard_nixon", "mao_zedong",
+  "mikhail_gorbachev", "helmut_kohl", "francois_mitterrand", "indira_gandhi",
+  "bill_clinton", "george_w_bush", "barack_obama", "donald_trump",
+  "joe_biden", "vladimir_putin", "xi_jinping", "boris_johnson",
+  "jair_bolsonaro", "olaf_scholz", "giorgia_meloni", "pedro_sanchez",
+  "viktor_orban", "jaroslaw_kaczynski", "mateusz_morawiecki", "ursula_von_der_leyen",
+  "greta_thunberg", "elon_musk", "otto_von_bismarck", "abraham_lincoln",
+  "theodore_roosevelt", "neville_chamberlain", "konrad_adenauer", "deng_xiaoping",
+  "tony_blair", "silvio_berlusconi", "alexandria_ocasio_cortez", "marine_le_pen"
+];
+let missingNewFigures = 0;
+requiredNewFigures.forEach(id => {
+  if (!worldPoliticians.find(p => p.id === id)) {
+    missingNewFigures++;
+    console.error(`Missing required figure: ${id}`);
+  }
+});
+assert(missingNewFigures === 0, `All ${requiredNewFigures.length} new world figures from the prompt successfully present in dataset`);
+
+// Validate required new ideologies
+const requiredNewIdeologies = [
+  "national_socialism", "classical_fascism", "militarism_imperialism", "bolshevism",
+  "kemalism", "maoism", "neoconservatism", "right_wing_populism",
+  "radical_green_left", "illiberal_democracy", "gaullism", "dengism"
+];
+let missingNewIdeos = 0;
+requiredNewIdeologies.forEach(id => {
+  if (!worldIdeologies.find(i => i.id === id)) {
+    missingNewIdeos++;
+    console.error(`Missing required ideology: ${id}`);
+  }
+});
+assert(missingNewIdeos === 0, `All ${requiredNewIdeologies.length} specialized ideologies successfully present in dataset`);
 
 let missingLocalPhotos = 0;
 worldPoliticians.forEach(pol => {
@@ -438,7 +478,7 @@ worldPoliticians.forEach(pol => {
 assert(missingPolCountryCodes === 0, `All ${worldPoliticians.length} politicians have valid country codes for SVG flags`);
 
 // Verify script.js contains svgFlags dictionary with all required countries
-const requiredFlags = ['ar','us','gb','fr','de','it','pl','ua','ca','br','se','sg','sv','in','nz','uy','gr','jp','bf','za','bo','cz','sco','ussr','tw','global'];
+const requiredFlags = ['ar','us','gb','fr','de','it','pl','ua','ca','br','se','sg','sv','in','nz','uy','gr','jp','bf','za','bo','cz','sco','ussr','tw','global','tr','cn','ru','es','hu','eu'];
 let missingScriptFlags = 0;
 requiredFlags.forEach(f => {
   if (!scriptContent.includes(`${f}:`) && !scriptContent.includes(`"${f}":`) && !scriptContent.includes(`'${f}':`)) {
@@ -511,11 +551,11 @@ function rankPoliticians(econ, soc) {
 }
 
 const testRankedIdeos = rankIdeologies(70, -40);
-assert(testRankedIdeos.length === 32, "Ideology ranking returns complete catalog of 32 ideologies");
+assert(testRankedIdeos.length === worldIdeologies.length, `Ideology ranking returns complete catalog of ${worldIdeologies.length} ideologies`);
 assert(testRankedIdeos[0].similarity >= testRankedIdeos[1].similarity && testRankedIdeos[1].similarity >= testRankedIdeos[2].similarity, "Ideology ranking is strictly sorted in descending match order");
 
 const testRankedPols = rankPoliticians(70, -40);
-assert(testRankedPols.length === 43, "Politician ranking returns complete catalog of 43 world politicians");
+assert(testRankedPols.length === worldPoliticians.length, `Politician ranking returns complete catalog of ${worldPoliticians.length} world politicians`);
 assert(testRankedPols[0].similarity >= testRankedPols[1].similarity && testRankedPols[1].similarity >= testRankedPols[2].similarity, "Politician ranking is strictly sorted in descending match order");
 
 // Verify ranking UI logic in script.js
@@ -660,8 +700,8 @@ assert(simElements['modeFullBtn'].classList.contains('active') && !simElements['
 vm.runInContext('userAnswers = new Array(getActiveQuestions().length).fill(2);', simContext);
 vm.runInContext('showResults(false);', simContext);
 
-assert(getSim('currentRankedPoliticians.length') === 43, "Simulation ranks all 43 politicians");
-assert(getSim('currentRankedIdeologies.length') === 32, "Simulation ranks all 32 ideologies");
+assert(getSim('currentRankedPoliticians.length') === worldPoliticians.length, `Simulation ranks all ${worldPoliticians.length} politicians`);
+assert(getSim('currentRankedIdeologies.length') === worldIdeologies.length, `Simulation ranks all ${worldIdeologies.length} ideologies`);
 assert(getSim('currentRankedParties.length') === 15, "Simulation ranks all 15 world parties");
 assert(simElements['otherPoliticiansList'].children.length === 12, "Politicians ranking initially renders top 12 (including #1)");
 assert(simElements['secondaryIdeologiesList'].children.length === 12, "Ideology ranking initially renders top 12 (including #1)");
@@ -685,12 +725,12 @@ assert(simElements['politicianCardTitle'].textContent === uiTranslations.pl.poli
 
 // Test Expand politicians
 simElements['toggleMorePoliticiansBtn'].click();
-assert(simElements['otherPoliticiansList'].children.length === 43, "Clicking expand on politicians renders all 43 politicians");
+assert(simElements['otherPoliticiansList'].children.length === worldPoliticians.length, `Clicking expand on politicians renders all ${worldPoliticians.length} politicians`);
 assert(simElements['toggleMorePoliticiansText'].textContent === uiTranslations.pl.showFewerPoliticians, "Toggle button text updates to collapse label");
 
 // Test Expand ideologies
 simElements['toggleMoreIdeologiesBtn'].click();
-assert(simElements['secondaryIdeologiesList'].children.length === 32, "Clicking expand on ideologies renders all 32 ideologies");
+assert(simElements['secondaryIdeologiesList'].children.length === worldIdeologies.length, `Clicking expand on ideologies renders all ${worldIdeologies.length} ideologies`);
 assert(simElements['toggleMoreIdeologiesText'].textContent === uiTranslations.pl.showFewerIdeologies, "Toggle button text updates to collapse label");
 
 // Test Expand parties
