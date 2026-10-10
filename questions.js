@@ -1,5 +1,5 @@
 /**
- * BAZA 100 PYTAŃ, KATEGORII ORAZ OPCJI ODPOWIEDZI
+ * BAZA 120 PYTAŃ, KATEGORII ORAZ OPCJI ODPOWIEDZI
  * Test Polityczny - Wersja Globalna 2026
  * Obsługa 4 języków: PL, EN, RU, FR
  */
@@ -226,6 +226,7 @@ const questions = [
     "categoryKey": "economy",
     "axis": "econ",
     "multiplier": 1,
+    "isQuick": true,
     "text": {
       "pl": "Wolny rynek, bez zbędnych nakazów i biurokracji, najlepiej buduje bogactwo kraju.",
       "en": "A free market, free from unnecessary regulations and red tape, is the best way to build national wealth.",
@@ -238,6 +239,7 @@ const questions = [
     "categoryKey": "economy",
     "axis": "econ",
     "multiplier": -1,
+    "isQuick": true,
     "text": {
       "pl": "Gdy ceny gwałtownie rosną, rząd powinien odgórnie ustalać maksymalne ceny na chleb, żywność i prąd.",
       "en": "When prices soar, the government should set strict price caps on essential foods and energy.",
@@ -250,6 +252,7 @@ const questions = [
     "categoryKey": "economy",
     "axis": "econ",
     "multiplier": 1,
+    "isQuick": true,
     "text": {
       "pl": "Upadek nierentownych firm to naturalna kolej rzeczy – państwo nie powinno ratować ich za pieniądze podatników.",
       "en": "The collapse of failing businesses is part of healthy capitalism; the state shouldn't bail them out with public money.",
@@ -262,6 +265,7 @@ const questions = [
     "categoryKey": "economy",
     "axis": "econ",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Państwo powinno posiadać większość udziałów w kluczowych gałęziach przemysłu, kopalniach i energetyce.",
       "en": "The state should own majority shares in strategic industries, mining, and power generation.",
@@ -274,6 +278,7 @@ const questions = [
     "categoryKey": "economy",
     "axis": "econ",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Właściciele sklepów powinni mieć pełną swobodę otwierania lokali w dowolne dni, w tym w niedziele i święta.",
       "en": "Shop owners should have complete freedom to open on any day, including Sundays and holidays.",
@@ -286,6 +291,7 @@ const questions = [
     "categoryKey": "economy",
     "axis": "econ",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Rozwój gospodarki powinien być planowany i koordynowany przez państwo, a nie zostawiany samemu rynkowi.",
       "en": "Economic development should be guided and coordinated by the state rather than left solely to market forces.",
@@ -298,6 +304,7 @@ const questions = [
     "categoryKey": "economy",
     "axis": "econ",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Prywatyzacja kolei i linii lotniczych prowadzi do lepszej obsługi i tańszych biletów dla pasażerów.",
       "en": "Privatizing railways and airlines leads to better customer service and cheaper tickets.",
@@ -310,6 +317,7 @@ const questions = [
     "categoryKey": "economy",
     "axis": "econ",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Zyski wielkich firm powinny schodzić na dalszy plan, gdy w grę wchodzi dobro pracowników i lokalnych mieszkańców.",
       "en": "Corporate profits should take a backseat whenever the well-being of workers and local communities is at stake.",
@@ -322,6 +330,7 @@ const questions = [
     "categoryKey": "economy",
     "axis": "econ",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Rządowe dopłaty dla wybranych firm niszczą uczciwą konkurencję i marnują pieniądze podatników.",
       "en": "Government subsidies to favored businesses distort fair competition and waste taxpayers' money.",
@@ -334,6 +343,7 @@ const questions = [
     "categoryKey": "economy",
     "axis": "econ",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Państwo powinno wspierać firmy należące do pracowników i przez nich zarządzane, zamiast tradycyjnych korporacji.",
       "en": "The state should support worker-owned cooperatives and democratic workplaces over top-down corporations.",
@@ -346,6 +356,7 @@ const questions = [
     "categoryKey": "taxation",
     "axis": "econ",
     "multiplier": 1,
+    "isQuick": true,
     "text": {
       "pl": "Wszyscy powinni płacić dokładnie taki sam procent podatku (podatek liniowy), bez względu na to, ile zarabiają.",
       "en": "Everyone should pay the exact same flat tax percentage, regardless of how much income they earn.",
@@ -358,6 +369,7 @@ const questions = [
     "categoryKey": "taxation",
     "axis": "econ",
     "multiplier": -1,
+    "isQuick": true,
     "text": {
       "pl": "Miliarderzy i wielkie korporacje powinni płacić wysoki podatek od majątku, by zmniejszać przepaść między bogatymi a biednymi.",
       "en": "Billionaires and giant corporations should pay a steep wealth tax to reduce the gap between rich and poor.",
@@ -370,6 +382,7 @@ const questions = [
     "categoryKey": "taxation",
     "axis": "econ",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Podatek od spadków i darowizn dla najbliższej rodziny powinien zostać całkowicie zlikwidowany.",
       "en": "Inheritance and gift taxes passed down to immediate family should be completely abolished.",
@@ -382,6 +395,7 @@ const questions = [
     "categoryKey": "taxation",
     "axis": "econ",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Szybka spekulacja na giełdzie i rynkach finansowych powinna być obłożona specjalnym podatkiem.",
       "en": "Short-term stock speculation and high-frequency financial trades should be subject to a special tax.",
@@ -394,6 +408,7 @@ const questions = [
     "categoryKey": "taxation",
     "axis": "econ",
     "multiplier": 1,
+    "isQuick": true,
     "text": {
       "pl": "Niskie podatki dla przedsiębiorstw to najlepszy sposób, by przyciągnąć do kraju nowoczesne fabryki i technologie.",
       "en": "Low corporate taxes are the most effective magnet for attracting modern factories and tech investment.",
@@ -406,6 +421,7 @@ const questions = [
     "categoryKey": "taxation",
     "axis": "econ",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Ukrywanie dochodów w rajach podatkowych powinno być surowo karane jak przestępstwo przeciwko państwu.",
       "en": "Hiding profits in offshore tax havens should be severely penalized as an offense against the state.",
@@ -418,6 +434,7 @@ const questions = [
     "categoryKey": "taxation",
     "axis": "econ",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Rywalizacja między krajami na niższe podatki jest dobra, bo powstrzymuje rządy przed rozrzutnością.",
       "en": "Tax competition between nations is beneficial because it reins in reckless government spending.",
@@ -430,6 +447,7 @@ const questions = [
     "categoryKey": "taxation",
     "axis": "econ",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Wszystkie kraje powinny ustalić wspólny minimalny podatek dla korporacji, by nie uciekały z płaceniem.",
       "en": "All countries should enforce a unified minimum corporate tax so multinationals cannot dodge taxes.",
@@ -439,9 +457,36 @@ const questions = [
   },
   {
     "id": 19,
+    "categoryKey": "taxation",
+    "axis": "econ",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Podatek od zysków kapitałowych (np. z giełdy i kryptowalut) powinien zostać zniesiony, by zachęcać ludzi do inwestowania.",
+      "en": "Capital gains tax (e.g. from stocks and crypto) should be abolished to encourage citizens to invest.",
+      "ru": "Налог на прирост капитала (например, с акций и криптовалют) должен быть отменен для поощрения инвестиций.",
+      "fr": "L'impôt sur les plus-values (actions, cryptomonnaies) devrait être supprimé pour encourager les investissements."
+    }
+  },
+  {
+    "id": 20,
+    "categoryKey": "taxation",
+    "axis": "econ",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Wprowadzenie progresywnej skali podatkowej, w której najbogatsi oddają ponad połowę swoich najwyższych dochodów, jest sprawiedliwe.",
+      "en": "A progressive tax scale where the wealthiest pay over half of their top income bracket in taxes is fair and necessary.",
+      "ru": "Прогрессивная шкала налогов, при которой сверхбогатые отдают свыше половины своих высших доходов, справедлива.",
+      "fr": "Un barème fiscal fortement progressif, où les plus fortunés versent plus de la moitié de leurs revenus supérieurs, est juste."
+    }
+  },
+  {
+    "id": 21,
     "categoryKey": "labor",
     "axis": "econ",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Płaca minimalna powinna zostać zniesiona – stawki powinny zależeć wyłącznie od swobodnej umowy pracownika z pracodawcą.",
       "en": "The statutory minimum wage should be scrapped; pay should be decided purely by voluntary worker-employer agreements.",
@@ -450,10 +495,11 @@ const questions = [
     }
   },
   {
-    "id": 20,
+    "id": 22,
     "categoryKey": "labor",
     "axis": "econ",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Związki zawodowe powinny mieć prawo zablokować masowe zwolnienia i zamykanie fabryk przez zarząd.",
       "en": "Trade unions should hold legal power to veto mass layoffs and factory shutdowns.",
@@ -462,10 +508,11 @@ const questions = [
     }
   },
   {
-    "id": 21,
+    "id": 23,
     "categoryKey": "labor",
     "axis": "econ",
     "multiplier": 1,
+    "isQuick": true,
     "text": {
       "pl": "Elastyczne formy pracy (zlecenia, B2B) dają ludziom więcej swobody i korzyści niż sztywny kodeks pracy.",
       "en": "Flexible contracting and freelance gigs offer more opportunities and freedom than rigid labor codes.",
@@ -474,10 +521,11 @@ const questions = [
     }
   },
   {
-    "id": 22,
+    "id": 24,
     "categoryKey": "labor",
     "axis": "econ",
     "multiplier": -1,
+    "isQuick": true,
     "text": {
       "pl": "Czas pracy powinien zostać skrócony (np. do 4 dni lub 35 godzin tygodniowo) bez obniżania pensji.",
       "en": "The standard workweek should be reduced (e.g., to 4 days or 35 hours) with no reduction in pay.",
@@ -486,10 +534,11 @@ const questions = [
     }
   },
   {
-    "id": 23,
+    "id": 25,
     "categoryKey": "labor",
     "axis": "econ",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Przedsiębiorca powinien móc zwolnić pracownika w dowolnym momencie bez skomplikowanych procedur i tłumaczeń.",
       "en": "Employers should be allowed to dismiss employees at will without cumbersome administrative procedures.",
@@ -498,10 +547,11 @@ const questions = [
     }
   },
   {
-    "id": 24,
+    "id": 26,
     "categoryKey": "labor",
     "axis": "econ",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Pracownicy powinni mieć gwarantowane miejsca we władzach dużych firm, by współdecydować o ich przyszłości.",
       "en": "Workers should have guaranteed seats on corporate boards to take part in major company decisions.",
@@ -510,10 +560,11 @@ const questions = [
     }
   },
   {
-    "id": 25,
+    "id": 27,
     "categoryKey": "labor",
     "axis": "econ",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Strajki paraliżujące transport publiczny czy szpitale powinny być prawnie zabronione.",
       "en": "Strikes that bring public transit or healthcare to a standstill should be banned by law.",
@@ -522,10 +573,11 @@ const questions = [
     }
   },
   {
-    "id": 26,
+    "id": 28,
     "categoryKey": "labor",
     "axis": "econ",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Firmy zastępujące ludzi sztuczną inteligencją i robotami powinny płacić podatek na fundusz dla zwalnianych pracowników.",
       "en": "Companies replacing workers with AI and automation should pay a robot tax to fund displaced workers.",
@@ -534,10 +586,37 @@ const questions = [
     }
   },
   {
-    "id": 27,
+    "id": 29,
+    "categoryKey": "labor",
+    "axis": "econ",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Zastępowanie strajkujących pracowników nowymi pracownikami powinno być w pełni dozwolone prawem.",
+      "en": "Employers should have the full legal right to hire permanent replacement workers during strikes.",
+      "ru": "Работодатели должны иметь полное законное право нанимать временных работников во время забастовок.",
+      "fr": "Les employeurs devraient avoir le droit légal d'embaucher des remplaçants pour assurer l'activité en cas de grève."
+    }
+  },
+  {
+    "id": 30,
+    "categoryKey": "labor",
+    "axis": "econ",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Pracownicy platform cyfrowych (np. kurierzy i kierowcy z aplikacji) powinni mieć status pracowników z prawem do urlopu i chorobowego.",
+      "en": "Gig economy workers (app couriers, ride-hailing drivers) should legally be classified as employees with paid leave and sick pay.",
+      "ru": "Работники цифровых платформ (курьеры, водители такси) должны считаться штатными сотрудниками с оплачиваемым отпуском и больничным.",
+      "fr": "Les travailleurs des plateformes numériques (coursiers, chauffeurs VTC) devraient avoir le statut de salariés avec congés payés et maladie."
+    }
+  },
+  {
+    "id": 31,
     "categoryKey": "welfare",
     "axis": "econ",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Prywatne oszczędności i indywidualne konta emerytalne działają znacznie sprawniej niż państwowy system emerytalny.",
       "en": "Private retirement accounts and personal investments work much better than state pension schemes.",
@@ -546,10 +625,11 @@ const questions = [
     }
   },
   {
-    "id": 28,
+    "id": 32,
     "categoryKey": "welfare",
     "axis": "econ",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Każdy dorosły obywatel powinien otrzymywać od państwa stałą comiesięczną wypłatę bez żadnych warunków (Dochód Podstawowy).",
       "en": "Every adult citizen should receive an unconditional Universal Basic Income (UBI) funded by taxes.",
@@ -558,10 +638,11 @@ const questions = [
     }
   },
   {
-    "id": 29,
+    "id": 33,
     "categoryKey": "welfare",
     "axis": "econ",
     "multiplier": 1,
+    "isQuick": true,
     "text": {
       "pl": "Ceny najmu mieszkań powinien ustalać wolny rynek – urzędowe zamrażanie czynszów tylko pogłębia brak lokali.",
       "en": "Rental housing prices should be set purely by the free market; rent control only worsens housing shortages.",
@@ -570,10 +651,11 @@ const questions = [
     }
   },
   {
-    "id": 30,
+    "id": 34,
     "categoryKey": "welfare",
     "axis": "econ",
     "multiplier": -1,
+    "isQuick": true,
     "text": {
       "pl": "Dach nad głową to podstawowe prawo człowieka – państwo i samorządy powinny budować dostępne mieszkania na tani wynajem.",
       "en": "Housing is a human right; governments should build affordable municipal rental housing on a large scale.",
@@ -582,10 +664,11 @@ const questions = [
     }
   },
   {
-    "id": 31,
+    "id": 35,
     "categoryKey": "welfare",
     "axis": "econ",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Rozdawanie zasiłków socjalnych bez obowiązku szukania pracy rozleniwia ludzi i uzależnia ich od pomocy państwa.",
       "en": "Handing out welfare benefits without requiring recipients to seek work breeds complacency and dependency.",
@@ -594,10 +677,11 @@ const questions = [
     }
   },
   {
-    "id": 32,
+    "id": 36,
     "categoryKey": "welfare",
     "axis": "econ",
     "multiplier": -1,
+    "isQuick": true,
     "text": {
       "pl": "Leczenie szpitalne, leki ratujące życie i opieka nad seniorami powinny być w 100% darmowe dla każdego obywatela.",
       "en": "Hospital care, life-saving medicines, and elderly care should be completely free for every citizen.",
@@ -606,10 +690,11 @@ const questions = [
     }
   },
   {
-    "id": 33,
+    "id": 37,
     "categoryKey": "welfare",
     "axis": "econ",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Wielkie fundusze inwestycyjne wykupujące całe osiedla i trzymające puste mieszkania powinny płacić bardzo wysoki podatek karny.",
       "en": "Institutional funds hoarding residential properties and leaving them vacant should face steep penalty taxes.",
@@ -618,10 +703,11 @@ const questions = [
     }
   },
   {
-    "id": 34,
+    "id": 38,
     "categoryKey": "welfare",
     "axis": "econ",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Zasiłki i pomoc socjalna powinny przysługiwać tylko tym, którzy wcześniej pracowali i płacili podatki.",
       "en": "Welfare benefits should only be granted to individuals who have actively worked and contributed taxes.",
@@ -630,10 +716,37 @@ const questions = [
     }
   },
   {
-    "id": 35,
+    "id": 39,
+    "categoryKey": "welfare",
+    "axis": "econ",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Ubezpieczenia zdrowotne i szpitale powinny działać głównie na zasadach rynkowych, dając ludziom wybór konkurujących pakietów medycznych.",
+      "en": "Healthcare insurance and hospitals should operate mainly on market principles, allowing people to choose competing medical plans.",
+      "ru": "Медицинское страхование и больницы должны работать в основном на рыночной основе, давая гражданам выбор страховых программ.",
+      "fr": "L'assurance maladie et les hôpitaux devraient fonctionner selon les règles du marché en laissant le choix des forfaits de soins."
+    }
+  },
+  {
+    "id": 40,
+    "categoryKey": "welfare",
+    "axis": "econ",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Państwo powinno gwarantować darmowe żłobki, przedszkola oraz pożywne obiady w szkołach dla każdego dziecka.",
+      "en": "The state should guarantee free daycare, preschool, and nutritious school lunches for every child.",
+      "ru": "Государство должно гарантировать бесплатные ясли, детские сады и горячее школьное питание для каждого ребенка.",
+      "fr": "L'État devrait garantir des crèches, des écoles maternelles et des repas scolaires gratuits pour chaque enfant."
+    }
+  },
+  {
+    "id": 41,
     "categoryKey": "regulation",
     "axis": "econ",
     "multiplier": 1,
+    "isQuick": true,
     "text": {
       "pl": "Dostawy prądu i sieci przesyłowe powinny być otwarte na prywatną konkurencję, zamiast państwowego monopolu.",
       "en": "Electricity supply and power grids should be opened to private market competition rather than state monopolies.",
@@ -642,10 +755,11 @@ const questions = [
     }
   },
   {
-    "id": 36,
+    "id": 42,
     "categoryKey": "regulation",
     "axis": "econ",
     "multiplier": -1,
+    "isQuick": true,
     "text": {
       "pl": "Lasy, woda pitna i surowce naturalne muszą być wyłączną własnością państwa i nie wolno ich prywatyzować.",
       "en": "Forests, clean water, and mineral resources must remain the exclusive property of the public and never be privatized.",
@@ -654,10 +768,11 @@ const questions = [
     }
   },
   {
-    "id": 37,
+    "id": 43,
     "categoryKey": "regulation",
     "axis": "econ",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Większość licencji i pozwoleń zawodowych to zbędna biurokracja, która tylko blokuje ludziom wejście do zawodu.",
       "en": "Most professional licensing requirements are bureaucratic barriers designed to protect incumbents from fresh competition.",
@@ -666,10 +781,11 @@ const questions = [
     }
   },
   {
-    "id": 38,
+    "id": 44,
     "categoryKey": "regulation",
     "axis": "econ",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Pensje prezesów wielkich spółek nie powinny przekraczać np. dwudziestokrotności wypłaty zwykłego pracownika.",
       "en": "CEO pay in major corporations should not exceed a set ratio, such as 20 times an ordinary worker's wage.",
@@ -678,10 +794,11 @@ const questions = [
     }
   },
   {
-    "id": 39,
+    "id": 45,
     "categoryKey": "regulation",
     "axis": "econ",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Prywatne firmy kurierskie i paczkomaty działają znacznie sprawniej niż państwowa poczta.",
       "en": "Private parcel couriers and automated lockers serve customers far more efficiently than state postal operators.",
@@ -690,10 +807,11 @@ const questions = [
     }
   },
   {
-    "id": 40,
+    "id": 46,
     "categoryKey": "regulation",
     "axis": "econ",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Państwo powinno nakładać dodatkowe podatki na wielkie markety i sieci handlowe, aby chronić małe lokalne sklepy osiedlowe.",
       "en": "The state should levy extra taxes on giant retail supermarket chains to shield small local mom-and-pop stores.",
@@ -702,10 +820,11 @@ const questions = [
     }
   },
   {
-    "id": 41,
+    "id": 47,
     "categoryKey": "regulation",
     "axis": "econ",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Aplikacje przewozowe typu Uber i likwidacja sztucznych licencji taksówkarskich to duża korzyść dla pasażerów.",
       "en": "Ride-hailing apps like Uber and eliminating artificial taxi license barriers bring massive benefits to riders.",
@@ -714,10 +833,11 @@ const questions = [
     }
   },
   {
-    "id": 42,
+    "id": 48,
     "categoryKey": "regulation",
     "axis": "econ",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Banki zarabiają za dużo na marżach i odsetkach kredytów – państwo powinno odgórnie ograniczyć ich zyski.",
       "en": "Commercial banks earn excessive profits on loan margins and fees; the state should impose caps on banking margins.",
@@ -726,10 +846,37 @@ const questions = [
     }
   },
   {
-    "id": 43,
+    "id": 49,
+    "categoryKey": "regulation",
+    "axis": "econ",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Prywatne firmy budowlane i deweloperzy powinni mieć znacznie prostszą ścieżkę uzyskiwania pozwoleń na budowę mieszkań.",
+      "en": "Private developers should face far fewer zoning restrictions and red tape when building new homes.",
+      "ru": "Строительные компании должны получать разрешения на строительство жилья быстрее и без лишних бюрократических барьеров.",
+      "fr": "Les promoteurs privés devraient faire face à beaucoup moins de contraintes d'urbanisme pour construire de nouveaux logements."
+    }
+  },
+  {
+    "id": 50,
+    "categoryKey": "regulation",
+    "axis": "econ",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Reklamy niezdrowej żywności, słodyczy i alkoholu skierowane do młodzieży powinny być całkowicie zakazane przez państwo.",
+      "en": "State regulators should strictly ban junk food, alcohol, and gambling advertising targeted at minors.",
+      "ru": "Реклама вредной еды, алкоголя и азартных игр, нацеленная на молодежь, должна быть строго запрещена государством.",
+      "fr": "L'État devrait interdire totalement la publicité pour la malbouffe, l'alcool et les jeux de hasard auprès des jeunes."
+    }
+  },
+  {
+    "id": 51,
     "categoryKey": "trade",
     "axis": "econ",
     "multiplier": 1,
+    "isQuick": true,
     "text": {
       "pl": "Brak barier celnych i swobodny handel z całym światem przynosi korzyści wszystkim narodom.",
       "en": "Eliminating customs barriers and promoting open trade globally creates prosperity for all nations.",
@@ -738,10 +885,11 @@ const questions = [
     }
   },
   {
-    "id": 44,
+    "id": 52,
     "categoryKey": "trade",
     "axis": "econ",
     "multiplier": -1,
+    "isQuick": true,
     "text": {
       "pl": "Wysokie cła na towary z zagranicy są konieczne, by chronić nasze fabryki i rolników przed tańszą konkurencją.",
       "en": "Protective import tariffs are indispensable to defend domestic manufacturers and farmers from cheap foreign competition.",
@@ -750,10 +898,11 @@ const questions = [
     }
   },
   {
-    "id": 45,
+    "id": 53,
     "categoryKey": "trade",
     "axis": "econ",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Pieniądze i inwestycje powinny swobodnie przepływać przez granice, bez wtrącania się i kontroli rządów.",
       "en": "Capital and foreign investment should flow across national borders without governmental interference or currency controls.",
@@ -762,10 +911,11 @@ const questions = [
     }
   },
   {
-    "id": 46,
+    "id": 54,
     "categoryKey": "trade",
     "axis": "econ",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Cyfrowi giganci (Google, Meta, Apple) mają zbyt wielką władzę i państwa powinny ich przymusowo podzielić.",
       "en": "Big Tech giants (Google, Meta, Apple) hold dangerous monopoly power and governments should break them up.",
@@ -774,10 +924,11 @@ const questions = [
     }
   },
   {
-    "id": 47,
+    "id": 55,
     "categoryKey": "trade",
     "axis": "econ",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Zagraniczne firmy inwestujące w kraju powinny mieć dokładnie takie same prawa i podatki jak firmy rodzime.",
       "en": "Foreign investors creating local jobs should enjoy the exact same rights and tax conditions as domestic firms.",
@@ -786,10 +937,11 @@ const questions = [
     }
   },
   {
-    "id": 48,
+    "id": 56,
     "categoryKey": "trade",
     "axis": "econ",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Produkcja leków, elektroniki i broni musi pozostać w kraju, nawet jeśli przez to te rzeczy będą droższe.",
       "en": "Manufacturing essential medicines, computer chips, and weapons must be brought home, even if it raises retail costs.",
@@ -798,10 +950,11 @@ const questions = [
     }
   },
   {
-    "id": 49,
+    "id": 57,
     "categoryKey": "trade",
     "axis": "econ",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Globalny handel i otwarcie granic wyciągnęły setki milionów ludzi z nędzy i podniosły jakość życia na świecie.",
       "en": "Global supply chains and free trade have lifted hundreds of millions of people out of poverty worldwide.",
@@ -810,10 +963,11 @@ const questions = [
     }
   },
   {
-    "id": 50,
+    "id": 58,
     "categoryKey": "trade",
     "axis": "econ",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Sztuczne podbijanie cen żywności i paliw przez spekulantów na giełdach powinno być surowo zabronione.",
       "en": "Financial market speculation on food staples and fossil fuel futures should be strictly outlawed.",
@@ -822,10 +976,37 @@ const questions = [
     }
   },
   {
-    "id": 51,
+    "id": 59,
+    "categoryKey": "trade",
+    "axis": "econ",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Swobodny import tańszych produktów rolnych i przemysłowych jest dobry dla konsumentów, bo obniża codzienne rachunki.",
+      "en": "Freely importing cheaper foreign food and goods benefits consumers by keeping grocery bills down.",
+      "ru": "Свободный импорт дешевых зарубежных продуктов и товаров выгоден потребителям, так как снижает повседневные расходы.",
+      "fr": "L'importation libre de denrées et produits moins chers profite aux consommateurs en faisant baisser les prix."
+    }
+  },
+  {
+    "id": 60,
+    "categoryKey": "trade",
+    "axis": "econ",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Kluczowa infrastruktura (porty, lotniska, sieci telekomunikacyjne) nie może być sprzedawana inwestorom z obcych państw.",
+      "en": "Critical infrastructure (ports, airports, telecom networks) must be legally barred from foreign acquisition.",
+      "ru": "Критическая инфраструктура (порты, аэропорты, сети связи) не должна продаваться зарубежным инвесторам.",
+      "fr": "Les infrastructures vitales (ports, aéroports, télécoms) doivent être protégées de toute prise de contrôle par des investisseurs étrangers."
+    }
+  },
+  {
+    "id": 61,
     "categoryKey": "liberties",
     "axis": "soc",
     "multiplier": 1,
+    "isQuick": true,
     "text": {
       "pl": "Wolność słowa powinna chronić nawet poglądy kontrowersyjne czy oburzające – państwo nie powinno nikogo za to ścigać.",
       "en": "Free speech must protect even deeply controversial or offensive viewpoints, free from government prosecution.",
@@ -834,10 +1015,11 @@ const questions = [
     }
   },
   {
-    "id": 52,
+    "id": 62,
     "categoryKey": "liberties",
     "axis": "soc",
     "multiplier": -1,
+    "isQuick": true,
     "text": {
       "pl": "Służby specjalne powinny mieć prawo podglądać prywatne rozmowy w internecie bez zgody sądu, jeśli chodzi o bezpieczeństwo.",
       "en": "Intelligence agencies should be allowed to monitor private online chats without warrants to safeguard national security.",
@@ -846,10 +1028,11 @@ const questions = [
     }
   },
   {
-    "id": 53,
+    "id": 63,
     "categoryKey": "liberties",
     "axis": "soc",
     "multiplier": 1,
+    "isQuick": true,
     "text": {
       "pl": "Każdy dorosły i niekarany obywatel powinien mieć łatwy dostęp do broni palnej do obrony domu i rodziny.",
       "en": "Law-abiding adult citizens should have the right to own firearms to defend their homes and loved ones.",
@@ -858,10 +1041,11 @@ const questions = [
     }
   },
   {
-    "id": 54,
+    "id": 64,
     "categoryKey": "liberties",
     "axis": "soc",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Policja powinna móc bez podawania przyczyny zatrzymywać i przeszukiwać ludzi oraz auta na ulicy.",
       "en": "Police should have the legal right to stop and search pedestrians and vehicles on public streets without reasonable suspicion.",
@@ -870,10 +1054,11 @@ const questions = [
     }
   },
   {
-    "id": 55,
+    "id": 65,
     "categoryKey": "liberties",
     "axis": "soc",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Kamery z automatycznym rozpoznawaniem twarzy na ulicach to dobry sposób na walkę z przestępczością.",
       "en": "Deploying facial recognition surveillance cameras in public places is a sound and welcome crime prevention tool.",
@@ -882,10 +1067,11 @@ const questions = [
     }
   },
   {
-    "id": 56,
+    "id": 66,
     "categoryKey": "liberties",
     "axis": "soc",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Nieuleczalnie chory człowiek powinien mieć prawo do godnego zakończenia życia na własne życzenie (eutanazji).",
       "en": "Terminally ill individuals should have the legal right to end their lives with medical dignity (assisted dying).",
@@ -894,10 +1080,11 @@ const questions = [
     }
   },
   {
-    "id": 57,
+    "id": 67,
     "categoryKey": "liberties",
     "axis": "soc",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Kara śmierci powinna wrócić za najokrutniejsze morderstwa i zbrodnie.",
       "en": "Capital punishment should be reinstated for the most heinous and premeditated crimes.",
@@ -906,10 +1093,11 @@ const questions = [
     }
   },
   {
-    "id": 58,
+    "id": 68,
     "categoryKey": "liberties",
     "axis": "soc",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Posiadanie marihuany na własny użytek powinno być w pełni legalne i niekarane.",
       "en": "Adult possession and personal use of cannabis should be fully legalized and decriminalized.",
@@ -918,10 +1106,37 @@ const questions = [
     }
   },
   {
-    "id": 59,
+    "id": 69,
+    "categoryKey": "liberties",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Pełnoletni obywatele powinni mieć prawo do anonimowego korzystania z internetu bez wymogu potwierdzania tożsamości dowodem osobistym.",
+      "en": "Adult citizens should have the right to use the internet anonymously without uploading official ID cards.",
+      "ru": "Совершеннолетние граждане должны иметь право на анонимность в интернете без обязательной загрузки паспорта.",
+      "fr": "Les citoyens majeurs devraient avoir le droit d'utiliser Internet de manière anonyme sans vérification obligatoire de carte d'identité."
+    }
+  },
+  {
+    "id": 70,
+    "categoryKey": "liberties",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Państwo powinno mieć prawo zarządzać przymusową kwarantannę i ograniczenia w poruszaniu się podczas epidemii niebezpiecznych chorób.",
+      "en": "The state should have the authority to impose mandatory lockdowns and travel curbs during major disease outbreaks.",
+      "ru": "Государство должно иметь право вводить обязательный карантин и ограничивать передвижения во время опасных эпидемий.",
+      "fr": "L'État devrait avoir le pouvoir d'imposer des confinements et des restrictions de circulation en cas d'épidémie dangereuse."
+    }
+  },
+  {
+    "id": 71,
     "categoryKey": "tech",
     "axis": "soc",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Rozwój sztucznej inteligencji (AI) niesie ogromne ryzyko – państwa powinny surowo kontrolować i licencjonować twórców AI.",
       "en": "The rapid advance of advanced AI poses huge dangers; governments must strictly regulate and license AI labs.",
@@ -930,10 +1145,11 @@ const questions = [
     }
   },
   {
-    "id": 60,
+    "id": 72,
     "categoryKey": "tech",
     "axis": "soc",
     "multiplier": 1,
+    "isQuick": true,
     "text": {
       "pl": "Rządy nie powinny mieć prawa zmuszać twórców komunikatorów do tworzenia 'furtek' do podsłuchiwania obywateli.",
       "en": "Governments should never force messaging apps to compromise end-to-end encryption with surveillance backdoors.",
@@ -942,10 +1158,11 @@ const questions = [
     }
   },
   {
-    "id": 61,
+    "id": 73,
     "categoryKey": "tech",
     "axis": "soc",
     "multiplier": -1,
+    "isQuick": true,
     "text": {
       "pl": "Tradycyjna gotówka powinna zostać wycofana i zastąpiona wyłącznie cyfrowym pieniądzem, by ukrócić szarą strefę.",
       "en": "Physical cash should be phased out in favor of central bank digital currencies to wipe out the shadow economy.",
@@ -954,10 +1171,11 @@ const questions = [
     }
   },
   {
-    "id": 62,
+    "id": 74,
     "categoryKey": "tech",
     "axis": "soc",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Kryptowaluty i finanse cyfrowe powinny rozwijać się swobodnie, bez wymogu legitymowania każdego użytkownika przez państwo.",
       "en": "Cryptocurrencies and decentralized finance should be allowed to flourish without mandatory government identity checks.",
@@ -966,10 +1184,11 @@ const questions = [
     }
   },
   {
-    "id": 63,
+    "id": 75,
     "categoryKey": "tech",
     "axis": "soc",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Państwo powinno kontrolować algorytmy social mediów (np. TikToka czy Facebooka), by ograniczyć dezinformację i fake newsy.",
       "en": "Governments should audit social media algorithms to curb political polarization, hate speech, and fake news.",
@@ -978,10 +1197,11 @@ const questions = [
     }
   },
   {
-    "id": 64,
+    "id": 76,
     "categoryKey": "tech",
     "axis": "soc",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Dostawcy internetu nie powinni mieć prawa spowalniać ani faworyzować wybranych stron (neutralność sieci).",
       "en": "Internet service providers must treat all traffic equally and never throttle or prioritize specific websites (Net Neutrality).",
@@ -990,10 +1210,11 @@ const questions = [
     }
   },
   {
-    "id": 65,
+    "id": 77,
     "categoryKey": "tech",
     "axis": "soc",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Modyfikowanie ludzkich genów i eksperymenty na ludzkim DNA powinny być bezwzględnie zakazane.",
       "en": "Genetic engineering experiments aimed at modifying human DNA should be strictly banned on ethical grounds.",
@@ -1002,10 +1223,11 @@ const questions = [
     }
   },
   {
-    "id": 66,
+    "id": 78,
     "categoryKey": "tech",
     "axis": "soc",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Programy i systemy komputerowe stworzone za publiczne pieniądze powinny być darmowe i jawne dla każdego (Open Source).",
       "en": "Software developed with taxpayer money should be made freely available to the public under open-source licenses.",
@@ -1014,10 +1236,37 @@ const questions = [
     }
   },
   {
-    "id": 67,
+    "id": 79,
+    "categoryKey": "tech",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Szyfrowanie wiadomości typu end-to-end powinno pozostać nienaruszalnym prawem każdego obywatela, nawet jeśli utrudnia to pracę policji.",
+      "en": "End-to-end encryption should be an inviolable citizen right, even if it creates challenges for law enforcement investigations.",
+      "ru": "Сквозное шифрование переписки должно оставаться священным правом каждого, даже если это усложняет работу следствия.",
+      "fr": "Le chiffrement de bout en bout devrait rester un droit inviolable, même si cela complique le travail des enquêteurs."
+    }
+  },
+  {
+    "id": 80,
+    "categoryKey": "tech",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Autonomiczne drony i algorytmy bojowe podejmujące decyzję o ataku na człowieka powinny być całkowicie zdelegalizowane.",
+      "en": "Fully autonomous lethal drones and AI weapons making life-or-death decisions must be universally banned by treaty.",
+      "ru": "Автономные боевые дроны и алгоритмы, способные уничтожать людей без команды оператора, должны быть полностью запрещены.",
+      "fr": "Les drones militaires autonomes et les armes dirigées par IA prenant des décisions létales doivent être totalement bannis."
+    }
+  },
+  {
+    "id": 81,
     "categoryKey": "ecology",
     "axis": "soc",
     "multiplier": 1,
+    "isQuick": true,
     "text": {
       "pl": "Ochrona klimatu i redukcja emisji spalin powinny być priorytetem, nawet jeśli oznacza to wyższe koszty życia.",
       "en": "Reaching climate neutrality should be an urgent priority, even if it requires cutbacks in consumer lifestyles.",
@@ -1026,10 +1275,11 @@ const questions = [
     }
   },
   {
-    "id": 68,
+    "id": 82,
     "categoryKey": "ecology",
     "axis": "soc",
     "multiplier": -1,
+    "isQuick": true,
     "text": {
       "pl": "Powinniśmy wydobywać własny węgiel i gaz tak długo, jak zapewniają nam bezpieczeństwo i tani prąd.",
       "en": "Domestic coal and fossil fuel resources should be utilized as long as they ensure affordable energy independence.",
@@ -1038,10 +1288,11 @@ const questions = [
     }
   },
   {
-    "id": 69,
+    "id": 83,
     "categoryKey": "ecology",
     "axis": "soc",
     "multiplier": -1,
+    "isQuick": true,
     "text": {
       "pl": "Zakaz sprzedaży nowych samochodów spalinowych po 2035 roku to błąd i uderzenie w portfele zwykłych kierowców.",
       "en": "Banning the sale of new petrol and diesel cars is an unfair blow to ordinary drivers and consumer freedom.",
@@ -1050,10 +1301,11 @@ const questions = [
     }
   },
   {
-    "id": 70,
+    "id": 84,
     "categoryKey": "ecology",
     "axis": "soc",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Krótkie loty samolotem powinny być zakazane na trasach, na których można wygodnie i szybko dojechać pociągiem.",
       "en": "Short-haul domestic flights should be prohibited on routes where high-speed trains provide a viable alternative.",
@@ -1062,10 +1314,11 @@ const questions = [
     }
   },
   {
-    "id": 71,
+    "id": 85,
     "categoryKey": "ecology",
     "axis": "soc",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Przepisy ekologiczne nie powinny blokować ani opóźniać budowy ważnych dróg, fabryk i elektrowni.",
       "en": "Environmental regulations should not stall the construction of vital highways, factories, and power infrastructure.",
@@ -1074,10 +1327,11 @@ const questions = [
     }
   },
   {
-    "id": 72,
+    "id": 86,
     "categoryKey": "ecology",
     "axis": "soc",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Trzymanie zwierząt w ciasnych klatkach na fermach przemysłowych powinno być całkowicie zakazane.",
       "en": "Confining livestock to intensive battery cages in industrial factory farms should be banned outright.",
@@ -1086,10 +1340,11 @@ const questions = [
     }
   },
   {
-    "id": 73,
+    "id": 87,
     "categoryKey": "ecology",
     "axis": "soc",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Kary i opłaty klimatyczne osłabiają naszą gospodarkę, podczas gdy kraje takie jak Chiny czy Indie bezkarnie trują środowisko.",
       "en": "Western climate penalties harm our industries while major polluters like China and India face far fewer burdens.",
@@ -1098,10 +1353,11 @@ const questions = [
     }
   },
   {
-    "id": 74,
+    "id": 88,
     "categoryKey": "ecology",
     "axis": "soc",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Zakaz wjazdu starych aut do centrów miast i płatne strefy to dobry sposób na czyste powietrze.",
       "en": "Designating low-emission zones and charging older vehicles in city centers is the right way to protect public health.",
@@ -1110,10 +1366,37 @@ const questions = [
     }
   },
   {
-    "id": 75,
+    "id": 89,
+    "categoryKey": "ecology",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Dotacje do paliw kopalnych powinny zostać natychmiast wycofane i przeniesione na rozwój energii słonecznej i wiatrowej.",
+      "en": "Fossil fuel subsidies should be immediately terminated and redirected into solar and wind power innovation.",
+      "ru": "Субсидии на ископаемое топливо должны быть немедленно отменены и направлены на развитие зеленой энергетики.",
+      "fr": "Les subventions aux énergies fossiles devraient être immédiatement supprimées au profit du solaire et de l'éolien."
+    }
+  },
+  {
+    "id": 90,
+    "categoryKey": "ecology",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Budowa nowoczesnych elektrowni jądrowych jest niezbędna i bezpieczna, nawet jeśli część organizacji ekologicznych protestuje.",
+      "en": "Expanding modern nuclear power plants is essential for energy stability, regardless of green anti-nuclear protests.",
+      "ru": "Строительство современных атомных электростанций необходимо и безопасно, несмотря на протесты антиядерных экологов.",
+      "fr": "Le développement d'un parc nucléaire moderne est indispensable pour assurer l'énergie du pays, malgré les contestations écologistes."
+    }
+  },
+  {
+    "id": 91,
     "categoryKey": "culture",
     "axis": "soc",
     "multiplier": 1,
+    "isQuick": true,
     "text": {
       "pl": "Kościół powinien być całkowicie oddzielony od państwa i nie powinien dostawać żadnych dotacji z podatków.",
       "en": "Religious institutions must be strictly separated from state governance and receive zero taxpayer funding.",
@@ -1122,10 +1405,11 @@ const questions = [
     }
   },
   {
-    "id": 76,
+    "id": 92,
     "categoryKey": "culture",
     "axis": "soc",
     "multiplier": -1,
+    "isQuick": true,
     "text": {
       "pl": "Wartości chrześcijańskie i tradycja powinny być fundamentem prawa oraz wychowania młodzieży.",
       "en": "Traditional Christian values and historical heritage must serve as the bedrock of national identity and public law.",
@@ -1134,10 +1418,11 @@ const questions = [
     }
   },
   {
-    "id": 77,
+    "id": 93,
     "categoryKey": "culture",
     "axis": "soc",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Związki partnerskie i małżeństwa osób tej samej płci powinny być w pełni legalne i mieć równe prawa.",
       "en": "Same-sex partnerships and civil marriages should be fully recognized with equal legal rights.",
@@ -1146,10 +1431,11 @@ const questions = [
     }
   },
   {
-    "id": 78,
+    "id": 94,
     "categoryKey": "culture",
     "axis": "soc",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Tradycyjna rodzina – kobieta, mężczyzna i dzieci – powinna być szczególnie chroniona przez państwo i konstytucję.",
       "en": "The traditional family unit composed of mother, father, and children deserves special constitutional protection.",
@@ -1158,10 +1444,11 @@ const questions = [
     }
   },
   {
-    "id": 79,
+    "id": 95,
     "categoryKey": "culture",
     "axis": "soc",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Kobieta powinna mieć prawo do bezpiecznej, legalnej aborcji do 12. tygodnia ciąży bez podawania powodów.",
       "en": "Women must have guaranteed access to safe, legal abortion upon request during the first trimester.",
@@ -1170,10 +1457,11 @@ const questions = [
     }
   },
   {
-    "id": 80,
+    "id": 96,
     "categoryKey": "culture",
     "axis": "soc",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Krzyże i symbole religijne powinny wisieć w szkołach, urzędach i salach sądowych.",
       "en": "Religious emblems such as crosses should be openly displayed in public classrooms, courts, and civic halls.",
@@ -1182,10 +1470,11 @@ const questions = [
     }
   },
   {
-    "id": 81,
+    "id": 97,
     "categoryKey": "culture",
     "axis": "soc",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Państwo powinno aktywnie chronić naszą kulturę i tradycje przed obcymi modami i wpływami z zewnątrz.",
       "en": "The state has a duty to safeguard indigenous cultural heritage against imported trends and mass pop culture.",
@@ -1194,10 +1483,11 @@ const questions = [
     }
   },
   {
-    "id": 82,
+    "id": 98,
     "categoryKey": "culture",
     "axis": "soc",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Osoby transpłciowe powinny móc zmienić płeć w dokumentach prostym wnioskiem w urzędzie, bez spraw sądowych.",
       "en": "Transgender individuals should be allowed to update their legal gender marker through simple administrative self-declaration.",
@@ -1206,10 +1496,37 @@ const questions = [
     }
   },
   {
-    "id": 83,
+    "id": 99,
+    "categoryKey": "culture",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Edukacja seksualna w szkołach powinna być nowoczesna, rzetelna i uczyć młodzież o antykoncepcji oraz równości.",
+      "en": "Comprehensive sex education in schools should be modern and scientific, covering contraception and gender equality.",
+      "ru": "Половое воспитание в школах должно быть современным, научным и рассказывать о контрацепции и равенстве.",
+      "fr": "L'éducation à la sexualité à l'école devrait être moderne et scientifique, abordant la contraception et l'égalité."
+    }
+  },
+  {
+    "id": 100,
+    "categoryKey": "culture",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Finansowanie z podatków kontrowersyjnych spektakli teatralnych czy wystaw obrażających uczucia religijne powinno być wstrzymane.",
+      "en": "Taxpayer subsidies for controversial arts or plays that deliberately offend religious sensibilities should be stopped.",
+      "ru": "Финансирование за счет налогов скандальных постановок, оскорбляющих чувства верующих, должно быть прекращено.",
+      "fr": "Les subventions publiques pour des œuvres offensant délibérément les sentiments religieux devraient être supprimées."
+    }
+  },
+  {
+    "id": 101,
     "categoryKey": "society",
     "axis": "soc",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Na listach wyborczych i we władzach spółek powinny być obowiązkowe miejsca dla kobiet (parytety).",
       "en": "Mandatory gender quotas on election lists and company boards are a fair tool for advancing equal opportunity.",
@@ -1218,10 +1535,11 @@ const questions = [
     }
   },
   {
-    "id": 84,
+    "id": 102,
     "categoryKey": "society",
     "axis": "soc",
     "multiplier": -1,
+    "isQuick": true,
     "text": {
       "pl": "Przy zatrudnianiu i rekrutacji na studia powinny liczyć się wyłącznie wiedza i umiejętności, bez punktów za płeć czy pochodzenie.",
       "en": "University admissions and job hiring should be based purely on academic and professional merit, not identity backgrounds.",
@@ -1230,10 +1548,11 @@ const questions = [
     }
   },
   {
-    "id": 85,
+    "id": 103,
     "categoryKey": "society",
     "axis": "soc",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Praca seksualna dorosłych osób za obopólną zgodą powinna być legalnym zawodem z prawem do ubezpieczenia i emerytury.",
       "en": "Consensual adult sex work should be a fully legal profession with formal employment benefits and social protections.",
@@ -1242,10 +1561,11 @@ const questions = [
     }
   },
   {
-    "id": 86,
+    "id": 104,
     "categoryKey": "society",
     "axis": "soc",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Lekcje w szkole powinny uczyć młodzież wstrzemięźliwości seksualnej i szacunku dla tradycyjnego małżeństwa.",
       "en": "Sex education in schools should emphasize abstinence, moral responsibility, and lifelong marriage.",
@@ -1254,10 +1574,11 @@ const questions = [
     }
   },
   {
-    "id": 87,
+    "id": 105,
     "categoryKey": "society",
     "axis": "soc",
     "multiplier": 1,
+    "isQuick": true,
     "text": {
       "pl": "Ludzie uciekający przed wojną powinni móc złożyć wniosek o azyl, bez wyrzucania ich siłą z powrotem za granicę (pushbacków).",
       "en": "Asylum seekers fleeing war or persecution must have guaranteed access to due process without illegal border pushbacks.",
@@ -1266,10 +1587,11 @@ const questions = [
     }
   },
   {
-    "id": 88,
+    "id": 106,
     "categoryKey": "society",
     "axis": "soc",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Więzienia powinny skupiać się na resocjalizacji i nauce zawodu, a nie tylko na surowym karaniu i izolacji.",
       "en": "Correctional facilities should prioritize rehabilitation, psychological care, and job training over harsh punishment.",
@@ -1278,10 +1600,11 @@ const questions = [
     }
   },
   {
-    "id": 89,
+    "id": 107,
     "categoryKey": "society",
     "axis": "soc",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Za publiczne obrażanie religii i profanację symboli wiary powinny grozić surowe kary więzienia.",
       "en": "Blasphemy, desecrating religious symbols, and inciting religious hatred should carry heavy criminal sentences.",
@@ -1290,10 +1613,11 @@ const questions = [
     }
   },
   {
-    "id": 90,
+    "id": 108,
     "categoryKey": "society",
     "axis": "soc",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Rząd powinien mieć prawo nakładać kary finansowe na osoby, które odmawiają obowiązkowych szczepień ochronnych.",
       "en": "Public health authorities have the right to enforce mandatory vaccination programs backed by administrative fines.",
@@ -1302,10 +1626,37 @@ const questions = [
     }
   },
   {
-    "id": 91,
+    "id": 109,
+    "categoryKey": "society",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Osoby dorosłe powinny mieć pełną swobodę w decydowaniu o własnym ciele, w tym o modyfikacjach ciała i prawie do surogacji.",
+      "en": "Adult individuals should have full autonomy over their own bodies, including surrogacy agreements and personal lifestyle choices.",
+      "ru": "Совершеннолетние люди должны иметь полную автономию над своим телом, включая суррогатное материнство и личный выбор.",
+      "fr": "Les adultes devraient jouir d'une autonomie totale sur leur propre corps, y compris pour la gestation pour autrui et leurs choix de vie."
+    }
+  },
+  {
+    "id": 110,
+    "categoryKey": "society",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Utrzymanie porządku publicznego i bezpieczeństwa na ulicach jest ważniejsze niż bezwzględna ochrona prawa do nielegalnych zgromadzeń.",
+      "en": "Maintaining public safety and civic order takes precedence over unsanctioned street demonstrations and road blockades.",
+      "ru": "Поддержание порядка и безопасности на улицах важнее, чем проведение несанкционированных митингов и перекрытие дорог.",
+      "fr": "Le maintien de l'ordre public et de la sécurité des citoyens doit primer sur les manifestations sauvages et les blocages."
+    }
+  },
+  {
+    "id": 111,
     "categoryKey": "security",
     "axis": "soc",
     "multiplier": -1,
+    "isQuick": true,
     "text": {
       "pl": "Na granicach powinny stać solidne zapory i mury, a każda nielegalna próba wejścia do kraju powinna być twardo zatrzymywana.",
       "en": "National borders should be fortified with physical barriers, and unauthorized border crossings must be decisively repelled.",
@@ -1314,10 +1665,11 @@ const questions = [
     }
   },
   {
-    "id": 92,
+    "id": 112,
     "categoryKey": "security",
     "axis": "soc",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Kraje Unii Europejskiej powinny połączyć się w jedno wspólne federacyjne państwo z europejskim rządem i armią.",
       "en": "European nations should gradually integrate into a single democratic federation with a unified government and army.",
@@ -1326,10 +1678,11 @@ const questions = [
     }
   },
   {
-    "id": 93,
+    "id": 113,
     "categoryKey": "security",
     "axis": "soc",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Obowiązkowa zasadnicza służba wojskowa dla młodych ludzi powinna zostać przywrócona.",
       "en": "Mandatory military conscription for young citizens should be reintroduced to build collective national defense.",
@@ -1338,10 +1691,11 @@ const questions = [
     }
   },
   {
-    "id": 94,
+    "id": 114,
     "categoryKey": "security",
     "axis": "soc",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Wyroki międzynarodowych trybunałów praw człowieka powinny mieć pierwszeństwo przed ustawami uchwalanymi przez parlament krajowy.",
       "en": "Rulings from international human rights courts should supersede domestic statutes passed by national parliaments.",
@@ -1350,10 +1704,11 @@ const questions = [
     }
   },
   {
-    "id": 95,
+    "id": 115,
     "categoryKey": "security",
     "axis": "soc",
     "multiplier": -1,
+    "isQuick": true,
     "text": {
       "pl": "Wydatki na wojsko i zbrojenia powinny być priorytetem, nawet jeśli oznacza to cięcia w szkolnictwie czy zdrowiu.",
       "en": "Defense and armament budgets should reach at least 3-4% of GDP, even if other public spending has to be trimmed.",
@@ -1362,10 +1717,11 @@ const questions = [
     }
   },
   {
-    "id": 96,
+    "id": 116,
     "categoryKey": "security",
     "axis": "soc",
     "multiplier": 1,
+    "isQuick": true,
     "text": {
       "pl": "Powinniśmy dążyć do świata bez granic, w którym każdy człowiek może swobodnie mieszkać i pracować w dowolnym kraju.",
       "en": "Humanity should strive for a borderless world where anyone is free to reside and work anywhere on Earth.",
@@ -1374,10 +1730,11 @@ const questions = [
     }
   },
   {
-    "id": 97,
+    "id": 117,
     "categoryKey": "security",
     "axis": "soc",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Interes własnego kraju i jego obywateli musi zawsze stać na pierwszym miejscu, przed wszelkimi umowami międzynarodowymi.",
       "en": "The national interest and welfare of one's own citizens must always take precedence over international treaties.",
@@ -1386,10 +1743,11 @@ const questions = [
     }
   },
   {
-    "id": 98,
+    "id": 118,
     "categoryKey": "security",
     "axis": "soc",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Bogate kraje i banki powinny umorzyć długi najbiedniejszym państwom świata, by pomóc im w walce z głodem i nędzą.",
       "en": "Wealthy nations and lenders should cancel the sovereign debts of developing countries to combat global poverty.",
@@ -1398,10 +1756,11 @@ const questions = [
     }
   },
   {
-    "id": 99,
+    "id": 119,
     "categoryKey": "security",
     "axis": "soc",
     "multiplier": -1,
+    "isQuick": false,
     "text": {
       "pl": "Gdy wrogie państwo nam zagraża, nasza armia powinna mieć prawo do uderzenia wyprzedzającego za granicą.",
       "en": "When threatened by a hostile power, our military should have full authorization to conduct preemptive strikes abroad.",
@@ -1410,10 +1769,11 @@ const questions = [
     }
   },
   {
-    "id": 100,
+    "id": 120,
     "categoryKey": "security",
     "axis": "soc",
     "multiplier": 1,
+    "isQuick": false,
     "text": {
       "pl": "Wszystkie mocarstwa atomowe powinny całkowicie zlikwidować swoją broń jądrową pod międzynarodową kontrolą.",
       "en": "All nuclear powers should sign a mandatory treaty to completely eliminate atomic weapons under global inspection.",

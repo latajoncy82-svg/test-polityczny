@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Test Polityczny – Globalny Kompas Poglądów 2026</title>
   <meta name="referrer" content="no-referrer">
-  <link rel="stylesheet" href="style.css?v=2026.4.0">
+  <link rel="stylesheet" href="style.css?v=2026.5.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@
       </div>
 
       <div class="header-controls">
-        <span class="header-edition-pill" id="headerEditionBadge">100 Pytań • Model 2D</span>
+        <span class="header-edition-pill" id="headerEditionBadge">Kompas 2D • Szybka & Pełna</span>
 
         <!-- Sleek segmented language pill selector with crisp SVG flags (Glitch-free on all OS) -->
         <div class="header-lang-switcher" role="group" aria-label="Wybór języka">
@@ -111,12 +111,35 @@
         <div class="hero-header-box">
           <div class="badge-pill" id="badgePill">
             <span class="badge-dot"></span>
-            Edycja Globalna 2026 • 100 Pytań
+            Edycja Globalna 2026 • 30 Pytań (Wersja Szybka)
           </div>
           <h2 class="hero-title" id="heroTitle">Odkryj swoje prawdziwe miejsce na mapie politycznej świata</h2>
           <p class="hero-desc" id="heroDesc">
             Kompleksowy test badający Twoje przekonania w 12 kluczowych obszarach: od wolnego rynku, podatków i pracy, przez sztuczną inteligencję, prywatność i ekologię, po prawa człowieka, tradycję i geopolitykę. Dowiedz się, na jakiego światowego lidera i międzynarodową partię oddałbyś głos.
           </p>
+        </div>
+
+        <!-- Mode Selector: Szybka (30 pytań) vs Pełna (120 pytań) -->
+        <div class="mode-selector-container">
+          <span class="mode-selector-label" id="modeSelectLabel">Wybierz wersję testu:</span>
+          <div class="mode-options-grid">
+            <button type="button" class="mode-option-card active" data-mode="quick" id="modeQuickBtn">
+              <div class="mode-card-top-row">
+                <span class="mode-icon">⚡</span>
+                <span class="mode-title" id="modeQuickTitle">Wersja Szybka</span>
+                <span class="mode-pill-tag badge-quick" id="modeQuickBadge">Szybka</span>
+              </div>
+              <p class="mode-card-desc" id="modeQuickDesc">30 pytań • ~3-5 min • Szybka diagnoza poglądów</p>
+            </button>
+            <button type="button" class="mode-option-card" data-mode="full" id="modeFullBtn">
+              <div class="mode-card-top-row">
+                <span class="mode-icon">🧭</span>
+                <span class="mode-title" id="modeFullTitle">Wersja Pełna</span>
+                <span class="mode-pill-tag badge-full" id="modeFullBadge">Pełna</span>
+              </div>
+              <p class="mode-card-desc" id="modeFullDesc">120 pytań • ~12-15 min • Kompletny, precyzyjny audyt poglądów</p>
+            </button>
+          </div>
         </div>
 
         <!-- 2-Axis Preview Cards -->
@@ -158,7 +181,7 @@
 
         <!-- Key Features List -->
         <div class="test-features">
-          <div class="feature-item" id="featureTime">⏱️ Czas: ok. 10-15 minut (100 pytań)</div>
+          <div class="feature-item" id="featureTime">⏱️ Czas: ok. 3-5 minut (30 pytań)</div>
           <div class="feature-item" id="featureAnon">🔒 W 100% anonimowe i bez rejestracji</div>
           <div class="feature-item" id="featureResults">📊 Dokładny kompas 2D, 32 ideologie, światowi politycy i partie</div>
         </div>
@@ -181,7 +204,7 @@
 
           <!-- Single Prominent, Gorgeous Primary CTA -->
           <button id="startTestBtn" type="button" class="primary-btn btn-large cta-start-btn">
-            <span class="cta-btn-text">Rozpocznij test teraz (100 pytań)</span>
+            <span class="cta-btn-text" id="startTestBtnText">Rozpocznij wersję szybką (30 pytań)</span>
             <span class="cta-btn-arrow">➔</span>
           </button>
         </div>
@@ -194,7 +217,7 @@
             ← Poprzednie
           </button>
           <div class="quiz-counter">
-            <span id="questionCounterText">Pytanie 1 z 100</span>
+            <span id="questionCounterText">Pytanie 1 z 30 • Wersja Szybka</span>
           </div>
           <button id="nextBtn" class="btn-text" disabled>
             Następne →
@@ -446,7 +469,10 @@
             📋 Kopiuj podsumowanie
           </button>
           <button id="toggleAnswersBtn" class="btn-action">
-            📝 Zobacz swoje odpowiedzi (100)
+            📝 Zobacz swoje odpowiedzi
+          </button>
+          <button id="tryOtherModeBtn" class="btn-action btn-try-mode">
+            🧭 Rozwiąż wersję pełną (120 pytań)
           </button>
           <button id="restartBtn" class="btn-action btn-primary-outline">
             🔄 Rozwiąż ponownie
@@ -456,7 +482,7 @@
         <!-- Answers Review Modal / Drawer -->
         <div id="answersReviewSection" class="review-answers-box hidden">
           <div class="review-header">
-            <h3 id="reviewTitle">Twoje odpowiedzi na 100 pytań</h3>
+            <h3 id="reviewTitle">Twoje odpowiedzi na pytania</h3>
             <button id="closeReviewBtn" class="btn-text">✕ Zamknij</button>
           </div>
           <div id="reviewList" class="review-list"></div>
@@ -468,7 +494,7 @@
 
     <!-- Footer -->
     <footer class="app-footer">
-      <p id="footerText">Globalny Test Polityczny &copy; 2026 • 100 Pytań • Model dwuosiowy z katalogiem 32 ideologii, liderów i partii świata.</p>
+      <p id="footerText">Globalny Test Polityczny &copy; 2026 • Wersja Szybka (30 pytań) oraz Pełna (120 pytań) • Model 2D z katalogiem 32 ideologii, liderów i partii świata.</p>
     </footer>
 
   </div>
@@ -554,9 +580,9 @@
   </div>
 
   <!-- Scripts -->
-  <script src="translations.js?v=2026.4.0"></script>
-  <script src="questions.js?v=2026.4.0"></script>
-  <script src="worldData.js?v=2026.4.0"></script>
-  <script src="script.js?v=2026.4.0"></script>
+  <script src="translations.js?v=2026.5.0"></script>
+  <script src="questions.js?v=2026.5.0"></script>
+  <script src="worldData.js?v=2026.5.0"></script>
+  <script src="script.js?v=2026.5.0"></script>
 </body>
 </html>

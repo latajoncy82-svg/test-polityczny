@@ -12,7 +12,7 @@ console.log("== Starting Political Compass Build ==");
 
 // 1. Build questions.js
 const questionsFileContent = `/**
- * BAZA 100 PYTAŃ, KATEGORII ORAZ OPCJI ODPOWIEDZI
+ * BAZA ${rawQuestions.length} PYTAŃ, KATEGORII ORAZ OPCJI ODPOWIEDZI
  * Test Polityczny - Wersja Globalna 2026
  * Obsługa 4 języków: PL, EN, RU, FR
  */
@@ -29,7 +29,7 @@ if (typeof module !== "undefined" && module.exports) {
 `;
 
 fs.writeFileSync(path.join(__dirname, '../questions.js'), questionsFileContent, 'utf-8');
-console.log("✓ Successfully generated questions.js (100 questions, 12 categories, 6 answer options)");
+console.log(`✓ Successfully generated questions.js (${rawQuestions.length} questions, 12 categories, 6 answer options)`);
 
 // 2. Build worldData.js
 const worldDataContent = `/**

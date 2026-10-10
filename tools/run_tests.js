@@ -24,23 +24,45 @@ const { uiTranslations } = require('../translations.js');
 
 // 2. Validate Questions
 console.log("\n[1] Testing questions.js dataset:");
-assert(Array.isArray(questions) && questions.length === 100, "Dataset contains exactly 100 questions");
+assert(Array.isArray(questions) && questions.length === 120, "Dataset contains exactly 120 questions");
 
 const ids = questions.map(q => q.id);
 const uniqueIds = new Set(ids);
-assert(uniqueIds.size === 100 && ids[0] === 1 && ids[99] === 100, "Question IDs are sequential from 1 to 100");
+assert(uniqueIds.size === 120 && ids[0] === 1 && ids[119] === 120, "Question IDs are sequential from 1 to 120");
 
 const econQuestions = questions.filter(q => q.axis === "econ");
 const socQuestions = questions.filter(q => q.axis === "soc");
-assert(econQuestions.length === 50 && socQuestions.length === 50, "Perfect 50:50 balance between Economic and Social axes");
+assert(econQuestions.length === 60 && socQuestions.length === 60, "Perfect 60:60 balance between Economic and Social axes");
 
 const econPos = econQuestions.filter(q => q.multiplier === 1).length;
 const econNeg = econQuestions.filter(q => q.multiplier === -1).length;
-assert(econPos === 25 && econNeg === 25, "Economic axis has exactly 25 (+1) and 25 (-1) questions");
+assert(econPos === 30 && econNeg === 30, "Economic axis has exactly 30 (+1) and 30 (-1) questions");
 
 const socPos = socQuestions.filter(q => q.multiplier === 1).length;
 const socNeg = socQuestions.filter(q => q.multiplier === -1).length;
-assert(socPos === 25 && socNeg === 25, "Social axis has exactly 25 (+1) and 25 (-1) questions");
+assert(socPos === 30 && socNeg === 30, "Social axis has exactly 30 (+1) and 30 (-1) questions");
+
+// Validate 10 questions per category (5 pos, 5 neg)
+let categoryBalanceErrors = 0;
+Object.keys(categories).forEach(catKey => {
+  const catQs = questions.filter(q => q.categoryKey === catKey);
+  if (catQs.length !== 10) categoryBalanceErrors++;
+  const pos = catQs.filter(q => q.multiplier === 1).length;
+  const neg = catQs.filter(q => q.multiplier === -1).length;
+  if (pos !== 5 || neg !== 5) categoryBalanceErrors++;
+});
+assert(categoryBalanceErrors === 0, "All 12 categories have exactly 10 questions each with 5 (+1) and 5 (-1) balance");
+
+// Validate Quick Mode questions (30 questions)
+const quickQuestions = questions.filter(q => q.isQuick === true);
+assert(quickQuestions.length === 30, "Quick mode has exactly 30 questions flagged with isQuick");
+const quickEcon = quickQuestions.filter(q => q.axis === "econ");
+const quickSoc = quickQuestions.filter(q => q.axis === "soc");
+assert(quickEcon.length === 15 && quickSoc.length === 15, "Quick mode has 15 Econ and 15 Soc questions");
+const quickMultSum = quickQuestions.reduce((acc, q) => acc + q.multiplier, 0);
+assert(quickMultSum === 0, "Quick mode questions have net multiplier sum of 0 (15 pos, 15 neg)");
+const quickCats = new Set(quickQuestions.map(q => q.categoryKey));
+assert(quickCats.size === 12, "Quick mode covers all 12 categories");
 
 const langs = ['pl', 'en', 'ru', 'fr'];
 let missingQuestionTexts = 0;
@@ -55,7 +77,7 @@ questions.forEach(q => {
     invalidCategoryKeys++;
   }
 });
-assert(missingQuestionTexts === 0, "All 100 questions have complete, non-empty translations in PL, EN, RU, FR");
+assert(missingQuestionTexts === 0, "All 120 questions have complete, non-empty translations in PL, EN, RU, FR");
 assert(invalidCategoryKeys === 0, "All questions reference valid category keys");
 
 assert(Object.keys(categories).length === 12, "Exactly 12 distinct categories/sectors present");
@@ -250,20 +272,20 @@ const allSkipped = runScoringSimulation(() => "skip");
 assert(allSkipped.econScore === 0 && allSkipped.socScore === 0, `All skipped answers yield safe center (0%, 0%) without zero-division error`);
 
 // Case E: Distinct Neutral (0 in denominator) vs. Skip (excluded from denominator)
-// Answer +2 on 10 econ questions (with multiplier=1).
-// Scenario 1: Answer Neutral (0) on remaining 40 questions -> score must dilute towards 0: 20/100 = 20%
+// Answer +2 on 6 econ questions (with multiplier=1). Total econ questions = 60.
+// Scenario 1: Answer Neutral (0) on remaining 54 econ questions -> score must dilute towards 0: 12/120 = 10%
 const diluteNeutral = runScoringSimulation((q) => {
   if (q.axis === "econ") {
-    if (q.id <= 10 && q.multiplier === 1) return 2;
+    if (q.id <= 12 && q.multiplier === 1) return 2; // IDs 1, 3, 5, 7, 9, 11 (6 questions)
     return 0; // Neutral: included in denominator
   }
   return 0;
 });
 
-// Scenario 2: Answer Skip ('skip') on remaining 40 questions -> score stays undiluted at 100%!
+// Scenario 2: Answer Skip ('skip') on remaining 54 questions -> score stays undiluted at 100%!
 const pureSkip = runScoringSimulation((q) => {
   if (q.axis === "econ") {
-    if (q.id <= 10 && q.multiplier === 1) return 2;
+    if (q.id <= 12 && q.multiplier === 1) return 2;
     return "skip"; // Skip: excluded from denominator
   }
   return "skip";
@@ -289,19 +311,19 @@ function calculateMockSectorBreakdown(answers) {
   return scores;
 }
 
-const mockAnswersSkip = new Array(100).fill("skip");
+const mockAnswersSkip = new Array(120).fill("skip");
 mockAnswersSkip[0] = 2; // Q1 is economy with multiplier 1
 const sectorSkipResult = calculateMockSectorBreakdown(mockAnswersSkip);
 assert(sectorSkipResult.economy.scorePct === 100 && sectorSkipResult.economy.answered === 1, `Sector breakdown: Skip excludes unanswered questions, preserving 100% sector score for single answered question`);
 
-const mockAnswersNeutral = new Array(100).fill("skip");
+const mockAnswersNeutral = new Array(120).fill("skip");
 mockAnswersNeutral[0] = 2;
 // answer neutral (0) on other 9 economy questions (Q2 - Q10)
 for (let i = 1; i < 10; i++) mockAnswersNeutral[i] = 0;
 const sectorNeutralResult = calculateMockSectorBreakdown(mockAnswersNeutral);
 assert(sectorNeutralResult.economy.scorePct === 10 && sectorNeutralResult.economy.answered === 10, `Sector breakdown: Neutral (0) dilutes sector score towards center (10% with 10 questions factored)`);
 
-// Case F: Pure Agree (+1 on all questions) cancels out due to symmetric 25(+1) / 25(-1) questions
+// Case F: Pure Agree (+1 on all questions) cancels out due to symmetric 30(+1) / 30(-1) questions
 const allAgree = runScoringSimulation(() => 1);
 assert(allAgree.econScore === 0 && allAgree.socScore === 0, `Agreeing to everything cancels out to (0%, 0%) due to symmetric questions`);
 
@@ -450,6 +472,26 @@ requiredNewUiKeys.forEach(key => {
   });
 });
 assert(missingNewUiKeys === 0, `All 11 new ranking & expand UI strings have 100% translation parity in 4 languages`);
+
+// Verify test mode UI keys parity (Quick vs Full modes)
+const requiredModeKeys = [
+  'modeSelectLabel', 'modeQuickTitle', 'modeQuickBadge', 'modeQuickDesc',
+  'modeFullTitle', 'modeFullBadge', 'modeFullDesc', 'startTestBtnQuick',
+  'startTestBtnFull', 'badgeResultQuick', 'badgeResultFull',
+  'questionCounterModeQuick', 'questionCounterModeFull',
+  'featureTimeQuick', 'featureTimeFull', 'tryOtherModeQuick', 'tryOtherModeFull',
+  'badgePillQuick', 'badgePillFull', 'modePromptLabel'
+];
+let missingModeKeys = 0;
+requiredModeKeys.forEach(k => {
+  langs.forEach(l => {
+    if (!uiTranslations[l][k] || typeof uiTranslations[l][k] !== 'string') {
+      missingModeKeys++;
+      console.error(`Missing mode key '${k}' in '${l}'`);
+    }
+  });
+});
+assert(missingModeKeys === 0, "All 20 test mode keys have 100% translation parity in PL, EN, RU, FR");
 
 // Verify ranking calculation on simulated scores
 function rankIdeologies(econ, soc) {
@@ -601,11 +643,22 @@ try {
 }
 assert(vmInitError === null, "Script loads without ReferenceError or Temporal Dead Zone exceptions during initApp");
 
-// Simulate quiz completion and results view
-vm.runInContext('userAnswers = new Array(100).fill(2);', simContext);
-vm.runInContext('showResults(false);', simContext);
-
+// Test mode selection and dynamic questions loading
 const getSim = (code) => vm.runInContext(code, simContext);
+
+vm.runInContext('setTestMode("quick");', simContext);
+assert(getSim('currentTestMode') === 'quick', "Setting test mode to quick updates currentTestMode");
+assert(getSim('getActiveQuestions().length') === 30, "Quick mode provides exactly 30 active questions");
+assert(simElements['modeQuickBtn'].classList.contains('active') && !simElements['modeFullBtn'].classList.contains('active'), "Quick mode button is active and Full mode button is inactive");
+
+vm.runInContext('setTestMode("full");', simContext);
+assert(getSim('currentTestMode') === 'full', "Setting test mode to full updates currentTestMode");
+assert(getSim('getActiveQuestions().length') === 120, "Full mode provides exactly 120 active questions");
+assert(simElements['modeFullBtn'].classList.contains('active') && !simElements['modeQuickBtn'].classList.contains('active'), "Full mode button is active and Quick mode button is inactive");
+
+// Simulate quiz completion and results view
+vm.runInContext('userAnswers = new Array(getActiveQuestions().length).fill(2);', simContext);
+vm.runInContext('showResults(false);', simContext);
 
 assert(getSim('currentRankedPoliticians.length') === 43, "Simulation ranks all 43 politicians");
 assert(getSim('currentRankedIdeologies.length') === 32, "Simulation ranks all 32 ideologies");
@@ -654,6 +707,12 @@ let langTogglesPassed = true;
   }
 });
 assert(langTogglesPassed, "Language toggling updates expand button labels across all 4 languages dynamically");
+
+// Test tryOtherModeBtn toggling between Full and Quick modes
+simElements['tryOtherModeBtn'].click();
+assert(getSim('currentTestMode') === 'quick', "Clicking tryOtherModeBtn switches test mode from Full to Quick");
+assert(getSim('getActiveQuestions().length') === 30, "Active questions updated to 30 following mode toggle");
+assert(simElements['modeQuickBtn'].classList.contains('active'), "Quick mode card is highlighted active after mode toggle");
 
 // Results summary
 console.log(`\n======================================================`);

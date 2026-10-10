@@ -10,9 +10,18 @@ let currentLang = localStorage.getItem("ptp_lang") || "pl";
 let currentTheme = localStorage.getItem("ptp_theme") || "theme-dark";
 let currentTone = localStorage.getItem("ptp_tone") || "standard";
 let currentAccent = localStorage.getItem("ptp_accent") || "blue";
+let currentTestMode = localStorage.getItem("ptp_mode") || "quick";
+
+function getActiveQuestions() {
+  if (typeof questions === "undefined" || !Array.isArray(questions)) return [];
+  if (currentTestMode === "quick") {
+    return questions.filter(q => q.isQuick);
+  }
+  return questions;
+}
 
 let currentQuestionIndex = 0;
-let userAnswers = (typeof questions !== "undefined" && Array.isArray(questions)) ? new Array(questions.length).fill(null) : [];
+let userAnswers = (typeof questions !== "undefined" && Array.isArray(questions)) ? new Array(getActiveQuestions().length).fill(null) : [];
 let animationFrameId = null;
 let currentEconScore = 0;
 let currentSocScore = 0;
@@ -85,7 +94,20 @@ const featureTime = document.getElementById("featureTime");
 const featureAnon = document.getElementById("featureAnon");
 const featureResults = document.getElementById("featureResults");
 const startTestBtn = document.getElementById("startTestBtn");
+const startTestBtnText = document.getElementById("startTestBtnText");
 const resumeTestBtn = document.getElementById("resumeTestBtn");
+
+// Mode Selector DOM
+const modeSelectLabel = document.getElementById("modeSelectLabel");
+const modeQuickBtn = document.getElementById("modeQuickBtn");
+const modeQuickTitle = document.getElementById("modeQuickTitle");
+const modeQuickBadge = document.getElementById("modeQuickBadge");
+const modeQuickDesc = document.getElementById("modeQuickDesc");
+const modeFullBtn = document.getElementById("modeFullBtn");
+const modeFullTitle = document.getElementById("modeFullTitle");
+const modeFullBadge = document.getElementById("modeFullBadge");
+const modeFullDesc = document.getElementById("modeFullDesc");
+const tryOtherModeBtn = document.getElementById("tryOtherModeBtn");
 
 // Question Screen
 const prevBtn = document.getElementById("prevBtn");
@@ -193,10 +215,52 @@ const reviewList = document.getElementById("reviewList");
 const footerText = document.getElementById("footerText");
 
 // =========================================================================
+// OBSŁUGA TRYBU TESTU (SZYBKA 30 vs PEŁNA 120)
+// =========================================================================
+function setTestMode(mode) {
+  if (mode !== "quick" && mode !== "full") mode = "quick";
+  currentTestMode = mode;
+  localStorage.setItem("ptp_mode", mode);
+  const activeQs = getActiveQuestions();
+  userAnswers = new Array(activeQs.length).fill(null);
+  currentQuestionIndex = 0;
+  updateModeUI();
+  resetProgress();
+}
+
+function updateModeUI() {
+  if (modeQuickBtn) modeQuickBtn.classList.toggle("active", currentTestMode === "quick");
+  if (modeFullBtn) modeFullBtn.classList.toggle("active", currentTestMode === "full");
+
+  const t = uiTranslations[currentLang] || uiTranslations.pl || {};
+  const isQuick = currentTestMode === "quick";
+
+  if (badgePill) {
+    badgePill.innerHTML = `<span class="badge-dot"></span>${isQuick ? (t.badgePillQuick || "Edycja Globalna 2026 • 30 Pytań (Wersja Szybka)") : (t.badgePillFull || "Edycja Globalna 2026 • 120 Pytań (Wersja Pełna)")}`;
+  }
+  if (featureTime) {
+    featureTime.textContent = isQuick ? (t.featureTimeQuick || "⏱️ Czas: ok. 3-5 minut (30 pytań)") : (t.featureTimeFull || "⏱️ Czas: ok. 12-15 minut (120 pytań)");
+  }
+  if (startTestBtnText) {
+    const rawBtn = isQuick
+      ? (t.startTestBtnQuick || "Rozpocznij wersję szybką (30 pytań) ➔")
+      : (t.startTestBtnFull || "Rozpocznij wersję pełną (120 pytań) ➔");
+    startTestBtnText.textContent = rawBtn.replace(/\s*➔\s*$/, "");
+  }
+  if (tryOtherModeBtn) {
+    tryOtherModeBtn.textContent = isQuick
+      ? (t.tryOtherModeFull || "🧭 Rozwiąż wersję pełną (120 pytań)")
+      : (t.tryOtherModeQuick || "⚡ Rozwiąż wersję szybką (30 pytań)");
+  }
+  updateResumeButtonText();
+}
+
+// =========================================================================
 // INICJALIZACJA APLIKACJI
 // =========================================================================
 function initApp() {
   try { setupAppearance(); } catch (e) { console.error("setupAppearance error:", e); }
+  try { updateModeUI(); } catch (e) { console.error("updateModeUI error:", e); }
   try { applyLanguage(currentLang); } catch (e) { console.error("applyLanguage error:", e); }
   try { setupEventListeners(); } catch (e) { console.error("setupEventListeners error:", e); }
   try { setupKeyboardNavigation(); } catch (e) { console.error("setupKeyboardNavigation error:", e); }
@@ -357,22 +421,25 @@ function applyLanguage(lang) {
   if (accentCrimsonText && t.accentCrimson) accentCrimsonText.textContent = t.accentCrimson;
   if (accentRoseText && t.accentRose) accentRoseText.textContent = t.accentRose;
 
+  // Mode Selector
+  if (modeSelectLabel && t.modeSelectLabel) modeSelectLabel.textContent = t.modeSelectLabel;
+  if (modeQuickTitle && t.modeQuickTitle) modeQuickTitle.textContent = t.modeQuickTitle;
+  if (modeQuickBadge && t.modeQuickBadge) modeQuickBadge.textContent = t.modeQuickBadge;
+  if (modeQuickDesc && t.modeQuickDesc) modeQuickDesc.textContent = t.modeQuickDesc;
+  if (modeFullTitle && t.modeFullTitle) modeFullTitle.textContent = t.modeFullTitle;
+  if (modeFullBadge && t.modeFullBadge) modeFullBadge.textContent = t.modeFullBadge;
+  if (modeFullDesc && t.modeFullDesc) modeFullDesc.textContent = t.modeFullDesc;
+
   // Welcome Screen
-  if (badgePill) badgePill.textContent = t.badgePill;
   if (heroTitle) heroTitle.textContent = t.heroTitle;
   if (heroDesc) heroDesc.textContent = t.heroDesc;
   if (axisEconTitle) axisEconTitle.textContent = t.axisEconTitle;
   if (axisEconDesc) axisEconDesc.textContent = t.axisEconDesc;
   if (axisSocTitle) axisSocTitle.textContent = t.axisSocTitle;
   if (axisSocDesc) axisSocDesc.textContent = t.axisSocDesc;
-  if (featureTime) featureTime.textContent = t.featureTime;
   if (featureAnon) featureAnon.textContent = t.featureAnon;
   if (featureResults) featureResults.textContent = t.featureResults;
-  if (startTestBtn) {
-    const rawStart = t.startBtn || "Rozpocznij test teraz (100 pytań)";
-    const cleanStart = rawStart.replace(/\s*➔\s*$/, "");
-    startTestBtn.innerHTML = `<span class="cta-btn-text">${cleanStart}</span><span class="cta-btn-arrow" aria-hidden="true">➔</span>`;
-  }
+  updateModeUI();
 
   // Quiz Screen
   if (prevBtn) prevBtn.textContent = t.prevBtn;
@@ -520,6 +587,28 @@ function setupEventListeners() {
       if (e.target === appearanceModal) {
         appearanceModal.classList.add("hidden");
       }
+    });
+  }
+
+  // Wybór trybu testu (Szybka / Pełna)
+  if (modeQuickBtn) {
+    modeQuickBtn.addEventListener("click", (e) => {
+      createRippleEffect(e, modeQuickBtn);
+      setTestMode("quick");
+    });
+  }
+  if (modeFullBtn) {
+    modeFullBtn.addEventListener("click", (e) => {
+      createRippleEffect(e, modeFullBtn);
+      setTestMode("full");
+    });
+  }
+  if (tryOtherModeBtn) {
+    tryOtherModeBtn.addEventListener("click", (e) => {
+      createRippleEffect(e, tryOtherModeBtn);
+      setTestMode(currentTestMode === "quick" ? "full" : "quick");
+      resetProgress();
+      startQuiz();
     });
   }
 
@@ -693,6 +782,7 @@ function switchScreen(activeScreen) {
 function saveProgress() {
   try {
     const data = {
+      mode: currentTestMode,
       answers: userAnswers,
       currentIndex: currentQuestionIndex
     };
@@ -717,12 +807,18 @@ function updateResumeButtonText() {
   const saved = checkSavedProgress();
   const resumeContainer = document.getElementById("resumePromptContainer");
   if (saved) {
-    const t = uiTranslations[currentLang] || uiTranslations.pl;
+    const t = uiTranslations[currentLang] || uiTranslations.pl || {};
+    const savedMode = saved.mode || currentTestMode;
+    const modeQs = (savedMode === "quick")
+      ? (typeof questions !== "undefined" ? questions.filter(q => q.isQuick) : [])
+      : (typeof questions !== "undefined" ? questions : []);
+    const totalCount = modeQs.length || (saved.answers ? saved.answers.length : 30);
+    const modeLabel = savedMode === "quick" ? (t.questionCounterModeQuick || "Szybka") : (t.questionCounterModeFull || "Pełna");
     const resumeTxt = (t.resumeBtn || "Kontynuuj test ({current}/{total}) ➔")
-      .replace("{current}", saved.currentIndex + 1)
-      .replace("{total}", questions.length);
+      .replace("{current}", (saved.currentIndex || 0) + 1)
+      .replace("{total}", totalCount);
     const cleanResume = resumeTxt.replace(/\s*➔\s*$/, "");
-    resumeTestBtn.innerHTML = `<span class="resume-btn-text">${cleanResume}</span><span class="resume-btn-arrow" aria-hidden="true">➔</span>`;
+    resumeTestBtn.innerHTML = `<span class="resume-btn-text">${cleanResume} (${modeLabel})</span><span class="resume-btn-arrow" aria-hidden="true">➔</span>`;
     resumeTestBtn.classList.remove("hidden");
     if (resumeContainer) resumeContainer.classList.remove("hidden");
   } else {
@@ -743,8 +839,14 @@ function resetProgress() {
 function resumeQuiz() {
   const saved = checkSavedProgress();
   if (saved) {
-    userAnswers = saved.answers;
-    currentQuestionIndex = Math.min(questions.length - 1, Math.max(0, saved.currentIndex || 0));
+    if (saved.mode && saved.mode !== currentTestMode) {
+      currentTestMode = saved.mode;
+      localStorage.setItem("ptp_mode", currentTestMode);
+      updateModeUI();
+    }
+    const activeQs = getActiveQuestions();
+    userAnswers = saved.answers || new Array(activeQs.length).fill(null);
+    currentQuestionIndex = Math.min(activeQs.length - 1, Math.max(0, saved.currentIndex || 0));
     switchScreen(questionScreen);
     renderQuestion();
   } else {
@@ -756,37 +858,41 @@ function resumeQuiz() {
 // PRZEBIEG TESTU (QUIZ ENGINE)
 // =========================================================================
 function startQuiz() {
+  const activeQs = getActiveQuestions();
   currentQuestionIndex = 0;
-  userAnswers.fill(null);
+  userAnswers = new Array(activeQs.length).fill(null);
   switchScreen(questionScreen);
   renderQuestion();
 }
 
 function renderQuestion() {
-  const q = questions[currentQuestionIndex];
-  const t = uiTranslations[currentLang];
+  const activeQs = getActiveQuestions();
+  if (!activeQs.length) return;
+  const q = activeQs[currentQuestionIndex];
+  const t = uiTranslations[currentLang] || uiTranslations.pl || {};
+  const isQuick = currentTestMode === "quick";
+  const modeTag = isQuick ? (t.questionCounterModeQuick || "Wersja Szybka") : (t.questionCounterModeFull || "Wersja Pełna");
 
   // Numeracja i licznik
-  const counterText = t.questionCounter
-    .replace("{current}", currentQuestionIndex + 1)
-    .replace("{total}", questions.length);
-  questionCounterText.textContent = counterText;
+  const counterTemplate = t.questionCounter || "Pytanie {current} z {total}";
+  const counterText = `${counterTemplate.replace("{current}", currentQuestionIndex + 1).replace("{total}", activeQs.length)} • ${modeTag}`;
+  if (questionCounterText) questionCounterText.textContent = counterText;
 
   // Kategoria
   const catObj = categories[q.categoryKey];
-  questionCategory.textContent = catObj ? (catObj[currentLang] || catObj.pl) : q.categoryKey;
+  if (questionCategory) questionCategory.textContent = catObj ? (catObj[currentLang] || catObj.pl) : q.categoryKey;
 
   // Treść pytania
-  questionText.textContent = q.text[currentLang] || q.text.pl;
+  if (questionText) questionText.textContent = q.text[currentLang] || q.text.pl;
 
   // Pasek postępu
-  const progressPct = ((currentQuestionIndex) / questions.length) * 100;
-  progressBar.style.width = `${Math.max(1, progressPct)}%`;
+  const progressPct = ((currentQuestionIndex) / activeQs.length) * 100;
+  if (progressBar) progressBar.style.width = `${Math.max(1, progressPct)}%`;
 
   // Przyciski nawigacji
-  prevBtn.disabled = currentQuestionIndex === 0;
+  if (prevBtn) prevBtn.disabled = currentQuestionIndex === 0;
   if (nextBtn) {
-    nextBtn.disabled = currentQuestionIndex === questions.length - 1 || userAnswers[currentQuestionIndex] === null;
+    nextBtn.disabled = currentQuestionIndex === activeQs.length - 1 || userAnswers[currentQuestionIndex] === null;
   }
 
   // Generowanie lub błyskawiczna aktualizacja przycisków 6 odpowiedzi (zero layout thrashing)
@@ -835,11 +941,12 @@ function renderQuestion() {
 }
 
 function handleAnswerSelect(val, clickedBtn = null) {
+  const activeQs = getActiveQuestions();
   // If user answers quickly while a timeout is already ticking, immediately advance previous question
   if (transitionTimeoutId) {
     clearTimeout(transitionTimeoutId);
     transitionTimeoutId = null;
-    if (currentQuestionIndex < questions.length - 1) {
+    if (currentQuestionIndex < activeQs.length - 1) {
       currentQuestionIndex++;
     }
   }
@@ -859,18 +966,19 @@ function handleAnswerSelect(val, clickedBtn = null) {
   transitionTimeoutId = setTimeout(() => {
     transitionTimeoutId = null;
     isTransitioning = false;
-    if (currentQuestionIndex < questions.length - 1) {
+    if (currentQuestionIndex < activeQs.length - 1) {
       currentQuestionIndex++;
       renderQuestion();
     } else {
-      progressBar.style.width = "100%";
+      if (progressBar) progressBar.style.width = "100%";
       setTimeout(() => showResults(true), 50);
     }
   }, 50);
 }
 
 function goToNextQuestion() {
-  if (currentQuestionIndex < questions.length - 1 && userAnswers[currentQuestionIndex] !== null) {
+  const activeQs = getActiveQuestions();
+  if (currentQuestionIndex < activeQs.length - 1 && userAnswers[currentQuestionIndex] !== null) {
     currentQuestionIndex++;
     renderQuestion();
   }
@@ -887,12 +995,13 @@ function goToPreviousQuestion() {
 // KALKULACJA PUNKTÓW (DISTINCT NEUTRAL VS. INDEPENDENT SKIP)
 // =========================================================================
 function calculateScores() {
+  const activeQs = getActiveQuestions();
   let econRaw = 0;
   let econMax = 0;
   let socRaw = 0;
   let socMax = 0;
 
-  questions.forEach((q, idx) => {
+  activeQs.forEach((q, idx) => {
     const ans = userAnswers[idx];
 
     // Jeśli odpowiedź to "skip" (Nie mam zdania / Pomiń) lub brak odpowiedzi:
@@ -926,16 +1035,17 @@ function calculateSimilarity(userEcon, userSoc, targetEcon, targetSoc) {
 }
 
 function calculateSectorBreakdown() {
+  const activeQs = getActiveQuestions();
   const sectorScores = {};
 
   Object.keys(categories).forEach(catKey => {
-    const catQuestions = questions.filter(q => q.categoryKey === catKey);
+    const catQuestions = activeQs.filter(q => q.categoryKey === catKey);
     let raw = 0;
     let max = 0;
     let answeredCount = 0;
 
     catQuestions.forEach(q => {
-      const idx = q.id - 1;
+      const idx = activeQs.indexOf(q);
       const ans = userAnswers[idx];
       if (ans === "skip" || ans === null || ans === undefined) {
         return;
@@ -1704,6 +1814,17 @@ function showResults(animated = true) {
   renderSectorBreakdown();
 
   // 6. Przełączenie ekranu i rysowanie kompasu
+  if (resultBadge) {
+    resultBadge.textContent = currentTestMode === "quick"
+      ? (t.badgeResultQuick || "Wynik • Wersja Szybka (30 pytań)")
+      : (t.badgeResultFull || "Wynik • Wersja Pełna (120 pytań)");
+  }
+  if (tryOtherModeBtn) {
+    tryOtherModeBtn.textContent = currentTestMode === "quick"
+      ? (t.tryOtherModeFull || "🧭 Rozwiąż wersję pełną (120 pytań)")
+      : (t.tryOtherModeQuick || "⚡ Rozwiąż wersję szybką (30 pytań)");
+  }
+
   switchScreen(resultScreen);
   if (animated) {
     drawCompassAnimated(econScore, socScore);
@@ -1926,10 +2047,21 @@ function drawCompass(econ, soc, isFinal = true) {
 // PRZEGLĄD ODPOWIEDZI (REVIEW DRAWER)
 // =========================================================================
 function buildAnswersReview() {
+  if (!reviewList) return;
   reviewList.innerHTML = "";
-  const t = uiTranslations[currentLang];
+  const t = uiTranslations[currentLang] || uiTranslations.pl || {};
+  const activeQs = getActiveQuestions();
 
-  questions.forEach((q, idx) => {
+  if (toggleAnswersBtn) {
+    const rawRev = t.reviewBtn || "📝 Zobacz swoje odpowiedzi ({total})";
+    toggleAnswersBtn.textContent = rawRev.replace("{total}", activeQs.length);
+  }
+  if (reviewTitle) {
+    const rawTitle = t.reviewTitle || "Twoje odpowiedzi na pytania ({total})";
+    reviewTitle.textContent = rawTitle.replace("{total}", activeQs.length);
+  }
+
+  activeQs.forEach((q, idx) => {
     const val = userAnswers[idx];
     const opt = answerOptions.find(o => o.value === val);
     const catObj = categories[q.categoryKey];
@@ -2221,8 +2353,10 @@ function downloadResultImage() {
   ctx.textAlign = "center";
   ctx.fillStyle = "#64748b";
   ctx.font = "500 15px 'Plus Jakarta Sans', sans-serif";
-  const footerStatsTemplate = t.canvasFooterStats || `Globalny Kompas Poglądów 2026 • 100 Pytań • {ideologies} Ideologii • {politicians} Liderów i Myślicieli • {parties} Rodzin Partyjnych`;
+  const activeQs = getActiveQuestions();
+  const footerStatsTemplate = t.canvasFooterStats || `Globalny Kompas Poglądów 2026 • {questions} Pytań • {ideologies} Ideologii • {politicians} Liderów i Myślicieli • {parties} Rodzin Partyjnych`;
   const footerStats = footerStatsTemplate
+    .replace("{questions}", activeQs.length)
     .replace("{ideologies}", worldIdeologies.length)
     .replace("{politicians}", worldPoliticians.length)
     .replace("{parties}", worldParties.length);
@@ -2231,13 +2365,14 @@ function downloadResultImage() {
   ctx.fillText(footerCta, 540, 1100);
 
   const link = document.createElement("a");
-  link.download = `political_compass_${currentLang}_${Date.now()}.png`;
+  link.download = `political_compass_${currentLang}_${currentTestMode}_${Date.now()}.png`;
   link.href = exportCanvas.toDataURL("image/png");
   link.click();
 }
 
 function copyResultSummary() {
-  const t = uiTranslations[currentLang];
+  const t = uiTranslations[currentLang] || uiTranslations.pl || {};
+  const activeQs = getActiveQuestions();
   const { econScore, socScore } = calculateScores();
 
   const rankedIdeologies = worldIdeologies.map(ideo => {
@@ -2257,8 +2392,9 @@ function copyResultSummary() {
 
   const econSide = econScore > 0 ? t.econLabelRight : econScore < 0 ? t.econLabelLeft : t.centerLabel;
   const socSide = socScore > 0 ? t.socLabelRight : socScore < 0 ? t.socLabelLeft : t.centerLabel;
+  const modeBadgeText = currentTestMode === "quick" ? (t.modeQuickBadge || "Szybka") : (t.modeFullBadge || "Pełna");
 
-  const textToCopy = `⚖️ ${t.appTitle} 2026 (100 Questions / Global Edition)\n` +
+  const textToCopy = `⚖️ ${t.appTitle} 2026 (${modeBadgeText} • ${activeQs.length} pytań)\n` +
     `🧭 ${t.resultBadge}: ${ideoName} [${topIdeology.similarity}%]\n` +
     `   ${ideoSub}\n` +
     `• ${t.axisEconTitle}: ${econScore > 0 ? '+' : ''}${econScore}% (${econSide})\n` +
