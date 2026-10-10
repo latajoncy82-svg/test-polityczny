@@ -1,6 +1,6 @@
 /**
  * TEST POLITYCZNY - GŁÓWNA LOGIKA APLIKACJI (WERSJA GLOBALNA 2026)
- * Obsługa 150 pytań, 44 ideologii, 105 światowych liderów i postaci historycznych (w tym liderów II wojny światowej), 30 partii międzynarodowych
+ * Obsługa 160 pytań, 44 ideologii, 105 światowych liderów i postaci historycznych (w tym liderów II wojny światowej), 30 partii międzynarodowych
  * 6 opcji odpowiedzi (w tym Neutralny / Umiarkowany vs. Nie mam zdania / Pomiń)
  * oraz 6 języków: EN (domyślny), PL, ES, DE, RU, FR.
  */
@@ -216,7 +216,7 @@ const reviewList = document.getElementById("reviewList");
 const footerText = document.getElementById("footerText");
 
 // =========================================================================
-// OBSŁUGA TRYBU TESTU (SZYBKA 30 vs PEŁNA 150)
+// OBSŁUGA TRYBU TESTU (SZYBKA 30 vs PEŁNA 160)
 // =========================================================================
 function setTestMode(mode) {
   if (mode !== "quick" && mode !== "full") mode = "quick";
@@ -237,20 +237,20 @@ function updateModeUI() {
   const isQuick = currentTestMode === "quick";
 
   if (badgePill) {
-    badgePill.innerHTML = `<span class="badge-dot"></span>${isQuick ? (t.badgePillQuick || "Global Edition 2026 • 30 Questions (Quick Version)") : (t.badgePillFull || "Global Edition 2026 • 150 Questions (Full Version)")}`;
+    badgePill.innerHTML = `<span class="badge-dot"></span>${isQuick ? (t.badgePillQuick || "Global Edition 2026 • 30 Questions (Quick Version)") : (t.badgePillFull || "Global Edition 2026 • 160 Questions (Full Version)")}`;
   }
   if (featureTime) {
-    featureTime.textContent = isQuick ? (t.featureTimeQuick || "⏱️ Time: approx. 3-5 minutes (30 questions)") : (t.featureTimeFull || "⏱️ Time: approx. 12-15 minutes (150 questions)");
+    featureTime.textContent = isQuick ? (t.featureTimeQuick || "⏱️ Time: approx. 3-5 minutes (30 questions)") : (t.featureTimeFull || "⏱️ Time: approx. 14-18 minutes (160 questions)");
   }
   if (startTestBtnText) {
     const rawBtn = isQuick
       ? (t.startTestBtnQuick || "Start Quick Test (30 questions) ➔")
-      : (t.startTestBtnFull || "Start Full Test (150 questions) ➔");
+      : (t.startTestBtnFull || "Start Full Test (160 questions) ➔");
     startTestBtnText.textContent = rawBtn.replace(/\s*➔\s*$/, "");
   }
   if (tryOtherModeBtn) {
     tryOtherModeBtn.textContent = isQuick
-      ? (t.tryOtherModeFull || "🧭 Take the Full Version (150 questions)")
+      ? (t.tryOtherModeFull || "🧭 Take the Full Version (160 questions)")
       : (t.tryOtherModeQuick || "⚡ Take the Quick Version (30 questions)");
   }
   updateResumeButtonText();
@@ -2032,11 +2032,11 @@ function showResults(animated = true) {
   if (resultBadge) {
     resultBadge.textContent = currentTestMode === "quick"
       ? (t.badgeResultQuick || "Test Result • Quick Version (30 questions)")
-      : (t.badgeResultFull || "Test Result • Full Version (150 questions)");
+      : (t.badgeResultFull || "Test Result • Full Version (160 questions)");
   }
   if (tryOtherModeBtn) {
     tryOtherModeBtn.textContent = currentTestMode === "quick"
-      ? (t.tryOtherModeFull || "🧭 Take the Full Version (150 questions)")
+      ? (t.tryOtherModeFull || "🧭 Take the Full Version (160 questions)")
       : (t.tryOtherModeQuick || "⚡ Take the Quick Version (30 questions)");
   }
 
