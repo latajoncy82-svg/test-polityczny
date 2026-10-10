@@ -66,6 +66,6 @@ if (typeof module !== "undefined" && module.exports) {
 `;
 
 fs.writeFileSync(path.join(__dirname, '../translations.js'), translationsContent, 'utf-8');
-console.log("✓ Successfully generated translations.js (89 UI keys in 4 languages)");
+console.log(`✓ Successfully generated translations.js (${Object.keys(uiTranslations.pl).length} UI keys in 4 languages)`);
 
 console.log("== Build Completed Successfully ==");

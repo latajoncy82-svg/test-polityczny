@@ -2340,7 +2340,7 @@ const worldPoliticians = [
       "soc": 35
     },
     "color": "#1e40af",
-    "gradient": "linear-gradient(135deg, #1e40af, #1d4ed8)",
+    "gradient": "linear-gradient(135deg, #1e40af, #3b82f6)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/FDR-1944-Campaign-Portrait_%283x4_retouched%2C_cropped%29.jpg/330px-FDR-1944-Campaign-Portrait_%283x4_retouched%2C_cropped%29.jpg",
     "localPhoto": "assets/politicians/franklin_d_roosevelt.jpg"
   },
@@ -2376,8 +2376,8 @@ const worldPoliticians = [
       "econ": -15,
       "soc": -55
     },
-    "color": "#1e3a8a",
-    "gradient": "linear-gradient(135deg, #1e3a8a, #2563eb)",
+    "color": "#312e81",
+    "gradient": "linear-gradient(135deg, #312e81, #4338ca)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/De_Gaulle-OWI_%28cropped%29_%28c%29%282%29.jpg/330px-De_Gaulle-OWI_%28cropped%29_%28c%29%282%29.jpg",
     "localPhoto": "assets/politicians/charles_de_gaulle.jpg"
   },
@@ -2457,7 +2457,7 @@ const worldPoliticians = [
   },
   {
     "id": "joseph_stalin",
-    "name": "Józef Stalin",
+    "name": "Joseph Stalin",
     "flag": "🚩",
     "country": {
       "pl": "Związek Radziecki (ZSRR)",
@@ -2531,7 +2531,7 @@ const worldPoliticians = [
   },
   {
     "id": "chiang_kai_shek",
-    "name": "Czang Kaj-szek",
+    "name": "Chiang Kai-shek",
     "flag": "🇹🇼",
     "country": {
       "pl": "Chiny (Republika Chińska)",

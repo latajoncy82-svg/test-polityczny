@@ -290,6 +290,8 @@ const uiTranslations = {
     canvasQ3: "LEWICA TRADYCYJNA",
     canvasQ4: "KONSERWATYWNY LIBERALIZM",
     canvasUserLabel: "TY",
+    canvasFooterStats: "Globalny Kompas Poglądów 2026 • 100 Pytań • {ideologies} Ideologii • {politicians} Liderów i Myślicieli • {parties} Rodzin Partyjnych",
+    canvasFooterCta: "Wykonaj test online i poznaj swoje miejsce na politycznej mapie świata!",
     // Setup Panel
     setupTitle: "⚙️ Personalizacja i Ustawienia Testu",
     setupDesc: "Dostosuj język, wygląd, kontrast oraz kolor akcentu przed rozpoczęciem testu.",
@@ -385,6 +387,8 @@ const uiTranslations = {
     canvasQ3: "TRADITIONAL LEFT",
     canvasQ4: "CONSERVATIVE LIBERALISM",
     canvasUserLabel: "YOU",
+    canvasFooterStats: "Global Political Compass 2026 • 100 Questions • {ideologies} Ideologies • {politicians} Leaders & Thinkers • {parties} Party Families",
+    canvasFooterCta: "Take the test online and discover your place on the global political map!",
     // Setup Panel
     setupTitle: "⚙️ Quiz Setup & Personalization",
     setupDesc: "Customize your language, appearance, contrast, and accent color before you begin.",
@@ -480,6 +484,8 @@ const uiTranslations = {
     canvasQ3: "ТРАДИЦИОННЫЕ ЛЕВЫЕ",
     canvasQ4: "КОНСЕРВАТИВНЫЙ ЛИБЕРАЛИЗМ",
     canvasUserLabel: "ВЫ",
+    canvasFooterStats: "Глобальный Политический Компас 2026 • 100 Вопросов • {ideologies} Идеологий • {politicians} Лидеров и Мыслителей • {parties} Партийных Семей",
+    canvasFooterCta: "Пройдите тест онлайн и узнайте своё место на политической карте мира!",
     // Setup Panel
     setupTitle: "⚙️ Настройки и персонализация теста",
     setupDesc: "Настройте язык, тему, контрастность и цвет акцента перед началом.",
@@ -575,6 +581,8 @@ const uiTranslations = {
     canvasQ3: "GAUCHE TRADITIONNELLE",
     canvasQ4: "LIBÉRALISME CONSERVATEUR",
     canvasUserLabel: "VOUS",
+    canvasFooterStats: "Boussole Politique Mondiale 2026 • 100 Questions • {ideologies} Idéologies • {politicians} Leaders et Penseurs • {parties} Familles Politiques",
+    canvasFooterCta: "Passez le test en ligne et découvrez votre place sur l'échiquier politique mondial !",
     // Setup Panel
     setupTitle: "⚙️ Configuration et personnalisation",
     setupDesc: "Personnalisez la langue, le thème, le contraste et la couleur d'accent avant de démarrer.",

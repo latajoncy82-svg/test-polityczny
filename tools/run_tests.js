@@ -153,9 +153,14 @@ const wwiiLeaderIds = [
 let missingWwiiLeaders = 0;
 wwiiLeaderIds.forEach(wl => {
   const found = worldPoliticians.find(p => p.id === wl.id);
-  if (!found) missingWwiiLeaders++;
+  if (!found || found.name !== wl.name) {
+    missingWwiiLeaders++;
+    if (found && found.name !== wl.name) {
+      console.error(`WWII leader name mismatch for ${wl.id}: expected "${wl.name}", got "${found.name}"`);
+    }
+  }
 });
-assert(missingWwiiLeaders === 0, `All ${wwiiLeaderIds.length} prominent WWII leaders successfully present in dataset`);
+assert(missingWwiiLeaders === 0, `All ${wwiiLeaderIds.length} prominent WWII leaders successfully present in dataset with exact historical names`);
 
 let missingLocalPhotos = 0;
 worldPoliticians.forEach(pol => {
@@ -359,6 +364,15 @@ assert(matchForFDR.id === "franklin_d_roosevelt" && matchForFDR.similarity === 1
 
 const matchForSikorski = findClosestPolitician(-5, -15);
 assert(matchForSikorski.id === "wladyslaw_sikorski" && matchForSikorski.similarity === 100, `Coordinates (-5, -15) correctly match Władysław Sikorski (100% similarity)`);
+
+const matchForDeGaulle = findClosestPolitician(-15, -55);
+assert(matchForDeGaulle.id === "charles_de_gaulle" && matchForDeGaulle.similarity === 100, `Coordinates (-15, -55) correctly match Charles de Gaulle (100% similarity)`);
+
+const matchForEisenhower = findClosestPolitician(40, -25);
+assert(matchForEisenhower.id === "dwight_d_eisenhower" && matchForEisenhower.similarity === 100, `Coordinates (40, -25) correctly match Dwight D. Eisenhower (100% similarity)`);
+
+const matchForChiang = findClosestPolitician(20, -50);
+assert(matchForChiang.id === "chiang_kai_shek" && matchForChiang.similarity === 100, `Coordinates (20, -50) correctly match Chiang Kai-shek (100% similarity)`);
 
 // 6. Test HTML DOM ID references
 console.log("\n[5] Testing HTML DOM elements referenced by script.js:");

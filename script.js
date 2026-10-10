@@ -390,6 +390,8 @@ function applyLanguage(lang) {
   if (answersContainer) answersContainer.innerHTML = "";
   if (questionScreen && questionScreen.classList.contains("active")) {
     renderQuestion();
+  } else if (resultScreen && resultScreen.classList.contains("active")) {
+    showResults(false);
   }
 }
 
@@ -878,11 +880,20 @@ function createSvgAvatar(name, color = "#3b82f6") {
   return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 }
 
+function getPoliticianName(pol) {
+  if (!pol) return "";
+  if (typeof pol.name === "object" && pol.name !== null) {
+    return pol.name[currentLang] || pol.name.en || pol.name.pl || "";
+  }
+  return pol.name || "";
+}
+
 function renderPoliticianProfile(pol, isTop = false) {
   const t = uiTranslations[currentLang];
+  const displayName = getPoliticianName(pol);
   politicianMatchBadge.textContent = `${t.politicianMatchLabel} ${pol.similarity}%`;
   politicianFlag.textContent = pol.flag;
-  politicianName.textContent = pol.name;
+  politicianName.textContent = displayName;
   politicianCountry.textContent = pol.country[currentLang] || pol.country.pl;
   politicianRole.textContent = pol.role[currentLang] || pol.role.pl;
   politicianQuote.textContent = pol.quote[currentLang] || pol.quote.pl;
@@ -893,15 +904,15 @@ function renderPoliticianProfile(pol, isTop = false) {
   const gradient = pol.gradient || `linear-gradient(135deg, ${color}, #1d4ed8)`;
 
   if (politicianPhoto) {
-    politicianPhoto.alt = pol.name;
+    politicianPhoto.alt = displayName;
     const localSrc = pol.localPhoto || `assets/politicians/${pol.id}.jpg`;
-    const remoteSrc = pol.photoUrl || createSvgAvatar(pol.name, color);
+    const remoteSrc = pol.photoUrl || createSvgAvatar(displayName, color);
 
     politicianPhoto.dataset.fallbackTried = "0";
     politicianPhoto.onerror = function() {
       if (this.dataset.fallbackTried === "1") {
         this.onerror = null;
-        this.src = createSvgAvatar(pol.name, color);
+        this.src = createSvgAvatar(displayName, color);
       } else {
         this.dataset.fallbackTried = "1";
         this.src = remoteSrc;
@@ -1003,27 +1014,29 @@ function showResults(animated = true) {
 
   const topPolitician = currentRankedPoliticians[0];
   const runnerUpPoliticians = currentRankedPoliticians.slice(1, 4);
-  renderPoliticianProfile(topPolitician, true);
+  const activePol = currentRankedPoliticians.find(p => p.id === activePoliticianId) || topPolitician;
+  renderPoliticianProfile(activePol, activePol.id === topPolitician.id);
 
   otherPoliticiansList.innerHTML = "";
   runnerUpPoliticians.forEach(pol => {
     const item = document.createElement("div");
     item.className = "podium-mini-card politician-card-item";
     item.dataset.id = pol.id;
+    const polDisplayName = getPoliticianName(pol);
     const countryName = pol.country[currentLang] || pol.country.pl;
     const color = pol.color || "#3b82f6";
     item.style.setProperty("--mini-color", color);
 
     const localSrc = pol.localPhoto || `assets/politicians/${pol.id}.jpg`;
-    const remoteSrc = pol.photoUrl || createSvgAvatar(pol.name, color);
+    const remoteSrc = pol.photoUrl || createSvgAvatar(polDisplayName, color);
 
     item.innerHTML = `
       <div class="podium-mini-avatar-wrap" style="border-color: ${color};">
-        <img class="podium-mini-avatar-img" src="${localSrc}" alt="${pol.name}" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="podium-mini-avatar-img" src="${localSrc}" alt="${polDisplayName}" loading="lazy" referrerpolicy="no-referrer" />
         <span class="podium-mini-flag-badge">${pol.flag}</span>
       </div>
       <div class="podium-mini-info">
-        <strong>${pol.name}</strong>
+        <strong>${polDisplayName}</strong>
         <span>${countryName}</span>
       </div>
       <div class="podium-mini-match" style="background: ${color}20; color: ${color}; border: 1px solid ${color}45;">${pol.similarity}%</div>
@@ -1035,7 +1048,7 @@ function showResults(animated = true) {
       img.onerror = function() {
         if (this.dataset.fallbackTried === "1") {
           this.onerror = null;
-          this.src = createSvgAvatar(pol.name, color);
+          this.src = createSvgAvatar(polDisplayName, color);
         } else {
           this.dataset.fallbackTried = "1";
           this.src = remoteSrc;
@@ -1058,7 +1071,8 @@ function showResults(animated = true) {
 
   const topParty = currentRankedParties[0];
   const runnerUpParties = currentRankedParties.slice(1, 4);
-  renderPartyProfile(topParty, true);
+  const activeParty = currentRankedParties.find(p => p.id === activePartyId) || topParty;
+  renderPartyProfile(activeParty, activeParty.id === topParty.id);
 
   otherPartiesList.innerHTML = "";
   runnerUpParties.forEach(pty => {
@@ -1598,7 +1612,8 @@ function downloadResultImage() {
 
   ctx.fillStyle = "#ffffff";
   ctx.font = "bold 24px 'Plus Jakarta Sans', sans-serif";
-  ctx.fillText(`${pol.flag} ${pol.name}`, 85, cardY + 76);
+  const polName = getPoliticianName(pol);
+  ctx.fillText(`${pol.flag} ${polName}`, 85, cardY + 76);
 
   const polCountry = pol.country[currentLang] || pol.country.pl;
   const polRole = pol.role[currentLang] || pol.role.pl;
@@ -1641,8 +1656,14 @@ function downloadResultImage() {
   ctx.textAlign = "center";
   ctx.fillStyle = "#64748b";
   ctx.font = "500 15px 'Plus Jakarta Sans', sans-serif";
-  ctx.fillText(`Globalny Kompas Poglądów 2026 • 100 Pytań • ${worldIdeologies.length} Ideologii • ${worldPoliticians.length} Liderów i Myślicieli • ${worldParties.length} Rodzin Partyjnych`, 540, 1070);
-  ctx.fillText("Wykonaj test online i poznaj swoje miejsce na politycznej mapie świata!", 540, 1100);
+  const footerStatsTemplate = t.canvasFooterStats || `Globalny Kompas Poglądów 2026 • 100 Pytań • {ideologies} Ideologii • {politicians} Liderów i Myślicieli • {parties} Rodzin Partyjnych`;
+  const footerStats = footerStatsTemplate
+    .replace("{ideologies}", worldIdeologies.length)
+    .replace("{politicians}", worldPoliticians.length)
+    .replace("{parties}", worldParties.length);
+  const footerCta = t.canvasFooterCta || "Wykonaj test online i poznaj swoje miejsce na politycznej mapie świata!";
+  ctx.fillText(footerStats, 540, 1070);
+  ctx.fillText(footerCta, 540, 1100);
 
   const link = document.createElement("a");
   link.download = `political_compass_${currentLang}_${Date.now()}.png`;
