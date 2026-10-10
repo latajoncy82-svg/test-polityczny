@@ -234,7 +234,9 @@ worldPoliticians.forEach(pol => {
 });
 assert(missingLocalPhotos === 0, `All ${worldPoliticians.length} politicians have verified local portrait photos on disk in assets/politicians/`);
 
-assert(worldParties.length >= 10, `Rich world party families catalog: found ${worldParties.length} parties (>= 10 required)`);
+assert(worldParties.length === 30, `Rich world party families catalog: found ${worldParties.length} parties (30 required)`);
+const uniquePartyColors = new Set(worldParties.map(p => p.color.toLowerCase()));
+assert(uniquePartyColors.size === worldParties.length, `All ${worldParties.length} world parties have 100% unique signature colors (found ${uniquePartyColors.size})`);
 let missingPartyFields = 0;
 let invalidPartyCoords = 0;
 worldParties.forEach(pty => {
@@ -503,7 +505,13 @@ const requiredNewUiKeys = [
   'ideologyMatchLabel',
   'spotlightLeaderTitle',
   'viewAllRankings',
-  'filterHistory'
+  'filterHistory',
+  'filterPartyTop',
+  'filterPartyAll',
+  'filterPartyLeft',
+  'filterPartyMarket',
+  'filterPartyLib',
+  'filterPartyTrad'
 ];
 let missingNewUiKeys = 0;
 requiredNewUiKeys.forEach(key => {
@@ -678,6 +686,26 @@ const simContext = {
           simElements['filterActivistsPoliticiansBtn']
         ].filter(Boolean);
       }
+      if (sel && sel.includes('#ideologyFilterPills')) {
+        return [
+          simElements['filterIdeoTopBtn'],
+          simElements['filterIdeoAllBtn'],
+          simElements['filterIdeoMarketBtn'],
+          simElements['filterIdeoProgressiveBtn'],
+          simElements['filterIdeoSocialistBtn'],
+          simElements['filterIdeoConservativeBtn']
+        ].filter(Boolean);
+      }
+      if (sel && sel.includes('#partyFilterPills')) {
+        return [
+          simElements['filterPartyTopBtn'],
+          simElements['filterPartyAllBtn'],
+          simElements['filterPartyLeftBtn'],
+          simElements['filterPartyMarketBtn'],
+          simElements['filterPartyLibBtn'],
+          simElements['filterPartyTradBtn']
+        ].filter(Boolean);
+      }
       return [];
     },
     createElement: (tag) => new MockElement('', tag),
@@ -727,7 +755,7 @@ vm.runInContext('showResults(false);', simContext);
 
 assert(getSim('currentRankedPoliticians.length') === worldPoliticians.length, `Simulation ranks all ${worldPoliticians.length} politicians`);
 assert(getSim('currentRankedIdeologies.length') === worldIdeologies.length, `Simulation ranks all ${worldIdeologies.length} ideologies`);
-assert(getSim('currentRankedParties.length') === 15, "Simulation ranks all 15 world parties");
+assert(getSim('currentRankedParties.length') === 30, "Simulation ranks all 30 world parties");
 assert(simElements['otherPoliticiansList'].children.length === 12, "Politicians ranking initially renders top 12 (including #1)");
 assert(simElements['secondaryIdeologiesList'].children.length === 12, "Ideology ranking initially renders top 12 (including #1)");
 assert(simElements['otherPartiesList'].children.length === 8, "Parties ranking initially renders top 8 (including #1)");
@@ -788,9 +816,11 @@ for (const l of ['pl', 'en', 'ru', 'fr']) {
   assert(!uiTranslations[l].showAllIdeologies.includes('32'), `showAllIdeologies in ${l} does not reference outdated 32`);
   assert(!uiTranslations[l].filterAllPoliticians.includes('43'), `filterAllPoliticians in ${l} does not reference outdated 43`);
   assert(!uiTranslations[l].filterIdeoAll.includes('32'), `filterIdeoAll in ${l} does not reference outdated 32`);
+  assert(!uiTranslations[l].showAllParties.includes('15'), `showAllParties in ${l} does not reference outdated 15`);
 }
 assert(!simHtml.includes('(43)') && !simHtml.includes('43 postaci'), "index.html has no outdated '43' count references");
 assert(!simHtml.includes('(32)') && !simHtml.includes('32 nurtów') && !simHtml.includes('32 ideologi'), "index.html has no outdated '32' count references");
+assert(!simHtml.includes('(15)') && !simHtml.includes('15 partii') && !simHtml.includes('15 ruchów'), "index.html has no outdated '15' count references");
 
 // Test Expand ideologies
 simElements['toggleMoreIdeologiesBtn'].click();
@@ -799,8 +829,37 @@ assert(simElements['toggleMoreIdeologiesText'].textContent === uiTranslations.pl
 
 // Test Expand parties
 simElements['toggleMorePartiesBtn'].click();
-assert(simElements['otherPartiesList'].children.length === 15, "Clicking expand on parties renders all 15 parties");
+assert(simElements['otherPartiesList'].children.length === 30, "Clicking expand on parties renders all 30 parties");
 assert(simElements['toggleMorePartiesText'].textContent === uiTranslations.pl.showFewerParties, "Toggle button text updates to collapse label");
+
+// Collapse parties back to test category filtering
+simElements['toggleMorePartiesBtn'].click();
+assert(getSim('isPartiesExpanded') === false, "Parties list collapsed successfully");
+
+// Test interactive party category filter pills
+simElements['filterPartyLeftBtn'].click();
+assert(getSim('activePartyFilter') === 'left', "Clicking Left party filter updates activePartyFilter to 'left'");
+assert(simElements['otherPartiesList'].children.length === 15, `Left party filter renders 15 parties (found ${simElements['otherPartiesList'].children.length})`);
+
+simElements['filterPartyMarketBtn'].click();
+assert(getSim('activePartyFilter') === 'market', "Clicking Market party filter updates activePartyFilter to 'market'");
+assert(simElements['otherPartiesList'].children.length === 10, `Market party filter renders 10 parties (found ${simElements['otherPartiesList'].children.length})`);
+
+simElements['filterPartyTradBtn'].click();
+assert(getSim('activePartyFilter') === 'traditional', "Clicking Traditional party filter updates activePartyFilter to 'traditional'");
+assert(simElements['otherPartiesList'].children.length === 13, `Traditional party filter renders 13 parties (found ${simElements['otherPartiesList'].children.length})`);
+
+simElements['filterPartyLibBtn'].click();
+assert(getSim('activePartyFilter') === 'libertarian', "Clicking Libertarian party filter updates activePartyFilter to 'libertarian'");
+assert(simElements['otherPartiesList'].children.length === 15, `Libertarian party filter renders 15 parties (found ${simElements['otherPartiesList'].children.length})`);
+
+simElements['filterPartyTopBtn'].click();
+assert(getSim('activePartyFilter') === 'top', "Clicking Top party filter updates activePartyFilter to 'top'");
+assert(simElements['otherPartiesList'].children.length === 8, "Top 8 filter restores top 8 parties view");
+
+simElements['filterPartyAllBtn'].click();
+assert(getSim('activePartyFilter') === 'all', "Clicking All party filter updates activePartyFilter to 'all'");
+assert(simElements['otherPartiesList'].children.length === 30, `All filter renders all 30 parties (found ${simElements['otherPartiesList'].children.length})`);
 
 // Test Language toggling maintains parity and does not break state
 let langTogglesPassed = true;

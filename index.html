@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Test Polityczny – Globalny Kompas Poglądów 2026</title>
   <meta name="referrer" content="no-referrer">
-  <link rel="stylesheet" href="style.css?v=2026.5.0">
+  <link rel="stylesheet" href="style.css?v=2026.7.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -183,7 +183,7 @@
         <div class="test-features">
           <div class="feature-item" id="featureTime">⏱️ Czas: ok. 3-5 minut (30 pytań)</div>
           <div class="feature-item" id="featureAnon">🔒 W 100% anonimowe i bez rejestracji</div>
-          <div class="feature-item" id="featureResults">📊 Dokładny kompas 2D, 44 ideologie, światowi politycy i partie</div>
+          <div class="feature-item" id="featureResults">📊 Dokładny kompas 2D, 44 ideologie, 89 liderów i 30 partii</div>
         </div>
 
         <!-- Start Actions (Single Prominent Hero CTA + Subtle Resume) -->
@@ -442,10 +442,19 @@
                 <h5 id="otherPartiesTitle">Ranking międzynarodowych rodzin partyjnych:</h5>
                 <small class="click-hint" id="clickPartyHint">Kliknij ruch, aby poznać założenia</small>
               </div>
+              <!-- Interactive Category Filter Pills for Parties -->
+              <div class="filter-pills-row" id="partyFilterPills">
+                <button class="filter-pill active" data-filter="top" type="button" id="filterPartyTopBtn">🔥 Top 8</button>
+                <button class="filter-pill" data-filter="all" type="button" id="filterPartyAllBtn">🏛️ Wszystkie (30)</button>
+                <button class="filter-pill" data-filter="left" type="button" id="filterPartyLeftBtn">🟥 Lewicowe i Społeczne</button>
+                <button class="filter-pill" data-filter="market" type="button" id="filterPartyMarketBtn">🟦 Rynkowe i Centroprawica</button>
+                <button class="filter-pill" data-filter="libertarian" type="button" id="filterPartyLibBtn">🟩 Wolnościowe i Zielone</button>
+                <button class="filter-pill" data-filter="traditional" type="button" id="filterPartyTradBtn">🟫 Konserwatywne i Narodowe</button>
+              </div>
               <div id="otherPartiesList" class="other-matches-grid parties-ranking-grid"></div>
               <div class="expand-controls-row">
                 <button id="toggleMorePartiesBtn" class="btn-toggle-expand" type="button" aria-expanded="false">
-                  <span id="toggleMorePartiesText">Pokaż wszystkie partie (katalog 15 rodzin)</span>
+                  <span id="toggleMorePartiesText">Pokaż wszystkie partie (katalog 30 rodzin)</span>
                   <span class="toggle-icon" id="togglePartiesIcon" aria-hidden="true">▼</span>
                 </button>
               </div>
@@ -581,9 +590,9 @@
   </div>
 
   <!-- Scripts -->
-  <script src="translations.js?v=2026.5.0"></script>
-  <script src="questions.js?v=2026.5.0"></script>
-  <script src="worldData.js?v=2026.5.0"></script>
-  <script src="script.js?v=2026.5.0"></script>
+  <script src="translations.js?v=2026.7.0"></script>
+  <script src="questions.js?v=2026.7.0"></script>
+  <script src="worldData.js?v=2026.7.0"></script>
+  <script src="script.js?v=2026.7.0"></script>
 </body>
 </html>

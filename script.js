@@ -37,6 +37,7 @@ let isIdeologiesExpanded = false;
 let isPartiesExpanded = false;
 let activePoliticianFilter = "top";
 let activeIdeologyFilter = "top";
+let activePartyFilter = "top";
 let currentRankedPoliticians = [];
 let currentRankedParties = [];
 let currentRankedIdeologies = [];
@@ -518,6 +519,19 @@ function applyLanguage(lang) {
   const filterConsIdeo = document.getElementById("filterIdeoConservativeBtn");
   if (filterConsIdeo && t.filterIdeoConservative) filterConsIdeo.textContent = t.filterIdeoConservative;
 
+  const filterTopParty = document.getElementById("filterPartyTopBtn");
+  if (filterTopParty && t.filterPartyTop) filterTopParty.textContent = t.filterPartyTop;
+  const filterAllParty = document.getElementById("filterPartyAllBtn");
+  if (filterAllParty && t.filterPartyAll) filterAllParty.textContent = t.filterPartyAll;
+  const filterLeftParty = document.getElementById("filterPartyLeftBtn");
+  if (filterLeftParty && t.filterPartyLeft) filterLeftParty.textContent = t.filterPartyLeft;
+  const filterMktParty = document.getElementById("filterPartyMarketBtn");
+  if (filterMktParty && t.filterPartyMarket) filterMktParty.textContent = t.filterPartyMarket;
+  const filterLibParty = document.getElementById("filterPartyLibBtn");
+  if (filterLibParty && t.filterPartyLib) filterLibParty.textContent = t.filterPartyLib;
+  const filterTradParty = document.getElementById("filterPartyTradBtn");
+  if (filterTradParty && t.filterPartyTrad) filterTradParty.textContent = t.filterPartyTrad;
+
   if (answersContainer) answersContainer.innerHTML = "";
   if (questionScreen && questionScreen.classList.contains("active")) {
     renderQuestion();
@@ -724,6 +738,18 @@ function setupEventListeners() {
       pill.classList.add("active");
       activePoliticianFilter = pill.dataset.filter || "top";
       renderPoliticiansRanking();
+    });
+  });
+
+  // Filter pills for Parties
+  const partyPills = document.querySelectorAll("#partyFilterPills .filter-pill");
+  partyPills.forEach(pill => {
+    pill.addEventListener("click", (e) => {
+      createRippleEffect(e, pill);
+      partyPills.forEach(p => p.classList.remove("active"));
+      pill.classList.add("active");
+      activePartyFilter = pill.dataset.filter || "top";
+      renderPartiesRanking();
     });
   });
 }
@@ -1334,7 +1360,22 @@ const partyColors = {
   tiger_technocrats: { color: "#0f766e", gradient: "linear-gradient(135deg, #0f766e, #115e59)" },
   traditional_left_solidarists: { color: "#b91c1c", gradient: "linear-gradient(135deg, #b91c1c, #7f1d1d)" },
   state_socialist_bloc: { color: "#991b1b", gradient: "linear-gradient(135deg, #991b1b, #7f1d1d)" },
-  christian_social_union_intl: { color: "#059669", gradient: "linear-gradient(135deg, #059669, #047857)" }
+  christian_social_union_intl: { color: "#059669", gradient: "linear-gradient(135deg, #059669, #047857)" },
+  communist_imcwp: { color: "#be123c", gradient: "linear-gradient(135deg, #be123c, #9f1239)" },
+  ecr_alliance: { color: "#0369a1", gradient: "linear-gradient(135deg, #0369a1, #075985)" },
+  anarchosyndicalist_iwa: { color: "#18181b", gradient: "linear-gradient(135deg, #27272a, #09090b)" },
+  transhumanist_humanity_plus: { color: "#06b6d4", gradient: "linear-gradient(135deg, #06b6d4, #0891b2)" },
+  mont_pelerin_atlas: { color: "#d97706", gradient: "linear-gradient(135deg, #d97706, #b45309)" },
+  non_aligned_movement: { color: "#0d9488", gradient: "linear-gradient(135deg, #0d9488, #0f766e)" },
+  cpac_national_populists: { color: "#ea580c", gradient: "linear-gradient(135deg, #ea580c, #c2410c)" },
+  foro_sao_paulo_puebla: { color: "#e11d48", gradient: "linear-gradient(135deg, #e11d48, #be123c)" },
+  monarchist_league: { color: "#7c2d12", gradient: "linear-gradient(135deg, #7c2d12, #581c87)" },
+  degrowth_postgrowth_intl: { color: "#047857", gradient: "linear-gradient(135deg, #047857, #065f46)" },
+  indigenous_abya_yala: { color: "#15803d", gradient: "linear-gradient(135deg, #15803d, #166534)" },
+  pro_family_christian_right: { color: "#4338ca", gradient: "linear-gradient(135deg, #4338ca, #3730a3)" },
+  via_campesina_agrarian: { color: "#ca8a04", gradient: "linear-gradient(135deg, #ca8a04, #a16207)" },
+  humanist_intl: { color: "#f97316", gradient: "linear-gradient(135deg, #f97316, #ea580c)" },
+  democratic_leadership_center: { color: "#0ea5e9", gradient: "linear-gradient(135deg, #0ea5e9, #0284c7)" }
 };
 
 function getIdeologySpectrumTag(ideo, lang) {
@@ -1710,27 +1751,40 @@ function renderIdeologiesRanking() {
 function updatePartiesToggleButton() {
   if (!toggleMorePartiesBtn || !toggleMorePartiesText) return;
   const t = uiTranslations[currentLang] || {};
-  if (isPartiesExpanded) {
+  if (isPartiesExpanded || activePartyFilter === "all") {
     toggleMorePartiesBtn.classList.add("is-expanded");
     toggleMorePartiesBtn.setAttribute("aria-expanded", "true");
     toggleMorePartiesText.textContent = t.showFewerParties || "Zwiń listę partii";
   } else {
     toggleMorePartiesBtn.classList.remove("is-expanded");
     toggleMorePartiesBtn.setAttribute("aria-expanded", "false");
-    toggleMorePartiesText.textContent = t.showAllParties || "Pokaż wszystkie partie (katalog 15 rodzin)";
+    toggleMorePartiesText.textContent = t.showAllParties || "Pokaż wszystkie partie (katalog 30 rodzin)";
   }
 }
 
 function renderPartiesRanking() {
   if (!otherPartiesList || !currentRankedParties.length) return;
   const t = uiTranslations[currentLang] || {};
-  const visibleParties = isPartiesExpanded
-    ? currentRankedParties
-    : currentRankedParties.slice(0, 8);
+
+  let filtered = currentRankedParties;
+  if (activePartyFilter === "left") {
+    filtered = currentRankedParties.filter(p => p.coordinates.econ <= -20);
+  } else if (activePartyFilter === "market") {
+    filtered = currentRankedParties.filter(p => p.coordinates.econ >= 20);
+  } else if (activePartyFilter === "libertarian") {
+    filtered = currentRankedParties.filter(p => p.coordinates.soc >= 20);
+  } else if (activePartyFilter === "traditional") {
+    filtered = currentRankedParties.filter(p => p.coordinates.soc <= -20);
+  } else if (activePartyFilter === "all" || isPartiesExpanded) {
+    filtered = currentRankedParties;
+  } else {
+    // Top 8 by default
+    filtered = currentRankedParties.slice(0, 8);
+  }
 
   otherPartiesList.innerHTML = "";
-  visibleParties.forEach((pty, index) => {
-    const rankNum = index + 1;
+  filtered.forEach((pty) => {
+    const overallRank = currentRankedParties.findIndex(p => p.id === pty.id) + 1;
     const item = document.createElement("div");
     item.className = "podium-mini-card party-card-item";
     item.dataset.id = pty.id;
@@ -1745,7 +1799,7 @@ function renderPartiesRanking() {
     const partyType = pty.type[currentLang] || pty.type.pl;
 
     item.innerHTML = `
-      <span class="podium-rank-tag">#${rankNum}</span>
+      <span class="podium-rank-tag">#${overallRank}</span>
       <div class="podium-mini-flag" style="border-color: ${color}60; background: ${color}15; color: ${color};">${pty.emblem}</div>
       <div class="podium-mini-info">
         <strong>${partyTitle}</strong>
