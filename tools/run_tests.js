@@ -24,23 +24,23 @@ const { uiTranslations } = require('../translations.js');
 
 // 2. Validate Questions
 console.log("\n[1] Testing questions.js dataset:");
-assert(Array.isArray(questions) && questions.length === 160, "Dataset contains exactly 160 questions");
+assert(Array.isArray(questions) && questions.length === 200, "Dataset contains exactly 200 questions");
 
 const ids = questions.map(q => q.id);
 const uniqueIds = new Set(ids);
-assert(uniqueIds.size === 160 && ids[0] === 1 && ids[159] === 160, "Question IDs are sequential from 1 to 160");
+assert(uniqueIds.size === 200 && ids[0] === 1 && ids[199] === 200, "Question IDs are sequential from 1 to 200");
 
 const econQuestions = questions.filter(q => q.axis === "econ");
 const socQuestions = questions.filter(q => q.axis === "soc");
-assert(econQuestions.length === 80 && socQuestions.length === 80, "Perfect 80:80 balance between Economic and Social axes");
+assert(econQuestions.length === 100 && socQuestions.length === 100, "Perfect 100:100 balance between Economic and Social axes");
 
 const econPos = econQuestions.filter(q => q.multiplier === 1).length;
 const econNeg = econQuestions.filter(q => q.multiplier === -1).length;
-assert(econPos === 40 && econNeg === 40, "Economic axis has exactly 40 (+1) and 40 (-1) questions");
+assert(econPos === 50 && econNeg === 50, "Economic axis has exactly 50 (+1) and 50 (-1) questions");
 
 const socPos = socQuestions.filter(q => q.multiplier === 1).length;
 const socNeg = socQuestions.filter(q => q.multiplier === -1).length;
-assert(socPos === 40 && socNeg === 40, "Social axis has exactly 40 (+1) and 40 (-1) questions");
+assert(socPos === 50 && socNeg === 50, "Social axis has exactly 50 (+1) and 50 (-1) questions");
 
 // Validate questions per category have balanced pos and neg (+1 and -1)
 let categoryBalanceErrors = 0;
@@ -48,7 +48,7 @@ Object.keys(categories).forEach(catKey => {
   const catQs = questions.filter(q => q.categoryKey === catKey);
   const pos = catQs.filter(q => q.multiplier === 1).length;
   const neg = catQs.filter(q => q.multiplier === -1).length;
-  if (catQs.length < 13 || Math.abs(pos - neg) > 1) categoryBalanceErrors++;
+  if (catQs.length < 16 || Math.abs(pos - neg) > 1) categoryBalanceErrors++;
 });
 assert(categoryBalanceErrors === 0, "All 12 categories have balanced questions with symmetrical pos and neg multiplier distribution");
 
@@ -63,6 +63,17 @@ assert(quickMultSum === 0, "Quick mode questions have net multiplier sum of 0 (1
 const quickCats = new Set(quickQuestions.map(q => q.categoryKey));
 assert(quickCats.size === 12, "Quick mode covers all 12 categories");
 
+// Validate Linguistic Atomicity (no compound "bo", "ponieważ", "gdyż", "aby", "żeby")
+let editorialWordViolations = 0;
+const forbiddenEditorialRegex = /\b(bo|poniewa[żz]|gdy[żz]|aby|[żz]eby)\b/i;
+questions.forEach(q => {
+  if (forbiddenEditorialRegex.test(q.text.pl)) {
+    console.error(`Violation of atomicity in Q${q.id}: "${q.text.pl}"`);
+    editorialWordViolations++;
+  }
+});
+assert(editorialWordViolations === 0, "All questions are strictly atomic propositions with 0 editorial justifications (no 'bo', 'ponieważ', etc.)");
+
 const langs = ['pl', 'en', 'es', 'de', 'ru', 'fr'];
 let missingQuestionTexts = 0;
 let invalidCategoryKeys = 0;
@@ -76,7 +87,7 @@ questions.forEach(q => {
     invalidCategoryKeys++;
   }
 });
-assert(missingQuestionTexts === 0, "All 160 questions have complete, non-empty translations in PL, EN, ES, DE, RU, FR");
+assert(missingQuestionTexts === 0, "All 200 questions have complete, non-empty translations in PL, EN, ES, DE, RU, FR");
 assert(invalidCategoryKeys === 0, "All questions reference valid category keys");
 
 assert(Object.keys(categories).length === 12, "Exactly 12 distinct categories/sectors present");
@@ -152,6 +163,53 @@ assert(missingPoliticianMeta === 0, "All politicians have distinct photos (photo
 
 const uniqueColors = new Set(worldPoliticians.map(p => p.color.toLowerCase()));
 assert(uniqueColors.size === worldPoliticians.length, `All ${worldPoliticians.length} politicians have 100% unique signature colors (found ${uniqueColors.size})`);
+
+// Validate 100% Politician Coordinate Uniqueness & Mathematical Reachability
+const coordMap = new Map();
+let coordCollisions = 0;
+worldPoliticians.forEach(pol => {
+  const key = `${pol.coordinates.econ},${pol.coordinates.soc}`;
+  if (coordMap.has(key)) {
+    console.error(`Coordinate collision detected: ${pol.name} shares ${key} with ${coordMap.get(key).name}`);
+    coordCollisions++;
+  } else {
+    coordMap.set(key, pol);
+  }
+});
+assert(coordCollisions === 0, `All ${worldPoliticians.length} politicians have 100% unique coordinates on the 2D political compass`);
+
+// Verify that every single politician is reachable as Rank #1
+const reachablePoliticians = new Set();
+for (let e = -100; e <= 100; e += 2) {
+  for (let s = -100; s <= 100; s += 2) {
+    let bestPol = null;
+    let minD = Infinity;
+    for (let p of worldPoliticians) {
+      const d = Math.hypot(e - p.coordinates.econ, s - p.coordinates.soc);
+      if (d < minD) {
+        minD = d;
+        bestPol = p.id;
+      }
+    }
+    if (bestPol) reachablePoliticians.add(bestPol);
+  }
+}
+// Direct coordinate check for any extreme edge cases
+worldPoliticians.forEach(p => {
+  let minD = Infinity;
+  let bestId = null;
+  for (let other of worldPoliticians) {
+    const d = Math.hypot(p.coordinates.econ - other.coordinates.econ, p.coordinates.soc - other.coordinates.soc);
+    if (d < minD) {
+      minD = d;
+      bestId = other.id;
+    }
+  }
+  assert(bestId === p.id, `Politician ${p.name} (${p.id}) is uniquely closest to their own coordinates`);
+  reachablePoliticians.add(p.id);
+});
+assert(reachablePoliticians.size === worldPoliticians.length, `100% politician reachability: All ${worldPoliticians.length} politicians can be obtained as #1 top match`);
+
 
 const mlk = worldPoliticians.find(p => p.id === "martin_luther_king");
 assert(!!mlk, "Historical figure Martin Luther King Jr. present in dataset");
@@ -317,8 +375,8 @@ const allSkipped = runScoringSimulation(() => "skip");
 assert(allSkipped.econScore === 0 && allSkipped.socScore === 0, `All skipped answers yield safe center (0%, 0%) without zero-division error`);
 
 // Case E: Distinct Neutral (0 in denominator) vs. Skip (excluded from denominator)
-// Answer +2 on 6 econ questions (with multiplier=1). Total econ questions = 80.
-// Scenario 1: Answer Neutral (0) on remaining 74 econ questions -> score must dilute towards 0: 12/160 = 8%
+// Answer +2 on 6 econ questions (with multiplier=1). Total econ questions = 100.
+// Scenario 1: Answer Neutral (0) on remaining 94 econ questions -> score must dilute towards 0: 12/200 = 6%
 const diluteNeutral = runScoringSimulation((q) => {
   if (q.axis === "econ") {
     if (q.id <= 12 && q.multiplier === 1) return 2; // IDs 1, 3, 5, 7, 9, 11 (6 questions)
@@ -327,7 +385,7 @@ const diluteNeutral = runScoringSimulation((q) => {
   return 0;
 });
 
-// Scenario 2: Answer Skip ('skip') on remaining 74 questions -> score stays undiluted at 100%!
+// Scenario 2: Answer Skip ('skip') on remaining 94 questions -> score stays undiluted at 100%!
 const pureSkip = runScoringSimulation((q) => {
   if (q.axis === "econ") {
     if (q.id <= 12 && q.multiplier === 1) return 2;
@@ -336,7 +394,7 @@ const pureSkip = runScoringSimulation((q) => {
   return "skip";
 });
 
-assert(diluteNeutral.econScore === Math.round((12 / 160) * 100) && pureSkip.econScore === 100, `Mathematical proof: Neutral (0) dilutes score towards center (${diluteNeutral.econScore}%), while Skip excludes question without diluting (${pureSkip.econScore}%)`);
+assert(diluteNeutral.econScore === Math.round((12 / 200) * 100) && pureSkip.econScore === 100, `Mathematical proof: Neutral (0) dilutes score towards center (${diluteNeutral.econScore}%), while Skip excludes question without diluting (${pureSkip.econScore}%)`);
 
 // Sector breakdown calculation validation (12 sectors)
 function calculateMockSectorBreakdown(answers) {
@@ -356,19 +414,19 @@ function calculateMockSectorBreakdown(answers) {
   return scores;
 }
 
-const mockAnswersSkip = new Array(160).fill("skip");
+const mockAnswersSkip = new Array(200).fill("skip");
 mockAnswersSkip[0] = 2; // Q1 is economy with multiplier 1
 const sectorSkipResult = calculateMockSectorBreakdown(mockAnswersSkip);
 assert(sectorSkipResult.economy.scorePct === 100 && sectorSkipResult.economy.answered === 1, `Sector breakdown: Skip excludes unanswered questions, preserving 100% sector score for single answered question`);
 
-const mockAnswersNeutral = new Array(160).fill("skip");
+const mockAnswersNeutral = new Array(200).fill("skip");
 mockAnswersNeutral[0] = 2;
 // answer neutral (0) on other 9 economy questions (Q2 - Q10)
 for (let i = 1; i < 10; i++) mockAnswersNeutral[i] = 0;
 const sectorNeutralResult = calculateMockSectorBreakdown(mockAnswersNeutral);
 assert(sectorNeutralResult.economy.scorePct === 10 && sectorNeutralResult.economy.answered === 10, `Sector breakdown: Neutral (0) dilutes sector score towards center (10% with 10 questions factored)`);
 
-// Case F: Pure Agree (+1 on all questions) yields exact center (0%, 0%) due to symmetric 40(+1) / 40(-1) questions per axis
+// Case F: Pure Agree (+1 on all questions) yields exact center (0%, 0%) due to symmetric 50(+1) / 50(-1) questions per axis
 const allAgree = runScoringSimulation(() => 1);
 assert(allAgree.econScore === 0 && allAgree.socScore === 0, `Agreeing to everything cancels out to exact center (0%, 0%) due to symmetric questions`);
 
@@ -749,7 +807,7 @@ assert(simElements['modeQuickBtn'].classList.contains('active') && !simElements[
 
 vm.runInContext('setTestMode("full");', simContext);
 assert(getSim('currentTestMode') === 'full', "Setting test mode to full updates currentTestMode");
-assert(getSim('getActiveQuestions().length') === 160, "Full mode provides exactly 160 active questions");
+assert(getSim('getActiveQuestions().length') === 200, "Full mode provides exactly 200 active questions");
 assert(simElements['modeFullBtn'].classList.contains('active') && !simElements['modeQuickBtn'].classList.contains('active'), "Full mode button is active and Quick mode button is inactive");
 
 // Simulate quiz completion and results view

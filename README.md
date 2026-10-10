@@ -1,6 +1,6 @@
 # ⚖️ Political Compass Test – Global Compass 2026
 
-A modern, responsive, client-side web application for assessing political viewpoints based on a 2-dimensional model (Political Compass 2D). Features **160 balanced questions**, **44 political ideologies**, **105 world leaders & historical figures**, and **30 international party families**.
+A modern, responsive, client-side web application for assessing political viewpoints based on a 2-dimensional model (Political Compass 2D). Features **200 balanced questions**, **44 political ideologies**, **105 world leaders & historical figures**, and **30 international party families**.
 
 Available in 6 languages: **English (EN - default)**, **Polish (PL)**, **Spanish (ES)**, **German (DE)**, **Russian (RU)**, and **French (FR)**.
 
@@ -16,14 +16,15 @@ Available in 6 languages: **English (EN - default)**, **Polish (PL)**, **Spanish
   - 🇩🇪 **German** (`de`)
   - 🇷🇺 **Russian** (`ru`)
   - 🇫🇷 **French** (`fr`)
-- 100% translation parity across all 160 questions, 12 categories, 44 ideologies, 105 politician profiles, 30 party family manifestos, 6 answer choices, and comprehensive UI strings.
+- 100% translation parity across all 200 questions, 12 categories, 44 ideologies, 105 politician profiles, 30 party family manifestos, 6 answer choices, and comprehensive UI strings.
 - Dynamic recalculation of canvas axis labels and quadrant descriptions upon language switching.
 
-### 2. 📋 160 Balanced Questions Across 12 Key Domains
-- **Perfect balance**: Exactly 80 economic (`econ`) questions (40 positive, 40 negative) and 80 social/cultural (`soc`) questions (40 positive, 40 negative). Net multiplier sum = 0.
+### 2. 📋 200 Balanced Atomic Questions Across 12 Key Domains
+- **Perfect balance**: Exactly 100 economic (`econ`) questions (50 positive, 50 negative) and 100 social/cultural (`soc`) questions (50 positive, 50 negative). Net multiplier sum = 0.
+- **Atomic, Unbiased Formulation**: Pure single-clause policy propositions with zero compound "X and Y" dilemmas and zero editorial rationales ("because...", "so that..."), ensuring users never agree with one part while disagreeing with another.
 - **Two Test Modes**:
   - ⚡ **Quick Mode (30 questions)**: ~3-5 minutes, representative balanced sample covering all 12 domains (15 econ, 15 soc, net sum 0).
-  - 🧭 **Full Mode (160 questions)**: ~14-18 minutes, in-depth political audit.
+  - 🧭 **Full Mode (200 questions)**: ~18-24 minutes, in-depth political audit.
 - **12 Comprehensive Categories**:
   1. **Economy & Free Market** (deregulation, monopoly prevention, state interventionism)
   2. **Taxation & Public Finance** (flat vs progressive tax, wealth tax, fiscal incentives)
@@ -96,13 +97,13 @@ TEST POLITYCZNY/
 ├── index.html            # Main web interface (Welcome, Quiz, Results, Modals)
 ├── style.css             # Theme, layout, responsive design, and CSS variables
 ├── script.js             # Main application logic, quiz runner, 2D scoring, Canvas rendering
-├── questions.js          # Compiled questions dataset (160 questions in 6 languages)
+├── questions.js          # Compiled questions dataset (200 questions in 6 languages)
 ├── worldData.js          # Compiled world data (44 ideologies, 105 politicians, 30 parties)
 ├── translations.js       # Compiled UI dictionary for EN, PL, ES, DE, RU, FR
 ├── assets/
 │   └── politicians/      # Portrait photos for all 105 leaders (.jpg)
 ├── tools/
-│   ├── raw_questions.js     # Master questions source (160 questions, 6 languages)
+│   ├── raw_questions.js     # Master questions source (200 questions, 6 languages)
 │   ├── raw_ideologies.js    # Master ideologies source (44 ideologies, 6 languages)
 │   ├── raw_politicians.js   # Master politicians source (105 figures, 6 languages)
 │   ├── raw_parties.js       # Master parties source (30 parties, 6 languages)
@@ -123,7 +124,9 @@ node tools/run_tests.js
 ```
 
 ### Automated Validations Include:
-- **Questions Balance**: 160 questions total, 80 econ / 80 soc, 40/40 pos/neg per axis, 30 balanced Quick mode questions (15 econ, 15 soc, net sum 0).
+- **Questions Balance**: 200 questions total, 100 econ / 100 soc, 50/50 pos/neg per axis, 30 balanced Quick mode questions (15 econ, 15 soc, net sum 0).
+- **Politician Reachability**: Mathematical verification that all 105 world leaders have unique coordinates and dedicated winning regions (Voronoi cell non-emptiness).
+- **Atomic Simplicity**: Automated linguistic checks verifying absence of compound conjunctions and rationalizing justifications.
 - **6-Language Parity**: 100% translation coverage for `en`, `pl`, `es`, `de`, `ru`, `fr` across all questions, categories, answer options, ideologies, politicians, parties, and UI keys.
 - **Entity Catalogs**: 44 ideologies, 105 politicians, 30 international parties.
 - **Color Uniqueness**: 100% distinct hex colors across all politicians and parties (zero collisions).

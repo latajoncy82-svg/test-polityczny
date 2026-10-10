@@ -1,9 +1,9 @@
 // tools/raw_questions.js
-// 160 Pytań do Testu Politycznego w 6 językach: PL, EN, ES, DE, RU, FR
-// 80 pytań ekonomicznych (econ: 40 pos, 40 neg), 80 pytań społeczno-światopoglądowych (soc: 40 pos, 40 neg)
+// 200 Pytań do Testu Politycznego w 6 językach: PL, EN, ES, DE, RU, FR
+// 100 pytań ekonomicznych (econ: 50 pos, 50 neg), 100 pytań społeczno-światopoglądowych (soc: 50 pos, 50 neg)
 // Całkowita suma mnożników w całym teście: 0.
 // Wersja Szybka (isQuick: true): 30 pytań (15 econ, 15 soc, suma = 0) obejmujących wszystkie 12 dziedzin.
-// Wersja Pełna: 160 pytań pogrupowanych blokowo w 12 dziedzinach, sformułowanych w sposób prosty,
+// Wersja Pełna: 200 pytań pogrupowanych blokowo w 12 dziedzinach, sformułowanych w sposób prosty,
 // jednoznaczny i bezpośredni ("jednostronnie zrozumiałe").
 
 const rawQuestions = [
@@ -14,12 +14,12 @@ const rawQuestions = [
     "multiplier": 1,
     "isQuick": true,
     "text": {
-      "pl": "Wolny rynek i prywatna przedsiębiorczość najlepiej tworzą bogactwo narodu.",
-      "en": "A free market and private enterprise are the best way to create national wealth.",
-      "es": "El libre mercado y la iniciativa privada son la mejor forma de generar riqueza nacional.",
-      "de": "Ein freier Markt und privates Unternehmertum schaffen am besten nationalen Wohlstand.",
-      "ru": "Свободный рынок и частное предпринимательство лучше всего создают богатство страны.",
-      "fr": "Le libre marché et l'entreprise privée sont le meilleur moyen de créer la richesse nationale."
+      "pl": "Prywatna własność i wolny rynek powinny być podstawą gospodarki.",
+      "en": "Private property and the free market should be the foundation of the economy.",
+      "es": "La propiedad privada y el libre mercado deben ser la base de la economía.",
+      "de": "Privateigentum und der freie Markt sollten das Fundament der Wirtschaft sein.",
+      "ru": "Частная собственность и свободный рынок должны быть основой экономики.",
+      "fr": "La propriété privée et le libre marché devraient être le fondement de l'économie."
     }
   },
   {
@@ -29,12 +29,12 @@ const rawQuestions = [
     "multiplier": -1,
     "isQuick": true,
     "text": {
-      "pl": "Rząd powinien odgórnie ustalać maksymalne ceny podstawowej żywności i prądu.",
-      "en": "The government should set strict price caps on basic food and electricity.",
-      "es": "El gobierno debe fijar precios máximos para los alimentos básicos y la electricidad.",
-      "de": "Die Regierung sollte Höchstpreise für Grundnahrungsmittel und Strom festlegen.",
-      "ru": "Правительство должно устанавливать предельные цены на базовые продукты и электроэнергию.",
-      "fr": "Le gouvernement devrait plafonner les prix des aliments de base et de l'électricité."
+      "pl": "Rząd powinien ustalać maksymalne ceny prądu i gazu.",
+      "en": "The government should set price caps on electricity and natural gas.",
+      "es": "El gobierno debe fijar precios máximos para la electricidad y el gas.",
+      "de": "Die Regierung sollte Höchstpreise für Strom und Gas festlegen.",
+      "ru": "Правительство должно устанавливать предельные цены на электричество и газ.",
+      "fr": "Le gouvernement devrait plafonner les prix de l'électricité et du gaz."
     }
   },
   {
@@ -44,12 +44,12 @@ const rawQuestions = [
     "multiplier": 1,
     "isQuick": true,
     "text": {
-      "pl": "Państwo nie powinno ratować bankrutujących firm pieniędzmi podatników.",
-      "en": "The state should not bail out failing businesses with taxpayers' money.",
-      "es": "El Estado no debe rescatar empresas en quiebra con dinero de los contribuyentes.",
-      "de": "Der Staat sollte insolvente Unternehmen nicht mit Steuergeldern retten.",
-      "ru": "Государство не должно спасать убыточные компании деньгами налогоплательщиков.",
-      "fr": "L'État ne devrait pas sauver les entreprises en faillite avec l'argent public."
+      "pl": "Państwo nie powinno ratować bankrutujących prywatnych przedsiębiorstw.",
+      "en": "The state should not bail out failing private businesses.",
+      "es": "El Estado no debe rescatar a empresas privadas en quiebra.",
+      "de": "Der Staat sollte insolvente Privatunternehmen nicht retten.",
+      "ru": "Государство не должно спасать убыточные частные предприятия.",
+      "fr": "L'État ne devrait pas renflouer les entreprises privées en faillite."
     }
   },
   {
@@ -59,12 +59,12 @@ const rawQuestions = [
     "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Kluczowe gałęzie przemysłu, kopalnie i rafinerie powinny należeć do państwa.",
-      "en": "Key strategic industries, mines, and refineries should belong to the state.",
-      "es": "Las industrias estratégicas, minas y refinerías deben pertenecer al Estado.",
-      "de": "Schlüsselindustrien, Minen und Raffinerien sollten dem Staat gehören.",
-      "ru": "Ключевые отрасли промышленности, шахты и нефтепереработка должны принадлежать государству.",
-      "fr": "Les industries stratégiques, les mines et les raffineries devraient appartenir à l'État."
+      "pl": "Kopalnie i elektrownie powinny być własnością państwa.",
+      "en": "Mines and power plants should be owned by the state.",
+      "es": "Las minas y centrales eléctricas deben ser propiedad del Estado.",
+      "de": "Bergwerke und Kraftwerke sollten in staatlichem Besitz sein.",
+      "ru": "Шахты и электростанции должны принадлежать государству.",
+      "fr": "Les mines et les centrales électriques devraient appartenir à l'État."
     }
   },
   {
@@ -74,12 +74,12 @@ const rawQuestions = [
     "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Handel w niedziele i święta powinien być w pełni dozwolony bez ograniczeń.",
-      "en": "Shopping on Sundays and holidays should be fully permitted without restrictions.",
-      "es": "El comercio en domingos y festivos debe estar totalmente permitido sin restricciones.",
-      "de": "Der Handel an Sonn- und Feiertagen sollte uneingeschränkt erlaubt sein.",
-      "ru": "Торговля по воскресеньям и праздникам должна быть полностью разрешена без ограничений.",
-      "fr": "Le commerce le dimanche et les jours fériés devrait être totalement autorisé sans restriction."
+      "pl": "Sklepy powinny mieć prawo handlować w każdą niedzielę.",
+      "en": "Retail stores should have the right to be open every Sunday.",
+      "es": "Los comercios deberían tener derecho a abrir todos los domingos.",
+      "de": "Geschäfte sollten das Recht haben, an jedem Sonntag zu öffnen.",
+      "ru": "Магазины должны иметь право работать каждое воскресенье.",
+      "fr": "Les commerces devraient avoir le droit d'ouvrir tous les dimanches."
     }
   },
   {
@@ -89,12 +89,12 @@ const rawQuestions = [
     "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Rząd powinien centralnie planować i kierować rozwojem gospodarki narodowej.",
-      "en": "The government should centrally plan and guide the national economy's development.",
-      "es": "El gobierno debe planificar de forma centralizada el desarrollo económico nacional.",
-      "de": "Die Regierung sollte die Entwicklung der Volkswirtschaft zentral planen und lenken.",
-      "ru": "Правительство должно централизованно планировать и направлять развитие экономики.",
-      "fr": "Le gouvernement devrait planifier de manière centralisée le développement économique national."
+      "pl": "Rząd powinien decydować, które gałęzie gospodarki należy rozwijać.",
+      "en": "The government should direct which economic sectors receive development priority.",
+      "es": "El gobierno debe decidir qué sectores económicos desarrollar prioritariamente.",
+      "de": "Die Regierung sollte bestimmen, welche Wirtschaftszweige vorrangig gefördert werden.",
+      "ru": "Правительство должно решать, какие отрасли экономики нужно развивать.",
+      "fr": "Le gouvernement devrait décider des secteurs économiques à développer en priorité."
     }
   },
   {
@@ -104,12 +104,12 @@ const rawQuestions = [
     "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Kolej i narodowe linie lotnicze powinny być sprywatyzowane.",
-      "en": "Railways and national airlines should be privatized.",
-      "es": "Los ferrocarriles y las aerolíneas nacionales deben privatizarse.",
-      "de": "Eisenbahnen und nationale Fluggesellschaften sollten privatisiert werden.",
-      "ru": "Железные дороги и национальные авиалинии должны быть приватизированы.",
-      "fr": "Les chemins de fer et les compagnies aériennes nationales devraient être privatisés."
+      "pl": "Koleje pasażerskie powinny zostać sprywatyzowane.",
+      "en": "Passenger railways should be privatized.",
+      "es": "Los ferrocarriles de pasajeros deben ser privatizados.",
+      "de": "Der Personenverkehr auf der Schiene sollte privatisiert werden.",
+      "ru": "Пассажирские железные дороги должны быть приватизированы.",
+      "fr": "Le transport ferroviaire de passagers devrait être privatisé."
     }
   },
   {
@@ -119,12 +119,12 @@ const rawQuestions = [
     "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Państwo powinno ustawowo ograniczać maksymalne zyski wielkich korporacji.",
-      "en": "The state should legally cap maximum corporate profits.",
-      "es": "El Estado debe limitar por ley los beneficios máximos de las grandes corporaciones.",
-      "de": "Der Staat sollte die maximalen Gewinne von Großkonzernen gesetzlich deckeln.",
-      "ru": "Государство должно законодательно ограничить максимальную прибыль крупных корпораций.",
-      "fr": "L'État devrait plafonner légalement les profits maximaux des grandes entreprises."
+      "pl": "Zyski wielkich korporacji powinny być odgórnie ograniczane przez państwo.",
+      "en": "Corporate profits should be subject to state-mandated legal caps.",
+      "es": "Los beneficios de las grandes corporaciones deben tener topes fijados por ley.",
+      "de": "Großkonzerngewinne sollten gesetzlich nach oben begrenzt werden.",
+      "ru": "Прибыль крупных корпораций должна быть ограничена государством.",
+      "fr": "Les bénéfices des grandes entreprises devraient être légalement plafonnés par l'État."
     }
   },
   {
@@ -134,12 +134,12 @@ const rawQuestions = [
     "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Państwo nie powinno dawać żadnych państwowych dotacji prywatnym przedsiębiorstwom.",
-      "en": "The state should provide zero government subsidies to private businesses.",
-      "es": "El Estado no debe otorgar subsidios públicos a empresas privadas.",
-      "de": "Der Staat sollte privaten Unternehmen keinerlei Subventionen gewähren.",
-      "ru": "Государство не должно выдавать никаких субсидий частным компаниям.",
-      "fr": "L'État ne devrait accorder aucune subvention publique aux entreprises privées."
+      "pl": "Państwo nie powinno wypłacać żadnych dotacji prywatnym firmom.",
+      "en": "The state should provide zero financial subsidies to private companies.",
+      "es": "El Estado no debe otorgar ninguna subvención a empresas privadas.",
+      "de": "Der Staat sollte privaten Firmen keinerlei Subventionen auszahlen.",
+      "ru": "Государство не должно выплачивать субсидии частным компаниям.",
+      "fr": "L'État ne devrait verser aucune subvention aux entreprises privées."
     }
   },
   {
@@ -149,12 +149,12 @@ const rawQuestions = [
     "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Państwo powinno wspierać spółdzielnie pracownicze zamiast wielkich prywatnych korporacji.",
-      "en": "The state should favor worker cooperatives over large private corporations.",
-      "es": "El Estado debe favorecer a las cooperativas de trabajadores frente a las corporaciones privadas.",
-      "de": "Der Staat sollte Arbeitergenossenschaften gegenüber Großkonzernen bevorzugen.",
-      "ru": "Государство должно поддерживать рабочие кооперативы вместо крупных корпораций.",
-      "fr": "L'État devrait soutenir les coopératives de travailleurs plutôt que les grandes entreprises privées."
+      "pl": "Państwo powinno wspierać spółdzielnie zamiast prywatnych korporacji.",
+      "en": "The state should prioritize worker cooperatives over private corporations.",
+      "es": "El Estado debe apoyar a las cooperativas frente a las corporaciones privadas.",
+      "de": "Der Staat sollte Genossenschaften gegenüber privaten Konzernen bevorzugen.",
+      "ru": "Государство должно поддерживать кооперативы, а не частные корпорации.",
+      "fr": "L'État devrait soutenir les coopératives plutôt que les entreprises privées."
     }
   },
   {
@@ -164,12 +164,12 @@ const rawQuestions = [
     "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Przedsiębiorcy powinni móc zakładać firmy bez pozwoleń urzędowych i zbędnych koncesji.",
-      "en": "Entrepreneurs should be able to start businesses without government permits or licenses.",
-      "es": "Los emprendedores deberían poder abrir empresas sin licencias ni permisos burocráticos.",
-      "de": "Unternehmer sollten Betriebe ohne bürokratische Genehmigungen gründen können.",
-      "ru": "Предприниматели должны иметь возможность открывать бизнес без разрешений и лицензий.",
-      "fr": "Les entrepreneurs devraient pouvoir créer une entreprise sans autorisations administratives ni licences."
+      "pl": "Zakładanie firmy nie powinno wymagać żadnych licencji ani zezwoleń.",
+      "en": "Starting a business should require no government licenses or permits.",
+      "es": "Crear una empresa no debería requerir licencias ni permisos gubernamentales.",
+      "de": "Eine Unternehmensgründung sollte keinerlei staatliche Lizenzen erfordern.",
+      "ru": "Регистрация бизнеса не должна требовать лицензий или разрешений.",
+      "fr": "Créer une entreprise ne devrait nécessiter aucune licence ni autorisation préalable."
     }
   },
   {
@@ -179,12 +179,12 @@ const rawQuestions = [
     "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Sieci wodociągowe i sieci przesyłowe energii muszą być wyłączną własnością publiczną.",
-      "en": "Water systems and power transmission grids must be strictly public property.",
-      "es": "Las redes de agua y de transporte eléctrico deben ser estrictamente propiedad pública.",
-      "de": "Wasserleitungsnetze und Stromtrassen müssen ausschließlich in öffentlicher Hand sein.",
-      "ru": "Водопроводные сети и энергосети должны быть исключительно государственной собственностью.",
-      "fr": "Les réseaux de distribution d'eau et d'électricité doivent être strictement propriété publique."
+      "pl": "Sieci wodociągowe muszą być wyłączną własnością publiczną.",
+      "en": "Water supply systems must remain exclusively public property.",
+      "es": "Las redes de agua deben ser exclusivamente de propiedad pública.",
+      "de": "Wasserversorgungsnetze müssen ausnahmslos in öffentlicher Hand sein.",
+      "ru": "Водопроводные сети должны быть исключительно государственной собственностью.",
+      "fr": "Les réseaux d'eau doivent rester exclusivement propriété publique."
     }
   },
   {
@@ -194,12 +194,12 @@ const rawQuestions = [
     "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Konkurencja między firmami obniża ceny skuteczniej niż państwowe kontrole cen.",
-      "en": "Competition between companies lowers prices far better than government price controls.",
-      "es": "La competencia empresarial baja los precios de forma más eficaz que los controles estatales.",
-      "de": "Wettbewerb zwischen Firmen senkt Preise wirksamer als staatliche Preiskontrollen.",
-      "ru": "Конкуренция между компаниями снижает цены эффективнее, чем государственный контроль цен.",
-      "fr": "La concurrence entre entreprises fait baisser les prix plus efficacement que le contrôle de l'État."
+      "pl": "Poczta i usługi doręczeniowe powinny być w rękach prywatnych firm.",
+      "en": "Postal and parcel delivery services should be operated entirely by private firms.",
+      "es": "Los servicios postales y de reparto deben estar en manos de empresas privadas.",
+      "de": "Post- und Zustelldienste sollten vollständig privatwirtschaftlich betrieben werden.",
+      "ru": "Почта и доставка должны принадлежать частным компаниям.",
+      "fr": "Les services postaux et de livraison devraient être gérés par des entreprises privées."
     }
   },
   {
@@ -209,312 +209,312 @@ const rawQuestions = [
     "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Państwo powinno mieć prawo przymusowo wywłaszczać prywatną ziemię pod strategiczne cele publiczne.",
-      "en": "The state should have the right to expropriate private land for public infrastructure projects.",
-      "es": "El Estado debe tener derecho a expropiar terrenos privados para obras de infraestructura pública.",
-      "de": "Der Staat sollte das Recht haben, privates Land für öffentliche Bauprojekte zu enteignen.",
-      "ru": "Государство должно иметь право отчуждать частную землю под важные общественные проекты.",
-      "fr": "L'État devrait avoir le droit d'exproprier des terrains privés pour des projets publics majeurs."
+      "pl": "Państwo powinno mieć prawo wywłaszczać prywatną ziemię pod inwestycje publiczne.",
+      "en": "The state should have the right to expropriate private land for public infrastructure.",
+      "es": "El Estado debe tener derecho a expropiar terrenos privados para obras públicas.",
+      "de": "Der Staat sollte das Recht haben, privates Land für öffentliche Bauten zu enteignen.",
+      "ru": "Государство должно иметь право отчуждать частную землю под общественные стройки.",
+      "fr": "L'État devrait pouvoir exproprier des terres privées pour des projets d'intérêt public."
     }
   },
   {
     "id": 15,
-    "categoryKey": "taxation",
-    "axis": "econ",
-    "multiplier": 1,
-    "isQuick": true,
-    "text": {
-      "pl": "Wszyscy obywatele powinni płacić dokładnie taki sam procent podatku dochodowego (podatek liniowy).",
-      "en": "All citizens should pay the exact same percentage of income tax (a flat tax).",
-      "es": "Todos los ciudadanos deberían pagar el mismo porcentaje de impuesto (tipo único / flat tax).",
-      "de": "Alle Bürger sollten denselben Einkommensteuersatz zahlen (Einheitssteuersatz / Flat Tax).",
-      "ru": "Все граждане должны платить одинаковый процент подоходного налога (плоская шкала).",
-      "fr": "Tous les citoyens devraient payer le même pourcentage d'impôt sur le revenu (taux unique)."
-    }
-  },
-  {
-    "id": 16,
-    "categoryKey": "taxation",
-    "axis": "econ",
-    "multiplier": -1,
-    "isQuick": true,
-    "text": {
-      "pl": "Miliarderzy powinni płacić specjalny, coroczny wysoki podatek od całego swojego majątku.",
-      "en": "Billionaires should pay a steep annual wealth tax on their total assets.",
-      "es": "Los multimillonarios deben pagar un impuesto anual significativo sobre su patrimonio total.",
-      "de": "Milliardäre sollten eine spürbare jährliche Vermögensteuer auf ihr Gesamtvermögen zahlen.",
-      "ru": "Миллиардеры должны платить высокий ежегодный налог на всё своё состояние.",
-      "fr": "Les milliardaires devraient payer un impôt annuel substantiel sur l'ensemble de leur patrimoine."
-    }
-  },
-  {
-    "id": 17,
-    "categoryKey": "taxation",
+    "categoryKey": "economy",
     "axis": "econ",
     "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Podatek od spadków i darowizn w rodzinie powinien być całkowicie zlikwidowany.",
-      "en": "Inheritance and gift taxes between family members should be entirely abolished.",
-      "es": "El impuesto de sucesiones y donaciones familiares debe abolirse por completo.",
-      "de": "Die Erbschaft- und Schenkungsteuer für Familienangehörige sollte komplett abgeschafft werden.",
-      "ru": "Налог на наследство и дарение внутри семьи должен быть полностью отменён.",
-      "fr": "Les droits de succession et donations intrafamiliales devraient être totalement abolis."
+      "pl": "Linie lotnicze powinny być wyłącznie prywatne.",
+      "en": "Commercial airlines should be entirely privately owned.",
+      "es": "Las aerolíneas comerciales deben ser exclusivamente privadas.",
+      "de": "Fluggesellschaften sollten ausschließlich privatwirtschaftlich sein.",
+      "ru": "Авиакомпании должны быть исключительно частными.",
+      "fr": "Les compagnies aériennes devraient être exclusivement privées."
+    }
+  },
+  {
+    "id": 16,
+    "categoryKey": "economy",
+    "axis": "econ",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Rząd powinien zagwarantować każdemu obywatelowi państwowe miejsce pracy.",
+      "en": "The government should guarantee every citizen a job in the public sector.",
+      "es": "El gobierno debe garantizar un empleo público a cualquier ciudadano que lo solicite.",
+      "de": "Die Regierung sollte jedem Bürger einen garantierten staatlichen Arbeitsplatz bieten.",
+      "ru": "Правительство должно гарантировать каждому гражданину государственное рабочее место.",
+      "fr": "Le gouvernement devrait garantir un emploi public à chaque citoyen."
+    }
+  },
+  {
+    "id": 17,
+    "categoryKey": "economy",
+    "axis": "econ",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Przedsiębiorca powinien mieć prawo odmówić obsługi klienta według własnego uznania.",
+      "en": "Business owners should have the right to refuse service to any customer at their discretion.",
+      "es": "El dueño de un negocio debe tener derecho a rechazar clientes a su propio criterio.",
+      "de": "Geschäftsinhaber sollten das Recht haben, Kunden nach eigenem Ermessen abzuweisen.",
+      "ru": "Предприниматель должен иметь право отказать клиенту в обслуживании по своему усмотрению.",
+      "fr": "Un commerçant devrait pouvoir refuser de servir un client à sa libre discrétion."
     }
   },
   {
     "id": 18,
     "categoryKey": "taxation",
     "axis": "econ",
-    "multiplier": -1,
-    "isQuick": false,
+    "multiplier": 1,
+    "isQuick": true,
     "text": {
-      "pl": "Najbogatsi zarabiający powinni oddawać państwu w podatkach ponad połowę swoich najwyższych dochodów.",
-      "en": "Top earners should hand over more than half of their highest earnings in income tax.",
-      "es": "Las rentas más altas deben tributar más del 50% en los tramos impositivos superiores.",
-      "de": "Spitzenverdiener sollten mehr als die Hälfte ihrer Spitzeneinkünfte als Steuern abführen.",
-      "ru": "Самые богатые должны отдавать государству более половины своих сверхдоходов в виде налогов.",
-      "fr": "Les plus hauts revenus devraient verser plus de la moitié de leurs gains supérieurs en impôts."
+      "pl": "Wszyscy obywatele powinni płacić jednakowy procent podatku dochodowego (podatek liniowy).",
+      "en": "All citizens should pay the exact same income tax rate (flat tax).",
+      "es": "Todos los ciudadanos deben pagar el mismo porcentaje de impuesto sobre la renta (tipo único).",
+      "de": "Alle Bürger sollten denselben Steuersatz auf ihr Einkommen zahlen (Flat Tax).",
+      "ru": "Все граждане должны платить одинаковый процент подоходного налога (плоская шкала).",
+      "fr": "Tous les citoyens devraient payer le même taux d'imposition sur le revenu (taux unique)."
     }
   },
   {
     "id": 19,
     "categoryKey": "taxation",
     "axis": "econ",
-    "multiplier": 1,
-    "isQuick": false,
+    "multiplier": -1,
+    "isQuick": true,
     "text": {
-      "pl": "Radykalne obniżenie podatków dla firm to najlepszy sposób na tworzenie nowych miejsc pracy.",
-      "en": "Slashing corporate taxes is the single best way to create new jobs and investment.",
-      "es": "Reducir drásticamente los impuestos a empresas es la mejor manera de crear empleo.",
-      "de": "Eine deutliche Senkung der Unternehmenssteuern ist das beste Mittel zur Schaffung von Arbeitsplätzen.",
-      "ru": "Радикальное снижение налогов на бизнес — лучший способ создания новых рабочих мест.",
-      "fr": "Réduire drastiquement l'impôt sur les sociétés est le meilleur moyen de créer des emplois."
+      "pl": "Miliarderzy powinni płacić coroczny podatek od posiadanego majątku.",
+      "en": "Billionaires should pay an annual wealth tax on their total assets.",
+      "es": "Los multimillonarios deben pagar un impuesto anual sobre su patrimonio.",
+      "de": "Milliardäre sollten eine jährliche Steuer auf ihr Gesamtvermögen zahlen.",
+      "ru": "Миллиардеры должны платить ежегодный налог на своё состояние.",
+      "fr": "Les milliardaires devraient payer un impôt annuel sur leur fortune totale."
     }
   },
   {
     "id": 20,
     "categoryKey": "taxation",
     "axis": "econ",
-    "multiplier": -1,
+    "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Wszystkie kraje powinny wprowadzić wysoki, minimalny podatek dla międzynarodowych korporacji.",
-      "en": "All nations should enforce a high global minimum tax rate for multinational corporations.",
-      "es": "Todos los países deben aplicar un tipo impositivo mínimo elevado a las multinacionales.",
-      "de": "Alle Staaten sollten einen hohen globalen Mindeststeuersatz für Konzerne durchsetzen.",
-      "ru": "Все страны должны ввести высокий минимальный налог для транснациональных корпораций.",
-      "fr": "Tous les pays devraient instaurer un taux d'imposition mondial minimal élevé pour les multinationales."
+      "pl": "Podatek od spadków i darowizn w rodzinie powinien być zlikwidowany.",
+      "en": "Inheritance and gift taxes between family members should be abolished.",
+      "es": "El impuesto de sucesiones y donaciones familiares debe ser eliminado.",
+      "de": "Die Erbschaft- und Schenkungsteuer für Familienmitglieder sollte abgeschafft werden.",
+      "ru": "Налог на наследство и дарение внутри семьи должен быть отменён.",
+      "fr": "Les droits de succession et de donation entre membres d'une famille devraient être abolis."
     }
   },
   {
     "id": 21,
     "categoryKey": "taxation",
     "axis": "econ",
-    "multiplier": 1,
+    "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Podatki i akcyza na paliwo oraz energię elektryczną powinny być drastycznie obniżone.",
-      "en": "Taxes and duties on automotive fuel and electricity should be dramatically slashed.",
-      "es": "Los impuestos sobre el combustible y la electricidad deben reducirse drásticamente.",
-      "de": "Steuern und Abgaben auf Treibstoffe und Strom sollten drastisch gesenkt werden.",
-      "ru": "Налоги и акцизы на топливо и электроэнергию должны быть значительно снижены.",
-      "fr": "Les taxes et accises sur le carburant et l'électricité devraient être fortement diminuées."
+      "pl": "Najbogatsi powinni płacić podatek dochodowy powyżej 50% swoich najwyższych zarobków.",
+      "en": "Top earners should pay over 50% in income tax on their highest earnings bracket.",
+      "es": "Las rentas más altas deben tributar por encima del 50% en sus ingresos superiores.",
+      "de": "Spitzenverdiener sollten über 50% Einkommensteuer auf ihre höchsten Einkünfte zahlen.",
+      "ru": "Самые богатые должны платить свыше 50% налога со своих сверхдоходов.",
+      "fr": "Les plus hauts revenus devraient payer plus de 50% d'impôt sur la tranche supérieure."
     }
   },
   {
     "id": 22,
     "categoryKey": "taxation",
     "axis": "econ",
-    "multiplier": -1,
+    "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Krótkoterminowe spekulacje giełdowe i handel walutami powinny być obciążone specjalnym podatkiem.",
-      "en": "Short-term financial market speculation and currency trading should carry a dedicated transaction tax.",
-      "es": "La especulación financiera y el comercio bursátil deben pagar un impuesto a las transacciones.",
-      "de": "Kurzfristige Finanzspekulationen und Devisenhandel sollten mit einer Transaktionssteuer belegt werden.",
-      "ru": "Краткосрочные биржевые спекуляции и валютные сделки должны облагаться специальным налогом.",
-      "fr": "La spéculation boursière à court terme et le trading de devises devraient être taxés spécifiquement."
+      "pl": "Podatki od dochodów przedsiębiorstw powinny być obniżone do minimum.",
+      "en": "Corporate income taxes should be reduced to a bare minimum.",
+      "es": "El impuesto sobre sociedades debe reducirse al mínimo posible.",
+      "de": "Die Unternehmenssteuern sollten auf ein absolutes Minimum gesenkt werden.",
+      "ru": "Налоги на прибыль предприятий должны быть снижены до минимума.",
+      "fr": "L'impôt sur les bénéfices des entreprises devrait être réduit au minimum."
     }
   },
   {
     "id": 23,
     "categoryKey": "taxation",
     "axis": "econ",
-    "multiplier": 1,
+    "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Podatek od zysków kapitałowych z oszczędności bankowych i akcji powinien zostać całkowicie zniesiony.",
-      "en": "Capital gains taxes on bank savings and stock investments should be completely abolished.",
-      "es": "El impuesto sobre las ganancias patrimoniales y ahorros bancarios debe ser suprimido.",
-      "de": "Die Kapitalertragsteuer auf Bankeinlagen und Aktien sollte vollständig abgeschafft werden.",
-      "ru": "Налог на доходы от банковских вкладов и инвестиций в акции должен быть полностью отменён.",
-      "fr": "L'impôt sur les plus-values issues de l'épargne et des actions devrait être complètement aboli."
+      "pl": "Wszystkie kraje powinny wprowadzić wysoki, minimalny podatek dla międzynarodowych korporacji.",
+      "en": "All countries should enforce a high global minimum tax rate on multinational corporations.",
+      "es": "Todos los países deben aplicar un tipo impositivo mínimo elevado a las multinacionales.",
+      "de": "Alle Staaten sollten einen hohen globalen Mindeststeuersatz für Großkonzerne beschließen.",
+      "ru": "Все страны должны ввести высокий минимальный налог для международных корпораций.",
+      "fr": "Tous les pays devraient instaurer un taux d'imposition minimal élevé pour les multinationales."
     }
   },
   {
     "id": 24,
     "categoryKey": "taxation",
     "axis": "econ",
-    "multiplier": -1,
+    "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Państwo powinno nakładać dodatkowy podatek na nadzwyczajne zyski banków i koncernów paliwowych.",
-      "en": "The state should levy a windfall tax on extraordinary profits of banks and energy giants.",
-      "es": "El Estado debe gravar con un impuesto especial los beneficios extraordinarios de bancos y petroleras.",
-      "de": "Der Staat sollte eine Übergewinnsteuer auf Sonderprofite von Banken und Energiekonzernen erheben.",
-      "ru": "Государство должно взимать налог на сверхприбыль банков и энергетических гигантов.",
-      "fr": "L'État devrait prélever une taxe sur les superprofits des banques et compagnies énergétiques."
+      "pl": "Akcyza na paliwo i prąd powinna zostać drastycznie obniżona.",
+      "en": "Excise taxes on vehicle fuel and electricity should be drastically reduced.",
+      "es": "Los impuestos especiales sobre los combustibles y la luz deben reducirse drásticamente.",
+      "de": "Verbrauchssteuern auf Treibstoffe und Strom sollten drastisch abgesenkt werden.",
+      "ru": "Акцизы на топливо и электричество должны быть резко снижены.",
+      "fr": "Les taxes intérieures sur les carburants et l'électricité devraient être fortement réduites."
     }
   },
   {
     "id": 25,
     "categoryKey": "taxation",
     "axis": "econ",
-    "multiplier": 1,
+    "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Konkurencja podatkowa między państwami jest dobra, bo zmusza rządy do obniżania obciążeń obywateli.",
-      "en": "Tax competition between countries is healthy because it forces governments to keep taxes low.",
-      "es": "La competencia fiscal entre países es positiva porque obliga a los gobiernos a moderar impuestos.",
-      "de": "Steuerwettbewerb zwischen Staaten ist gut, weil er Regierungen zwingt, Steuern niedrig zu halten.",
-      "ru": "Налоговая конкуренция между странами полезна, так как заставляет государства снижать налоги.",
-      "fr": "La concurrence fiscale entre pays est saine car elle oblige les gouvernements à réduire les impôts."
+      "pl": "Transakcje giełdowe i handel walutami powinny być objęte podatkiem transakcyjnym.",
+      "en": "Stock market trading and currency transactions should carry a financial transaction tax.",
+      "es": "Las operaciones bursátiles y de divisas deben pagar un impuesto a las transacciones financieras.",
+      "de": "Börsenhandel und Devisengeschäfte sollten mit einer Finanztransaktionssteuer belegt werden.",
+      "ru": "Биржевые сделки и торговля валютой должны облагаться налогом на транзакции.",
+      "fr": "Les transactions boursières et opérations de change devraient être soumises à une taxe financière."
     }
   },
   {
     "id": 26,
     "categoryKey": "taxation",
     "axis": "econ",
-    "multiplier": -1,
+    "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Ukrywanie dochodów w zagranicznych rajach podatkowych powinno być karane bezwzględnym więzieniem.",
-      "en": "Hiding wealth in offshore tax havens should carry mandatory prison sentences.",
-      "es": "Ocultar patrimonio en paraísos fiscales extranjeros debe castigarse con prisión efectiva.",
-      "de": "Das Verstecken von Vermögen in Steueroasen sollte mit Gefängnisstrafen geahndet werden.",
-      "ru": "Сокрытие доходов в офшорных налоговых гаванях должно караться реальным лишением свободы.",
-      "fr": "La dissimulation d'avoirs dans des paradis fiscaux devrait être punie de peines de prison ferme."
+      "pl": "Podatek od zysków z lokat bankowych i akcji powinien zostać zniesiony.",
+      "en": "Capital gains taxes on bank savings interest and stock investments should be abolished.",
+      "es": "El impuesto sobre los rendimientos del ahorro bancario y acciones debe suprimirse.",
+      "de": "Die Steuer auf Erträge aus Bankguthaben und Aktien sollte gestrichen werden.",
+      "ru": "Налог на доходы по банковским вкладам и акциям должен быть отменён.",
+      "fr": "L'impôt sur les intérêts d'épargne et les plus-values d'actions devrait être supprimé."
     }
   },
   {
     "id": 27,
     "categoryKey": "taxation",
     "axis": "econ",
-    "multiplier": 1,
+    "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Uproszczenie systemu i likwidacja ulg podatkowych jest lepsza niż programy socjalne.",
-      "en": "Radical tax simplification without deductions is far better than costly welfare programs.",
-      "es": "Simplificar los impuestos eliminando deducciones es mejor que gastar en ayudas sociales.",
-      "de": "Ein radikal einfaches Steuersystem ohne Ausnahmen ist besser als teure Sozialprogramme.",
-      "ru": "Упрощение налогов и ликвидация льгот лучше, чем дорогостоящие социальные программы.",
-      "fr": "Simplifier la fiscalité en supprimant les niches est bien préférable à des programmes d'aide coûteux."
+      "pl": "Państwo powinno nakładać dodatkowy podatek na nadzwyczajne zyski banków.",
+      "en": "The state should levy a windfall tax on extraordinary bank profits.",
+      "es": "El Estado debe aplicar un impuesto extraordinario a los beneficios bancarios.",
+      "de": "Der Staat sollte eine Sondersteuer auf Übergewinne von Banken erheben.",
+      "ru": "Государство должно облагать налогом сверхприбыль банков.",
+      "fr": "L'État devrait prélever une taxe exceptionnelle sur les superprofits bancaires."
     }
   },
   {
     "id": 28,
     "categoryKey": "taxation",
     "axis": "econ",
-    "multiplier": -1,
+    "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Właściciele wielu mieszkań kupowanych w celach spekulacyjnych powinni płacić progresywny podatek katastralny.",
-      "en": "Owners of multiple residential properties bought for investment should pay a progressive property tax.",
-      "es": "Los propietarios de múltiples viviendas de inversión deberían pagar un impuesto inmobiliario progresivo.",
-      "de": "Besitzer mehrerer Immobilien als Spekulationsobjekte sollten eine progressive Immobiliensteuer zahlen.",
-      "ru": "Владельцы нескольких инвестиционных квартир должны платить прогрессивный налог на недвижимость.",
-      "fr": "Les propriétaires de multiples logements achetés pour spéculer devraient payer une taxe foncière progressive."
+      "pl": "Rządy powinny konkurować ze sobą o inwestorów niskimi podatkami.",
+      "en": "Governments should actively compete with each other for business investment through lower taxes.",
+      "es": "Los gobiernos deben competir entre sí atrayendo empresas con impuestos más bajos.",
+      "de": "Regierungen sollten über niedrige Steuern im Wettbewerb um Investoren stehen.",
+      "ru": "Государства должны конкурировать за инвесторов низкими налогами.",
+      "fr": "Les gouvernements devraient se concurrencer pour attirer les investissements par des impôts bas."
     }
   },
   {
     "id": 29,
-    "categoryKey": "labor",
+    "categoryKey": "taxation",
     "axis": "econ",
-    "multiplier": 1,
-    "isQuick": true,
+    "multiplier": -1,
+    "isQuick": false,
     "text": {
-      "pl": "Płaca minimalna powinna zostać zniesiona – stawki powinny zależeć wyłącznie od umowy pracownika z szefem.",
-      "en": "The legal minimum wage should be abolished; pay should depend solely on mutual agreement.",
-      "es": "El salario mínimo legal debería suprimirse; los sueldos deben fijarse por acuerdo entre las partes.",
-      "de": "Der gesetzliche Mindestlohn sollte abgeschafft werden; Löhne sollten frei verhandelt werden.",
-      "ru": "Минимальный размер оплаты труда должен быть отменён — зарплата должна определяться договором сторон.",
-      "fr": "Le salaire minimum légal devrait être aboli ; la rémunération doit dépendre d'un accord mutuel."
+      "pl": "Ukrywanie majątku w rajach podatkowych powinno być karane bezwzględnym więzieniem.",
+      "en": "Hiding assets in offshore tax havens should carry mandatory prison sentences.",
+      "es": "Ocultar patrimonio en paraísos fiscales debe castigarse con pena de cárcel efectiva.",
+      "de": "Das Verstecken von Vermögen in Steueroasen sollte mit Freiheitsstrafen geahndet werden.",
+      "ru": "Сокрытие активов в офшорных зонах должно караться тюремным заключением.",
+      "fr": "Dissimuler des avoirs dans des paradis fiscaux devrait être puni de prison ferme."
     }
   },
   {
     "id": 30,
-    "categoryKey": "labor",
+    "categoryKey": "taxation",
     "axis": "econ",
-    "multiplier": -1,
-    "isQuick": true,
+    "multiplier": 1,
+    "isQuick": false,
     "text": {
-      "pl": "Ustawowy tydzień pracy powinien zostać skrócony do 4 dni bez żadnego obniżania pensji.",
-      "en": "The standard working week should be reduced to four days with zero reduction in pay.",
-      "es": "La semana laboral debería reducirse por ley a 4 días sin disminución de sueldo.",
-      "de": "Die gesetzliche Arbeitswoche sollte ohne Lohneinbußen auf 4 Tage verkürzt werden.",
-      "ru": "Рабочая неделя должна быть сокращена до 4 дней без снижения заработной платы.",
-      "fr": "La semaine de travail devrait être légalement réduite à 4 jours sans diminution de salaire."
+      "pl": "Wszystkie ulgi podatkowe powinny zostać zniesione w zamian za jeden niski podatek.",
+      "en": "All tax deductions and loopholes should be eliminated in exchange for a single low tax rate.",
+      "es": "Todas las deducciones fiscales deben suprimirse a cambio de un tipo impositivo general bajo.",
+      "de": "Sämtliche Steuervorteile sollten zugunsten eines einheitlich niedrigen Steuersatzes entfallen.",
+      "ru": "Все налоговые льготы должны быть отменены в обмен на единую низкую ставку.",
+      "fr": "Toutes les niches fiscales devraient être supprimées en échange d'un taux d'imposition unique et bas."
     }
   },
   {
     "id": 31,
-    "categoryKey": "labor",
+    "categoryKey": "taxation",
     "axis": "econ",
-    "multiplier": 1,
+    "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Pracodawca powinien mieć prawo zwolnić pracownika w dowolnym momencie bez podawania przyczyn.",
-      "en": "Employers should have the right to dismiss employees at will without stating a reason.",
-      "es": "Los empleadores deben tener derecho a rescindir contratos sin necesidad de justificación.",
-      "de": "Arbeitgeber sollten das Recht haben, Mitarbeiter jederzeit ohne Angabe von Gründen zu kündigen.",
-      "ru": "Работодатель должен иметь право уволить сотрудника в любой момент без объяснения причин.",
-      "fr": "Un employeur devrait pouvoir licencier un salarié à tout moment sans avoir à justifier de motif."
+      "pl": "Właściciele więcej niż jednego mieszkania powinni płacić wyższy podatek od nieruchomości.",
+      "en": "Property owners who hold more than one residential dwelling should pay higher real estate taxes.",
+      "es": "Quienes posean más de una vivienda deberían pagar un impuesto sobre bienes inmuebles más alto.",
+      "de": "Eigentümer von mehr als einer Wohnimmobilie sollten eine erhöhte Grundsteuer zahlen.",
+      "ru": "Владельцы более чем одной квартиры должны платить повышенный налог на недвижимость.",
+      "fr": "Les propriétaires de plus d'un logement devraient payer une taxe foncière majorée."
     }
   },
   {
     "id": 32,
-    "categoryKey": "labor",
-    "axis": "econ",
-    "multiplier": -1,
-    "isQuick": false,
-    "text": {
-      "pl": "Związki zawodowe powinny mieć prawo weta wobec decyzji firm o masowych zwolnieniach pracowników.",
-      "en": "Labor unions should possess legal veto power over corporate mass layoffs.",
-      "es": "Los sindicatos deberían tener derecho a vetar despidos colectivos en las empresas.",
-      "de": "Gewerkschaften sollten ein gesetzliches Vetorecht gegen Massenentlassungen erhalten.",
-      "ru": "Профсоюзы должны иметь право вето на решения компаний о массовых увольнениях.",
-      "fr": "Les syndicats devraient disposer d'un droit de veto légal sur les licenciements collectifs."
-    }
-  },
-  {
-    "id": 33,
-    "categoryKey": "labor",
+    "categoryKey": "taxation",
     "axis": "econ",
     "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Strajki paraliżujące transport publiczny, koleje i szpitale powinny być prawnie zakazane.",
-      "en": "Strikes that shut down public transit, railways, or hospitals should be legally outlawed.",
-      "es": "Las huelgas que paralizan el transporte público o los hospitales deberían estar prohibidas.",
-      "de": "Streiks, die den öffentlichen Nahverkehr oder Krankenhäuser lahmlegen, sollten verboten werden.",
-      "ru": "Забастовки, парализующие общественный транспорт и больницы, должны быть запрещены законом.",
-      "fr": "Les grèves qui paralysent les transports publics ou les hôpitaux devraient être interdites."
+      "pl": "Podatek VAT na wszystkie towary powinien zostać obniżony.",
+      "en": "Value-added tax (VAT) rates on all goods should be reduced.",
+      "es": "El IVA aplicado a todos los productos debe ser rebajado.",
+      "de": "Die Mehrwertsteuer auf alle Waren sollte gesenkt werden.",
+      "ru": "Ставка НДС на все товары должна быть снижена.",
+      "fr": "Le taux de TVA sur tous les biens devrait être diminué."
     }
   },
   {
-    "id": 34,
-    "categoryKey": "labor",
+    "id": 33,
+    "categoryKey": "taxation",
     "axis": "econ",
     "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Pracownicy powinni mieć zagwarantowane miejsca w zarządach i radach nadzorczych dużych korporacji.",
-      "en": "Employees should have guaranteed seats on corporate management and supervisory boards.",
-      "es": "Los trabajadores deberían tener representación obligatoria en los consejos de administración.",
-      "de": "Arbeitnehmer sollten garantierte Sitze in den Vorständen und Aufsichtsräten von Konzernen haben.",
-      "ru": "Работникам должны быть гарантированы места в советах директоров крупных корпораций.",
-      "fr": "Les salariés devraient avoir des sièges garantis au sein des conseils d'administration."
+      "pl": "Napoje słodzone i fast food powinny być obciążone specjalnym podatkiem cukrowym.",
+      "en": "Sugary drinks and fast food should carry a dedicated health tax.",
+      "es": "Las bebidas azucaradas y la comida rápida deben pagar un impuesto especial.",
+      "de": "Zuckerhaltige Getränke und Fast Food sollten mit einer Sondersteuer belegt werden.",
+      "ru": "Сладкие газированные напитки и фастфуд должны облагаться специальным налогом.",
+      "fr": "Les boissons sucrées et la restauration rapide devraient être soumises à une taxe spécifique."
+    }
+  },
+  {
+    "id": 34,
+    "categoryKey": "taxation",
+    "axis": "econ",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Zakup luksusowych samochodów i jachtów powinien być obciążony wysokim podatkiem.",
+      "en": "Purchasing luxury sports cars and private yachts should face heavy luxury taxes.",
+      "es": "La compra de coches de lujo y yates privados debe gravarse con un impuesto elevado.",
+      "de": "Der Kauf von Luxusautos und Yachten sollte mit einer hohen Luxussteuer belegt werden.",
+      "ru": "Покупка люксовых автомобилей и яхт должна облагаться высоким налогом на роскошь.",
+      "fr": "L'achat de voitures de luxe et de yachts privés devrait être soumis à une taxe élevée sur le luxe."
     }
   },
   {
@@ -522,14 +522,14 @@ const rawQuestions = [
     "categoryKey": "labor",
     "axis": "econ",
     "multiplier": 1,
-    "isQuick": false,
+    "isQuick": true,
     "text": {
-      "pl": "Zatrudnianie nowych pracowników w miejsce strajkujących powinno być w pełni dozwolone.",
-      "en": "Hiring permanent replacement workers during a strike should be completely legal.",
-      "es": "Contratar trabajadores para sustituir a huelguistas debería ser plenamente legal.",
-      "de": "Die Einstellung von Ersatzarbeitskräften während eines Streiks sollte legal sein.",
-      "ru": "Наём новых сотрудников взамен бастующих должен быть полностью разрешён законом.",
-      "fr": "Embaucher de nouveaux salariés pour remplacer des grévistes devrait être tout à fait légal."
+      "pl": "Płaca minimalna powinna zostać całkowicie zlikwidowana.",
+      "en": "The statutory minimum wage should be completely eliminated.",
+      "es": "El salario mínimo interprofesional debe ser completamente eliminado.",
+      "de": "Der gesetzliche Mindestlohn sollte vollständig abgeschafft werden.",
+      "ru": "Минимальный размер оплаты труда должен быть полностью отменён.",
+      "fr": "Le salaire minimum légal devrait être totalement supprimé."
     }
   },
   {
@@ -537,14 +537,14 @@ const rawQuestions = [
     "categoryKey": "labor",
     "axis": "econ",
     "multiplier": -1,
-    "isQuick": false,
+    "isQuick": true,
     "text": {
-      "pl": "Firmy zastępujące pracowników robotami lub sztuczną inteligencją powinny płacić podatek od automatyzacji.",
-      "en": "Companies replacing workers with robots or AI should pay an automation tax.",
-      "es": "Las empresas que reemplazan humanos por robots o IA deberían pagar un impuesto a la automatización.",
-      "de": "Unternehmen, die Mitarbeiter durch Roboter oder KI ersetzen, sollten eine Automatisierungssteuer zahlen.",
-      "ru": "Компании, заменяющие людей роботами и ИИ, должны платить специальный налог на автоматизацию.",
-      "fr": "Les entreprises remplaçant des humains par des robots ou l'IA devraient payer une taxe sur l'automatisation."
+      "pl": "Tydzień pracy powinien zostać skrócony do 4 dni bez obniżania pensji.",
+      "en": "The standard workweek should be reduced to four days with zero wage cuts.",
+      "es": "La jornada laboral semanal debe reducirse a 4 días sin merma de sueldo.",
+      "de": "Die Wochenarbeitszeit sollte bei vollem Lohnausgleich auf 4 Tage verkürzt werden.",
+      "ru": "Рабочая неделя должна быть сокращена до 4 дней без снижения зарплаты.",
+      "fr": "La semaine de travail devrait être réduite à 4 jours sans perte de salaire."
     }
   },
   {
@@ -552,14 +552,14 @@ const rawQuestions = [
     "categoryKey": "labor",
     "axis": "econ",
     "multiplier": 1,
-    "isQuick": false,
+    "isQuick": true,
     "text": {
-      "pl": "Elastyczne umowy zlecenia dają ludziom potrzebną swobodę i nie powinny być ograniczane.",
-      "en": "Flexible freelance and gig contracts offer vital freedom and should not be restricted.",
-      "es": "Los contratos flexibles y freelance ofrecen libertad y no deben limitarse por ley.",
-      "de": "Flexible Honorar- und Werkverträge bieten Freiheit und sollten nicht reglementiert werden.",
-      "ru": "Гибкие договоры подряда и фриланса дают свободу и не должны ограничиваться государством.",
-      "fr": "Les contrats flexibles et le travail indépendant offrent une liberté précieuse et ne doivent pas être restreints."
+      "pl": "Pracodawca powinien mieć prawo zwolnić pracownika bez podawania przyczyny.",
+      "en": "Employers should be legally allowed to fire workers at will without stating a reason.",
+      "es": "Un empresario debe tener derecho a despedir a un empleado sin justificar la causa.",
+      "de": "Arbeitgeber sollten Mitarbeiter grundlos und fristlos kündigen dürfen.",
+      "ru": "Работодатель должен иметь право уволить сотрудника без объяснения причин.",
+      "fr": "Un employeur devrait pouvoir licencier un salarié sans avoir à motiver sa décision."
     }
   },
   {
@@ -569,12 +569,12 @@ const rawQuestions = [
     "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Kierowcy aplikacji przewozowych i kurierzy powinni mieć obowiązkowe pełne etaty z ubezpieczeniem.",
-      "en": "App delivery couriers and ride-share drivers must be granted full employee status and benefits.",
-      "es": "Los repartidores y conductores de plataformas deben ser contratados como empleados fijos.",
-      "de": "Lieferkuriere und Plattformfahrer müssen gesetzlich als Festangestellte abgesichert werden.",
-      "ru": "Курьеры и водители онлайн-сервисов должны обязательно оформляться в штат с полной страховкой.",
-      "fr": "Les livreurs et chauffeurs d'applications devraient obligatoirement être salariés en CDI avec mutuelle."
+      "pl": "Związki zawodowe powinny mieć prawo weta wobec masowych zwolnień.",
+      "en": "Labor unions should hold veto power over mass corporate layoffs.",
+      "es": "Los sindicatos deben tener poder de veto sobre los despidos colectivos.",
+      "de": "Gewerkschaften sollten ein Vetorecht bei Massenentlassungen erhalten.",
+      "ru": "Профсоюзы должны иметь право вето на массовые увольнения работников.",
+      "fr": "Les syndicats devraient détenir un droit de veto sur les licenciements économiques collectifs."
     }
   },
   {
@@ -584,12 +584,12 @@ const rawQuestions = [
     "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Przynależność do związków zawodowych i płacenie składek musi być całkowicie dobrowolne.",
-      "en": "Trade union membership and union dues must be strictly voluntary for every worker.",
-      "es": "La afiliación sindical y el pago de cuotas deben ser estrictamente voluntarios.",
-      "de": "Gewerkschaftsmitgliedschaft und Beiträge müssen für jeden Beschäftigten absolut freiwillig sein.",
-      "ru": "Членство в профсоюзах и уплата взносов должны быть исключительно добровольными.",
-      "fr": "L'adhésion syndicale et le paiement des cotisations doivent être strictement facultatifs."
+      "pl": "Strajki blokujące transport publiczny i szpitale powinny być zakazane.",
+      "en": "Strikes that disrupt public transportation and hospitals should be prohibited.",
+      "es": "Las huelgas que paralicen el transporte público o la sanidad deben estar prohibidas.",
+      "de": "Streiks, die öffentlichen Nahverkehr oder Krankenhäuser lahmlegen, sollten verboten sein.",
+      "ru": "Забастовки, блокирующие общественный транспорт и больницы, должны быть запрещены.",
+      "fr": "Les grèves bloquant les transports publics ou les hôpitaux devraient être interdites."
     }
   },
   {
@@ -599,12 +599,12 @@ const rawQuestions = [
     "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Rząd powinien bezwzględnie zakazać pracy w nadgodzinach powyżej 48 godzin w tygodniu.",
-      "en": "The government should enforce a strict ban on working more than 48 hours per week including overtime.",
-      "es": "El gobierno debe prohibir tajantemente superar las 48 horas semanales sumando horas extra.",
-      "de": "Die Regierung sollte Überstunden über 48 Wochenstunden hinaus ausnahmslos verbieten.",
-      "ru": "Правительство должно категорически запретить переработки свыше 48 часов в неделю.",
-      "fr": "Le gouvernement devrait interdire formellement toute semaine dépassant 48 heures heures sup comprises."
+      "pl": "Pracownicy powinni mieć zagwarantowane miejsca w zarządach dużych firm.",
+      "en": "Workers should have legally mandated seats on the boards of large companies.",
+      "es": "Los trabajadores deben tener puestos reservados en la dirección de las grandes empresas.",
+      "de": "Arbeitnehmer sollten feste Sitze in Vorständen und Aufsichtsräten von Konzernen haben.",
+      "ru": "Работникам должны быть гарантированы места в руководстве крупных компаний.",
+      "fr": "Les salariés devraient avoir des sièges garantis dans les conseils d'administration des grandes entreprises."
     }
   },
   {
@@ -614,162 +614,162 @@ const rawQuestions = [
     "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Stawki wynagrodzeń za pracę w niedziele i w nocy powinny zależeć od umowy, a nie od państwowych nakazów.",
-      "en": "Pay rates for working Sundays and nights should be negotiated freely, not mandated by state law.",
-      "es": "La remuneración por turnos nocturnos o dominicales debe fijarse por acuerdo libre, no por ley.",
-      "de": "Zuschläge für Nacht- und Sonntagsarbeit sollten frei ausgehandelt werden statt gesetzlich vorgegeben.",
-      "ru": "Доплаты за работу в ночные смены и выходные должны определяться договором, а не законом.",
-      "fr": "Les majorations pour le travail de nuit et le dimanche devraient relever du contrat, pas de la loi."
+      "pl": "Zatrudnianie nowych pracowników na miejsce strajkujących powinno być legalne.",
+      "en": "Hiring replacement workers to take over for striking staff should be legal.",
+      "es": "Contratar nuevo personal para sustituir a huelguistas debe ser legal.",
+      "de": "Die Einstellung von Ersatzkräften während eines Streiks sollte legal sein.",
+      "ru": "Приём новых сотрудников на место бастующих должен быть разрешён законом.",
+      "fr": "Recruter des remplaçants pour assurer le travail de grévistes devrait être légal."
     }
   },
   {
     "id": 42,
-    "categoryKey": "welfare",
+    "categoryKey": "labor",
     "axis": "econ",
-    "multiplier": 1,
-    "isQuick": true,
+    "multiplier": -1,
+    "isQuick": false,
     "text": {
-      "pl": "Prywatne indywidualne konta emerytalne zabezpieczają starość lepiej niż państwowy ZUS.",
-      "en": "Private personal pension accounts secure old age far better than state-run retirement systems.",
-      "es": "Los planes de pensiones privados garantizan la jubilación mejor que el sistema público estatal.",
-      "de": "Private Altersvorsorgekonten sichern das Alter verlässlicher ab als die staatliche Rentenkasse.",
-      "ru": "Частные накопительные пенсионные счета защищают старость надёжнее государственного пенсионного фонда.",
-      "fr": "Les comptes de retraite privés garantissent les vieux jours bien mieux que le système public par répartition."
+      "pl": "Firmy zastępujące pracowników robotami powinny płacić podatek od automatyzacji.",
+      "en": "Companies replacing human workers with robots should pay an automation tax.",
+      "es": "Las empresas que sustituyan empleados por robots deben pagar un impuesto a la automatización.",
+      "de": "Unternehmen, die Arbeitskräfte durch Roboter ersetzen, sollten eine Robotersteuer zahlen.",
+      "ru": "Компании, заменяющие работников роботами, должны платить налог на автоматизацию.",
+      "fr": "Les entreprises remplaçant des salariés par des robots devraient payer une taxe sur l'automatisation."
     }
   },
   {
     "id": 43,
-    "categoryKey": "welfare",
+    "categoryKey": "labor",
     "axis": "econ",
-    "multiplier": -1,
-    "isQuick": true,
+    "multiplier": 1,
+    "isQuick": false,
     "text": {
-      "pl": "Każdy dorosły obywatel powinien otrzymywać comiesięczny bezwarunkowy Dochód Podstawowy od państwa.",
-      "en": "Every adult citizen should receive a regular Universal Basic Income from the state.",
-      "es": "Todo ciudadano adulto debería recibir un Ingreso Básico Universal incondicional del Estado.",
-      "de": "Jeder erwachsene Bürger sollte ein bedingungsloses Grundeinkommen vom Staat erhalten.",
-      "ru": "Каждый взрослый гражданин должен получать ежемесячный безусловный базовый доход от государства.",
-      "fr": "Chaque citoyen adulte devrait recevoir un Revenu de Base Inconditionnel de la part de l'État."
+      "pl": "Elastyczne umowy cywilnoprawne i zlecenia nie powinny być ograniczane przez państwo.",
+      "en": "Freelance and flexible independent contractor agreements should not face state restrictions.",
+      "es": "Los contratos mercantiles y autónomos no deben ser restringidos por la ley.",
+      "de": "Freie Dienstverträge und Freelance-Tätigkeiten sollten staatlich nicht beschränkt werden.",
+      "ru": "Договоры подряда и самозанятости не должны ограничиваться государством.",
+      "fr": "Les contrats de prestation indépendants ne devraient pas être restreints par la loi."
     }
   },
   {
     "id": 44,
-    "categoryKey": "welfare",
+    "categoryKey": "labor",
     "axis": "econ",
-    "multiplier": 1,
-    "isQuick": true,
+    "multiplier": -1,
+    "isQuick": false,
     "text": {
-      "pl": "Czynsze wynajmu mieszkań powinien ustalać wolny rynek, a nie urzędowe limity.",
-      "en": "Apartment rental prices should be set entirely by the free market, not by government rent caps.",
-      "es": "El precio de los alquileres de vivienda debe fijarlo el mercado libre, no topes estatales.",
-      "de": "Mietpreise sollten rein durch Angebot und Nachfrage bestimmt werden, nicht durch Mietpreisbremsen.",
-      "ru": "Цены на аренду жилья должен определять свободный рынок, а не государственные лимиты.",
-      "fr": "Le prix des loyers devrait être fixé uniquement par le marché libre et non par l'encadrement des loyers."
+      "pl": "Kurierzy i kierowcy aplikacji powinni mieć obowiązkowe umowy o pracę.",
+      "en": "App delivery couriers and ride-share drivers should be classified as regular employees.",
+      "es": "Los repartidores y conductores de plataformas digitales deben ser asalariados fijos.",
+      "de": "Plattformkuriere und Fahrdienstleister sollten als feste Angestellte eingestuft werden.",
+      "ru": "Курьеры и таксисты онлайн-сервисов должны иметь обязательные трудовые договоры.",
+      "fr": "Les livreurs et chauffeurs de plateformes devraient obligatoirement être salariés sous contrat."
     }
   },
   {
     "id": 45,
-    "categoryKey": "welfare",
+    "categoryKey": "labor",
     "axis": "econ",
-    "multiplier": -1,
-    "isQuick": true,
+    "multiplier": 1,
+    "isQuick": false,
     "text": {
-      "pl": "Rząd i samorządy powinny masowo budować tanie mieszkania na wynajem za publiczne pieniądze.",
-      "en": "Governments should build vast numbers of affordable public rental homes with taxpayer money.",
-      "es": "Las administraciones públicas deben construir masivamente viviendas asequibles de alquiler.",
-      "de": "Der Staat sollte in großem Stil bezahlbare Sozialwohnungen aus Steuermitteln errichten.",
-      "ru": "Государство должно массово строить доступное арендное жильё за счёт бюджета.",
-      "fr": "Les pouvoirs publics devraient construire massivement des logements sociaux à loyer modéré."
+      "pl": "Należenie do związku zawodowego i płacenie składek musi być dobrowolne.",
+      "en": "Union membership and union dues payments must be entirely voluntary.",
+      "es": "La afiliación sindical y el abono de cuotas deben ser estrictamente voluntarios.",
+      "de": "Gewerkschaftsmitgliedschaft und Beitragszahlung müssen stets freiwillig sein.",
+      "ru": "Членство в профсоюзе и уплата взносов должны быть исключительно добровольными.",
+      "fr": "L'adhésion syndicale et le paiement des cotisations doivent être entièrement libres."
     }
   },
   {
     "id": 46,
-    "categoryKey": "welfare",
+    "categoryKey": "labor",
     "axis": "econ",
-    "multiplier": 1,
+    "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Zasiłki socjalne powinny przysługiwać wyłącznie osobom, które aktywnie szukają zatrudnienia.",
-      "en": "Welfare benefits should only be paid to individuals who are actively looking for work.",
-      "es": "Las ayudas de desempleo deben reservarse a quienes buscan trabajo activamente.",
-      "de": "Sozialleistungen sollten nur an Personen gezahlt werden, die sich aktiv um Arbeit bemühen.",
-      "ru": "Социальные пособия должны выплачиваться только тем, кто активно ищет работу.",
-      "fr": "Les allocations chômage ne devraient être versées qu'aux personnes qui cherchent activement un emploi."
+      "pl": "Praca w nadgodzinach powyżej 48 godzin tygodniowo powinna być całkowicie zakazana.",
+      "en": "Working overtime beyond 48 total hours in a week should be legally prohibited.",
+      "es": "Superar las 48 horas semanales sumando horas extraordinarias debe estar prohibido por ley.",
+      "de": "Überstunden über insgesamt 48 Wochenstunden hinaus sollten gesetzlich untersagt sein.",
+      "ru": "Переработки сверх 48 часов в неделю должны быть полностью запрещены законом.",
+      "fr": "Effectuer des heures supplémentaires au-delà de 48 heures par semaine devrait être illégal."
     }
   },
   {
     "id": 47,
-    "categoryKey": "welfare",
+    "categoryKey": "labor",
     "axis": "econ",
-    "multiplier": -1,
+    "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Leczenie szpitalne, operacje i leki ratujące życie powinny być całkowicie bezpłatne dla każdego.",
-      "en": "Hospital care, major surgeries, and life-saving medications should be completely free for everyone.",
-      "es": "La atención hospitalaria, operaciones y fármacos vitales deben ser totalmente gratuitos.",
-      "de": "Krankenhausbehandlungen, Operationen und lebenswichtige Medikamente müssen für alle kostenlos sein.",
-      "ru": "Лечение в больницах, операции и жизненно важные лекарства должны быть полностью бесплатными для всех.",
-      "fr": "Les soins hospitaliers, opérations et médicaments vitaux devraient être entièrement gratuits pour tous."
+      "pl": "Stawki za pracę w niedziele i w nocy powinny zależeć wyłącznie od umowy pracownika z szefem.",
+      "en": "Wage bonuses for night and Sunday shifts should be decided solely by private negotiation.",
+      "es": "Las tarifas por turnos de noche y festivos deben fijarse por acuerdo entre las partes.",
+      "de": "Zuschläge für Sonn- und Feiertagsarbeit sollten alleinige Verhandlungssache sein.",
+      "ru": "Оплата за работу по ночам и воскресеньям должна определяться договором сторон.",
+      "fr": "Les primes pour le travail dominical et de nuit devraient être négociées librement entre les parties."
     }
   },
   {
     "id": 48,
-    "categoryKey": "welfare",
+    "categoryKey": "labor",
     "axis": "econ",
-    "multiplier": 1,
+    "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Konkurencja prywatnych firm ubezpieczeniowych zapewnia lepszą ochronę zdrowia niż państwowy monopol.",
-      "en": "Private insurance competition delivers better healthcare quality than a state monopoly.",
-      "es": "La competencia entre seguros de salud privados da mejor servicio que un monopolio público.",
-      "de": "Wettbewerb privater Krankenversicherer sorgt für bessere Medizin als ein staatliches Monopol.",
-      "ru": "Конкуренция частных медицинских страховок обеспечивает лучшее качество, чем государственная монополия.",
-      "fr": "La concurrence entre assurances privées assure de meilleurs soins que le monopole public de santé."
+      "pl": "Pracownikom powinno przysługiwać minimum 30 dni płatnego urlopu w roku.",
+      "en": "Employees should be legally entitled to a minimum of 30 paid vacation days annually.",
+      "es": "Los trabajadores deben tener derecho a un mínimo legal de 30 días de vacaciones pagadas al año.",
+      "de": "Jedem Arbeitnehmer sollten mindestens 30 Tage bezahlter Jahresurlaub zustehen.",
+      "ru": "Работникам должно полагаться не менее 30 дней оплачиваемого отпуска в год.",
+      "fr": "Tout salarié devrait avoir droit à un minimum de 30 jours de congés payés par an."
     }
   },
   {
     "id": 49,
-    "categoryKey": "welfare",
-    "axis": "econ",
-    "multiplier": -1,
-    "isQuick": false,
-    "text": {
-      "pl": "Państwo powinno zagwarantować bezpłatne żłobki i przedszkola dla wszystkich dzieci.",
-      "en": "The state should guarantee free nursery and kindergarten places for all young children.",
-      "es": "El Estado debe garantizar guarderías infantiles totalmente gratuitas para todos los niños.",
-      "de": "Der Staat sollte kostenfreie Kitas und Kindergärten für ausnahmslos alle Kinder bereitstellen.",
-      "ru": "Государство должно гарантировать бесплатные ясли и детские сады для всех детей.",
-      "fr": "L'État devrait garantir des places gratuites en crèche et école maternelle pour tous les enfants."
-    }
-  },
-  {
-    "id": 50,
-    "categoryKey": "welfare",
+    "categoryKey": "labor",
     "axis": "econ",
     "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Pobieranie zasiłków powinno być ograniczone w czasie, by nie zniechęcać ludzi do powrotu na rynek pracy.",
-      "en": "Welfare benefits should have strict time limits to prevent long-term dependency on the state.",
-      "es": "Las ayudas sociales deben tener un límite de tiempo estricto para evitar la dependencia.",
-      "de": "Sozialhilfe sollte zeitlich begrenzt werden, um Dauerabhängigkeit vom Staat zu verhindern.",
-      "ru": "Получение пособий должно быть ограничено по времени, чтобы не порождать иждивенчество.",
-      "fr": "Les allocations d'aide devraient avoir une durée limitée pour éviter l'assistance permanente."
+      "pl": "Pracodawca nie powinien mieć obowiązku wypłacania odpraw zwalnianym pracownikom.",
+      "en": "Employers should not be required by law to pay severance packages to laid-off staff.",
+      "es": "Los empresarios no deberían estar obligados por ley a pagar indemnizaciones por despido.",
+      "de": "Arbeitgeber sollten nicht per Gesetz zu Abfindungszahlungen bei Kündigungen verpflichtet sein.",
+      "ru": "Работодатель не должен быть обязан выплачивать выходное пособие при увольнении.",
+      "fr": "Les employeurs ne devraient pas être tenus par la loi de verser des indemnités de licenciement."
     }
   },
   {
-    "id": 51,
-    "categoryKey": "welfare",
+    "id": 50,
+    "categoryKey": "labor",
     "axis": "econ",
     "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Fundusze inwestycyjne skupujące setki mieszkań na wynajem powinny zostać objęte zakazem takich zakupów.",
-      "en": "Corporate investment funds buying up vast portfolios of rental housing should be legally banned.",
-      "es": "Debería prohibirse por ley que grandes fondos de inversión compren masivamente viviendas residenciales.",
-      "de": "Investmentfonds, die massenhaft Wohnungen aufkaufen, sollten gesetzlich gestoppt werden.",
-      "ru": "Инвестиционным фондам должно быть законодательно запрещено скупать целые жилые кварталы.",
-      "fr": "Il devrait être interdit aux fonds d'investissement d'acheter en masse des parcs entiers de logements."
+      "pl": "Państwo powinno ustalać maksymalną dopuszczalną różnicę między pensją prezesa a pracownika.",
+      "en": "The state should legally cap the wage ratio between a CEO and the lowest-paid worker.",
+      "es": "La ley debe limitar la diferencia máxima entre el sueldo del director y el del operario base.",
+      "de": "Der Staat sollte die Gehaltsschere zwischen Vorstand und Hilfskraft gesetzlich deckeln.",
+      "ru": "Государство должно ограничить разницу между зарплатой директора и простого рабочего.",
+      "fr": "L'État devrait limiter l'écart maximal autorisé entre le salaire d'un dirigeant et celui d'un ouvrier."
+    }
+  },
+  {
+    "id": 51,
+    "categoryKey": "labor",
+    "axis": "econ",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Okres wypowiedzenia umowy o pracę nie powinien być narzucany przez ustawę.",
+      "en": "Employment contract notice periods should be determined by agreement, not government statutes.",
+      "es": "El periodo de preaviso para rescindir un contrato laboral no debe ser fijado por ley.",
+      "de": "Kündigungsfristen sollten nicht durch gesetzliche Vorgaben vorgeschrieben werden.",
+      "ru": "Сроки уведомления при увольнении не должны навязываться государственным законом.",
+      "fr": "Les délais de préavis de licenciement ne devraient pas être imposés par le code du travail."
     }
   },
   {
@@ -777,14 +777,14 @@ const rawQuestions = [
     "categoryKey": "welfare",
     "axis": "econ",
     "multiplier": 1,
-    "isQuick": false,
+    "isQuick": true,
     "text": {
-      "pl": "Studia wyższe powinny być płatne i finansowane pożyczkami spłacanymi dopiero po znalezieniu pracy.",
-      "en": "University tuition should be paid by students via income-contingent loans repaid after graduation.",
-      "es": "La universidad debería costearse con matrículas y préstamos reembolsables al conseguir empleo.",
-      "de": "Das Hochschulstudium sollte gebührenpflichtig sein und über nachgelagerte Kredite finanziert werden.",
-      "ru": "Высшее образование должно быть платным, финансируемым кредитами с выплатой после трудоустройства.",
-      "fr": "Les études supérieures devraient être payantes et financées par des prêts remboursés après embauche."
+      "pl": "System emerytalny powinien opierać się na prywatnych kontach zamiast państwowego ZUS.",
+      "en": "Pensions should rely on private investment accounts instead of state social security.",
+      "es": "Las pensiones de jubilación deben basarse en cuentas de ahorro privadas y no en el sistema público.",
+      "de": "Das Rentensystem sollte auf privaten Vorsorgekonten statt auf der staatlichen Rentenkasse beruhen.",
+      "ru": "Пенсионная система должна опираться на частные накопления, а не на государственный фонд.",
+      "fr": "Le système de retraite devrait reposer sur des comptes privés d'épargne plutôt que sur la sécurité sociale d'État."
     }
   },
   {
@@ -792,1619 +792,2219 @@ const rawQuestions = [
     "categoryKey": "welfare",
     "axis": "econ",
     "multiplier": -1,
-    "isQuick": false,
+    "isQuick": true,
     "text": {
-      "pl": "Państwo powinno zapewnić bezpłatne, ciepłe obiady wszystkim uczniom w szkołach publicznych.",
-      "en": "The state should provide free, nutritious warm lunches to every student in public schools.",
-      "es": "El Estado debe ofrecer comedores escolares gratuitos y comidas calientes a todos los alumnos.",
-      "de": "Der Staat sollte jedem Schüler an öffentlichen Schulen ein kostenloses warmes Mittagessen bereitstellen.",
-      "ru": "Государство должно обеспечивать бесплатные горячие обеды всем учащимся государственных школ.",
-      "fr": "L'État devrait fournir des repas chauds et équilibrés gratuits à tous les élèves des écoles publiques."
+      "pl": "Każdy dorosły obywatel powinien otrzymywać bezwarunkowy Dochód Podstawowy od państwa.",
+      "en": "Every adult citizen should receive a regular Universal Basic Income from the government.",
+      "es": "Todo ciudadano adulto debe percibir una Renta Básica Universal del Estado.",
+      "de": "Jeder erwachsene Bürger sollte ein bedingungsloses Grundeinkommen vom Staat erhalten.",
+      "ru": "Каждый взрослый гражданин должен получать безусловный базовый доход от государства.",
+      "fr": "Chaque citoyen adulte devrait recevoir un Revenu Universel de Base versé par l'État."
     }
   },
   {
     "id": 54,
     "categoryKey": "welfare",
     "axis": "econ",
-    "multiplier": -1,
+    "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Pracownicy wykonujący ciężką pracę fizyczną powinni mieć prawo do wcześniejszej emerytury państwowej.",
-      "en": "Workers performing hazardous or strenuous physical labor should have the right to retire early on state pensions.",
-      "es": "Quienes realizan trabajos físicos pesados o peligrosos deben poder jubilarse antes con pensión pública.",
-      "de": "Arbeitnehmer mit schwerer körperlicher Arbeit sollten das Recht auf einen früheren Renteneintritt haben.",
-      "ru": "Работники тяжёлого физического труда должны иметь право на досрочную государственную пенсию.",
-      "fr": "Les travailleurs exerçant des métiers physiques pénibles devraient avoir droit à une retraite anticipée payée par l'État."
+      "pl": "Ceny wynajmu mieszkań powinien ustalać rynek, a nie urzędowe limity.",
+      "en": "Apartment rental prices should be set by the market rather than government rent caps.",
+      "es": "El precio del alquiler de viviendas debe fijarlo el mercado y no topes de precios.",
+      "de": "Mietpreise sollten rein vom Wohnungsmarkt statt durch staatliche Mietpreisbremsen bestimmt werden.",
+      "ru": "Цены на аренду жилья должен регулировать рынок, а не государственные лимиты.",
+      "fr": "Les loyers des appartements devraient être fixés par le marché libre plutôt que par un encadrement étatique."
     }
   },
   {
     "id": 55,
-    "categoryKey": "regulation",
+    "categoryKey": "welfare",
     "axis": "econ",
-    "multiplier": 1,
+    "multiplier": -1,
     "isQuick": true,
     "text": {
-      "pl": "Większość państwowych licencji i zezwoleń zawodowych to zbędna biurokracja utrudniająca pracę.",
-      "en": "Most government occupational licenses and permits are useless red tape stifling workers.",
-      "es": "La mayoría de las licencias profesionales obligatorias son trabas burocráticas innecesarias.",
-      "de": "Die meisten staatlichen Berufszulassungen und Lizenzen sind überflüssige Bürokratie.",
-      "ru": "Большинство государственных лицензий и разрешений на профессии — ненужная бюрократия.",
-      "fr": "La plupart des licences professionnelles et permis d'exercer ne sont que de la bureaucratie inutile."
+      "pl": "Rząd powinien masowo budować tanie państwowe mieszkania na wynajem.",
+      "en": "The government should build large volumes of affordable public rental housing.",
+      "es": "El gobierno debe construir masivamente viviendas públicas de alquiler asequible.",
+      "de": "Die Regierung sollte in großem Stil bezahlbare staatliche Mietwohnungen bauen.",
+      "ru": "Правительство должно массово строить доступное государственное арендное жильё.",
+      "fr": "Le gouvernement devrait construire massivement des logements locatifs sociaux abordables."
     }
   },
   {
     "id": 56,
-    "categoryKey": "regulation",
+    "categoryKey": "welfare",
     "axis": "econ",
-    "multiplier": -1,
-    "isQuick": true,
+    "multiplier": 1,
+    "isQuick": false,
     "text": {
-      "pl": "Rząd powinien ustawowo ograniczyć zarobki prezesów do ustalonej wielokrotności pensji pracownika.",
-      "en": "The government should cap CEO compensation to a strict multiple of their lowest-paid employee's wage.",
-      "es": "El gobierno debe limitar por ley los sueldos de los directores a un múltiplo del salario base de la plantilla.",
-      "de": "Managergehälter sollten gesetzlich an ein festgelegtes Vielfaches des niedrigsten Mitarbeiterlohns gekoppelt werden.",
-      "ru": "Правительство должно ограничить зарплаты топ-менеджеров фиксированным коэффициентом от оклада рабочего.",
-      "fr": "Le gouvernement devrait plafonner les salaires des PDG à un multiple fixé du salaire moyen de l'entreprise."
+      "pl": "Zasiłki dla bezrobotnych powinny przysługiwać tylko osobom aktywnie szukającym pracy.",
+      "en": "Unemployment benefits should be strictly conditional on active job-seeking.",
+      "es": "El subsidio de desempleo debe reservarse únicamente a quienes demuestren buscar empleo.",
+      "de": "Arbeitslosengeld sollte nur an Personen gezahlt werden, die sich nachweislich bewerben.",
+      "ru": "Пособия по безработице должны выплачиваться только активно ищущим работу.",
+      "fr": "Les allocations chômage ne devraient être versées qu'aux personnes en recherche active d'emploi."
     }
   },
   {
     "id": 57,
-    "categoryKey": "regulation",
+    "categoryKey": "welfare",
     "axis": "econ",
-    "multiplier": 1,
+    "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Prywatne firmy kurierskie i paczkomaty powinny móc w pełni zastąpić państwową pocztę.",
-      "en": "Private courier firms and automated parcel lockers should be free to completely replace the state postal service.",
-      "es": "Las empresas de mensajería privada y casilleros deben poder reemplazar por completo al correo estatal.",
-      "de": "Private Paketdienste und Abholstationen sollten die staatliche Post komplett ablösen dürfen.",
-      "ru": "Частные курьерские службы и постаматы должны иметь возможность полностью заменить государственную почту.",
-      "fr": "Les services de livraison privés et casiers automatisés devraient pouvoir remplacer totalement la poste d'État."
+      "pl": "Leczenie szpitalne i leki ratujące życie powinny być bezpłatne dla każdego.",
+      "en": "Hospital treatment and life-saving medicines should be completely free for all.",
+      "es": "La atención hospitalaria y los fármacos vitales deben ser totalmente gratuitos.",
+      "de": "Krankenhausaufenthalte und lebensrettende Medikamente müssen für alle kostenfrei sein.",
+      "ru": "Лечение в больницах и жизненно важные лекарства должны быть бесплатными для всех.",
+      "fr": "L'hospitalisation et les médicaments vitaux devraient être totalement gratuits pour chacun."
     }
   },
   {
     "id": 58,
-    "categoryKey": "regulation",
+    "categoryKey": "welfare",
     "axis": "econ",
-    "multiplier": -1,
+    "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Państwo powinno nałożyć specjalny podatek obrotowy na zagraniczne hipermarkety, by chronić małe sklepiki.",
-      "en": "The state should impose special turnover taxes on big supermarket chains to protect mom-and-pop stores.",
-      "es": "El Estado debe gravar a las grandes cadenas de supermercados para proteger el comercio de barrio.",
-      "de": "Der Staat sollte Supermarktketten sonderbesteuern, um lokale Tante-Emma-Läden zu schützen.",
-      "ru": "Государство должно ввести специальный налог на крупные торговые сети для защиты малого бизнеса.",
-      "fr": "L'État devrait imposer une taxe spéciale sur les hypermarchés pour préserver le petit commerce de proximité."
+      "pl": "Ochrona zdrowia powinna opierać się na konkurujących prywatnych ubezpieczeniach.",
+      "en": "Healthcare should be funded through competing private health insurance providers.",
+      "es": "La asistencia sanitaria debe gestionarse a través de aseguradoras privadas en competencia.",
+      "de": "Das Gesundheitswesen sollte auf im Wettbewerb stehenden privaten Kassen beruhen.",
+      "ru": "Здравоохранение должно строиться на конкурирующих частных медицинских страховках.",
+      "fr": "Le système de santé devrait reposer sur des assurances privées en concurrence."
     }
   },
   {
     "id": 59,
-    "categoryKey": "regulation",
+    "categoryKey": "welfare",
     "axis": "econ",
-    "multiplier": 1,
+    "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Aplikacje przewozowe (np. Uber) powinny działać swobodnie bez licencji korporacji taksówkarskich.",
-      "en": "Ride-hailing apps like Uber should operate freely without restrictive traditional taxi licenses.",
-      "es": "Las aplicaciones de transporte como Uber deben operar sin las trabas de las licencias del taxi tradicional.",
-      "de": "Fahrdienst-Apps wie Uber sollten ohne restriktive Taxilizenzen frei operieren dürfen.",
-      "ru": "Сервисы такси через приложения (вроде Uber) должны работать без ограничительных лицензий классических таксопарков.",
-      "fr": "Les applications VTC comme Uber devraient pouvoir opérer librement sans les licences strictes des taxis traditionnels."
+      "pl": "Żłobki i przedszkola powinny być bezpłatne dla wszystkich dzieci.",
+      "en": "Childcare nurseries and preschools should be free for every child.",
+      "es": "Las guarderías y escuelas infantiles deben ser gratuitas para todos los niños.",
+      "de": "Kitas und Vorschulplätze sollten für ausnahmslos alle Kinder kostenlos sein.",
+      "ru": "Ясли и детские сады должны быть бесплатными для всех детей.",
+      "fr": "Les crèches et écoles maternelles devraient être gratuites pour tous les enfants."
     }
   },
   {
     "id": 60,
-    "categoryKey": "regulation",
+    "categoryKey": "welfare",
     "axis": "econ",
-    "multiplier": -1,
+    "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Maksymalne marże i oprocentowanie kredytów bankowych powinny być ściśle ograniczone przez prawo.",
-      "en": "Bank loan interest rates and lending profit margins should be capped by strict legal ceilings.",
-      "es": "Los intereses y comisiones de los préstamos bancarios deben estar limitados por leyes estrictas.",
-      "de": "Bankzinsen und Kreditgebühren sollten gesetzlich mit verbindlichen Höchstgrenzen gedeckelt werden.",
-      "ru": "Процентные ставки по банковским кредитам и наценки должны быть жестко ограничены законом.",
-      "fr": "Les taux d'intérêt et marges des crédits bancaires devraient être encadrés par des plafonds légaux stricts."
+      "pl": "Wypłata zasiłków socjalnych powinna być ściśle ograniczona w czasie.",
+      "en": "Welfare cash assistance payments should be subject to hard time limits.",
+      "es": "Las ayudas económicas de inserción deben tener un límite de tiempo improrrogable.",
+      "de": "Der Bezug staatlicher Sozialhilfe sollte streng zeitlich befristet sein.",
+      "ru": "Выплата социальных пособий должна быть строго ограничена по времени.",
+      "fr": "Le versement des allocations d'aide sociale devrait être strictement limité dans le temps."
     }
   },
   {
     "id": 61,
-    "categoryKey": "regulation",
+    "categoryKey": "welfare",
     "axis": "econ",
-    "multiplier": 1,
+    "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Pozwolenia na budowę domów jednorodzinnych powinny zostać zastąpione prostym zgłoszeniem bez uznaniowości urzędników.",
-      "en": "Building permits for single-family houses should be replaced by a simple notification without bureaucrat discretion.",
-      "es": "Las licencias de obras para viviendas unifamiliares deberían sustituirse por una simple declaración responsable.",
-      "de": "Baugenehmigungen für Einfamilienhäuser sollten durch eine einfache Bauanzeige ohne Amtswillkür ersetzt werden.",
-      "ru": "Разрешения на строительство частных домов должны быть заменены простым уведомлением без произвола чиновников.",
-      "fr": "Les permis de construire pour maisons individuelles devraient être remplacés par une simple déclaration préalable."
+      "pl": "Fundusze inwestycyjne powinny mieć zakaz kupowania mieszkań na wynajem.",
+      "en": "Corporate investment funds should be legally barred from purchasing residential rental homes.",
+      "es": "Los fondos de inversión deberían tener prohibido comprar viviendas para alquiler.",
+      "de": "Großen Investmentfonds sollte der Kauf von Mietwohnungen gesetzlich untersagt werden.",
+      "ru": "Инвестиционным фондам должно быть запрещено скупать квартиры под аренду.",
+      "fr": "Il devrait être interdit aux fonds d'investissement d'acheter des logements résidentiels locatifs."
     }
   },
   {
     "id": 62,
-    "categoryKey": "regulation",
+    "categoryKey": "welfare",
     "axis": "econ",
-    "multiplier": -1,
+    "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Reklamy alkoholu, hazardu i fast foodów powinny być całkowicie zakazane w telewizji i internecie.",
-      "en": "Commercial advertising of alcohol, gambling, and junk food should be completely banned.",
-      "es": "La publicidad de bebidas alcohólicas, apuestas y comida basura debe prohibirse totalmente.",
-      "de": "Werbung für Alkohol, Glücksspiel und ungesundes Fast Food sollte komplett verboten werden.",
-      "ru": "Реклама алкоголя, азартных игр и фастфуда должна быть полностью запрещена в СМИ и интернете.",
-      "fr": "La publicité pour l'alcool, les jeux d'argent et la malbouffe devrait être totalement interdite."
+      "pl": "Studia wyższe powinny być płatne i finansowane pożyczkami spłacanymi po znalezieniu pracy.",
+      "en": "University tuition should be paid by students via student loans repaid after graduation.",
+      "es": "La enseñanza universitaria debe ser de pago mediante préstamos a devolver tras graduarse.",
+      "de": "Ein Hochschulstudium sollte gebührenpflichtig sein und über Bildungskredite finanziert werden.",
+      "ru": "Высшее образование должно быть платным и финансироваться возвратными кредитами.",
+      "fr": "Les études supérieures devraient être payantes et financées par des prêts remboursables une fois en poste."
     }
   },
   {
     "id": 63,
-    "categoryKey": "regulation",
+    "categoryKey": "welfare",
     "axis": "econ",
-    "multiplier": 1,
+    "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Prywatne laboratoria powinny móc testować innowacyjne leki bez wieloletnich procedur urzędowych.",
-      "en": "Private biotech labs should be allowed to fast-track novel medicine testing without years of bureaucracy.",
-      "es": "Los laboratorios privados deberían poder probar fármacos sin años de trámites burocráticos.",
-      "de": "Biotech-Labore sollten innovative Medikamente ohne jahrelange bürokratische Hürden testen dürfen.",
-      "ru": "Частные лаборатории должны иметь возможность тестировать инновационные лекарства без многолетней волокиты.",
-      "fr": "Les laboratoires privés devraient pouvoir tester de nouveaux médicaments sans des années d'attente administrative."
+      "pl": "Wszystkie dzieci w szkołach powinny otrzymywać bezpłatne obiady od państwa.",
+      "en": "Every pupil in school should receive free school lunches funded by the state.",
+      "es": "Todos los alumnos de colegio deben recibir comedores y almuerzos gratuitos del Estado.",
+      "de": "Alle Schulkinder sollten kostenfreie Mahlzeiten auf Staatskosten erhalten.",
+      "ru": "Все дети в школах должны получать бесплатные школьные обеды от государства.",
+      "fr": "Tous les enfants scolarisés devraient bénéficier de repas gratuits financés par l'État."
     }
   },
   {
     "id": 64,
-    "categoryKey": "regulation",
+    "categoryKey": "welfare",
     "axis": "econ",
-    "multiplier": -1,
+    "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Lasy państwowe i tereny przyrodnicze nie mogą być w żadnym wypadku sprzedawane prywatnym firmom.",
-      "en": "Public state forests and protected natural lands must never be sold off to private commercial interests.",
-      "es": "Los bosques públicos y reservas naturales jamás deben venderse a intereses comerciales privados.",
-      "de": "Staatswald und Naturschutzgebiete dürfen unter keinen Umständen an private Firmen verkauft werden.",
-      "ru": "Государственные леса и природные заповедники ни при каких условиях не должны продаваться частникам.",
-      "fr": "Les forêts publiques et réserves naturelles ne doivent en aucun cas être vendues à des entreprises privées."
+      "pl": "Wiek emerytalny powinien wynosić co najmniej 67 lat dla kobiet i mężczyzn.",
+      "en": "The retirement age should be set to at least 67 years for both men and women.",
+      "es": "La edad legal de jubilación debe ser de al menos 67 años para hombres y mujeres.",
+      "de": "Das gesetzliche Rentenalter sollte für Männer und Frauen mindestens 67 Jahre betragen.",
+      "ru": "Пенсионный возраст должен составлять не менее 67 лет для мужчин и женщин.",
+      "fr": "L'âge légal de départ à la retraite devrait être d'au moins 67 ans pour les hommes et les femmes."
     }
   },
   {
     "id": 65,
-    "categoryKey": "regulation",
+    "categoryKey": "welfare",
     "axis": "econ",
-    "multiplier": 1,
+    "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Ceny biletów lotniczych i kolejowych powinny zależeć wyłącznie od popytu i wolnego rynku.",
-      "en": "Airline and rail ticket pricing should be determined entirely by free-market dynamic pricing.",
-      "es": "Los billetes de avión y tren deben cotizarse libremente por la oferta y demanda del mercado.",
-      "de": "Preise für Flug- und Bahntickets sollten ausschließlich dem freien Spiel der Marktkräfte überlassen sein.",
-      "ru": "Цены на авиабилеты и поезда должны определяться исключительно рыночным спросом.",
-      "fr": "Les tarifs des billets d'avion et de train devraient dépendre exclusivement de l'offre et de la demande."
+      "pl": "Osoby pracujące fizycznie powinny mieć prawo do wcześniejszej emerytury.",
+      "en": "Workers in strenuous physical occupations should have the right to retire earlier.",
+      "es": "Los trabajadores que desempeñan oficios de desgaste físico deben poder jubilarse antes.",
+      "de": "Beschäftigte mit schwerer körperlicher Arbeit sollten früher in Rente gehen dürfen.",
+      "ru": "Люди тяжёлого физического труда должны иметь право на ранний выход на пенсию.",
+      "fr": "Les travailleurs occupant des postes pénibles devraient avoir le droit de partir plus tôt à la retraite."
     }
   },
   {
     "id": 66,
-    "categoryKey": "regulation",
+    "categoryKey": "welfare",
     "axis": "econ",
-    "multiplier": -1,
+    "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Państwo powinno odgórnie kontrolować ceny lekarstw, by korporacje farmaceutyczne nie zawyżały marż.",
-      "en": "The state should strictly regulate prescription drug prices to prevent price-gouging by Big Pharma.",
-      "es": "El Estado debe regular los precios de los medicamentos para frenar abusos de las farmacéuticas.",
-      "de": "Der Staat sollte Medikamentenpreise festlegen, um Wucherpreise von Pharmakonzernen zu verhindern.",
-      "ru": "Государство должно жестко регулировать цены на лекарства, чтобы фармкомпании не завышали наценки.",
-      "fr": "L'État devrait contrôler strictement le prix des médicaments pour empêcher les marges excessives des labos."
+      "pl": "Państwo nie powinno wypłacać zasiłków na dzieci rodzinom o wysokich dochodach.",
+      "en": "Child welfare benefits should not be paid to high-income affluent families.",
+      "es": "Las ayudas familiares por hijo a cargo no deben pagarse a hogares de renta alta.",
+      "de": "Kindergeld sollte wohlhabenden Familien mit hohem Einkommen nicht ausgezahlt werden.",
+      "ru": "Государство не должно выплачивать детские пособия семьям с высокими доходами.",
+      "fr": "Les allocations familiales ne devraient pas être versées aux ménages aisés à hauts revenus."
     }
   },
   {
     "id": 67,
+    "categoryKey": "welfare",
+    "axis": "econ",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Państwo powinno zagwarantować dach nad głową każdej osobie bezdomnej.",
+      "en": "The government should guarantee emergency shelter and permanent housing for every homeless person.",
+      "es": "El Estado debe garantizar un alojamiento a cualquier persona sin hogar.",
+      "de": "Der Staat sollte jedem obdachlosen Menschen eine feste Unterkunft garantieren.",
+      "ru": "Государство должно гарантировать жилье каждому бездомному человеку.",
+      "fr": "L'État devrait garantir un logement décent à toute personne sans-abri."
+    }
+  },
+  {
+    "id": 68,
+    "categoryKey": "welfare",
+    "axis": "econ",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Pasażerski transport publiczny powinien być bezpłatny dla wszystkich mieszkańców.",
+      "en": "Local public transit should be completely fare-free for all residents.",
+      "es": "El transporte público urbano debe ser totalmente gratuito para los vecinos.",
+      "de": "Der öffentliche Nahverkehr sollte für alle Bürger kostenlos nutzbar sein.",
+      "ru": "Общественный транспорт должен быть бесплатным для всех жителей города.",
+      "fr": "Les transports publics urbains devraient être entièrement gratuits pour tous les usagers."
+    }
+  },
+  {
+    "id": 69,
+    "categoryKey": "regulation",
+    "axis": "econ",
+    "multiplier": 1,
+    "isQuick": true,
+    "text": {
+      "pl": "Większość państwowych licencji zawodowych powinna zostać zniesiona.",
+      "en": "Most government occupational and trade licensing mandates should be abolished.",
+      "es": "La mayoría de las licencias y colegiaciones oficiales obligatorias deben suprimirse.",
+      "de": "Die meisten staatlichen Zulassungsvorschriften für Berufe sollten abgeschafft werden.",
+      "ru": "Большинство государственных профессиональных лицензий должно быть отменено.",
+      "fr": "La plupart des licences professionnelles et certificats d'exercice obligatoires devraient être abolis."
+    }
+  },
+  {
+    "id": 70,
+    "categoryKey": "regulation",
+    "axis": "econ",
+    "multiplier": -1,
+    "isQuick": true,
+    "text": {
+      "pl": "Maksymalne oprocentowanie pożyczek i kredytów powinno być odgórnie ograniczone przez prawo.",
+      "en": "Interest rates on consumer loans and mortgages should face strict statutory caps.",
+      "es": "El tipo de interés máximo en créditos al consumo e hipotecas debe estar limitado por ley.",
+      "de": "Die Zinssätze für Verbraucherdarlehen sollten per Gesetz verbindlich gedeckelt werden.",
+      "ru": "Процентные ставки по кредитам и займам должны быть ограничены законом.",
+      "fr": "Les taux d'intérêt des crédits et prêts à la consommation devraient être strictement plafonnés par la loi."
+    }
+  },
+  {
+    "id": 71,
     "categoryKey": "regulation",
     "axis": "econ",
     "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Prywatne uczelnie i szkoły niepubliczne powinny cieszyć się pełną swobodą układania programów nauczania.",
-      "en": "Private universities and independent schools should enjoy full freedom to set their own curriculum.",
-      "es": "Los centros educativos privados deberían tener total libertad para fijar sus planes de estudio.",
-      "de": "Freie Schulen und Privatuniversitäten sollten volle Autonomie bei ihren Lehrplänen besitzen.",
-      "ru": "Частные вузы и школы должны иметь полную свободу в составлении учебных программ без вмешательства государства.",
-      "fr": "Les écoles et universités privées devraient être totalement libres d'établir leurs propres programmes scolaires."
-    }
-  },
-  {
-    "id": 68,
-    "categoryKey": "trade",
-    "axis": "econ",
-    "multiplier": 1,
-    "isQuick": true,
-    "text": {
-      "pl": "Swobodny handel międzynarodowy bez ceł i barier przynosi korzyści wszystkim narodom.",
-      "en": "Free international trade without tariffs or trade barriers benefits all nations.",
-      "es": "El libre comercio internacional sin aranceles ni barreras beneficia a todas las naciones.",
-      "de": "Freier internationaler Handel ohne Zölle und Barrieren nützt allen beteiligten Nationen.",
-      "ru": "Свободная международная торговля без пошлин и барьеров выгодна всем народам.",
-      "fr": "Le libre-échange international sans droits de douane ni barrières profite à toutes les nations."
-    }
-  },
-  {
-    "id": 69,
-    "categoryKey": "trade",
-    "axis": "econ",
-    "multiplier": -1,
-    "isQuick": true,
-    "text": {
-      "pl": "Wysokie cła na importowane towary są konieczne, by chronić rodzimych rolników i fabryki.",
-      "en": "High import tariffs are essential to shield domestic farmers and manufacturing from foreign rivals.",
-      "es": "Los aranceles a la importación son indispensables para proteger a los agricultores e industrias locales.",
-      "de": "Hohe Schutzzölle sind notwendig, um heimische Bauern und Industriebetriebe zu schützen.",
-      "ru": "Высокие пошлины на импорт необходимы для защиты отечественных фермеров и фабрик.",
-      "fr": "Des droits de douane élevés sont nécessaires pour protéger nos agriculteurs et usines de la concurrence."
-    }
-  },
-  {
-    "id": 70,
-    "categoryKey": "trade",
-    "axis": "econ",
-    "multiplier": 1,
-    "isQuick": false,
-    "text": {
-      "pl": "Kapitał i inwestycje zagraniczne powinny swobodnie przepływać przez granice bez kontroli rządu.",
-      "en": "Foreign capital and business investments should flow across borders without government vetoes.",
-      "es": "El capital y las inversiones extranjeras deben circular entre fronteras sin trabas gubernamentales.",
-      "de": "Ausländisches Kapital und Investitionen sollten ungehindert ohne staatliche Kontrollen fließen dürfen.",
-      "ru": "Иностранный капитал и инвестиции должны свободно перемещаться через границы без вмешательства правительства.",
-      "fr": "Les capitaux et investissements étrangers devraient pouvoir traverser les frontières sans contrôle étatique."
-    }
-  },
-  {
-    "id": 71,
-    "categoryKey": "trade",
-    "axis": "econ",
-    "multiplier": -1,
-    "isQuick": false,
-    "text": {
-      "pl": "Rządy powinny przymusowo podzielić monopolistyczne giganty technologiczne (np. Google, Apple).",
-      "en": "Antitrust regulators should forcibly break up monopolistic Big Tech giants (e.g. Google, Apple).",
-      "es": "Los gobiernos deberían fragmentar forzosamente a los gigantes tecnológicos monopolísticos.",
-      "de": "Kartellbehörden sollten marktbeherrschende Tech-Giganten wie Google oder Apple zerschlagen.",
-      "ru": "Государства должны принудительно разделить монопольные технологические гиганты (вроде Google, Apple).",
-      "fr": "Les autorités devraient démanteler de force les géants technologiques monopolistes (Google, Apple)."
+      "pl": "Aplikacje przewozowe (np. Uber) powinny działać bez licencji korporacji taksówkarskich.",
+      "en": "Ride-hailing apps like Uber should operate without traditional commercial taxi licensing requirements.",
+      "es": "Las aplicaciones como Uber deben poder operar sin someterse a licencias de taxi tradicionales.",
+      "de": "Fahrvermittler-Apps wie Uber sollten ohne klassische Taxikonzessionen operieren dürfen.",
+      "ru": "Сервисы такси через приложения (вроде Uber) должны работать без традиционных лицензий таксопарков.",
+      "fr": "Les plateformes VTC comme Uber devraient pouvoir opérer sans les licences réservées aux taxis."
     }
   },
   {
     "id": 72,
-    "categoryKey": "trade",
+    "categoryKey": "regulation",
     "axis": "econ",
-    "multiplier": 1,
+    "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Zagraniczne firmy powinny płacić dokładnie takie same podatki jak krajowe, bez faworyzowania rodzimych.",
-      "en": "Foreign companies should pay the exact same tax rates as domestic ones without local protectionism.",
-      "es": "Las empresas extranjeras deben tributar al mismo tipo que las nacionales sin discriminaciones.",
-      "de": "Ausländische Unternehmen sollten exakt dieselben Steuersätze zahlen wie inländische Betriebe.",
-      "ru": "Иностранные компании должны облагаться налогами наравне с отечественными, без протекционизма.",
-      "fr": "Les entreprises étrangères devraient être soumises aux mêmes règles fiscales que les nationales, sans favoritisme."
+      "pl": "Reklamy alkoholu i hazardu powinny być całkowicie zakazane.",
+      "en": "All public advertising for alcoholic drinks and gambling should be banned.",
+      "es": "La publicidad de bebidas alcohólicas y casas de apuestas debe prohibirse totalmente.",
+      "de": "Jegliche Werbung für Alkohol und Glücksspiel sollte verboten werden.",
+      "ru": "Реклама алкоголя и азартных игр должна быть полностью запрещена.",
+      "fr": "Toute publicité pour l'alcool et les jeux d'argent devrait être totalement interdite."
     }
   },
   {
     "id": 73,
-    "categoryKey": "trade",
+    "categoryKey": "regulation",
     "axis": "econ",
-    "multiplier": -1,
+    "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Produkcja leków, stali i amunicji musi pozostać w kraju, nawet jeśli za granicą jest znacznie tańsza.",
-      "en": "Manufacturing of medicines, steel, and munitions must stay domestic even if foreign imports are cheaper.",
-      "es": "La producción de medicamentos, acero y munición debe ser nacional aunque importarla sea más barato.",
-      "de": "Die Produktion von Arzneimitteln, Stahl und Munition muss im Land bleiben, auch wenn Importe billiger sind.",
-      "ru": "Производство медикаментов, стали и боеприпасов должно быть в стране, даже если импорт дешевле.",
-      "fr": "La production de médicaments, d'acier et de munitions doit rester nationale même si l'importation coûte moins cher."
+      "pl": "Budowa domu jednorodzinnego powinna wymagać jedynie zgłoszenia, bez pozwolenia na budowę.",
+      "en": "Constructing a single-family home should require only simple notification, not a formal permit.",
+      "es": "Construir una vivienda unifamiliar debería requerir solo una comunicación previa sin licencia.",
+      "de": "Der Bau eines Einfamilienhauses sollte ohne Genehmigungsverfahren per Bauanzeige möglich sein.",
+      "ru": "Строительство частного дома должно требовать только уведомления, а не разрешения.",
+      "fr": "Bâtir une maison individuelle ne devrait nécessiter qu'une simple déclaration sans permis formel."
     }
   },
   {
     "id": 74,
-    "categoryKey": "trade",
+    "categoryKey": "regulation",
     "axis": "econ",
-    "multiplier": 1,
+    "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Import tańszej żywności z zagranicy jest dobry dla konsumentów, bo obniża codzienne rachunki.",
-      "en": "Importing cheaper foreign food is good for citizens because it lowers their household grocery bills.",
-      "es": "Importar alimentos baratos del extranjero beneficia a las familias al abaratar la cesta de la compra.",
-      "de": "Der Import günstigerer Lebensmittel hilft Verbrauchern, da er die täglichen Lebenshaltungskosten senkt.",
-      "ru": "Импорт доступных продуктов питания полезен, так как он снижает повседневные расходы граждан.",
-      "fr": "L'importation de denrées alimentaires moins chères est une bonne chose car elle réduit le budget des ménages."
+      "pl": "Państwo powinno ustalać maksymalne ceny leków w aptekach.",
+      "en": "The state should enforce strict legal ceilings on prescription medicine prices.",
+      "es": "El Estado debe fijar precios máximos para los fármacos dispensados en farmacias.",
+      "de": "Der Staat sollte Höchstpreise für Arzneimittel in Apotheken festlegen.",
+      "ru": "Государство должно устанавливать предельные цены на лекарства в аптеках.",
+      "fr": "L'État devrait fixer des prix plafonds pour les médicaments vendus en pharmacie."
     }
   },
   {
     "id": 75,
-    "categoryKey": "trade",
+    "categoryKey": "regulation",
     "axis": "econ",
-    "multiplier": -1,
+    "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Porty morskie, lotniska i sieci 5G nie mogą być w żadnym wypadku sprzedawane zagranicznym inwestorom.",
-      "en": "Strategic seaports, airports, and 5G telecom grids must never be sold to foreign investors.",
-      "es": "Los puertos marítimos, aeropuertos y redes 5G jamás deben venderse a inversores foráneos.",
-      "de": "Seehäfen, Flughäfen und 5G-Netze dürfen keinesfalls an ausländische Investoren veräußert werden.",
-      "ru": "Морские порты, аэропорты и сети связи 5G ни в коем случае нельзя продавать иностранным инвесторам.",
-      "fr": "Les ports maritimes, aéroports et réseaux 5G ne doivent en aucun cas être cédés à des capitaux étrangers."
+      "pl": "Prywatne laboratoria powinny móc testować nowe leki bez wieloletnich procedur urzędowych.",
+      "en": "Private biotech labs should be permitted to test experimental medicines without bureaucratic delays.",
+      "es": "Los laboratorios privados deben poder ensayar nuevos fármacos sin demoras burocráticas de años.",
+      "de": "Private Labore sollten neue Arzneien ohne langwierige Behördenauflagen erproben dürfen.",
+      "ru": "Частные лаборатории должны иметь возможность тестировать лекарства без бюрократических задержек.",
+      "fr": "Les laboratoires privés devraient pouvoir tester des médicaments sans des années d'attente administrative."
     }
   },
   {
     "id": 76,
-    "categoryKey": "trade",
+    "categoryKey": "regulation",
     "axis": "econ",
-    "multiplier": 1,
+    "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Globalizacja i otwarte rynki handlowe wyciągnęły setki milionów ludzi na świecie z ubóstwa.",
-      "en": "Global trade integration has lifted hundreds of millions of people worldwide out of poverty.",
-      "es": "La globalización y el comercio abierto han sacado de la miseria a cientos de millones de personas.",
-      "de": "Globalisierung und freie Märkte haben weltweit Hunderte Millionen Menschen aus bitterer Armut befreit.",
-      "ru": "Глобализация и открытая торговля вывели сотни миллионов людей по всему миру из нищеты.",
-      "fr": "La mondialisation et l'ouverture des marchés ont sorti de la pauvreté des centaines de millions d'individus."
+      "pl": "Lasy państwowe i parki narodowe nie powinny być sprzedawane prywatnym firmom.",
+      "en": "Public state forests and national parks should never be sold to private corporations.",
+      "es": "Los bosques públicos y parques nacionales nunca deben enajenarse a empresas privadas.",
+      "de": "Staatliche Wälder und Nationalparks dürfen niemals an Privatunternehmen verkauft werden.",
+      "ru": "Государственные леса и заповедники никогда не должны продаваться частным компаниям.",
+      "fr": "Les forêts publiques et parcs nationaux ne devraient jamais être vendus à des entreprises privées."
     }
   },
   {
     "id": 77,
-    "categoryKey": "trade",
+    "categoryKey": "regulation",
     "axis": "econ",
-    "multiplier": -1,
+    "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Finansowa spekulacja cenami pszenicy i surowców rolnych na giełdach powinna być surowo zabroniona.",
-      "en": "Financial speculation on wheat, grain, and agricultural food commodities should be strictly outlawed.",
-      "es": "La especulación financiera con cereales y materias primas alimentarias debe prohibirse sin excepción.",
-      "de": "Finanzspekulationen auf Weizen und Agrarrohstoffe an den Börsen sollten streng untersagt werden.",
-      "ru": "Финансовые спекуляции ценами на зерно и базовые продукты питания на биржах должны быть запрещены.",
-      "fr": "La spéculation financière sur le blé et les matières premières agricoles devrait être formellement interdite."
+      "pl": "Ceny biletów lotniczych i kolejowych powinny zależeć wyłącznie od popytu.",
+      "en": "Fares for airline and train tickets should depend solely on free-market consumer demand.",
+      "es": "Las tarifas de vuelos y trenes deben regirse únicamente por la oferta y la demanda.",
+      "de": "Flug- und Bahntarife sollten ausschließlich nach Angebot und Nachfrage festgelegt werden.",
+      "ru": "Цены на билеты на самолеты и поезда должны зависеть исключительно от спроса.",
+      "fr": "Les prix des billets d'avion et de train devraient dépendre exclusivement de la demande du marché."
     }
   },
   {
     "id": 78,
-    "categoryKey": "trade",
+    "categoryKey": "regulation",
     "axis": "econ",
-    "multiplier": 1,
+    "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Brak barier handlowych i swobodna wymiana z sąsiadami buduje pokój skuteczniej niż sojusze wojskowe.",
-      "en": "Free cross-border commerce binds nations and fosters lasting peace far better than military pacts.",
-      "es": "El comercio sin barreras con los vecinos construye la paz con más eficacia que las alianzas militares.",
-      "de": "Freier Handel über Grenzen hinweg sichert den Frieden verlässlicher als militärische Rüstungsbündnisse.",
-      "ru": "Свободная торговля без барьеров обеспечивает мир между народами надежнее военных союзов.",
-      "fr": "Le commerce sans frontières tisse la paix entre les peuples bien plus efficacement que les traités militaires."
+      "pl": "Reklamy skierowane do małych dzieci powinny być zakazane w telewizji i internecie.",
+      "en": "Commercial advertising targeted specifically at young children should be prohibited.",
+      "es": "La publicidad dirigida expresamente a menores debe estar vetada en medios y redes.",
+      "de": "Werbung, die sich gezielt an Kleinkinder richtet, sollte in Medien verboten sein.",
+      "ru": "Реклама, направленная на маленьких детей, должна быть запрещена на ТВ и в интернете.",
+      "fr": "La publicité ciblant directement les jeunes enfants devrait être interdite à la télévision et sur internet."
     }
   },
   {
     "id": 79,
-    "categoryKey": "trade",
+    "categoryKey": "regulation",
     "axis": "econ",
-    "multiplier": -1,
+    "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Państwo powinno nakładać sankcje i zakazy handlu na kraje, które dopuszczają się łamania praw człowieka.",
-      "en": "Governments should impose trade embargoes and sanctions against foreign regimes violating human rights.",
-      "es": "Se deben imponer sanciones y embargos comerciales a los regímenes que violan los derechos humanos.",
-      "de": "Staaten sollten Handelsembargos gegen Regime verhängen, die elementare Menschenrechte mit Füßen treten.",
-      "ru": "Государство должно вводить торговые эмбарго и санкции против стран, нарушающих права человека.",
-      "fr": "L'État devrait imposer des embargos commerciaux aux pays qui violent gravement les droits humains."
+      "pl": "Sprzedaż alkoholu powinna być dozwolona przez całą dobę bez ograniczeń godzinowych.",
+      "en": "Alcohol sales should be allowed around the clock with zero nighttime retail curfews.",
+      "es": "La venta de bebidas alcohólicas debe estar autorizada las 24 horas del día sin horarios límite.",
+      "de": "Der Verkauf von Alkohol sollte rund um die Uhr ohne zeitliche Einschränkungen erlaubt sein.",
+      "ru": "Продажа алкоголя должна быть разрешена круглосуточно без временных ограничений.",
+      "fr": "La vente d'alcool devrait être autorisée 24 heures sur 24 sans restriction d'horaires."
     }
   },
   {
     "id": 80,
+    "categoryKey": "regulation",
+    "axis": "econ",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Państwo powinno zakazać otwierania nowych hipermarketów w pobliżu lokalnych sklepów.",
+      "en": "The state should bar new large supermarket chains from opening in vicinity of local shops.",
+      "es": "La administración debe prohibir abrir grandes hipermercados cerca de las tiendas de barrio.",
+      "de": "Großflächigen Supermärkten sollte die Ansiedlung in der Nähe von Nahversorgern untersagt werden.",
+      "ru": "Государство должно запретить открытие гипермаркетов рядом с местными магазинами.",
+      "fr": "L'État devrait interdire l'implantation de nouveaux hypermarchés à proximité des commerces locaux."
+    }
+  },
+  {
+    "id": 81,
+    "categoryKey": "regulation",
+    "axis": "econ",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Prywatne uczelnie powinny mieć pełną swobodę ustalania własnych programów nauczania.",
+      "en": "Private colleges should possess absolute autonomy to establish their academic curriculum.",
+      "es": "Las universidades privadas deben tener plena autonomía para definir sus planes de estudio.",
+      "de": "Private Hochschulen sollten völlige Freiheit bei der Gestaltung ihrer Studienpläne haben.",
+      "ru": "Частные вузы должны иметь полную свободу в составлении учебных программ.",
+      "fr": "Les universités privées devraient avoir une totale liberté pour définir leurs programmes académiques."
+    }
+  },
+  {
+    "id": 82,
+    "categoryKey": "regulation",
+    "axis": "econ",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Sklepy wielkopowierzchniowe powinny mieć obowiązek oddawania niesprzedanej żywności na cele charytatywne.",
+      "en": "Supermarkets should be legally required to donate unsold edible food to food banks.",
+      "es": "Los supermercados deben estar obligados por ley a donar la comida no vendida a comedores sociales.",
+      "de": "Supermärkte sollten gesetzlich verpflichtet werden, unverkaufte Lebensmittel zu spenden.",
+      "ru": "Супермаркеты должны быть обязаны передавать непроданные продукты на благотворительность.",
+      "fr": "Les supermarchés devraient avoir l'obligation légale de donner leurs invendus alimentaires consommables."
+    }
+  },
+  {
+    "id": 83,
+    "categoryKey": "regulation",
+    "axis": "econ",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Samorządy nie powinny narzucać deweloperom minimalnej liczby miejsc parkingowych.",
+      "en": "Municipalities should not mandate minimum parking space quotas for property builders.",
+      "es": "Los ayuntamientos no deben obligar a los promotores a construir un mínimo de plazas de parking.",
+      "de": "Kommunen sollten Bauträgern keine Mindeststellplatzverordnungen für Parkplätze vorschreiben.",
+      "ru": "Местные власти не должны навязывать застройщикам нормы парковочных мест.",
+      "fr": "Les municipalités ne devraient pas imposer de quotas minimaux de places de parking aux constructeurs."
+    }
+  },
+  {
+    "id": 84,
+    "categoryKey": "regulation",
+    "axis": "econ",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Banki komercyjne powinny mieć prawny zakaz pobierania opłat za prowadzenie podstawowego konta.",
+      "en": "Commercial banks should be banned by law from charging fees for basic checking accounts.",
+      "es": "Los bancos deben tener prohibido cobrar comisiones por el mantenimiento de cuentas corrientes básicas.",
+      "de": "Banken sollte die Erhebung von Kontoführungsgebühren für Basiskonten gesetzlich untersagt sein.",
+      "ru": "Банкам должно быть запрещено взимать плату за обслуживание базовых счетов граждан.",
+      "fr": "Il devrait être interdit aux banques de facturer des frais de gestion pour un compte courant de base."
+    }
+  },
+  {
+    "id": 85,
+    "categoryKey": "trade",
+    "axis": "econ",
+    "multiplier": 1,
+    "isQuick": true,
+    "text": {
+      "pl": "Wszystkie cła i bariery w handlu międzynarodowym powinny zostać zlikwidowane.",
+      "en": "All international import tariffs and trade barriers should be entirely eliminated.",
+      "es": "Todos los aranceles aduaneros y trabas al comercio internacional deben desaparecer.",
+      "de": "Sämtliche Importzölle und Handelsschranken im Welthandel sollten abgeschafft werden.",
+      "ru": "Все таможенные пошлины и барьеры в мировой торговле должны быть ликвидированы.",
+      "fr": "Tous les droits de douane et barrières au commerce international devraient être éliminés."
+    }
+  },
+  {
+    "id": 86,
+    "categoryKey": "trade",
+    "axis": "econ",
+    "multiplier": -1,
+    "isQuick": true,
+    "text": {
+      "pl": "Państwo powinno chronić rodzimy przemysł za pomocą wysokich ceł importowych.",
+      "en": "The state should protect domestic industries through high protective import tariffs.",
+      "es": "El Estado debe proteger la industria local mediante aranceles protectores a la importación.",
+      "de": "Der Staat sollte die heimische Industrie durch hohe Schutzzölle auf Importe absichern.",
+      "ru": "Государство должно защищать отечественную промышленность высокими пошлинами на импорт.",
+      "fr": "L'État devrait protéger l'industrie nationale au moyen de droits de douane élevés sur les importations."
+    }
+  },
+  {
+    "id": 87,
+    "categoryKey": "trade",
+    "axis": "econ",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Zagraniczni inwestorzy powinni móc swobodnie kupować udziały w krajowych przedsiębiorstwach.",
+      "en": "Foreign investors should be allowed to freely buy equity shares in domestic corporations.",
+      "es": "Los inversores extranjeros deben poder comprar libremente acciones de empresas nacionales.",
+      "de": "Ausländische Investoren sollten uneingeschränkt Anteile an inländischen Firmen erwerben dürfen.",
+      "ru": "Иностранные инвесторы должны иметь право свободно покупать доли в отечественных компаниях.",
+      "fr": "Les investisseurs étrangers devraient pouvoir acquérir librement des parts dans les entreprises nationales."
+    }
+  },
+  {
+    "id": 88,
     "categoryKey": "trade",
     "axis": "econ",
     "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Państwo powinno finansowo dotować rodzimy eksport, by pomóc krajowym firmom wygrywać z konkurencją.",
-      "en": "The state should provide direct export subsidies to help national manufacturers win over foreign rivals.",
-      "es": "El Estado debe subvencionar las exportaciones nacionales para vencer a los competidores foráneos.",
-      "de": "Der Staat sollte heimische Exporte subventionieren, um den Unternehmen Vorteile im Wettbewerb zu verschaffen.",
-      "ru": "Государство должно субсидировать экспорт отечественных предприятий для победы над конкурентами.",
-      "fr": "L'État devrait subventionner les exportations nationales pour aider nos entreprises face aux concurrents."
+      "pl": "Rządy powinny przymusowo podzielić monopolistyczne giganty technologiczne (np. Google).",
+      "en": "Antitrust regulators should forcibly break up monopolistic tech corporations like Google.",
+      "es": "Las autoridades antimonopolio deben dividir de forma obligatoria a gigantes tecnológicos como Google.",
+      "de": "Wettbewerbsbehörden sollten marktbeherrschende Internetgiganten wie Google zerschlagen.",
+      "ru": "Государства должны принудительно разделять технологические монополии (вроде Google).",
+      "fr": "Les gouvernements devraient démanteler de force les géants technologiques monopolistiques comme Google."
     }
   },
   {
-    "id": 81,
+    "id": 89,
+    "categoryKey": "trade",
+    "axis": "econ",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Zagraniczne firmy powinny płacić dokładnie takie same podatki jak firmy krajowe.",
+      "en": "Foreign businesses should pay the exact same tax rates as domestic firms without discrimination.",
+      "es": "Las multinacionales foráneas deben abonar exactamente los mismos impuestos que los negocios locales.",
+      "de": "Ausländische Unternehmen sollten exakt dieselben Steuern zahlen wie einheimische Betriebe.",
+      "ru": "Иностранные компании должны платить точно такие же налоги, как и отечественные предприятия.",
+      "fr": "Les entreprises étrangères devraient être soumises exactement aux mêmes impôts que les nationales."
+    }
+  },
+  {
+    "id": 90,
+    "categoryKey": "trade",
+    "axis": "econ",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Produkcja stali, leków i amunicji musi pozostać w granicach kraju.",
+      "en": "Manufacturing of critical steel, pharmaceuticals, and military ammunition must stay domestic.",
+      "es": "La fabricación de acero, fármacos y munición debe conservarse dentro de nuestras fronteras.",
+      "de": "Die Produktion von Stahl, Arzneimitteln und Munition muss zwingend im eigenen Land verbleiben.",
+      "ru": "Производство стали, медикаментов и боеприпасов должно обязательно оставаться внутри страны.",
+      "fr": "La production d'acier, de médicaments et de munitions doit obligatoirement demeurer nationale."
+    }
+  },
+  {
+    "id": 91,
+    "categoryKey": "trade",
+    "axis": "econ",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Państwo powinno znieść cła na importowaną żywność.",
+      "en": "The government should eliminate import duties on foreign food products.",
+      "es": "El gobierno debe suprimir los aranceles sobre los alimentos importados del exterior.",
+      "de": "Der Staat sollte sämtliche Zölle auf importierte Nahrungsmittel abschaffen.",
+      "ru": "Государство должно отменить ввозные пошлины на импортные продукты питания.",
+      "fr": "L'État devrait supprimer les droits de douane sur les denrées alimentaires importées."
+    }
+  },
+  {
+    "id": 92,
+    "categoryKey": "trade",
+    "axis": "econ",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Porty morskie i lotniska nie powinny być sprzedawane zagranicznym inwestorom.",
+      "en": "Strategic seaports and international airports should never be sold to foreign entities.",
+      "es": "Los puertos marítimos y aeropuertos estratégicos jamás deben ser vendidos a fondos foráneos.",
+      "de": "Wichtige Seehäfen und Verkehrsflughäfen dürfen nicht an ausländische Investoren veräußert werden.",
+      "ru": "Морские порты и аэропорты не должны продаваться зарубежным покупателям.",
+      "fr": "Les ports maritimes et aéroports stratégiques ne devraient jamais être cédés à des capitaux étrangers."
+    }
+  },
+  {
+    "id": 93,
+    "categoryKey": "trade",
+    "axis": "econ",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Otwarty handel międzynarodowy sprzyja bogaceniu się społeczeństw.",
+      "en": "Open cross-border commerce inherently enriches participating nations and societies.",
+      "es": "El comercio internacional abierto favorece la prosperidad económica de las sociedades.",
+      "de": "Offener internationaler Handel fördert den materiellen Wohlstand aller Völker.",
+      "ru": "Открытая международная торговля способствует росту благосостояния общества.",
+      "fr": "L'ouverture commerciale internationale favorise l'enrichissement des populations."
+    }
+  },
+  {
+    "id": 94,
+    "categoryKey": "trade",
+    "axis": "econ",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Spekulacje finansowe cenami żywności na giełdach powinny być prawnie zakazane.",
+      "en": "Commodity market speculation on staple agricultural foods should be banned by law.",
+      "es": "La especulación financiera bursátil con alimentos básicos debe prohibirse expresamente.",
+      "de": "Börsenspekulationen mit Grundnahrungsmitteln sollten gesetzlich unterbunden werden.",
+      "ru": "Финансовые спекуляции ценами на продовольствие на биржах должны быть запрещены.",
+      "fr": "La spéculation boursière sur les matières premières alimentaires devrait être illégale."
+    }
+  },
+  {
+    "id": 95,
+    "categoryKey": "trade",
+    "axis": "econ",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Swobodny przepływ kapitału przez granice powinien odbywać się bez kontroli państwa.",
+      "en": "Capital investments should move freely across borders without government exchange controls.",
+      "es": "El libre movimiento de capitales debe desarrollarse sin controles de cambio estatales.",
+      "de": "Der grenzüberschreitende Kapitalverkehr sollte ohne staatliche Devisenkontrollen erfolgen.",
+      "ru": "Свободное движение капитала через границы должно происходить без контроля государства.",
+      "fr": "La circulation des capitaux à travers les frontières devrait s'effectuer sans contrôle de l'État."
+    }
+  },
+  {
+    "id": 96,
+    "categoryKey": "trade",
+    "axis": "econ",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Państwo powinno nakładać sankcje i zakazy handlu na kraje łamiące prawa człowieka.",
+      "en": "Governments should enforce trade embargoes against foreign regimes violating basic human rights.",
+      "es": "Deben imponerse sanciones y embargos comerciales a los países que vulneren los derechos humanos.",
+      "de": "Gegen Staaten, die elementare Menschenrechte verletzen, sollten Handelssanktionen verhängt werden.",
+      "ru": "Государство должно вводить санкции и торговые эмбарго против стран, нарушающих права человека.",
+      "fr": "L'État devrait infliger des sanctions et des embargos commerciaux aux pays qui bafouent les droits de l'homme."
+    }
+  },
+  {
+    "id": 97,
+    "categoryKey": "trade",
+    "axis": "econ",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Swobodny handel z sąsiadami buduje pokój skuteczniej niż sojusze wojskowe.",
+      "en": "Free mutual trade with neighboring nations maintains peace more effectively than military alliances.",
+      "es": "El libre comercio con los países vecinos afianza la paz mejor que las alianzas militares.",
+      "de": "Freier Warenaustausch mit den Nachbarn sichert Frieden verlässlicher als Militärbündnisse.",
+      "ru": "Свободная торговля с соседями сохраняет мир надежнее военных союзов.",
+      "fr": "Le libre-échange avec les pays voisins préserve la paix plus efficacement que les pactes militaires."
+    }
+  },
+  {
+    "id": 98,
+    "categoryKey": "trade",
+    "axis": "econ",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Państwo powinno dopłacać do krajowego eksportu towarów.",
+      "en": "The government should subsidize domestic goods manufactured for foreign export.",
+      "es": "El Estado debe conceder subsidios a la exportación de productos nacionales.",
+      "de": "Der Staat sollte heimische Exportwaren mit Subventionen unterstützen.",
+      "ru": "Государство должно доплачивать за экспорт отечественных товаров за рубеж.",
+      "fr": "L'État devrait subventionner les exportations de produits manufacturés nationaux."
+    }
+  },
+  {
+    "id": 99,
+    "categoryKey": "trade",
+    "axis": "econ",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Państwo nie powinno ograniczać importu tanich samochodów z zagranicy.",
+      "en": "The state should not restrict or tariff the importation of cheap foreign automobiles.",
+      "es": "El Estado no debe poner trabas arancelarias a la importación de coches extranjeros baratos.",
+      "de": "Der Staat sollte die Einfuhr preiswerter ausländischer Kraftfahrzeuge nicht beschränken.",
+      "ru": "Государство не должно ограничивать ввоз доступных автомобилей из-за рубежа.",
+      "fr": "L'État ne devrait pas entraver l'importation de véhicules étrangers bon marché."
+    }
+  },
+  {
+    "id": 100,
+    "categoryKey": "trade",
+    "axis": "econ",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Cudzoziemcy nie powinni mieć prawa kupować ziemi rolnej w naszym kraju.",
+      "en": "Foreign nationals should be legally barred from purchasing agricultural farmland in our country.",
+      "es": "Los ciudadanos extranjeros no deberían tener derecho a comprar tierras agrícolas en el país.",
+      "de": "Ausländischen Staatsbürgern sollte der Erwerb von Agrarflächen im Inland untersagt sein.",
+      "ru": "Иностранцы не должны иметь права покупать сельскохозяйственные земли в нашей стране.",
+      "fr": "Les ressortissants étrangers ne devraient pas avoir le droit d'acheter des terres agricoles dans notre pays."
+    }
+  },
+  {
+    "id": 101,
     "categoryKey": "liberties",
     "axis": "soc",
     "multiplier": 1,
     "isQuick": true,
     "text": {
-      "pl": "Wolność słowa powinna chronić nawet poglądy kontrowersyjne i oburzające dla większości społeczeństwa.",
-      "en": "Freedom of speech should safeguard even offensive, controversial, or shocking opinions.",
-      "es": "La libertad de expresión debe amparar incluso opiniones controvertidas u ofensivas para la mayoría.",
-      "de": "Meinungsfreiheit muss auch provokante, unbequeme oder schockierende Ansichten uneingeschränkt schützen.",
-      "ru": "Свобода слова должна защищать даже провокационные и возмутительные для большинства мнения.",
-      "fr": "La liberté d'expression doit protéger même les opinions controversées ou choquantes pour la majorité."
+      "pl": "Wolność słowa powinna chronić nawet poglądy kontrowersyjne i oburzające.",
+      "en": "Freedom of speech should protect even controversial and offensive opinions.",
+      "es": "La libertad de expresión debe amparar incluso opiniones controvertidas e hirientes.",
+      "de": "Meinungsfreiheit muss auch provokante und anstößige Ansichten uneingeschränkt schützen.",
+      "ru": "Свобода слова должна защищать даже скандальные и возмутительные высказывания.",
+      "fr": "La liberté d'expression doit protéger même les opinions polémiques et choquantes."
     }
   },
   {
-    "id": 82,
+    "id": 102,
     "categoryKey": "liberties",
     "axis": "soc",
     "multiplier": -1,
     "isQuick": true,
     "text": {
-      "pl": "Służby państwowe powinny mieć prawo podsłuchiwać podejrzanych w sieci bez zgody sądu w imię bezpieczeństwa.",
-      "en": "Intelligence agencies should be allowed to wiretap digital communications without court warrants for security.",
-      "es": "Los servicios de inteligencia deben poder intervenir comunicaciones online sin orden judicial por seguridad.",
-      "de": "Nachrichtendienste sollten verdächtige Kommunikation zur Gefahrenabwehr ohne richterlichen Beschluss überwachen dürfen.",
-      "ru": "Спецслужбы должны иметь право прослушивать подозреваемых в сети без решения суда ради безопасности.",
-      "fr": "Les services de renseignement devraient pouvoir surveiller les réseaux sans mandat judiciaire au nom de la sécurité."
+      "pl": "Służby powinny mieć prawo podsłuchiwać podejrzanych w sieci bez zgody sądu.",
+      "en": "State security agencies should be allowed to wiretap digital communications without warrants.",
+      "es": "Los servicios de seguridad deben poder interceptar comunicaciones online sin orden judicial.",
+      "de": "Sicherheitsbehörden sollten Online-Kommunikation von Verdächtigen ohne Richterbeschluss überwachen dürfen.",
+      "ru": "Спецслужбы должны иметь право прослушивать подозреваемых в сети без решения суда.",
+      "fr": "Les services de renseignement devraient pouvoir surveiller les réseaux sans mandat judiciaire."
     }
   },
   {
-    "id": 83,
+    "id": 103,
     "categoryKey": "liberties",
     "axis": "soc",
     "multiplier": 1,
     "isQuick": true,
     "text": {
-      "pl": "Każdy dorosły i niekarany obywatel powinien mieć łatwy dostęp do posiadania broni palnej do obrony domu.",
-      "en": "Every law-abiding adult citizen should have the legal right to own firearms for self-defense.",
-      "es": "Cualquier ciudadano adulto sin antecedentes debería poder poseer armas de fuego para defensa personal.",
-      "de": "Unbescholtene erwachsene Bürger sollten das Recht haben, Schusswaffen zur Selbstverteidigung zu besitzen.",
-      "ru": "Каждый дееспособный несудимый гражданин должен иметь право на владение огнестрельным оружием для самообороны.",
-      "fr": "Tout citoyen adulte sans casier judiciaire devrait avoir le droit de posséder une arme à feu pour se défendre."
+      "pl": "Każdy pełnoletni i niekarany obywatel powinien mieć prawo do posiadania broni palnej.",
+      "en": "Every law-abiding adult citizen should have the legal right to own a firearm.",
+      "es": "Cualquier ciudadano mayor de edad sin antecedentes penales debe poder poseer un arma de fuego.",
+      "de": "Unbescholtene volljährige Bürger sollten das Recht auf den Besitz einer Schusswaffe haben.",
+      "ru": "Каждый несудимый совершеннолетний гражданин должен иметь право на владение оружием.",
+      "fr": "Tout citoyen majeur sans casier judiciaire devrait avoir le droit de posséder une arme à feu."
     }
   },
   {
-    "id": 84,
+    "id": 104,
     "categoryKey": "liberties",
     "axis": "soc",
     "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Policja powinna mieć prawo zatrzymywać i rewidować przechodniów na ulicy bez podawania przyczyny.",
-      "en": "Police officers should have the power to stop and search pedestrians randomly without probable cause.",
-      "es": "La policía debe tener potestad para detener y registrar a personas en la calle sin dar explicaciones.",
-      "de": "Die Polizei sollte verdachtsunabhängige Personenkontrollen und Durchsuchungen im öffentlichen Raum durchführen dürfen.",
-      "ru": "Полиция должна иметь право останавливать и досматривать прохожих на улице без объяснения причин.",
-      "fr": "La police devrait pouvoir contrôler et fouiller des passants dans la rue sans motif préalable."
+      "pl": "Policja powinna mieć prawo zatrzymywać i przeszukiwać ludzi na ulicy bez podawania przyczyny.",
+      "en": "Police officers should have the authority to stop and search pedestrians without probable cause.",
+      "es": "La policía debe tener potestad para cachear e identificar transeúntes sin causa justificada.",
+      "de": "Die Polizei sollte Fußgänger auf der Straße anlasslos anhalten und durchsuchen dürfen.",
+      "ru": "Полиция должна иметь право останавливать и досматривать людей на улице без объяснения причин.",
+      "fr": "La police devrait pouvoir contrôler et fouiller des passants dans la rue sans motif légal."
     }
   },
   {
-    "id": 85,
+    "id": 105,
     "categoryKey": "liberties",
     "axis": "soc",
     "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Nieuleczalnie chory człowiek powinien mieć prawo do eutanazji i asystowanej śmierci na własne życzenie.",
-      "en": "Terminally ill patients should possess the legal right to voluntary euthanasia and assisted dying.",
-      "es": "Los enfermos terminales deben tener derecho legal a la eutanasia voluntaria y al suicidio asistido.",
-      "de": "Unheilbar Kranke sollten das Recht auf ärztlich begleitete Sterbehilfe auf eigenen Wunsch haben.",
-      "ru": "Неизлечимо больные люди должны иметь законное право на добровольную эвтаназию по собственной воле.",
-      "fr": "Les personnes atteintes de maladies incurables devraient avoir accès à l'euthanasie choisie et à l'aide à mourir."
+      "pl": "Nieuleczalnie chory człowiek powinien mieć prawo do eutanazji na własne życzenie.",
+      "en": "Terminally ill patients should possess the legal right to voluntary assisted dying.",
+      "es": "Los enfermos en fase terminal deben tener derecho a la eutanasia voluntaria asistida.",
+      "de": "Unheilbar kranke Menschen sollten das Recht auf freiwillige Sterbehilfe auf eigenen Wunsch besitzen.",
+      "ru": "Неизлечимо больной человек должен иметь право на добровольную эвтаназию.",
+      "fr": "Toute personne atteinte d'une maladie incurable devrait avoir accès à l'aide médicale à mourir choisie."
     }
   },
   {
-    "id": 86,
+    "id": 106,
+    "categoryKey": "liberties",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": true,
+    "text": {
+      "pl": "Kara śmierci powinna zostać przywrócona za najokrutniejsze morderstwa.",
+      "en": "Capital punishment should be reinstated for the most heinous murders.",
+      "es": "La pena de muerte debe restablecerse para los homicidios más despiadados.",
+      "de": "Die Todesstrafe sollte für besonders grausame Morde wieder eingeführt werden.",
+      "ru": "Смертная казнь должна быть возвращена за самые жестокие убийства.",
+      "fr": "La peine de mort devrait être rétablie pour les assassinats les plus barbares."
+    }
+  },
+  {
+    "id": 107,
+    "categoryKey": "liberties",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Posiadanie marihuany na własny użytek powinno być w pełni legalne.",
+      "en": "Possession of cannabis for personal adult recreational use should be fully legal.",
+      "es": "La posesión de cannabis para consumo propio debe ser plenamente legal.",
+      "de": "Der Besitz von Cannabis für den Eigenbedarf sollte vollständig legalisiert sein.",
+      "ru": "Хранение марихуаны для личного употребления должно быть полностью легальным.",
+      "fr": "La possession de cannabis pour consommation personnelle devrait être totalement légale."
+    }
+  },
+  {
+    "id": 108,
     "categoryKey": "liberties",
     "axis": "soc",
     "multiplier": -1,
     "isQuick": false,
     "text": {
       "pl": "Kamery z automatycznym rozpoznawaniem twarzy powinny być zainstalowane we wszystkich miejscach publicznych.",
-      "en": "Automated facial-recognition surveillance cameras should be deployed across all public streets.",
-      "es": "Deberían instalarse cámaras de reconocimiento facial en todos los espacios públicos para prevenir delitos.",
-      "de": "Kameras mit automatischer Gesichtserkennung sollten lückenlos an allen öffentlichen Plätzen installiert werden.",
-      "ru": "Камеры с распознаванием лиц должны быть установлены во всех общественных местах для борьбы с преступностью.",
+      "en": "Facial-recognition surveillance cameras should be deployed across all public squares and streets.",
+      "es": "Deben instalarse cámaras con reconocimiento facial automático en todos los espacios públicos.",
+      "de": "Kameras mit automatischer Gesichtserkennung sollten flächendeckend im öffentlichen Raum laufen.",
+      "ru": "Камеры с распознаванием лиц должны стоять во всех общественных местах.",
       "fr": "Des caméras à reconnaissance faciale automatique devraient être installées dans tous les lieux publics."
     }
   },
   {
-    "id": 87,
-    "categoryKey": "liberties",
-    "axis": "soc",
-    "multiplier": 1,
-    "isQuick": false,
-    "text": {
-      "pl": "Posiadanie i sprzedaż marihuany na własny użytek powinny być w pełni legalne dla dorosłych.",
-      "en": "Possession and retail sale of recreational cannabis should be completely legal for adults.",
-      "es": "La tenencia y venta de marihuana para uso recreativo deben ser plenamente legales para adultos.",
-      "de": "Besitz und Verkauf von Cannabis für den persönlichen Konsum sollten für Erwachsene legal sein.",
-      "ru": "Хранение и продажа марихуаны для личного употребления должны быть полностью легальны для совершеннолетних.",
-      "fr": "La possession et la vente de cannabis pour usage personnel devraient être totalement légales pour les adultes."
-    }
-  },
-  {
-    "id": 88,
-    "categoryKey": "liberties",
-    "axis": "soc",
-    "multiplier": -1,
-    "isQuick": true,
-    "text": {
-      "pl": "Kara śmierci powinna zostać przywrócona za najokrutniejsze zbrodnie i morderstwa.",
-      "en": "Capital punishment should be reinstated for the most heinous, premeditated murders.",
-      "es": "La pena de muerte debería restaurarse para los crímenes y asesinatos más sanguinarios.",
-      "de": "Die Todesstrafe sollte für besonders grausame Morde wieder eingeführt werden.",
-      "ru": "Смертная казнь должна быть возвращена за самые жестокие и бесчеловечные убийства.",
-      "fr": "La peine de mort devrait être rétablie pour les crimes et assassinats les plus odieux."
-    }
-  },
-  {
-    "id": 89,
-    "categoryKey": "liberties",
-    "axis": "soc",
-    "multiplier": 1,
-    "isQuick": false,
-    "text": {
-      "pl": "Obywatele powinni mieć prawo do pełnej anonimowości w sieci bez wymogu rejestracji dowodem osobistym.",
-      "en": "Citizens should have an absolute right to digital anonymity without national ID verification.",
-      "es": "Los ciudadanos deben tener derecho al anonimato en internet sin registrarse con documento de identidad.",
-      "de": "Bürger sollten das Recht haben, das Internet anonym ohne Ausweispflicht zu nutzen.",
-      "ru": "Граждане должны иметь право на полную анонимность в интернете без входа по паспорту.",
-      "fr": "Les citoyens devraient pouvoir naviguer sur internet de manière anonyme sans vérification d'identité."
-    }
-  },
-  {
-    "id": 90,
-    "categoryKey": "liberties",
-    "axis": "soc",
-    "multiplier": -1,
-    "isQuick": false,
-    "text": {
-      "pl": "Rząd powinien mieć prawo nakładać zakaz wychodzenia z domu i kwarantannę podczas pandemii.",
-      "en": "Governments should possess the legal authority to impose stay-at-home curfews during epidemics.",
-      "es": "El gobierno debe tener facultades para decretar confinamientos domiciliarios obligatorios en epidemias.",
-      "de": "Die Regierung sollte das Recht haben, bei Pandemien verbindliche Ausgangssperren zu verhängen.",
-      "ru": "Правительство должно иметь право вводить комендантский час и карантин во время эпидемий.",
-      "fr": "Le gouvernement devrait pouvoir imposer des confinements à domicile stricts lors d'épidémies."
-    }
-  },
-  {
-    "id": 91,
-    "categoryKey": "liberties",
-    "axis": "soc",
-    "multiplier": 1,
-    "isQuick": false,
-    "text": {
-      "pl": "Każdy dorosły człowiek ma prawo decydować o własnym ciele, w tym o modyfikacjach i zabiegach medycznych.",
-      "en": "Every adult has an unquestioned right of bodily autonomy regarding medical procedures and personal choices.",
-      "es": "Todo adulto tiene derecho inalienable sobre su propio cuerpo y sus decisiones médicas.",
-      "de": "Jeder Erwachsene besitzt ein unantastbares Recht auf körperliche Selbstbestimmung.",
-      "ru": "Каждый взрослый человек имеет право сам распоряжаться своим телом и медицинскими вмешательствами.",
-      "fr": "Chaque adulte dispose d'un droit absolu à disposer de son corps et de ses choix médicaux."
-    }
-  },
-  {
-    "id": 92,
-    "categoryKey": "liberties",
-    "axis": "soc",
-    "multiplier": -1,
-    "isQuick": false,
-    "text": {
-      "pl": "Policja powinna natychmiast siłą rozpędzać wszelkie nielegalne blokady dróg i uliczne demonstracje.",
-      "en": "Riot police should forcefully disperse unsanctioned road blockades and illegal street marches immediately.",
-      "es": "La policía debe disolver por la fuerza y al instante cualquier corte de tráfico o protesta ilegal.",
-      "de": "Die Polizei sollte ungenehmigte Straßenblockaden und unangemeldete Demos sofort auflösen.",
-      "ru": "Полиция должна немедленно силой разгонять любые незаконные перекрытия дорог и протесты.",
-      "fr": "La police devrait disperser immédiatement par la force tout blocage routier ou cortège non autorisé."
-    }
-  },
-  {
-    "id": 93,
-    "categoryKey": "liberties",
-    "axis": "soc",
-    "multiplier": 1,
-    "isQuick": false,
-    "text": {
-      "pl": "Prawo do noszenia gazu pieprzowego i paralizatorów do samoobrony powinno być całkowicie wolne od zezwoleń.",
-      "en": "The right to carry pepper spray and stun guns for personal defense should require zero permits.",
-      "es": "Llevar espray de pimienta o táser para defensa personal no debería exigir ninguna licencia.",
-      "de": "Das Mitführen von Pfefferspray und Elektroschockern zur Selbstverteidigung sollte erlaubnisfrei sein.",
-      "ru": "Ношение перцовых баллончиков и электрошокеров для самообороны не должно требовать никаких разрешений.",
-      "fr": "Le port de bombes lacrymogènes et de tasers pour l'autodéfense devrait être libre de toute autorisation."
-    }
-  },
-  {
-    "id": 94,
-    "categoryKey": "liberties",
-    "axis": "soc",
-    "multiplier": -1,
-    "isQuick": false,
-    "text": {
-      "pl": "Więźniowie skazani za ciężkie przestępstwa powinni wykonywać przymusową pracę fizyczną na rzecz państwa.",
-      "en": "Inmates convicted of serious violent crimes should be compelled to do hard physical labor for the state.",
-      "es": "Los presos por delitos graves deberían realizar trabajos forzados obligatorios para el Estado.",
-      "de": "Straftäter bei schweren Verbrechen sollten zu gemeinnütziger Zwangsarbeit verpflichtet werden.",
-      "ru": "Заключенные за тяжкие преступления должны привлекаться к обязательному физическому труду на пользу государства.",
-      "fr": "Les criminels condamnés pour des faits graves devraient être astreints au travail forcé au profit de la collectivité."
-    }
-  },
-  {
-    "id": 95,
-    "categoryKey": "tech",
-    "axis": "soc",
-    "multiplier": -1,
-    "isQuick": true,
-    "text": {
-      "pl": "Rząd powinien surowo kontrolować i licencjonować wszystkie zaawansowane modele sztucznej inteligencji.",
-      "en": "Governments should strictly regulate and license all advanced artificial intelligence models.",
-      "es": "Los gobiernos deben regular y someter a licencias estrictas los modelos avanzados de inteligencia artificial.",
-      "de": "Der Staat sollte alle hochentwickelten KI-Modelle streng überwachen und genehmigungspflichtig machen.",
-      "ru": "Правительство должно строго контролировать и лицензировать все продвинутые модели искусственного интеллекта.",
-      "fr": "Les gouvernements devraient contrôler et soumettre à licence obligatoire tous les modèles avancés d'IA."
-    }
-  },
-  {
-    "id": 96,
-    "categoryKey": "tech",
-    "axis": "soc",
-    "multiplier": 1,
-    "isQuick": true,
-    "text": {
-      "pl": "Kryptowaluty (np. Bitcoin) powinny rozwijać się swobodnie bez państwowego nadzoru i rejestracji.",
-      "en": "Cryptocurrencies like Bitcoin should operate freely without central bank or government interference.",
-      "es": "Las criptomonedas como Bitcoin deben operar libres de interferencias de gobiernos o bancos centrales.",
-      "de": "Kryptowährungen wie Bitcoin sollten sich frei ohne staatliche Regulierung oder Meldepflichten entwickeln.",
-      "ru": "Криптовалюты (такие как Биткоин) должны развиваться свободно без государственного надзора.",
-      "fr": "Les cryptomonnaies (comme le Bitcoin) devraient prospérer librement sans surveillance étatique."
-    }
-  },
-  {
-    "id": 97,
-    "categoryKey": "tech",
-    "axis": "soc",
-    "multiplier": -1,
-    "isQuick": false,
-    "text": {
-      "pl": "Gotówka papierowa powinna zostać wycofana i zastąpiona wyłącznie państwowym cyfrowym pieniądzem (CBDC).",
-      "en": "Physical cash should be phased out and replaced entirely by official central bank digital currency (CBDC).",
-      "es": "El dinero en efectivo debe suprimirse y sustituirse únicamente por moneda digital estatal (CBDC).",
-      "de": "Bargeld sollte abgeschafft und komplett durch digitales Zentralbankgeld (CBDC) ersetzt werden.",
-      "ru": "Наличные деньги должны быть упразднены и заменены государственной цифровой валютой (CBDC).",
-      "fr": "L'argent liquide physique devrait être aboli et remplacé exclusivement par une monnaie numérique d'État (MNBC)."
-    }
-  },
-  {
-    "id": 98,
-    "categoryKey": "tech",
-    "axis": "soc",
-    "multiplier": 1,
-    "isQuick": false,
-    "text": {
-      "pl": "Komunikatory internetowe powinny mieć prawo do pełnego szyfrowania bez tylnych furtek dla policji.",
-      "en": "Messaging apps should be legally protected to use end-to-end encryption without police backdoors.",
-      "es": "Las aplicaciones de mensajería deben usar cifrado de extremo a extremo sin puertas traseras policiales.",
-      "de": "Messenger-Dienste müssen das Recht auf lückenlose Ende-zu-Ende-Verschlüsselung ohne Hintertüren haben.",
-      "ru": "Мессенджеры должны иметь право на полное шифрование переписки без лазеек для спецслужб.",
-      "fr": "Les messageries devraient garantir un chiffrement de bout en bout sans aucune porte dérobée pour la police."
-    }
-  },
-  {
-    "id": 99,
-    "categoryKey": "tech",
-    "axis": "soc",
-    "multiplier": -1,
-    "isQuick": false,
-    "text": {
-      "pl": "Państwo powinno nadzorować platformy internetowe i usuwać treści uznane przez urzędników za dezinformację.",
-      "en": "The state should oversee social platforms and take down content deemed by officials to be misinformation.",
-      "es": "El Estado debe supervisar las redes sociales y eliminar contenidos calificados de desinformación.",
-      "de": "Der Staat sollte Internetplattformen überwachen und als Fehlinformation eingestufte Inhalte löschen lassen.",
-      "ru": "Государство должно контролировать интернет-платформы и удалять информацию, признанную фейком.",
-      "fr": "L'État devrait surveiller les réseaux sociaux et supprimer les contenus jugés trompeurs par les autorités."
-    }
-  },
-  {
-    "id": 100,
-    "categoryKey": "tech",
-    "axis": "soc",
-    "multiplier": 1,
-    "isQuick": false,
-    "text": {
-      "pl": "Dostawcy internetu muszą traktować cały ruch sieciowy jednakowo bez faworyzowania (zasada neutralności sieci).",
-      "en": "Internet service providers must treat all online traffic equally without throttling (net neutrality).",
-      "es": "Los proveedores de internet deben dar el mismo trato a todo el tráfico sin discriminación (neutralidad de red).",
-      "de": "Internetanbieter müssen sämtlichen Datenverkehr ohne Drosselung gleich behandeln (Netzneutralität).",
-      "ru": "Провайдеры должны пропускать весь интернет-трафик одинаково без замедлений (сетевой нейтралитет).",
-      "fr": "Les fournisseurs d'accès doivent traiter tout le trafic web de manière égale sans restriction (neutralité du net)."
-    }
-  },
-  {
-    "id": 101,
-    "categoryKey": "tech",
-    "axis": "soc",
-    "multiplier": -1,
-    "isQuick": false,
-    "text": {
-      "pl": "Eksperymenty nad modyfikacją ludzkiego DNA i klonowaniem ludzi powinny być całkowicie zakazane.",
-      "en": "Genetic modification of human embryos and human reproductive cloning should be globally banned.",
-      "es": "La edición genética de embriones humanos y la clonación reproductiva deben prohibirse tajantemente.",
-      "de": "Genmanipulation an menschlichen Embryonen und Klonen von Menschen sollten weltweit verboten sein.",
-      "ru": "Опыты по изменению ДНК эмбрионов и клонированию человека должны быть категорически запрещены.",
-      "fr": "Les modifications génétiques d'embryons et le clonage humain devraient être strictement interdits."
-    }
-  },
-  {
-    "id": 102,
-    "categoryKey": "tech",
-    "axis": "soc",
-    "multiplier": 1,
-    "isQuick": false,
-    "text": {
-      "pl": "Oprogramowanie i algorytmy AI stworzone za publiczne pieniądze powinny być bezpłatne i otwarte (Open Source).",
-      "en": "Software and AI algorithms financed by public taxpayers should be open source and free to all.",
-      "es": "El software y los algoritmos creados con fondos públicos deben ser de código abierto para todos.",
-      "de": "Mit Steuergeldern entwickelte Software und KI-Modelle müssen als Open Source öffentlich verfügbar sein.",
-      "ru": "Программы и алгоритмы ИИ, созданные на государственные деньги, должны быть открытыми и бесплатными.",
-      "fr": "Les logiciels et algorithmes d'IA financés par des fonds publics devraient être libres et en Open Source."
-    }
-  },
-  {
-    "id": 103,
-    "categoryKey": "tech",
-    "axis": "soc",
-    "multiplier": -1,
-    "isQuick": false,
-    "text": {
-      "pl": "Autonomiczne drony bojowe podejmujące decyzję o ataku na człowieka bez operatora powinny być zakazane.",
-      "en": "Autonomous killer combat drones making lethal strike decisions without human sign-off should be outlawed.",
-      "es": "Los drones de combate autónomos capaces de atacar sin confirmación humana deben estar prohibidos.",
-      "de": "Autonome Kampfdrohnen, die ohne menschliche Freigabe töten, sollten völkerrechtlich geächtet werden.",
-      "ru": "Боевые дроны, способные принимать решение об уничтожении людей без человека, должны быть запрещены.",
-      "fr": "Les drones de combat autonomes capables de tuer sans intervention humaine devraient être interdits."
-    }
-  },
-  {
-    "id": 104,
-    "categoryKey": "tech",
-    "axis": "soc",
-    "multiplier": 1,
-    "isQuick": false,
-    "text": {
-      "pl": "Każdy programista powinien mieć prawo swobodnie tworzyć i publikować modele sztucznej inteligencji.",
-      "en": "Any developer should have the unrestrained freedom to train and publish open AI models.",
-      "es": "Cualquier programador debe ser libre de desarrollar y publicar modelos de inteligencia artificial.",
-      "de": "Jeder Entwickler sollte das Recht haben, eigene KI-Modelle ohne Hürden zu erstellen und zu veröffentlichen.",
-      "ru": "Любой программист должен иметь право свободно создавать и выкладывать модели ИИ.",
-      "fr": "Tout développeur devrait avoir le droit de concevoir et publier librement des modèles d'intelligence artificielle."
-    }
-  },
-  {
-    "id": 105,
-    "categoryKey": "tech",
-    "axis": "soc",
-    "multiplier": -1,
-    "isQuick": false,
-    "text": {
-      "pl": "Państwo powinno stworzyć centralną bazę danych z kodami DNA i biometrią wszystkich obywateli.",
-      "en": "The state should maintain a centralized biometric database containing DNA and fingerprints of all citizens.",
-      "es": "El Estado debería crear una base de datos con el ADN y huellas biométricas de todos los ciudadanos.",
-      "de": "Der Staat sollte ein zentrales Register mit DNA-Profilen und biometrischen Daten aller Bürger anlegen.",
-      "ru": "Государство должно создать единую базу данных с ДНК и отпечатками пальцев всех граждан.",
-      "fr": "L'État devrait constituer un fichier biométrique centralisé réunissant l'ADN et les empreintes de tous les citoyens."
-    }
-  },
-  {
-    "id": 106,
-    "categoryKey": "tech",
-    "axis": "soc",
-    "multiplier": 1,
-    "isQuick": false,
-    "text": {
-      "pl": "Okres ochrony praw autorskich i patentów technologicznych powinien zostać radykalnie skrócony.",
-      "en": "The duration of technological patents and copyright monopolies should be sharply reduced.",
-      "es": "La duración de las patentes tecnológicas y los derechos de autor debería reducirse drásticamente.",
-      "de": "Die Laufzeit von Softwarepatenten und Urheberrechten sollte drastisch verkürzt werden.",
-      "ru": "Срок действия технологических патентов и авторских прав должен быть радикально сокращён.",
-      "fr": "La durée de protection des brevets technologiques et droits d'auteur devrait être nettement réduite."
-    }
-  },
-  {
-    "id": 107,
-    "categoryKey": "tech",
-    "axis": "soc",
-    "multiplier": 1,
-    "isQuick": false,
-    "text": {
-      "pl": "Prywatne firmy kosmiczne powinny móc swobodnie eksplorować i wydobywać surowce na Księżycu i planetoidach.",
-      "en": "Commercial space companies should be permitted to freely prospect and mine minerals on the Moon and asteroids.",
-      "es": "Las empresas espaciales privadas deberían poder explotar libremente recursos en la Luna y asteroides.",
-      "de": "Private Raumfahrtfirmen sollten Rohstoffe auf dem Mond und Asteroiden frei abbauen dürfen.",
-      "ru": "Частные космические компании должны иметь право свободно добывать ресурсы на Луне и астероидах.",
-      "fr": "Les entreprises spatiales privées devraient pouvoir exploiter librement les ressources sur la Lune et les astéroïdes."
-    }
-  },
-  {
-    "id": 108,
-    "categoryKey": "tech",
-    "axis": "soc",
-    "multiplier": -1,
-    "isQuick": false,
-    "text": {
-      "pl": "Wszelkie treści generowane przez sztuczną inteligencję (obrazy, teksty, audio) muszą mieć obowiązkowy państwowy znak wodny.",
-      "en": "All AI-generated content (images, audio, text) must carry mandatory, verified digital watermarks by law.",
-      "es": "Todo contenido generado por inteligencia artificial debería llevar una marca de agua obligatoria por ley.",
-      "de": "Sämtliche KI-generierten Medieninhalte sollten gesetzlich mit einem fälschungssicheren Wasserzeichen versehen werden.",
-      "ru": "Любой контент, созданный ИИ (тексты, фото, видео), должен иметь обязательную маркировку по закону.",
-      "fr": "Tout contenu généré par IA (image, texte, voix) devrait porter un filigrane numérique obligatoire par la loi."
-    }
-  },
-  {
     "id": 109,
-    "categoryKey": "ecology",
+    "categoryKey": "liberties",
     "axis": "soc",
     "multiplier": 1,
-    "isQuick": true,
+    "isQuick": false,
     "text": {
-      "pl": "Ochrona klimatu i redukcja spalin powinny być priorytetem, nawet jeśli podnosi to codzienne koszty życia.",
-      "en": "Combating climate change and emissions must take priority even if it raises everyday living costs.",
-      "es": "Frenar el cambio climático debe ser prioritario, incluso si encarece el coste de la vida cotidiana.",
-      "de": "Klimaschutz und Emissionssenkung müssen Priorität haben, selbst wenn das die Lebenshaltungskosten erhöht.",
-      "ru": "Защита климата и сокращение выбросов должны быть главным приоритетом, даже если растут расходы людей.",
-      "fr": "La lutte contre le réchauffement climatique doit être prioritaire, même si elle renchérit le coût de la vie."
+      "pl": "Obywatele powinni mieć prawo do anonimowości w sieci bez legitymowania się dowodem.",
+      "en": "Citizens should have the right to internet anonymity without showing official government IDs.",
+      "es": "Los ciudadanos deben tener derecho a navegar de forma anónima sin identificarse con documento de identidad.",
+      "de": "Bürger sollten das Recht auf Anonymität im Netz ohne Verifikation per Personalausweis haben.",
+      "ru": "Граждане должны иметь право на анонимность в сети без входа по паспорту.",
+      "fr": "Les internautes devraient avoir le droit à l'anonymat en ligne sans vérification d'identité."
     }
   },
   {
     "id": 110,
-    "categoryKey": "ecology",
+    "categoryKey": "liberties",
     "axis": "soc",
     "multiplier": -1,
-    "isQuick": true,
+    "isQuick": false,
     "text": {
-      "pl": "Powinniśmy wydobywać węgiel i gaz tak długo, jak zapewniają nam tani prąd i niezależność.",
-      "en": "We should extract coal and natural gas as long as they deliver cheap electricity and energy security.",
-      "es": "Debemos seguir usando carbón y gas mientras ofrezcan energía barata e independencia energética.",
-      "de": "Wir sollten Kohle und Gas nutzen, solange sie bezahlbaren Strom und Versorgungssicherheit garantieren.",
-      "ru": "Мы должны добывать уголь и газ до тех пор, пока они дают дешёвое электричество и энергонезависимость.",
-      "fr": "Nous devrions exploiter le charbon et le gaz tant qu'ils garantissent une énergie bon marché et souveraine."
+      "pl": "Rząd powinien mieć prawo nakładać zakaz wychodzenia z domu podczas epidemii.",
+      "en": "The government should have the authority to impose stay-at-home curfews during epidemics.",
+      "es": "El gobierno debe tener facultades para decretar confinamientos domiciliarios en epidemias.",
+      "de": "Die Regierung sollte das Recht haben, bei schweren Epidemien Ausgangssperren zu erlassen.",
+      "ru": "Правительство должно иметь право вводить запрет на выход из дома во время эпидемий.",
+      "fr": "Le gouvernement devrait avoir le pouvoir d'imposer un confinement à domicile lors d'une épidémie."
     }
   },
   {
     "id": 111,
-    "categoryKey": "ecology",
+    "categoryKey": "liberties",
     "axis": "soc",
-    "multiplier": -1,
+    "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Ustawowy zakaz sprzedaży nowych samochodów spalinowych od 2035 roku to szkodliwy błąd uderzający w kierowców.",
-      "en": "Banning the sale of new internal combustion engine cars by 2035 is an unreasonable policy harming drivers.",
-      "es": "Prohibir la venta de coches nuevos de gasolina o diésel a partir de 2035 es un grave error para los ciudadanos.",
-      "de": "Das Verbot von neuen Verbrennungsmotoren ab 2035 ist ein schädlicher Fehler zulasten der Bürger.",
-      "ru": "Запрет на продажу новых бензиновых и дизельных машин с 2035 года — это вредная ошибка, бьющая по водителям.",
-      "fr": "L'interdiction de vente des voitures thermiques neuves à partir de 2035 est une grave erreur qui pénalise les automobilistes."
+      "pl": "Każdy dorosły człowiek ma prawo samodzielnie decydować o zabiegach medycznych na własnym ciele.",
+      "en": "Every adult has the sovereign right to make all medical choices regarding their own body.",
+      "es": "Todo adulto tiene el derecho soberano a decidir sobre cualquier intervención médica en su cuerpo.",
+      "de": "Jeder Erwachsene hat das uneingeschränkte Recht auf Selbstbestimmung bei medizinischen Behandlungen.",
+      "ru": "Каждый взрослый человек имеет право самостоятельно решать любые вопросы о своём теле.",
+      "fr": "Chaque adulte a le droit souverain de consentir ou de refuser tout acte médical sur son propre corps."
     }
   },
   {
     "id": 112,
-    "categoryKey": "ecology",
+    "categoryKey": "liberties",
     "axis": "soc",
-    "multiplier": 1,
+    "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Krótkie loty samolotem powinny być zakazane na trasach, gdzie pociąg jedzie poniżej 3 godzin.",
-      "en": "Short-haul airline flights should be banned on domestic routes served by trains under three hours.",
-      "es": "Los vuelos de corto radio deberían prohibirse cuando exista alternativa en tren de menos de tres horas.",
-      "de": "Kurzstreckenflüge sollten verboten werden, wenn eine Zugverbindung unter drei Stunden existiert.",
-      "ru": "Короткие авиарейсы должны быть запрещены там, где поезд идет менее 3 часов.",
-      "fr": "Les vols en avion court-courrier devraient être interdits sur les trajets où le train met moins de 3 heures."
+      "pl": "Policja powinna natychmiast siłą rozpędzać wszelkie nielegalne blokady dróg.",
+      "en": "Riot police should forcefully and immediately dismantle any illegal roadway blockades.",
+      "es": "La policía debe desalojar por la fuerza y sin demora cualquier corte de tráfico ilegal.",
+      "de": "Die Polizei sollte ungenehmigte Straßenblockaden sofort gewaltsam räumen.",
+      "ru": "Полиция должна немедленно силой разгонять любые незаконные перекрытия дорог.",
+      "fr": "La police devrait immédiatement disperser par la force tout barrage routier illégal."
     }
   },
   {
     "id": 113,
-    "categoryKey": "ecology",
+    "categoryKey": "liberties",
     "axis": "soc",
-    "multiplier": -1,
+    "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Przepisy ochrony środowiska nie powinny blokować budowy strategicznych dróg, tam i fabryk.",
-      "en": "Environmental regulations must never hold up the construction of vital highways, dams, or factories.",
-      "es": "Las normativas medioambientales no deben paralizar infraestructuras clave como carreteras o fábricas.",
-      "de": "Umweltschutzauflagen sollten den Bau wichtiger Autobahnen, Staudämme und Fabriken nicht ausbremsen.",
-      "ru": "Экологические нормы не должны блокировать строительство важных дорог, дамб и промышленных предприятий.",
-      "fr": "Les règles environnementales ne devraient pas bloquer la construction d'autoroutes, barrages ou usines stratégiques."
+      "pl": "Noszenie gazu pieprzowego do samoobrony powinno być całkowicie wolne od zezwoleń.",
+      "en": "Carrying pepper spray for personal self-defense should be permit-free.",
+      "es": "Portar espray de pimienta para defensa propia no debe requerir ningún tipo de permiso.",
+      "de": "Das Führen von Pfefferspray zur Notwehr sollte vollkommen genehmigungsfrei sein.",
+      "ru": "Ношение перцового баллончика для самообороны не должно требовать никаких разрешений.",
+      "fr": "Le port d'une bombe lacrymogène pour l'autodéfense devrait être libre de toute autorisation."
     }
   },
   {
     "id": 114,
-    "categoryKey": "ecology",
+    "categoryKey": "liberties",
     "axis": "soc",
-    "multiplier": 1,
+    "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Trzymanie zwierząt w ciasnych klatkach na fermach przemysłowych powinno być całkowicie zakazane.",
-      "en": "Confining livestock and poultry in battery cages on factory farms should be completely banned.",
-      "es": "El confinamiento de animales en jaulas estrechas en granjas industriales debe prohibirse.",
-      "de": "Käfighaltung von Nutztieren in industriellen Zuchtbetrieben sollte ausnahmslos verboten werden.",
-      "ru": "Содержание животных в тесных клетках на промышленных фермах должно быть полностью запрещено.",
-      "fr": "L'élevage intensif d'animaux en cages de batterie devrait être totalement interdit."
+      "pl": "Skazani na dożywocie powinni wykonywać przymusową ciężką pracę fizyczną.",
+      "en": "Convicts serving life prison sentences should be forced to perform hard physical labor.",
+      "es": "Los condenados a prisión permanente deben realizar trabajos forzados obligatorios.",
+      "de": "Zu lebenslanger Haft verurteilte Schwerstkriminelle sollten zu Zwangsarbeit verpflichtet werden.",
+      "ru": "Осужденные на пожизненное заключение должны привлекаться к принудительному физическому труду.",
+      "fr": "Les criminels condamnés à perpétuité devraient être soumis à des travaux forcés obligatoires."
     }
   },
   {
     "id": 115,
-    "categoryKey": "ecology",
+    "categoryKey": "liberties",
     "axis": "soc",
-    "multiplier": -1,
+    "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Podatki od emisji CO2 osłabiają nasz przemysł, podczas gdy Chiny i Indie bezkarnie zanieczyszczają świat.",
-      "en": "Carbon taxes penalize our domestic industries while nations like China and India pollute with impunity.",
-      "es": "Los impuestos al carbono lastran nuestra economía mientras potencias como China e India siguen contaminando.",
-      "de": "CO2-Steuern schwächen unsere Wirtschaft, während Länder wie China und Indien ungebremst emittieren.",
-      "ru": "Углеродные налоги душат нашу промышленность, пока Китай и Индия безнаказанно загрязняют планету.",
-      "fr": "La taxe carbone pénalise notre industrie alors que la Chine et l'Inde polluent impunément."
+      "pl": "Uprawa konopi indyjskich w domu na własny użytek powinna być dozwolona.",
+      "en": "Cultivating cannabis plants at home for personal adult consumption should be permitted.",
+      "es": "Cultivar plantas de marihuana en casa para consumo propio debe estar legalmente permitido.",
+      "de": "Der Eigenanbau von Cannabis-Pflanzen in den eigenen vier Wänden sollte legal sein.",
+      "ru": "Выращивание конопли дома для личного употребления должно быть разрешено.",
+      "fr": "La culture de plants de cannabis à domicile pour usage personnel devrait être autorisée."
     }
   },
   {
     "id": 116,
-    "categoryKey": "ecology",
+    "categoryKey": "liberties",
     "axis": "soc",
-    "multiplier": 1,
+    "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Wjazd starych aut spalinowych do centrów dużych miast powinien być zakazany (Strefy Czystego Transportu).",
-      "en": "Older polluting vehicles should be barred from central city zones through low-emission corridors.",
-      "es": "Los vehículos antiguos contaminantes no deberían poder entrar al centro de las grandes urbes.",
-      "de": "Ältere abgasintensive Fahrzeuge sollten aus den Innenstädten durch Umweltzonen verbannt werden.",
-      "ru": "Въезд старых автомобилей с ДВС в центры городов должен быть запрещён через экологические зоны.",
-      "fr": "L'accès des véhicules thermiques anciens au centre des grandes villes devrait être interdit (ZFE)."
+      "pl": "Państwo powinno prowadzić rejestr osób chorujących psychicznie.",
+      "en": "The state should maintain an official central register of individuals with mental illnesses.",
+      "es": "El Estado debe gestionar un registro centralizado de personas diagnosticadas con trastornos psiquiátricos.",
+      "de": "Der Staat sollte ein amtliches zentrales Register psychisch erkrankter Personen führen.",
+      "ru": "Государство должно вести единый реестр лиц с психическими заболеваниями.",
+      "fr": "L'État devrait tenir un registre officiel recensant les personnes atteintes de troubles psychiatriques."
     }
   },
   {
     "id": 117,
-    "categoryKey": "ecology",
+    "categoryKey": "liberties",
     "axis": "soc",
     "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Wszystkie dopłaty do paliw kopalnych powinny zostać natychmiast przeniesione na wiatraki i fotowoltaikę.",
-      "en": "All public subsidies for fossil fuels should be immediately redirected to solar and wind energy.",
-      "es": "Todas las ayudas a combustibles fósiles deben transferirse de inmediato a las energías renovables.",
-      "de": "Sämtliche Subventionen für fossile Energien sollten sofort in Wind- und Solarkraft umgeleitet werden.",
-      "ru": "Все субсидии на ископаемое топливо должны быть немедленно перенаправлены на ветровую и солнечную энергетику.",
-      "fr": "Toutes les subventions aux énergies fossiles devraient être immédiatement réallouées au solaire et à l'éolien."
+      "pl": "Obywatele powinni mieć prawo filmować i nagrywać każdą interwencję policji.",
+      "en": "Citizens should have the unrestricted right to record and film on-duty police interactions.",
+      "es": "Los ciudadanos deben tener derecho a grabar y filmar cualquier actuación policial en la vía pública.",
+      "de": "Bürger sollten das uneingeschränkte Recht haben, Polizeieinsätze per Video aufzuzeichnen.",
+      "ru": "Граждане должны иметь право снимать на видео любые действия полиции.",
+      "fr": "Les citoyens devraient avoir le droit absolu de filmer toute intervention des forces de l'ordre."
     }
   },
   {
     "id": 118,
-    "categoryKey": "ecology",
+    "categoryKey": "tech",
     "axis": "soc",
-    "multiplier": -1,
-    "isQuick": false,
+    "multiplier": 1,
+    "isQuick": true,
     "text": {
-      "pl": "Budowa nowoczesnych elektrowni atomowych jest konieczna, by zapewnić stabilny i bezpieczny prąd.",
-      "en": "Building modern nuclear power plants is essential to ensure stable baseload energy security.",
-      "es": "Construir centrales nucleares modernas es imprescindible para garantizar energía firme y limpia.",
-      "de": "Der Bau moderner Kernkraftwerke ist unerlässlich für eine zuverlässige und sichere Stromversorgung.",
-      "ru": "Строительство современных атомных электростанций необходимо для стабильного энергоснабжения страны.",
-      "fr": "La construction de centrales nucléaires modernes est indispensable pour garantir une électricité stable et décarbonée."
+      "pl": "Kryptowaluty (np. Bitcoin) powinny rozwijać się swobodnie bez państwowego nadzoru.",
+      "en": "Cryptocurrencies like Bitcoin should function freely without state or central bank control.",
+      "es": "Las criptomonedas como Bitcoin deben operar sin controles de gobiernos ni bancos centrales.",
+      "de": "Kryptowährungen wie Bitcoin sollten ohne staatliche Überwachung frei zirkulieren können.",
+      "ru": "Криптовалюты (вроде Bitcoin) должны развиваться свободно без вмешательства государства.",
+      "fr": "Les cryptomonnaies comme le Bitcoin devraient opérer librement sans contrôle de l'État."
     }
   },
   {
     "id": 119,
-    "categoryKey": "ecology",
+    "categoryKey": "tech",
     "axis": "soc",
-    "multiplier": 1,
-    "isQuick": false,
+    "multiplier": -1,
+    "isQuick": true,
     "text": {
-      "pl": "Jednorazowe plastikowe opakowania i butelki powinny zostać całkowicie wycofane ze sprzedaży.",
-      "en": "Single-use plastic food packaging and plastic bottles should be completely banned from retail stores.",
-      "es": "Los envases y botellas de plástico de un solo uso deberían retirarse totalmente del mercado.",
-      "de": "Einweg-Plastikverpackungen und Plastikflaschen sollten im Handel ausnahmslos verboten werden.",
-      "ru": "Одноразовая пластиковая упаковка и бутылки должны быть полностью изъяты из продажи.",
-      "fr": "Les emballages et bouteilles en plastique à usage unique devraient être totalement interdits à la vente."
+      "pl": "Rząd powinien surowo kontrolować i licencjonować zaawansowane modele sztucznej inteligencji.",
+      "en": "The government should strictly license and regulate advanced artificial intelligence models.",
+      "es": "El gobierno debe someter a licencias y control estricto los modelos avanzados de inteligencia artificial.",
+      "de": "Die Regierung sollte fortschrittliche KI-Modelle streng regulieren und lizenzierungspflichtig machen.",
+      "ru": "Правительство должно лицензировать и строго контролировать модели искусственного интеллекта.",
+      "fr": "Le gouvernement devrait réguler et soumettre à licence obligatoire les modèles avancés d'intelligence artificielle."
     }
   },
   {
     "id": 120,
-    "categoryKey": "ecology",
+    "categoryKey": "tech",
     "axis": "soc",
-    "multiplier": -1,
+    "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Rolnicy powinni mieć swobodę stosowania nawozów chemicznych i pestycydów, by chronić wysokie plony żywności.",
-      "en": "Farmers must have the liberty to apply chemical fertilizers and pesticides to safeguard harvest yields.",
-      "es": "Los agricultores deben tener libertad para usar fertilizantes y fitosanitarios que protejan las cosechas.",
-      "de": "Landwirte sollten Dünger und Pflanzenschutzmittel frei einsetzen dürfen, um Ernten zu sichern.",
-      "ru": "Фермеры должны иметь свободу использовать удобрения и пестициды для сохранения высоких урожаев.",
-      "fr": "Les agriculteurs devraient être libres d'utiliser engrais et pesticides pour préserver les rendements alimentaires."
+      "pl": "Komunikatory internetowe powinny mieć prawo do pełnego szyfrowania bez tylnych furtek dla służb.",
+      "en": "Messaging apps should be legally entitled to full end-to-end encryption without backdoors.",
+      "es": "Las aplicaciones de mensajería deben ofrecer cifrado total sin puertas traseras para la policía.",
+      "de": "Messenger sollten das Recht auf lückenlose Ende-zu-Ende-Verschlüsselung ohne staatliche Hintertüren haben.",
+      "ru": "Мессенджеры должны иметь право на полное сквозное шифрование без лазеек для спецслужб.",
+      "fr": "Les messageries électroniques devraient avoir le droit au chiffrement total sans porte dérobée pour la police."
     }
   },
   {
     "id": 121,
+    "categoryKey": "tech",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Papierowa gotówka powinna zostać wycofana i zastąpiona wyłącznie cyfrowym pieniądzem banku centralnego (CBDC).",
+      "en": "Physical cash should be phased out in favor of central bank digital currency (CBDC).",
+      "es": "El dinero en efectivo debe sustituirse por completo por una moneda digital de banco central (CBDC).",
+      "de": "Bargeld sollte abgeschafft und durch digitales Zentralbankgeld (CBDC) ersetzt werden.",
+      "ru": "Наличные деньги должны быть заменены государственной цифровой валютой (CBDC).",
+      "fr": "L'argent liquide devrait être aboli et remplacé par une monnaie numérique de banque centrale (MNBC)."
+    }
+  },
+  {
+    "id": 122,
+    "categoryKey": "tech",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Dostawcy internetu muszą traktować cały ruch sieciowy jednakowo (neutralność sieci).",
+      "en": "Internet service providers must treat all web traffic equally without throttling (net neutrality).",
+      "es": "Los proveedores de telecomunicaciones deben respetar la neutralidad de la red sin discriminar tráfico.",
+      "de": "Internetanbieter müssen sämtlichen Datenverkehr im Netz vollkommen gleich behandeln (Netzneutralität).",
+      "ru": "Провайдеры интернета обязаны пропускать весь трафик одинаково (сетевой нейтралитет).",
+      "fr": "Les fournisseurs d'accès internet doivent traiter tout le trafic de façon égale (neutralité du net)."
+    }
+  },
+  {
+    "id": 123,
+    "categoryKey": "tech",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Państwo powinno usuwać z platform internetowych treści uznane za dezinformację.",
+      "en": "The state should order the removal of online posts deemed to be disinformation.",
+      "es": "El Estado debe ordenar el borrado de publicaciones en redes consideradas desinformación.",
+      "de": "Der Staat sollte Online-Beiträge löschen lassen, die er als Fehlinformation einstuft.",
+      "ru": "Государство должно удалять из интернета публикации, признанные дезинформацией.",
+      "fr": "L'État devrait faire supprimer des réseaux sociaux les contenus qualifiés de désinformation."
+    }
+  },
+  {
+    "id": 124,
+    "categoryKey": "tech",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Oprogramowanie stworzone za publiczne pieniądze powinno być otwarte i darmowe (Open Source).",
+      "en": "Publicly funded software and computer code should be open-source and free for everyone.",
+      "es": "El código de software financiado con fondos públicos debe ser libre y de código abierto.",
+      "de": "Mit Steuergeldern programmierte Software sollte als Open Source frei zugänglich sein.",
+      "ru": "Программы, созданные на государственные средства, должны иметь открытый исходный код.",
+      "fr": "Les logiciels créés avec de l'argent public devraient être libres et en code source ouvert."
+    }
+  },
+  {
+    "id": 125,
+    "categoryKey": "tech",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Modyfikacje genetyczne ludzkich zarodków powinny być całkowicie zakazane.",
+      "en": "Gene editing on human embryos should be prohibited worldwide.",
+      "es": "La edición genética de embriones humanos debe estar completamente prohibida.",
+      "de": "Genetische Eingriffe an menschlichen Embryonen sollten ausnahmslos verboten werden.",
+      "ru": "Генетическая модификация человеческих эмбрионов должна быть полностью запрещена.",
+      "fr": "Toute modification génétique sur des embryons humains devrait être strictement interdite."
+    }
+  },
+  {
+    "id": 126,
+    "categoryKey": "tech",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Każdy programista powinien mieć prawo publikować własne modele sztucznej inteligencji bez licencji.",
+      "en": "Any developer should be free to release open-source AI models without state licenses.",
+      "es": "Cualquier programador debe poder publicar modelos de inteligencia artificial sin licencia estatal.",
+      "de": "Jeder Programmierer sollte eigene KI-Modelle ohne amtliche Genehmigung veröffentlichen dürfen.",
+      "ru": "Любой программист должен иметь право выкладывать модели ИИ без государственных лицензий.",
+      "fr": "Tout développeur devrait pouvoir publier des modèles d'intelligence artificielle sans licence d'État."
+    }
+  },
+  {
+    "id": 127,
+    "categoryKey": "tech",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Autonomiczne drony bojowe podejmujące decyzję o ataku bez człowieka powinny być zakazane.",
+      "en": "Autonomous military killer drones capable of attacking without human input should be outlawed.",
+      "es": "Los drones militares autónomos capaces de disparar sin control humano deben estar vetados.",
+      "de": "Autonome Kampfdrohnen, die ohne menschliche Freigabe tödliche Schläge ausführen, gehören verboten.",
+      "ru": "Автономные боевые дроны, атакующие людей без команды оператора, должны быть запрещены.",
+      "fr": "Les drones militaires autonomes tirant sans validation humaine devraient être bannis."
+    }
+  },
+  {
+    "id": 128,
+    "categoryKey": "tech",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Czas ochrony patentów technologicznych powinien zostać radykalnie skrócony.",
+      "en": "The legal duration of patent protection on tech inventions should be sharply shortened.",
+      "es": "El periodo de vigencia de las patentes sobre tecnología debería reducirse fuertemente.",
+      "de": "Die Schutzdauer technologischer Patente sollte spürbar verkürzt werden.",
+      "ru": "Сроки действия патентов на технологии должны быть существенно сокращены.",
+      "fr": "La durée légale des brevets sur les innovations technologiques devrait être nettement réduite."
+    }
+  },
+  {
+    "id": 129,
+    "categoryKey": "tech",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Państwo powinno stworzyć centralną bazę DNA wszystkich obywateli.",
+      "en": "The state should collect and maintain a mandatory biometric DNA database of all citizens.",
+      "es": "El Estado debe crear un fichero centralizado con los perfiles genéticos de ADN de toda la población.",
+      "de": "Der Staat sollte ein amtliches genetisches DNA-Zentralregister aller Einwohner anlegen.",
+      "ru": "Государство должно создать единую базу ДНК всех граждан страны.",
+      "fr": "L'État devrait constituer une base de données biométrique réunissant l'ADN de tous les citoyens."
+    }
+  },
+  {
+    "id": 130,
+    "categoryKey": "tech",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Prywatne firmy powinny móc swobodnie wydobywać surowce na Księżycu i planetoidach.",
+      "en": "Commercial private space firms should be permitted to mine minerals on the Moon and asteroids.",
+      "es": "Las empresas espaciales privadas deben poder extraer recursos minerales en la Luna y asteroides.",
+      "de": "Private Weltraumunternehmen sollten Rohstoffe auf Mond und Asteroiden frei abbauen dürfen.",
+      "ru": "Частные компании должны иметь право добывать полезные ископаемые на Луне и астероидах.",
+      "fr": "Les entreprises privées devraient pouvoir exploiter librement les minerais sur la Lune et les astéroïdes."
+    }
+  },
+  {
+    "id": 131,
+    "categoryKey": "tech",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Treści tworzone przez sztuczną inteligencję powinny mieć obowiązkowy państwowy znak wodny.",
+      "en": "All synthetic media generated by artificial intelligence must carry mandatory verified watermarks.",
+      "es": "Cualquier texto, imagen o audio generado por IA debe incluir obligatoriamente una marca de agua.",
+      "de": "Sämtliche von künstlicher Intelligenz erzeugten Inhalte sollten gesetzlich wasserzeichenpflichtig sein.",
+      "ru": "Контент, созданный искусственным интеллектом, должен иметь обязательный водяной знак.",
+      "fr": "Tout contenu créé par une intelligence artificielle devrait obligatoirement comporter un filigrane numérique."
+    }
+  },
+  {
+    "id": 132,
+    "categoryKey": "tech",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Dostęp do szybkiego internetu powinien być uznany za podstawowe prawo obywatelskie.",
+      "en": "Broadband high-speed internet access should be legally recognized as a fundamental civil right.",
+      "es": "El acceso a internet de alta velocidad debe ser reconocido como un derecho ciudadano fundamental.",
+      "de": "Der Zugang zu schnellem Breitbandinternet sollte als verfassungsrechtliches Grundrecht gelten.",
+      "ru": "Доступ к скоростному интернету должен быть признан базовым правом гражданина.",
+      "fr": "L'accès à l'internet à haut débit devrait être reconnu comme un droit civil fondamental."
+    }
+  },
+  {
+    "id": 133,
+    "categoryKey": "tech",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Zakładanie kont w mediach społecznościowych powinno wymagać potwierdzenia tożsamości dokumentem.",
+      "en": "Registering an account on social media networks should require official government ID verification.",
+      "es": "Crearse un perfil en redes sociales debería exigir verificar la identidad con documento oficial.",
+      "de": "Die Anmeldung in sozialen Netzwerken sollte eine amtliche Identifizierung per Ausweis verlangen.",
+      "ru": "Регистрация в социальных сетях должна требовать подтверждения личности по паспорту.",
+      "fr": "L'ouverture d'un compte sur les réseaux sociaux devrait exiger la présentation d'une pièce d'identité."
+    }
+  },
+  {
+    "id": 134,
+    "categoryKey": "tech",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Płatności gotówkowe powyżej określonej kwoty powinny być prawnie zakazane.",
+      "en": "Cash payments exceeding a fixed statutory amount should be outlawed.",
+      "es": "Efectuar pagos en metálico por encima de cierta cantidad debe estar prohibido por ley.",
+      "de": "Barzahlungen oberhalb festgelegter Obergrenzen sollten gesetzlich verboten werden.",
+      "ru": "Оплата наличными свыше установленной законом суммы должна быть запрещена.",
+      "fr": "Les paiements en espèces au-delà d'un montant fixé par la loi devraient être interdits."
+    }
+  },
+  {
+    "id": 135,
+    "categoryKey": "ecology",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": true,
+    "text": {
+      "pl": "Redukcja emisji spalin powinna być priorytetem, nawet kosztem wzrostu cen energii.",
+      "en": "Reducing carbon emissions should be top priority even if it increases energy prices.",
+      "es": "Reducir las emisiones de gases debe ser prioritario, aunque suban los precios de la energía.",
+      "de": "Die Senkung von Treibhausgasen sollte Vorrang haben, selbst wenn Energie dadurch teurer wird.",
+      "ru": "Снижение выбросов должно быть приоритетом, даже если вырастут тарифы на энергию.",
+      "fr": "Réduire les émissions polluantes doit être prioritaire, même si l'énergie devient plus chère."
+    }
+  },
+  {
+    "id": 136,
+    "categoryKey": "ecology",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": true,
+    "text": {
+      "pl": "Powinniśmy wydobywać węgiel i gaz tak długo, jak zapewniają tani prąd.",
+      "en": "We should extract coal and natural gas as long as they provide affordable electricity.",
+      "es": "Debemos seguir extrayendo carbón y gas mientras aseguren electricidad barata.",
+      "de": "Wir sollten Kohle und Erdgas fördern, solange sie preiswerten Strom gewährleisten.",
+      "ru": "Следует добывать уголь и газ до тех пор, пока они дают дешёвое электричество.",
+      "fr": "Nous devrions exploiter le charbon et le gaz tant qu'ils fournissent une électricité abordable."
+    }
+  },
+  {
+    "id": 137,
     "categoryKey": "ecology",
     "axis": "soc",
     "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Hodowla zwierząt na futra i sprzedaż naturalnych futer powinny być całkowicie zakazane w prawie.",
-      "en": "Fur farming and the commercial sale of real animal fur garments should be banned by law.",
-      "es": "La cría de animales para peletería y la venta de pieles naturales deben prohibirse por completo.",
-      "de": "Pelztierfarmen und der Verkauf von echtem Tierpelz sollten gesetzlich verboten werden.",
-      "ru": "Разведение животных на мех и торговля натуральным мехом должны быть полностью запрещены законом.",
-      "fr": "L'élevage d'animaux pour leur fourrure et le commerce de la fourrure devraient être totalement interdits."
-    }
-  },
-  {
-    "id": 122,
-    "categoryKey": "culture",
-    "axis": "soc",
-    "multiplier": 1,
-    "isQuick": true,
-    "text": {
-      "pl": "Kościół powinien być całkowicie oddzielony od państwa i nie otrzymywać żadnych pieniędzy z podatków.",
-      "en": "Church and state should be entirely separated, with zero religious subsidies paid from public taxes.",
-      "es": "La Iglesia y el Estado deben estar totalmente separados sin recibir fondos de los contribuyentes.",
-      "de": "Kirche und Staat sollten strikt getrennt sein und keinerlei Steuergelder erhalten.",
-      "ru": "Церковь должна быть полностью отделена от государства и не получать никаких денег из налогов.",
-      "fr": "L'Église et l'État doivent être totalement séparés et ne recevoir aucun financement public."
-    }
-  },
-  {
-    "id": 123,
-    "categoryKey": "culture",
-    "axis": "soc",
-    "multiplier": -1,
-    "isQuick": true,
-    "text": {
-      "pl": "Wartości chrześcijańskie i tradycja narodowa powinny być podstawą wychowania dzieci w szkole.",
-      "en": "Christian moral heritage and national traditions should form the bedrock of school education.",
-      "es": "Los valores tradicionales y las raíces cristianas deben ser la base de la educación escolar.",
-      "de": "Christliche Werte und heimatliche Traditionen sollten das Fundament der Schulbildung bilden.",
-      "ru": "Христианские ценности и национальные традиции должны быть основой воспитания в школах.",
-      "fr": "Les valeurs traditionnelles et l'héritage chrétien devraient être le socle de l'éducation scolaire."
-    }
-  },
-  {
-    "id": 124,
-    "categoryKey": "culture",
-    "axis": "soc",
-    "multiplier": 1,
-    "isQuick": false,
-    "text": {
-      "pl": "Małżeństwa osób tej samej płci powinny być w pełni legalne i mieć dokładnie takie same prawa.",
-      "en": "Same-sex marriages should be fully recognized by law with the exact same rights as heterosexual ones.",
-      "es": "El matrimonio entre personas del mismo sexo debe ser plenamente legal con los mismos derechos.",
-      "de": "Gleichgeschlechtliche Ehen sollten vollkommen legal sein und identische Rechte besitzen.",
-      "ru": "Однополые браки должны быть полностью легализованы с теми же правами, что и разнополые.",
-      "fr": "Le mariage pour les couples de même sexe devrait être pleinement légal avec des droits identiques."
-    }
-  },
-  {
-    "id": 125,
-    "categoryKey": "culture",
-    "axis": "soc",
-    "multiplier": -1,
-    "isQuick": false,
-    "text": {
-      "pl": "Tradycyjna rodzina (kobieta, mężczyzna i dzieci) powinna być szczególnie uprzywilejowana przez państwo.",
-      "en": "The traditional family unit (man, woman, and children) should receive special state privileges.",
-      "es": "La familia tradicional (hombre, mujer e hijos) debe gozar de especial protección y privilegios del Estado.",
-      "de": "Die traditionelle Familie (Vater, Mutter, Kinder) sollte vom Staat besonders privilegiert werden.",
-      "ru": "Традиционная семья (мужчина, женщина и дети) должна пользоваться особыми льготами от государства.",
-      "fr": "La famille traditionnelle (un homme, une femme et des enfants) devrait être privilégiée par l'État."
-    }
-  },
-  {
-    "id": 126,
-    "categoryKey": "culture",
-    "axis": "soc",
-    "multiplier": 1,
-    "isQuick": false,
-    "text": {
-      "pl": "Kobieta powinna mieć prawo do legalnej aborcji na życzenie w pierwszych miesiącach ciąży.",
-      "en": "Women should have an unrestricted legal right to voluntary abortion during the first trimester.",
-      "es": "La mujer debe tener derecho a la interrupción voluntaria del embarazo en las primeras semanas.",
-      "de": "Frauen sollten in den ersten Monaten der Schwangerschaft ein Recht auf straffreien Schwangerschaftsabbruch haben.",
-      "ru": "Женщина должна иметь законное право на аборт по собственному желанию в первые месяцы беременности.",
-      "fr": "Toute femme devrait avoir accès à l'avortement légal sur simple demande durant les premières semaines de grossesse."
-    }
-  },
-  {
-    "id": 127,
-    "categoryKey": "culture",
-    "axis": "soc",
-    "multiplier": -1,
-    "isQuick": false,
-    "text": {
-      "pl": "Symbole religijne (np. krzyże) powinny wisieć w klasach szkolnych i salach sądowych.",
-      "en": "Traditional religious symbols like crucifixes should hang in public school classrooms and courts.",
-      "es": "Los símbolos religiosos tradicionales (como crucifijos) deben presidir las aulas escolares y juzgados.",
-      "de": "Traditionelle religiöse Symbole wie Kreuze sollten in Klassenzimmern und Gerichtssälen hängen.",
-      "ru": "Религиозные символы (например, кресты) должны присутствовать в школьных классах и залах судов.",
-      "fr": "Des symboles religieux traditionnels (tels que des croix) devraient être présents dans les écoles et tribunaux."
-    }
-  },
-  {
-    "id": 128,
-    "categoryKey": "culture",
-    "axis": "soc",
-    "multiplier": 1,
-    "isQuick": false,
-    "text": {
-      "pl": "Osoby transpłciowe powinny móc zmienić oznaczenie płci w dowodzie prostą deklaracją w urzędzie.",
-      "en": "Transgender individuals should be able to update their legal gender marker through simple administrative self-declaration.",
-      "es": "Las personas trans deberían poder rectificar su mención de sexo registral por simple declaración.",
-      "de": "Transgeschlechtliche Menschen sollten ihren amtlichen Geschlechtseintrag durch einfache Erklärung ändern können.",
-      "ru": "Трансгендерные люди должны иметь возможность сменить пол в документах простым заявлением в ЗАГСе.",
-      "fr": "Les personnes transgenres devraient pouvoir changer la mention de leur sexe à l'état civil par simple déclaration."
-    }
-  },
-  {
-    "id": 129,
-    "categoryKey": "culture",
-    "axis": "soc",
-    "multiplier": -1,
-    "isQuick": false,
-    "text": {
-      "pl": "Państwo powinno aktywnie chronić kulturę i język narodowy przed obcymi wpływami i modami.",
-      "en": "The state should proactively defend national language and culture from foreign trends.",
-      "es": "El Estado debe proteger activamente la lengua y cultura nacionales frente a modas extranjeras.",
-      "de": "Der Staat sollte die heimische Sprache und Kultur aktiv vor fremden Einflüssen bewahren.",
-      "ru": "Государство должно активно защищать национальную культуру и язык от чужеродного влияния.",
-      "fr": "L'État devrait protéger activement la langue et la culture nationales contre les influences étrangères."
-    }
-  },
-  {
-    "id": 130,
-    "categoryKey": "culture",
-    "axis": "soc",
-    "multiplier": 1,
-    "isQuick": false,
-    "text": {
-      "pl": "Rzetelna edukacja seksualna o antykoncepcji, zgodzie i relacjach powinna być obowiązkowa w szkołach.",
-      "en": "Comprehensive sexual education regarding contraception and consent should be mandatory in schools.",
-      "es": "Una educación sexual integral sobre anticoncepción y relaciones sanas debe ser obligatoria en los colegios.",
-      "de": "Umfassender Sexualkundeunterricht über Verhütung und Partnerschaft sollte an Schulen verpflichtend sein.",
-      "ru": "Сексуальное просвещение о контрацепции и отношениях должно быть обязательным предметом в школах.",
-      "fr": "Une éducation à la sexualité complète portant sur la contraception et le consentement devrait être obligatoire à l'école."
-    }
-  },
-  {
-    "id": 131,
-    "categoryKey": "culture",
-    "axis": "soc",
-    "multiplier": -1,
-    "isQuick": false,
-    "text": {
-      "pl": "Publiczne znieważanie świętości i obrażanie uczuć religijnych powinno być ścigane jako przestępstwo.",
-      "en": "Public desecration of religious sacraments or insulting religious faith should be prosecuted as a crime.",
-      "es": "La ofensa pública a los sentimientos religiosos y profanación de templos debe castigarse como delito.",
-      "de": "Öffentliche Herabwürdigung religiöser Bekenntnisse und Schändung von Sakralbauten sollten strafbar sein.",
-      "ru": "Публичное оскорбление чувств верующих и осквернение святынь должно караться по закону.",
-      "fr": "L'offense publique aux sentiments religieux et la profanation de lieux de culte devraient être poursuivies pénalement."
-    }
-  },
-  {
-    "id": 132,
-    "categoryKey": "culture",
-    "axis": "soc",
-    "multiplier": 1,
-    "isQuick": false,
-    "text": {
-      "pl": "Urzędy państwowe i nauczyciele w szkołach publicznych muszą zachowywać całkowitą neutralność światopoglądową.",
-      "en": "Public servants and state schoolteachers must maintain strict secular neutrality while at work.",
-      "es": "Los funcionarios y docentes públicos deben mantener estricta neutralidad religiosa en su puesto.",
-      "de": "Beamte und Lehrer an staatlichen Schulen müssen im Dienst strikte religiöse Neutralität wahren.",
-      "ru": "Госслужащие и учителя в государственных школах обязаны соблюдать нейтралитет без демонстрации религии.",
-      "fr": "Les fonctionnaires et enseignants de l'école publique doivent respecter une neutralité laïque absolue au travail."
-    }
-  },
-  {
-    "id": 133,
-    "categoryKey": "culture",
-    "axis": "soc",
-    "multiplier": -1,
-    "isQuick": false,
-    "text": {
-      "pl": "Programy nauczania historii powinny budować dumę z narodowych zwycięstw zamiast skupiać się na dawnych winach.",
-      "en": "School history curricula should cultivate pride in national heritage rather than guilt over past misdeeds.",
-      "es": "El temario de historia escolar debe inculcar orgullo patriótico en lugar de centrarse en culpas históricas.",
-      "de": "Der Geschichtsunterricht sollte Nationalstolz vermitteln anstatt vorrangig historische Schuld zu betonen.",
-      "ru": "Учебники истории должны воспитывать гордость за победы предков, а не внушать вину за прошлое.",
-      "fr": "Les cours d'histoire devraient transmettre la fierté de nos héros nationaux plutôt que de nourrir le repentir."
-    }
-  },
-  {
-    "id": 134,
-    "categoryKey": "culture",
-    "axis": "soc",
-    "multiplier": -1,
-    "isQuick": false,
-    "text": {
-      "pl": "Lekarze i aptekarze powinni mieć prawo odmówić wykonania zabiegu lub sprzedaży leku niezgodnego z ich sumieniem.",
-      "en": "Doctors and pharmacists should have the legal right of conscience to refuse procedures violating their moral beliefs.",
-      "es": "Los médicos y farmacéuticos deben poder acogerse a la objeción de conciencia ante prácticas contrarias a su moral.",
-      "de": "Ärzte und Apotheker sollten aus Gewissensgründen Behandlungen verweigern dürfen, die ihrer Moral widersprechen.",
-      "ru": "Врачи и фармацевты должны иметь право отказываться от процедур, противоречащих их совести.",
-      "fr": "Les médecins et pharmaciens devraient bénéficier d'une clause de conscience pour refuser des actes contraires à leurs convictions."
-    }
-  },
-  {
-    "id": 135,
-    "categoryKey": "society",
-    "axis": "soc",
-    "multiplier": 1,
-    "isQuick": true,
-    "text": {
-      "pl": "Parytety dla kobiet na listach wyborczych i we władzach spółek powinny być obowiązkowe.",
-      "en": "Mandatory gender quotas should be enforced for political party lists and corporate boards.",
-      "es": "Las cuotas de género obligatorias deben aplicarse en listas electorales y consejos de administración.",
-      "de": "Verbindliche Frauenquoten sollten auf Wahllisten und in Unternehmensvorständen gesetzlich vorgeschrieben sein.",
-      "ru": "Квоты для женщин в избирательных списках и руководстве компаний должны быть обязательными.",
-      "fr": "Des quotas de parité obligatoires devraient être imposés sur les listes électorales et dans les conseils d'administration."
-    }
-  },
-  {
-    "id": 136,
-    "categoryKey": "society",
-    "axis": "soc",
-    "multiplier": -1,
-    "isQuick": true,
-    "text": {
-      "pl": "Przy zatrudnianiu i na studiach powinny decydować wyłącznie kwalifikacje, bez punktów za płeć czy pochodzenie.",
-      "en": "Admissions and hiring decisions should rely purely on merit, with zero affirmative-action points for identity.",
-      "es": "En oposiciones y contrataciones solo debe primar el mérito, sin ventajas por género o etnia.",
-      "de": "Bei Einstellungen und Studienzulassungen sollten ausschließlich fachliche Qualifikationen zählen.",
-      "ru": "При приёме на работу и учебу должны решать только знания и опыт, без льгот по полу или происхождению.",
-      "fr": "Les embauches et admissions universitaires ne devraient dépendre que des compétences, sans discrimination positive."
-    }
-  },
-  {
-    "id": 137,
-    "categoryKey": "society",
-    "axis": "soc",
-    "multiplier": 1,
-    "isQuick": false,
-    "text": {
-      "pl": "Dobrowolna praca seksualna dorosłych osób powinna być w pełni zalegalizowanym, opodatkowanym zawodem.",
-      "en": "Consensual adult sex work should be fully decriminalized, legalized, and treated as an ordinary profession.",
-      "es": "El trabajo sexual consentido entre adultos debería ser una profesión plenamente legalizada y regulada.",
-      "de": "Einvernehmliche Sexarbeit unter Erwachsenen sollte ein vollkommen legaler und regulierter Beruf sein.",
-      "ru": "Добровольная секс-работа взрослых людей должна быть законной профессией с налогами и правами.",
-      "fr": "Le travail du sexe consenti entre adultes devrait être une activité pleinement légale et encadrée."
+      "pl": "Krótkie loty samolotem powinny być zakazane na trasach z szybkim połączeniem kolejowym.",
+      "en": "Short-distance airline flights should be banned on corridors with fast train service.",
+      "es": "Los vuelos en avión de corta distancia deben prohibirse si existe línea de tren de alta velocidad.",
+      "de": "Kurzstreckenflüge sollten verboten werden, wenn eine schnelle Bahnverbindung besteht.",
+      "ru": "Короткие авиарейсы должны быть запрещены на маршрутах со скоростными поездами.",
+      "fr": "Les vols intérieurs court-courriers devraient être interdits sur les liaisons ferroviaires rapides."
     }
   },
   {
     "id": 138,
-    "categoryKey": "society",
+    "categoryKey": "ecology",
     "axis": "soc",
     "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Rząd powinien nakładać kary finansowe na rodziców odmawiających obowiązkowych szczepień ochronnych dzieci.",
-      "en": "Governments should levy financial fines on parents who refuse mandatory vaccinations for their children.",
-      "es": "El gobierno debe multar a los progenitores que rechacen las vacunas obligatorias para sus hijos.",
-      "de": "Die Regierung sollte Bußgelder gegen Eltern verhängen, die vorgeschriebene Pflichtimpfungen verweigern.",
-      "ru": "Государство должно штрафовать родителей, отказывающихся от обязательной вакцинации детей.",
-      "fr": "L'État devrait infliger des sanctions financières aux parents refusant les vaccins obligatoires de leurs enfants."
+      "pl": "Zakaz sprzedaży nowych samochodów spalinowych po 2035 roku powinien zostać odrzucony.",
+      "en": "The planned phase-out ban on new internal combustion engine cars by 2035 should be scrapped.",
+      "es": "La prohibición de vender turismos de combustión nuevos a partir de 2035 debe revocarse.",
+      "de": "Das Verbot des Verkaufs von Neuwagen mit Verbrennungsmotor ab 2035 sollte gekippt werden.",
+      "ru": "Запрет на продажу новых бензиновых и дизельных автомобилей с 2035 года следует отменить.",
+      "fr": "L'interdiction de vente de voitures thermiques neuves à partir de 2035 devrait être annulée."
     }
   },
   {
     "id": 139,
-    "categoryKey": "society",
+    "categoryKey": "ecology",
     "axis": "soc",
     "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Uchodźcy uciekający przed wojną powinni mieć prawo złożyć wniosek o azyl bez bezprawnego wypychania za granicę.",
-      "en": "Refugees fleeing war should have an undisputed legal right to seek asylum without summary pushbacks.",
-      "es": "Los refugiados que huyen de la guerra deben poder solicitar asilo sin sufrir devoluciones en caliente.",
-      "de": "Kriegsflüchtlinge sollten das Recht haben, Asylanträge zu stellen, ohne illegal an Grenzen abgewiesen zu werden.",
-      "ru": "Беженцы от войны должны иметь право подавать прошение об убежище без силового выдворения на границе.",
-      "fr": "Les réfugiés fuyant les conflits armés devraient pouvoir demander l'asile sans subir de refoulement immédiat."
+      "pl": "Trzymanie zwierząt w klatkach na fermach przemysłowych powinno być zakazane.",
+      "en": "Confining livestock in cages on industrial factory farms should be banned.",
+      "es": "Enjaular animales en granjas intensivas industriales debe estar prohibido por ley.",
+      "de": "Käfighaltung von Nutztieren in industriellen Großbetrieben sollte verboten werden.",
+      "ru": "Содержание животных в клетках на промышленных фермах должно быть запрещено.",
+      "fr": "L'élevage intensif d'animaux en cage dans les fermes industrielles devrait être interdit."
     }
   },
   {
     "id": 140,
-    "categoryKey": "society",
+    "categoryKey": "ecology",
     "axis": "soc",
     "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Imigranci powinni mieć bezwzględny obowiązek pełnej asymilacji i zdania testu z języka oraz tradycji kraju.",
-      "en": "Immigrants should be legally mandated to assimilate culturally and pass language and civics exams.",
-      "es": "Los inmigrantes deben tener la obligación de integrarse culturalmente y aprobar exámenes cívicos y de idioma.",
-      "de": "Zuwanderer sollten gesetzlich verpflichtet werden, Sprache und Bräuche des Landes nachweisbar zu erlernen.",
-      "ru": "Иммигранты должны быть обязаны полностью ассимилироваться и сдавать строгий экзамен по языку и культуре.",
-      "fr": "Les immigrés devraient avoir l'obligation de s'assimiler et de réussir un examen de langue et de valeurs civiques."
+      "pl": "Przepisy ochrony środowiska nie powinny blokować budowy dróg i fabryk.",
+      "en": "Environmental protection rules should not block the construction of highways and industrial plants.",
+      "es": "Las normas medioambientales no deben frenar la construcción de carreteras ni plantas industriales.",
+      "de": "Umweltauflagen sollten den Bau wichtiger Verkehrswege und Industriewerke nicht aufhalten.",
+      "ru": "Экологические нормы не должны блокировать строительство дорог и заводов.",
+      "fr": "Les réglementations environnementales ne devraient pas bloquer la construction de routes et d'usines."
     }
   },
   {
     "id": 141,
-    "categoryKey": "society",
+    "categoryKey": "ecology",
     "axis": "soc",
     "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Pary jednopłciowe powinny mieć pełne prawo do legalnej adopcji dzieci na równi z parami różnopłciowymi.",
-      "en": "Same-sex couples should possess the exact same legal rights to adopt children as opposite-sex couples.",
-      "es": "Las parejas homosexuales deben tener el mismo derecho a adoptar niños que las heterosexuales.",
-      "de": "Gleichgeschlechtliche Paare sollten das uneingeschränkte Recht haben, Kinder zu adoptieren.",
-      "ru": "Однополые пары должны иметь точно такое же право на усыновление детей, как и разнополые пары.",
-      "fr": "Les couples de même sexe devraient avoir exactement les mêmes droits d'adopter des enfants que les couples hétérosexuels."
+      "pl": "Wjazd starych aut spalinowych do centrów miast powinien być zakazany.",
+      "en": "Older polluting internal combustion vehicles should be barred from entering city centers.",
+      "es": "El acceso de vehículos antiguos de combustión al centro urbano debe estar vetado.",
+      "de": "Ältere abgasintensive Fahrzeuge sollten nicht mehr in die Innenstädte fahren dürfen.",
+      "ru": "Въезд старых автомобилей в центры городов должен быть запрещён.",
+      "fr": "L'accès des vieilles voitures thermiques aux centres-villes devrait être interdit."
     }
   },
   {
     "id": 142,
-    "categoryKey": "society",
+    "categoryKey": "ecology",
     "axis": "soc",
     "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Utrzymanie spokoju i porządku publicznego jest ważniejsze niż bezwzględne prawo do ulicznych demonstracji.",
-      "en": "Maintaining civil peace and public order takes priority over unrestricted rights to street protests.",
-      "es": "Mantener el orden público y la tranquilidad ciudadana es más importante que permitir protestas callejeras.",
-      "de": "Die Aufrechterhaltung von Ruhe und Ordnung ist wichtiger als ein grenzenloses Recht auf Straßendemonstrationen.",
-      "ru": "Общественный порядок и спокойствие на улицах важнее, чем безусловное право на шумные митинги.",
-      "fr": "Le maintien de l'ordre public et la tranquillité civile priment sur le droit absolu de manifester dans la rue."
+      "pl": "Podatki od emisji CO2 osłabiają naszą gospodarkę wobec innych państw.",
+      "en": "Carbon emission taxes hurt our domestic economy relative to foreign competitors.",
+      "es": "Los impuestos sobre el CO2 perjudican a nuestra economía frente a la competencia exterior.",
+      "de": "CO2-Abgaben schwächen die heimische Wirtschaft im internationalen Vergleich.",
+      "ru": "Углеродные налоги ослабляют нашу экономику перед иностранными конкурентами.",
+      "fr": "Les taxes sur le carbone affaiblissent notre économie face aux concurrents étrangers."
     }
   },
   {
     "id": 143,
-    "categoryKey": "society",
+    "categoryKey": "ecology",
     "axis": "soc",
     "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Drobne posiadanie substancji psychoaktywnych powinno być traktowane jak problem zdrowotny, a nie przestępstwo.",
-      "en": "Minor drug possession should be handled as a public health issue rather than a criminal felony.",
-      "es": "El consumo propio de sustancias debería abordarse como un tema de salud pública y no con penas de cárcel.",
-      "de": "Der Besitz kleiner Mengen Rauschmittel sollte als Gesundheitsthema statt als Straftat behandelt werden.",
-      "ru": "Хранение небольших количеств психоактивных веществ должно лечиться врачами, а не наказываться тюрьмой.",
-      "fr": "La possession de petites quantités de drogues devrait être traitée comme un enjeu médical et non pénal."
+      "pl": "Dotacje do paliw kopalnych powinny zostać przeniesione na energię słoneczną i wiatrową.",
+      "en": "Fossil fuel subsidies should be redirected toward solar and wind renewables.",
+      "es": "Las ayudas públicas a los combustibles fósiles deben derivarse a la energía solar y eólica.",
+      "de": "Subventionen für Kohle, Öl und Gas sollten in Sonnen- und Windkraft umgeleitet werden.",
+      "ru": "Субсидии на ископаемое топливо должны быть перенаправлены на солнечную и ветровую энергию.",
+      "fr": "Les aides aux énergies fossiles devraient être réorientées vers l'énergie solaire et éolienne."
     }
   },
   {
     "id": 144,
-    "categoryKey": "society",
+    "categoryKey": "ecology",
     "axis": "soc",
     "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Nauczyciele w szkołach powinni uczyć dzieci szacunku do tradycyjnych ról męskich i kobiecych.",
-      "en": "School educators should teach children to respect traditional masculine and feminine roles.",
-      "es": "La escuela debe inculcar el respeto por los roles familiares tradicionales masculinos y femeninos.",
-      "de": "Lehrkräfte sollten Schülern Respekt vor traditionellen Rollenbildern von Mann und Frau vermitteln.",
-      "ru": "В школах детей должны воспитывать в уважении к традиционным мужским и женским ролям.",
-      "fr": "L'école devrait enseigner le respect des rôles masculins et féminins traditionnels."
+      "pl": "Budowa elektrowni atomowych jest konieczna dla stabilnych dostaw prądu.",
+      "en": "Constructing nuclear power plants is necessary for dependable electric power supply.",
+      "es": "Construir centrales nucleares es indispensable para garantizar el suministro eléctrico firme.",
+      "de": "Der Neubau von Kernkraftwerken ist für eine ausfallsichere Stromversorgung unverzichtbar.",
+      "ru": "Строительство АЭС необходимо для стабильного энергоснабжения страны.",
+      "fr": "La construction de centrales nucléaires est indispensable à la sécurité de l'approvisionnement électrique."
     }
   },
   {
     "id": 145,
-    "categoryKey": "society",
+    "categoryKey": "ecology",
     "axis": "soc",
     "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Państwo powinno zagwarantować dach nad głową każdemu człowiekowi w kryzysie bezdomności.",
-      "en": "The state should guarantee immediate shelter and housing for every unhoused person as a human right.",
-      "es": "El Estado debe asegurar un techo digno a toda persona sin hogar como un derecho humano fundamental.",
-      "de": "Der Staat sollte jedem obdachlosen Menschen bedingungslos eine feste Unterkunft garantieren.",
-      "ru": "Государство должно гарантировать жилье каждому человеку, оказавшемуся на улице.",
-      "fr": "L'État devrait garantir un toit digne à chaque personne sans-abri au titre des droits fondamentaux."
+      "pl": "Jednorazowe plastikowe butelki i opakowania powinny być wycofane ze sprzedaży.",
+      "en": "Single-use plastic bottles and packaging should be phased out from retail commerce.",
+      "es": "Las botellas y envases de plástico no reutilizables deben retirarse de la venta.",
+      "de": "Einwegflaschen und Plastikverpackungen sollten im Handel komplett untersagt werden.",
+      "ru": "Одноразовые пластиковые бутылки и упаковка должны быть изъяты из продажи.",
+      "fr": "Les bouteilles et emballages plastiques à usage unique devraient être retirés du commerce."
     }
   },
   {
     "id": 146,
-    "categoryKey": "society",
+    "categoryKey": "ecology",
     "axis": "soc",
     "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Cudzoziemcy przebywający w kraju nielegalnie powinni być natychmiast zatrzymywani i deportowani.",
-      "en": "Foreign nationals residing in the country illegally should be swiftly detained and deported.",
-      "es": "Los extranjeros en situación irregular en el país deben ser detenidos y expulsados de forma inmediata.",
-      "de": "Ausländer ohne gültigen Aufenthaltstitel sollten unverzüglich festgesetzt und abgeschoben werden.",
-      "ru": "Иностранцы, находящиеся в стране нелегально, должны немедленно задерживаться и депортироваться.",
-      "fr": "Les étrangers en situation irrégulière devraient être immédiatement placés en rétention et expulsés."
+      "pl": "Rolnicy powinni mieć swobodę stosowania nawozów chemicznych i pestycydów.",
+      "en": "Farmers should be free to use chemical fertilizers and synthetic pesticides on crops.",
+      "es": "Los agricultores deben tener libertad para utilizar abonos químicos y pesticidas.",
+      "de": "Landwirte sollten mineralische Düngemittel und Pflanzenschutzmittel frei verwenden dürfen.",
+      "ru": "Фермеры должны иметь свободу применять удобрения и пестициды на полях.",
+      "fr": "Les agriculteurs devraient avoir la liberté d'utiliser des engrais chimiques et des pesticides."
     }
   },
   {
     "id": 147,
+    "categoryKey": "ecology",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Hodowla zwierząt na futra powinna być całkowicie zakazana.",
+      "en": "Breeding animals solely for their fur coats should be prohibited by law.",
+      "es": "La cría de animales con destino a la industria peletera debe estar prohibida.",
+      "de": "Die Zucht von Tieren zur Pelzgewinnung sollte gesetzlich untersagt sein.",
+      "ru": "Разведение пушных зверей ради меха должно быть запрещено законом.",
+      "fr": "L'élevage d'animaux pour leur fourrure devrait être formellement interdit."
+    }
+  },
+  {
+    "id": 148,
+    "categoryKey": "ecology",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Testowanie leków na zwierzętach laboratoryjnych powinno być dozwolone.",
+      "en": "Testing pharmaceutical medicines on laboratory animals should remain lawful.",
+      "es": "El ensayo de fármacos en animales de laboratorio debe continuar estando permitido.",
+      "de": "Versuche an Labortieren zur Erprobung von Medikamenten sollten erlaubt bleiben.",
+      "ru": "Испытание медицинских препаратов на лабораторных животных должно быть разрешено.",
+      "fr": "L'expérimentation de médicaments sur des animaux de laboratoire devrait rester autorisée."
+    }
+  },
+  {
+    "id": 149,
+    "categoryKey": "ecology",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Wycinka drzew w lasach naturalnych powinna być całkowicie wstrzymana.",
+      "en": "Commercial logging in old-growth natural forests should be entirely stopped.",
+      "es": "La tala de árboles en bosques autóctonos vírgenes debe quedar totalmente suspendida.",
+      "de": "Holzeinschlag in urwüchsigen Naturwäldern sollte vollständig unterbunden werden.",
+      "ru": "Вырубка деревьев в реликтовых лесах должна быть полностью прекращена.",
+      "fr": "L'abattage d'arbres dans les forêts primaires naturelles devrait être totalement banni."
+    }
+  },
+  {
+    "id": 150,
+    "categoryKey": "ecology",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Polowania na dzikie zwierzęta powinny pozostać legalnym hobby.",
+      "en": "Recreational hunting of wild game should remain a lawful recreational pastime.",
+      "es": "La caza recreativa de animales salvajes debe seguir siendo una actividad legal.",
+      "de": "Die traditionelle Jagd auf Wildtiere sollte als legales Hobby erhalten bleiben.",
+      "ru": "Охота на диких животных должна оставаться разрешённым увлечением.",
+      "fr": "La chasse de loisir au gibier sauvage devrait demeurer une activité légale."
+    }
+  },
+  {
+    "id": 151,
+    "categoryKey": "ecology",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Restauracje i bary powinny mieć obowiązek podawania bezpłatnej wody z kranu.",
+      "en": "Restaurants and bars should be legally obligated to serve free tap water to patrons.",
+      "es": "Los restaurantes y locales deben estar obligados a servir agua del grifo gratis a sus clientes.",
+      "de": "Gaststätten sollten gesetzlich verpflichtet sein, Gästen Leitungswasser kostenfrei zu servieren.",
+      "ru": "Рестораны и бары должны быть обязаны бесплатно подавать гостям питьевую воду из-под крана.",
+      "fr": "Les restaurants et bars devraient être tenus de servir gratuitement de l'eau du robinet aux clients."
+    }
+  },
+  {
+    "id": 152,
+    "categoryKey": "culture",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": true,
+    "text": {
+      "pl": "Kościół i związki wyznaniowe nie powinny otrzymywać żadnych pieniędzy z podatków.",
+      "en": "Religious bodies should receive zero public money from government taxes.",
+      "es": "Las iglesias y confesiones religiosas no deben recibir dinero de los impuestos públicos.",
+      "de": "Kirchen und Religionsgemeinschaften sollten keinerlei Gelder aus dem Steueraufkommen erhalten.",
+      "ru": "Церковь и религиозные организации не должны получать деньги из госбюджета.",
+      "fr": "Les cultes religieux ne devraient recevoir aucune subvention issue des impôts publics."
+    }
+  },
+  {
+    "id": 153,
+    "categoryKey": "culture",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": true,
+    "text": {
+      "pl": "Wartości chrześcijańskie i tradycja narodowa powinny być podstawą wychowania w szkole.",
+      "en": "Traditional heritage and Christian values should be the cornerstone of education in schools.",
+      "es": "Las raíces cristianas y la tradición nacional deben constituir la base de la educación en las aulas.",
+      "de": "Christliche Werte und heimatliche Traditionen sollten das Fundament der Schulbildung bilden.",
+      "ru": "Христианские ценности и национальные традиции должны быть основой школьного воспитания.",
+      "fr": "Les valeurs chrétiennes et la tradition nationale devraient fonder l'éducation scolaire."
+    }
+  },
+  {
+    "id": 154,
+    "categoryKey": "culture",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Małżeństwa osób tej samej płci powinny być w pełni legalne.",
+      "en": "Marriage between same-sex couples should be completely legal.",
+      "es": "El matrimonio entre personas del mismo sexo debe ser plenamente legal.",
+      "de": "Die gleichgeschlechtliche Ehe sollte uneingeschränkt rechtlich anerkannt sein.",
+      "ru": "Однополые браки должны быть полностью законными.",
+      "fr": "Le mariage pour les personnes de même sexe devrait être pleinement légal."
+    }
+  },
+  {
+    "id": 155,
+    "categoryKey": "culture",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Tradycyjna rodzina powinna otrzymywać szczególne przywileje od państwa.",
+      "en": "The traditional married mother-father family unit should receive special state privileges.",
+      "es": "La familia tradicional debe gozar de privilegios y protección especial por parte del Estado.",
+      "de": "Die traditionelle Familie aus Vater, Mutter und Kindern sollte staatlich besonders privilegiert werden.",
+      "ru": "Традиционная семья должна пользоваться особыми льготами от государства.",
+      "fr": "La famille traditionnelle devrait bénéficier d'avantages particuliers accordés par l'État."
+    }
+  },
+  {
+    "id": 156,
+    "categoryKey": "culture",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Kobieta powinna mieć prawo do legalnej aborcji do 12. tygodnia ciąży.",
+      "en": "Women should have the legal right to voluntary abortion up to the 12th week of pregnancy.",
+      "es": "La mujer debe tener derecho legal a interrumpir el embarazo hasta la semana 12.",
+      "de": "Frauen sollten das Recht auf straffreien Schwangerschaftsabbruch bis zur 12. Woche haben.",
+      "ru": "Женщина должна иметь право на легальный аборт до 12-й недели беременности.",
+      "fr": "Les femmes devraient avoir un droit légal à l'avortement jusqu'à la 12e semaine de grossesse."
+    }
+  },
+  {
+    "id": 157,
+    "categoryKey": "culture",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Symbole religijne (np. krzyże) powinny wisieć w klasach szkolnych i sądach.",
+      "en": "Religious symbols like crucifixes should be displayed in public classrooms and courtrooms.",
+      "es": "Los símbolos religiosos como crucifijos deben estar presentes en escuelas públicas y juzgados.",
+      "de": "Kreuze und religiöse Symbole sollten in Schulklassen und Gerichtssälen angebracht sein.",
+      "ru": "Религиозные символы (кресты) должны висеть в классах школ и залах судов.",
+      "fr": "Des symboles religieux (comme la croix) devraient être présents dans les écoles et les tribunaux."
+    }
+  },
+  {
+    "id": 158,
+    "categoryKey": "culture",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Osoby transpłciowe powinny móc zmienić oznaczenie płci w dokumentach na własny wniosek.",
+      "en": "Transgender individuals should be able to change their gender marker on IDs upon self-declaration.",
+      "es": "Las personas trans deben poder rectificar la mención de sexo en el documento por simple solicitud.",
+      "de": "Transgeschlechtliche Menschen sollten ihren amtlichen Geschlechtseintrag auf Antrag ändern können.",
+      "ru": "Трансгендерные люди должны иметь возможность изменить пол в паспорте по заявлению.",
+      "fr": "Les personnes transgenres devraient pouvoir rectifier la mention de leur sexe à l'état civil sur simple demande."
+    }
+  },
+  {
+    "id": 159,
+    "categoryKey": "culture",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Państwo powinno chronić kulturę i język narodowy przed obcymi wpływami.",
+      "en": "The state should actively shield national language and culture from foreign cultural trends.",
+      "es": "El Estado debe defender activamente el idioma y la cultura autóctonos de las modas extranjeras.",
+      "de": "Der Staat sollte die heimatliche Sprache und Kultur vor fremden Einflüssen bewahren.",
+      "ru": "Государство должно защищать родной язык и культуру от иностранного влияния.",
+      "fr": "L'État devrait préserver activement la langue et la culture nationales des influences étrangères."
+    }
+  },
+  {
+    "id": 160,
+    "categoryKey": "culture",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Edukacja seksualna o antykoncepcji powinna być obowiązkowa w szkołach.",
+      "en": "Sex education covering contraception should be compulsory in all schools.",
+      "es": "La educación sexual sobre anticoncepción debe ser materia obligatoria en los centros escolares.",
+      "de": "Aufklärungsunterricht über Verhütung sollte an allen Schulen Pflichtfach sein.",
+      "ru": "Уроки полового просвещения о контрацепции должны быть обязательными в школах.",
+      "fr": "L'éducation sexuelle portant sur la contraception devrait être obligatoire dans les établissements scolaires."
+    }
+  },
+  {
+    "id": 161,
+    "categoryKey": "culture",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Publiczne obrażanie uczuć religijnych powinno być ścigane jako przestępstwo.",
+      "en": "Publicly blaspheming or insulting religious beliefs should be prosecuted as a crime.",
+      "es": "La ofensa pública a los sentimientos religiosos debe ser perseguida como delito penal.",
+      "de": "Die öffentliche Herabwürdigung religiöser Bekenntnisse sollte als Straftat verfolgt werden.",
+      "ru": "Публичное оскорбление чувств верующих должно наказываться как уголовное преступление.",
+      "fr": "L'offense publique aux croyances religieuses devrait être poursuivie pénalement comme un délit."
+    }
+  },
+  {
+    "id": 162,
+    "categoryKey": "culture",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Nauczyciele w szkołach publicznych muszą zachowywać całkowitą neutralność religijną.",
+      "en": "Educators in state-run public schools must remain strictly neutral regarding religion.",
+      "es": "Los profesores de la escuela pública deben mantener una neutralidad religiosa estricta.",
+      "de": "Lehrkräfte an staatlichen Schulen müssen sich im Dienst religiös strikt neutral verhalten.",
+      "ru": "Учителя в государственных школах обязаны соблюдать нейтралитет в вопросах религии.",
+      "fr": "Les enseignants de l'école publique doivent observer une stricte neutralité religieuse au travail."
+    }
+  },
+  {
+    "id": 163,
+    "categoryKey": "culture",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Lekcje historii w szkołach powinny budować dumę z narodowej przeszłości.",
+      "en": "School history lessons should actively inspire pride in the nation's past triumphs.",
+      "es": "Las clases de historia escolar deben infundir orgullo patriótico en el alumnado.",
+      "de": "Der schulische Geschichtsunterricht sollte vor allem Nationalstolz auf die eigene Vergangenheit vermitteln.",
+      "ru": "Уроки истории в школе должны воспитывать гордость за прошлое своего народа.",
+      "fr": "Les cours d'histoire à l'école devraient susciter la fierté du passé national."
+    }
+  },
+  {
+    "id": 164,
+    "categoryKey": "culture",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Nauczanie religii powinno odbywać się w parafiach, a nie w publicznych szkołach.",
+      "en": "Religious instruction should take place in churches, not inside public schools.",
+      "es": "La catequesis religiosa debe impartirse en las iglesias y no en los colegios públicos.",
+      "de": "Religionsunterricht sollte in Kirchengemeinden statt an staatlichen Schulen stattfinden.",
+      "ru": "Обучение религии должно проходить в приходах, а не в государственных школах.",
+      "fr": "L'enseignement confessionnel devrait être dispensé dans les lieux de culte et non dans les écoles publiques."
+    }
+  },
+  {
+    "id": 165,
+    "categoryKey": "culture",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Lekarze powinni mieć prawo odmówić zabiegu sprzecznego z ich sumieniem.",
+      "en": "Medical doctors should retain the legal right of conscientious objection to procedures.",
+      "es": "Los médicos deben tener derecho a la objeción de conciencia ante intervenciones contrarias a su ética.",
+      "de": "Ärzte sollten das Recht behalten, Behandlungen aus Gewissensgründen abzulehnen.",
+      "ru": "Врачи должны иметь право отказаться от процедур, противоречащих их совести.",
+      "fr": "Les médecins devraient conserver le droit de refuser un acte contraire à leur conscience."
+    }
+  },
+  {
+    "id": 166,
+    "categoryKey": "culture",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Instytucja małżeństwa powinna być w prawie zdefiniowana wyłącznie jako związek kobiety i mężczyzny.",
+      "en": "The legal institution of marriage should be defined exclusively as a union between a man and a woman.",
+      "es": "La figura jurídica del matrimonio debe quedar definida solo como la unión de un hombre y una mujer.",
+      "de": "Die Ehe sollte gesetzlich ausschließlich als Bund zwischen Mann und Frau definiert sein.",
+      "ru": "Брак в законодательстве должен быть определён только как союз мужчины и женщины.",
+      "fr": "L'institution du mariage devrait être légalement réservée à l'union d'un homme et d'une femme."
+    }
+  },
+  {
+    "id": 167,
+    "categoryKey": "culture",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Zapłodnienie in vitro powinno być w pełni finansowane z budżetu państwa.",
+      "en": "In-vitro fertilization (IVF) treatments should be fully subsidized through the national healthcare budget.",
+      "es": "Los tratamientos de fecundación in vitro deben ser costeados íntegramente por la sanidad pública.",
+      "de": "Künstliche Befruchtungen (IVF) sollten vollständig über öffentliche Krankenkassen finanziert werden.",
+      "ru": "Процедура ЭКО должна полностью оплачиваться из государственного бюджета.",
+      "fr": "La procréation médicalement assistée (PMA) devrait être intégralement financée par la solidarité nationale."
+    }
+  },
+  {
+    "id": 168,
+    "categoryKey": "culture",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Niedziela powinna pozostać dniem ustawowo wolnym od pracy.",
+      "en": "Sundays should remain legally protected non-working days for society.",
+      "es": "El domingo debe seguir siendo por ley el día común de descanso laboral.",
+      "de": "Der Sonntag sollte gesetzlich als arbeitsfreier Ruhetag geschützt bleiben.",
+      "ru": "Воскресенье должно оставаться установленным законом выходным днём.",
+      "fr": "Le dimanche devrait demeurer un jour de repos hebdomadaire garanti par la loi."
+    }
+  },
+  {
+    "id": 169,
+    "categoryKey": "society",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": true,
+    "text": {
+      "pl": "Parytety dla kobiet na listach wyborczych powinny być obowiązkowe.",
+      "en": "Gender quotas for female candidates on political election lists should be compulsory.",
+      "es": "Las listas electorales deben incluir por ley cuotas obligatorias reservadas a mujeres.",
+      "de": "Verbindliche Frauenquoten auf Wahllisten von Parteien sollten vorgeschrieben sein.",
+      "ru": "Квоты для женщин в избирательных списках партий должны быть обязательными.",
+      "fr": "Des quotas réservés aux femmes sur les listes électorales devraient être obligatoires."
+    }
+  },
+  {
+    "id": 170,
+    "categoryKey": "society",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": true,
+    "text": {
+      "pl": "Przy zatrudnianiu powinny decydować wyłącznie kwalifikacje, bez punktów za płeć czy pochodzenie.",
+      "en": "Hiring decisions should be based purely on skill, without affirmative action points for gender or race.",
+      "es": "En las contrataciones solo debe contar la valía profesional, sin puntos por sexo o procedencia.",
+      "de": "Bei der Personalauswahl dürfen einzig Fachkenntnisse zählen, ohne Quoten für Geschlecht oder Ethnie.",
+      "ru": "При приёме на работу должны решать только квалификация, без поправок на пол или расу.",
+      "fr": "Les embauches ne devraient dépendre que des compétences, sans points attribués au titre du sexe ou de l'origine."
+    }
+  },
+  {
+    "id": 171,
     "categoryKey": "society",
     "axis": "soc",
     "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Więzienia powinny skupiać się na resocjalizacji i nauce zawodu, a nie na dotkliwym karaniu skazanych.",
-      "en": "Prisons should prioritize rehabilitation and vocational training over punitive retribution.",
-      "es": "Las prisiones deben centrarse en la reinserción social y laboral de los reclusos antes que en el castigo.",
-      "de": "Strafvollzugsanstalten sollten auf Resozialisierung und Berufsausbildung statt auf bloße Vergeltung setzen.",
-      "ru": "Тюрьмы должны заниматься обучением профессии и исправлением людей, а не жестоким наказанием.",
-      "fr": "Les prisons devraient privilégier la réinsertion et la formation professionnelle plutôt que la punition pure."
+      "pl": "Świadczenie usług seksualnych przez dorosłe osoby powinno być legalnym zawodem.",
+      "en": "Adult consensual sex work should be a fully legal and regulated profession.",
+      "es": "El trabajo sexual remunerado entre adultos debe ser una profesión legal regulada.",
+      "de": "Einvernehmliche Sexarbeit unter Erwachsenen sollte ein ganz normaler legaler Beruf sein.",
+      "ru": "Оказание сексуальных услуг совершеннолетними должно быть легальной профессией.",
+      "fr": "Le travail du sexe consenti entre adultes devrait être une profession légale et déclarée."
     }
   },
   {
-    "id": 148,
+    "id": 172,
+    "categoryKey": "society",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Państwo powinno karać finansowo rodziców odmawiających obowiązkowych szczepień dzieci.",
+      "en": "The state should fine parents who refuse mandatory preventive vaccinations for their kids.",
+      "es": "El Estado debe multar a los padres que se nieguen a administrar las vacunas obligatorias a sus hijos.",
+      "de": "Der Staat sollte Bußgelder verhängen, wenn Eltern vorgeschriebene Kinderimpfungen verweigern.",
+      "ru": "Государство должно штрафовать родителей, отказывающихся от обязательных прививок детям.",
+      "fr": "L'État devrait infliger des amendes aux parents refusant les vaccins obligatoires de leurs enfants."
+    }
+  },
+  {
+    "id": 173,
+    "categoryKey": "society",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Uchodźcy uciekający przed wojną powinni mieć prawo złożyć wniosek o azyl.",
+      "en": "Refugees fleeing warzones should have an undisputed legal right to seek political asylum.",
+      "es": "Las personas que huyen de la guerra deben tener derecho a pedir asilo sin trabas.",
+      "de": "Kriegsflüchtlinge sollten das verbriefte Recht haben, ein ordentliches Asylgesuch einzureichen.",
+      "ru": "Беженцы от военных действий должны иметь право подать заявление на убежище.",
+      "fr": "Les personnes fuyant les zones de guerre devraient avoir le droit de déposer une demande d'asile."
+    }
+  },
+  {
+    "id": 174,
+    "categoryKey": "society",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Imigranci powinni mieć obowiązek zdania testu z języka i kultury kraju.",
+      "en": "Immigrants should be required to pass official language and civic culture exams to stay.",
+      "es": "Los inmigrantes deben estar obligados a superar exámenes cívicos y de idioma nacional.",
+      "de": "Zuwanderer sollten verpflichtende Sprach- und Landeskundeprüfungen bestehen müssen.",
+      "ru": "Иммигранты должны быть обязаны сдавать экзамен по языку и культуре страны.",
+      "fr": "Les personnes immigrées devraient avoir l'obligation de réussir un examen de langue et de culture civique."
+    }
+  },
+  {
+    "id": 175,
+    "categoryKey": "society",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Pary jednopłciowe powinny mieć prawo do adopcji dzieci.",
+      "en": "Same-sex couples should have the legal right to adopt children.",
+      "es": "Las parejas formadas por personas del mismo sexo deben poder adoptar menores.",
+      "de": "Gleichgeschlechtliche Paare sollten das volle Adoptionsrecht für Kinder erhalten.",
+      "ru": "Однополые пары должны иметь законное право усыновлять детей.",
+      "fr": "Les couples de même sexe devraient avoir le droit d'adopter des enfants."
+    }
+  },
+  {
+    "id": 176,
+    "categoryKey": "society",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Utrzymanie porządku publicznego jest ważniejsze niż prawo do ulicznych demonstracji.",
+      "en": "Maintaining street peace and public order is more important than unrestricted protest rights.",
+      "es": "La conservación de la paz pública es prioritaria sobre el derecho a manifestarse en la calle.",
+      "de": "Öffentliche Ordnung und Sicherheit auf Straßen wiegen schwerer als das Demonstrationsrecht.",
+      "ru": "Общественный порядок на улицах важнее, чем право на проведение митингов.",
+      "fr": "La tranquillité et l'ordre publics priment sur le droit d'organiser des manifestations dans la rue."
+    }
+  },
+  {
+    "id": 177,
+    "categoryKey": "society",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Posiadanie małych ilości narkotyków powinno być leczone, a nie karane więzieniem.",
+      "en": "Possession of small drug quantities should be met with medical care, not incarceration.",
+      "es": "La tenencia de pequeñas cantidades de estupefacientes debe abordarse con terapia médica y no con prisión.",
+      "de": "Der Besitz von Kleinstmengen an Drogen sollte ärztlich behandelt statt mit Gefängnis bestraft werden.",
+      "ru": "Хранение малых доз наркотических веществ должно лечиться врачами, а не караться тюрьмой.",
+      "fr": "La détention de petites quantités de drogue devrait faire l'objet de soins et non de peines de prison."
+    }
+  },
+  {
+    "id": 178,
+    "categoryKey": "society",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Cudzoziemcy przebywający w kraju nielegalnie powinni być natychmiast deportowani.",
+      "en": "Undocumented immigrants staying in the country unlawfully should be deported immediately.",
+      "es": "Los extranjeros indocumentados en situación irregular deben ser expulsados de inmediato.",
+      "de": "Ausländer ohne gültiges Aufenthaltsrecht sollten unverzüglich abgeschoben werden.",
+      "ru": "Иностранцы, находящиеся в стране незаконно, должны быть немедленно депортированы.",
+      "fr": "Les étrangers en situation irrégulière sur le territoire devraient être expulsés immédiatement."
+    }
+  },
+  {
+    "id": 179,
+    "categoryKey": "society",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Więzienia powinny skupiać się na nauce zawodu i resocjalizacji, a nie na karaniu.",
+      "en": "Correctional facilities should prioritize rehabilitation and trade training over punishment.",
+      "es": "Las cárceles deben volcarse en la reinserción social y la capacitación laboral antes que en el castigo.",
+      "de": "Gefängnisse sollten ihren Schwerpunkt auf Resozialisierung und Berufsausbildung legen.",
+      "ru": "Тюрьмы должны ориентироваться на обучение профессии и исправление, а не на наказание.",
+      "fr": "Les prisons devraient privilégier la formation professionnelle et la réinsertion plutôt que la punition."
+    }
+  },
+  {
+    "id": 180,
+    "categoryKey": "society",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Szkoła powinna uczyć szacunku do tradycyjnych ról męskich i kobiecych.",
+      "en": "Schools should foster respect for traditional masculine and feminine gender roles.",
+      "es": "Los centros educativos deben promover el respeto a los roles masculinos y femeninos tradicionales.",
+      "de": "Schulen sollten die Achtung vor den überlieferten Rollenmustern von Mann und Frau vermitteln.",
+      "ru": "Школа должна воспитывать уважение к традиционным мужским и женским ролям.",
+      "fr": "L'école devrait transmettre le respect des rôles masculins et féminins traditionnels."
+    }
+  },
+  {
+    "id": 181,
+    "categoryKey": "society",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Osoby samotne powinny mieć pełne prawo do adopcji dzieci.",
+      "en": "Single individuals should have equal legal rights to adopt children.",
+      "es": "Las personas solteras deben tener pleno derecho legal a adoptar a un menor.",
+      "de": "Alleinstehende Personen sollten das uneingeschränkte Recht auf Adoption von Kindern haben.",
+      "ru": "Одинокие люди должны иметь равное право усыновлять детей.",
+      "fr": "Les personnes célibataires devraient avoir le droit plein et entier d'adopter des enfants."
+    }
+  },
+  {
+    "id": 182,
+    "categoryKey": "society",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Zasiłki socjalne powinny przysługiwać wyłącznie obywatelom danego kraju.",
+      "en": "Government welfare payments should be strictly reserved for citizens holding national passport.",
+      "es": "Las ayudas sociales del Estado deben concederse exclusivamente a quienes posean la nacionalidad.",
+      "de": "Staatliche Sozialleistungen sollten ausschließlich Inhabern der Staatsbürgerschaft zustehen.",
+      "ru": "Социальные пособия должны выплачиваться только гражданам страны.",
+      "fr": "Les prestations d'aide sociale devraient être réservées exclusivement aux citoyens nationaux."
+    }
+  },
+  {
+    "id": 183,
+    "categoryKey": "society",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Dostęp do bezpłatnej antykoncepcji powinien być gwarantowany przez państwo.",
+      "en": "Access to free contraceptives should be guaranteed to all citizens by the state.",
+      "es": "El acceso a métodos anticonceptivos gratuitos debe estar garantizado por la sanidad estatal.",
+      "de": "Der Staat sollte kostenlosen Zugang zu Verhütungsmitteln für jeden gewährleisten.",
+      "ru": "Доступ к бесплатным средствам контрацепции должен гарантироваться государством.",
+      "fr": "L'accès à des contraceptifs gratuits devrait être garanti à tous par l'État."
+    }
+  },
+  {
+    "id": 184,
+    "categoryKey": "society",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Marsze i parady równości powinny być zakazane w pobliżu szkół i kościołów.",
+      "en": "LGBT pride parades should be barred from taking place in the vicinity of schools and churches.",
+      "es": "Los desfiles del orgullo LGBT deben estar prohibidos cerca de colegios e iglesias.",
+      "de": "Paraden wie der Christopher Street Day sollten in der Nähe von Schulen und Gotteshäusern untersagt sein.",
+      "ru": "ЛГБТ-марши и парады должны быть запрещены рядом со школами и церквями.",
+      "fr": "Les défilés de la fierté LGBT devraient être interdits aux abords des écoles et des lieux de culte."
+    }
+  },
+  {
+    "id": 185,
     "categoryKey": "security",
     "axis": "soc",
     "multiplier": -1,
     "isQuick": true,
     "text": {
-      "pl": "Na granicach państwa powinny stać wysokie zapory i mury, a nielegalny wjazd musi być zablokowany.",
-      "en": "National borders should be fortified with security barriers and walls to stop illegal crossings.",
-      "es": "Las fronteras nacionales deben contar con vallas y muros para frenar la entrada ilegal por la fuerza.",
-      "de": "An den Landesgrenzen sollten feste Grenzzäune stehen, um irreguläre Grenzübertritte zu stoppen.",
-      "ru": "На государственных границах должны стоять укрепленные заборы для пресечения незаконного въезда.",
-      "fr": "Les frontières nationales devraient être protégées par des murs et barrières pour stopper l'immigration illégale."
+      "pl": "Na granicach państwa powinny stać wysokie zapory i mury.",
+      "en": "National land borders should be physically fortified with fences and walls.",
+      "es": "Las fronteras terrestres deben estar protegidas con vallas y muros físicos.",
+      "de": "An den Außengrenzen sollten befestigte Zäune und Mauern stehen.",
+      "ru": "На государственных границах должны быть установлены заборы и заграждения.",
+      "fr": "Les frontières terrestres du pays devraient être fortifiées par des murs et des barrières."
     }
   },
   {
-    "id": 149,
+    "id": 186,
     "categoryKey": "security",
     "axis": "soc",
     "multiplier": 1,
     "isQuick": true,
     "text": {
-      "pl": "Kraje Unii Europejskiej powinny zjednoczyć się w jedno wspólne państwo z jednym rządem i armią.",
-      "en": "European Union nations should integrate into a unified federal state with one government and army.",
-      "es": "Los países de la Unión Europea deberían federarse en un solo Estado con un gobierno y ejército comunes.",
-      "de": "Die Mitgliedsstaaten der Europäischen Union sollten sich zu einem föderalen Bundesstaat mit gemeinsamer Armee vereinen.",
-      "ru": "Страны Евросоюза должны объединиться в единое федеративное государство с общим правительством и армией.",
-      "fr": "Les pays de l'Union européenne devraient s'unir en un État fédéral unique avec un gouvernement et une armée communs."
+      "pl": "Kraje Unii Europejskiej powinny połączyć się w jedno państwo ze wspólnym rządem i armią.",
+      "en": "European Union nations should unite into a single federal state with a shared army.",
+      "es": "Los países de la Unión Europea deben fusionarse en un solo Estado federal con un ejército común.",
+      "de": "Die EU-Staaten sollten sich zu einem europäischen Bundesstaat mit gemeinsamer Armee zusammenschließen.",
+      "ru": "Страны Евросоюза должны объединиться в одно государство с общим правительством и армией.",
+      "fr": "Les pays de l'Union européenne devraient fusionner en un seul État fédéral doté d'une armée commune."
     }
   },
   {
-    "id": 150,
+    "id": 187,
     "categoryKey": "security",
     "axis": "soc",
     "multiplier": -1,
     "isQuick": true,
     "text": {
-      "pl": "Obowiązkowa zasadnicza służba wojskowa dla młodych obywateli powinna zostać przywrócona.",
-      "en": "Mandatory military conscription for young citizens should be reinstated.",
-      "es": "El servicio militar obligatorio para los jóvenes debería restablecerse.",
-      "de": "Die allgemeine Wehrpflicht für junge Staatsbürger sollte wieder eingeführt werden.",
-      "ru": "Обязательный призыв на военную службу для молодежи должен быть сохранен или возвращен.",
+      "pl": "Obowiązkowa służba wojskowa dla młodych obywateli powinna zostać przywrócona.",
+      "en": "Mandatory military service for young adult citizens should be reinstated.",
+      "es": "El servicio militar obligatorio para los jóvenes debe ser restablecido.",
+      "de": "Die allgemeine Wehrpflicht für junge Staatsbürger sollte wieder in Kraft gesetzt werden.",
+      "ru": "Обязательная военная служба для молодых граждан должна быть возвращена.",
       "fr": "Le service militaire obligatoire pour les jeunes citoyens devrait être rétabli."
     }
   },
   {
-    "id": 151,
+    "id": 188,
     "categoryKey": "security",
     "axis": "soc",
     "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Wyroki międzynarodowych trybunałów praw człowieka powinny być ważniejsze niż ustawy krajowego parlamentu.",
-      "en": "Rulings of international human rights courts should strictly override national domestic laws.",
-      "es": "Las sentencias de tribunales internacionales de derechos humanos deben prevalecer sobre las leyes nacionales.",
+      "pl": "Wyroki międzynarodowych trybunałów praw człowieka muszą być ważniejsze niż ustawy krajowe.",
+      "en": "Rulings of international human rights courts must take precedence over domestic legislation.",
+      "es": "Las resoluciones de los tribunales internacionales de derechos humanos deben prevalecer sobre las leyes nacionales.",
       "de": "Urteile internationaler Menschenrechtsgerichte müssen über nationalen Gesetzen stehen.",
-      "ru": "Решения международных судов по правам человека должны иметь приоритет над законами национального парламента.",
-      "fr": "Les décisions des tribunaux internationaux des droits de l'homme devraient primer sur les lois nationales."
+      "ru": "Решения международных судов по правам человека должны быть выше законов страны.",
+      "fr": "Les arrêts des cours internationales des droits de l'homme doivent prévaloir sur les lois nationales."
     }
   },
   {
-    "id": 152,
+    "id": 189,
     "categoryKey": "security",
     "axis": "soc",
     "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Wydatki na zbrojenia i armię powinny być priorytetem budżetowym, nawet kosztem innych dziedzin.",
-      "en": "Defense and military spending should take top budget priority, even at the cost of social spending.",
-      "es": "El gasto militar y de defensa debe ser la prioridad del presupuesto, aun a costa de otras partidas.",
-      "de": "Rüstungsausgaben und Streitkräfte sollten oberste Haushaltspriorität genießen, auch zulasten anderer Bereiche.",
-      "ru": "Расходы на армию и вооружение должны быть главным приоритетом бюджета, даже в ущерб другим сферам.",
-      "fr": "Les dépenses militaires et de défense devraient être la priorité budgétaire absolue, même aux dépens d'autres postes."
+      "pl": "Wydatki na zbrojenia powinny być priorytetem budżetowym państwa.",
+      "en": "National defense and weapon procurement should be the government's top budget priority.",
+      "es": "El gasto en defensa y armamento debe ser la primera prioridad del presupuesto estatal.",
+      "de": "Verteidigungsausgaben und Waffenbeschaffung sollten oberste Haushaltspriorität haben.",
+      "ru": "Расходы на вооружение должны быть главным приоритетом государственного бюджета.",
+      "fr": "Les dépenses militaires et d'armement devraient constituer la première priorité du budget de l'État."
     }
   },
   {
-    "id": 153,
+    "id": 190,
     "categoryKey": "security",
     "axis": "soc",
     "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Powinniśmy dążyć do świata otwartych granic, w którym każdy człowiek może swobodnie mieszkać gdzie chce.",
-      "en": "Humanity should strive toward a borderless world where anyone is free to live anywhere on Earth.",
-      "es": "Debemos avanzar hacia un mundo sin fronteras donde cualquier ser humano pueda vivir donde desee.",
-      "de": "Wir sollten eine Welt offener Grenzen anstreben, in der jeder Mensch frei wählen kann, wo er lebt.",
-      "ru": "Человечество должно стремиться к миру открытых границ, где любой человек может жить там, где захочет.",
-      "fr": "L'humanité devrait tendre vers un monde sans frontières où chacun est libre de s'établir où il le souhaite."
+      "pl": "Docelowo granice państwowe na świecie powinny zostać otwarte dla każdego człowieka.",
+      "en": "Long term, all international borders should be opened to free settlement for all humanity.",
+      "es": "A largo plazo, las fronteras nacionales del mundo deben abrirse libremente para todos los seres humanos.",
+      "de": "Langfristig sollten die Staatsgrenzen weltweit für jeden Menschen frei passierbar sein.",
+      "ru": "В будущем границы между странами должны быть открыты для свободного перемещения каждого человека.",
+      "fr": "À terme, les frontières nationales dans le monde devraient être ouvertes à tout être humain."
     }
   },
   {
-    "id": 154,
+    "id": 191,
     "categoryKey": "security",
     "axis": "soc",
     "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Interes narodowy własnego kraju musi zawsze stać wyżej niż międzynarodowe traktaty i zobowiązania.",
-      "en": "National sovereignty and domestic interests must always supersede international treaties.",
-      "es": "El interés nacional del propio país debe prevalecer siempre sobre tratados y organismos internacionales.",
-      "de": "Nationale Interessen des eigenen Landes müssen stets über völkerrechtlichen Verträgen stehen.",
-      "ru": "Национальные интересы собственной страны должны всегда стоять выше международных договоров.",
-      "fr": "L'intérêt national souverain doit toujours prévaloir sur les traités et engagements internationaux."
+      "pl": "Interes narodowy musi zawsze stać wyżej niż międzynarodowe traktaty.",
+      "en": "National sovereignty and domestic interests must always override international treaties.",
+      "es": "El interés supremo de la nación debe anteponerse siempre a los tratados internacionales.",
+      "de": "Nationale Interessen müssen stets über internationalen Abkommen stehen.",
+      "ru": "Национальные интересы страны всегда должны стоять выше международных договоров.",
+      "fr": "L'intérêt supérieur de la nation doit toujours l'emporter sur les traités internationaux."
     }
   },
   {
-    "id": 155,
+    "id": 192,
     "categoryKey": "security",
     "axis": "soc",
     "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Bogate kraje powinny bezwarunkowo umorzyć długi najuboższym państwom świata, by zwalczyć nędzę.",
-      "en": "Wealthy nations should unconditionally cancel the national debts of developing countries to alleviate poverty.",
-      "es": "Las naciones ricas deberían condonar incondicionalmente la deuda a los países más desfavorecidos.",
-      "de": "Wohlhabende Staaten sollten die Staatsschulden der ärmsten Entwicklungsländer bedingungslos erlassen.",
-      "ru": "Богатые державы должны списать долги беднейшим странам мира для преодоления глобальной нищеты.",
-      "fr": "Les nations riches devraient annuler sans condition la dette des pays les plus pauvres pour lutter contre la misère."
+      "pl": "Bogate kraje powinny bezwarunkowo umorzyć długi najbiedniejszym państwom świata.",
+      "en": "Wealthy nations should unconditionally cancel foreign debts owed by developing countries.",
+      "es": "Los países ricos deben perdonar incondicionalmente la deuda externa a las naciones más empobrecidas.",
+      "de": "Reiche Länder sollten den ärmsten Staaten der Erde deren Schulden bedingungslos erlassen.",
+      "ru": "Богатые страны должны списать внешние долги беднейшим государствам мира.",
+      "fr": "Les pays riches devraient effacer sans condition les dettes des nations les plus pauvres."
     }
   },
   {
-    "id": 156,
+    "id": 193,
     "categoryKey": "security",
     "axis": "soc",
     "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Gdy wrogi reżim otwarcie nam zagraża, nasza armia powinna mieć prawo do wyprzedzającego uderzenia militarnego.",
-      "en": "When a hostile regime actively threatens us, our armed forces should have the right to launch a preemptive strike.",
-      "es": "Ante la amenaza inminente de un régimen hostil, nuestro ejército debe poder lanzar un ataque preventivo.",
-      "de": "Bei akuter Bedrohung durch feindliche Regime sollte das Militär präventive Schläge führen dürfen.",
-      "ru": "Если враждебный режим создает прямую угрозу, наша армия вправе нанести упреждающий военный удар.",
-      "fr": "Lorsqu'un régime hostile nous menace directement, notre armée devrait pouvoir mener une frappe préventive."
+      "pl": "Państwo ma prawo uderzyć militarnie pierwsze w obliczu bezpośredniego zagrożenia wojną.",
+      "en": "A nation has the right to launch a preemptive military strike when facing imminent invasion.",
+      "es": "Un país tiene derecho a lanzar un ataque militar preventivo ante una amenaza inminente de agresión.",
+      "de": "Ein Staat darf bei unmittelbarer Kriegsgefahr einen militärischen Erstschlag ausführen.",
+      "ru": "Государство имеет право нанести военный удар первым при прямой угрозе войны.",
+      "fr": "Un État a le droit de frapper militairement en premier face à une menace imminente d'agression."
     }
   },
   {
-    "id": 157,
+    "id": 194,
     "categoryKey": "security",
     "axis": "soc",
     "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Wszystkie mocarstwa powinny całkowicie i bezwarunkowo zlikwidować swoje arsenały broni jądrowej.",
-      "en": "All global powers should unconditionally dismantle and abolish all nuclear weapons.",
-      "es": "Todas las potencias deberían desmantelar y destruir sin condiciones sus arsenales nucleares.",
-      "de": "Sämtliche Großmächte sollten ihre Atomwaffenbestände ausnahmslos und bedingungslos verschrotten.",
-      "ru": "Все ядерные державы должны безоговорочно и полностью ликвидировать своё ядерное оружие.",
-      "fr": "Toutes les puissances mondiales devraient démanteler totalement et sans condition leurs armes nucléaires."
+      "pl": "Wszystkie mocarstwa powinny zlikwidować swoje arsenały broni jądrowej.",
+      "en": "All nuclear-armed world powers should dismantle and abolish their nuclear warhead stockpiles.",
+      "es": "Todas las potencias mundiales deben desmantelar por completo sus arsenales nucleares.",
+      "de": "Sämtliche Atommächte sollten ihre Kernwaffenarsenale restlos vernichten.",
+      "ru": "Все мировые державы должны уничтожить свои запасы ядерного оружия.",
+      "fr": "Toutes les puissances mondiales devraient démanteler l'ensemble de leurs arsenaux nucléaires."
     }
   },
   {
-    "id": 158,
+    "id": 195,
     "categoryKey": "security",
     "axis": "soc",
     "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Każdy dorosły obywatel powinien przejść obowiązkowe państwowe przeszkolenie strzeleckie na wypadek wojny.",
-      "en": "Every adult citizen should undergo mandatory marksmanship and civil defense training in case of war.",
-      "es": "Todo ciudadano adulto debería recibir entrenamiento obligatorio de tiro y defensa ante posibles guerras.",
-      "de": "Jeder erwachsene Staatsbürger sollte ein verpflichtendes Schieß- und Zivilschutztraining für den Ernstfall absolvieren.",
-      "ru": "Каждый взрослый гражданин должен пройти обязательную стрелковую подготовку на случай военной угрозы.",
-      "fr": "Chaque citoyen adulte devrait suivre une formation obligatoire au tir et à la défense civile en cas de conflit."
+      "pl": "Każdy dorosły obywatel powinien przejść obowiązkowe szkolenie strzeleckie.",
+      "en": "Every adult citizen should undergo compulsory civilian firearm and defense training.",
+      "es": "Todo ciudadano adulto debe superar una instrucción básica obligatoria de tiro y defensa.",
+      "de": "Jeder volljährige Bürger sollte ein verpflichtendes Schieß- und Zivilschutztraining absolvieren.",
+      "ru": "Каждый взрослый гражданин должен пройти обязательное стрелковое обучение.",
+      "fr": "Chaque citoyen adulte devrait suivre une formation obligatoire au tir et à la défense civile."
     }
   },
   {
-    "id": 159,
+    "id": 196,
     "categoryKey": "security",
     "axis": "soc",
     "multiplier": 1,
     "isQuick": false,
     "text": {
-      "pl": "Neutralność, traktaty pokojowe i dyplomacja dają trwalsze bezpieczeństwo niż wstępowanie w sojusze militarne.",
-      "en": "Neutrality, peace treaties, and diplomacy build more lasting security than joining foreign military alliances.",
-      "es": "La neutralidad y la diplomacia garantizan la paz de forma más duradera que los pactos militares.",
-      "de": "Neutralität und friedliche Diplomatie schaffen nachhaltigere Sicherheit als der Beitritt zu Militärblöcken.",
-      "ru": "Нейтралитет и мирная дипломатия обеспечивают безопасность надежнее, чем вступление в военные союзы.",
-      "fr": "La neutralité et les voies diplomatiques offrent une sécurité plus durable que l'adhésion à des alliances militaires."
+      "pl": "Neutralność i dyplomacja dają większe bezpieczeństwo niż wstępowanie w sojusze wojskowe.",
+      "en": "Diplomatic neutrality provides greater security than joining foreign military alliances.",
+      "es": "La neutralidad diplomática aporta más seguridad nacional que pertenecer a bloques militares.",
+      "de": "Politische Neutralität und Diplomatie schaffen mehr Sicherheit als militärische Beistandspakte.",
+      "ru": "Нейтралитет и дипломатия обеспечивают большую безопасность, чем вступление в военные альянсы.",
+      "fr": "La neutralité diplomatique apporte plus de sécurité que l'adhésion à des alliances militaires."
     }
   },
   {
-    "id": 160,
+    "id": 197,
     "categoryKey": "security",
     "axis": "soc",
     "multiplier": -1,
     "isQuick": false,
     "text": {
-      "pl": "Obecność stałych baz wojskowych sojuszników na naszym terytorium jest kluczowa dla odstraszenia agresorów.",
-      "en": "Stationing permanent allied foreign military bases on our soil is indispensable to deter hostile powers.",
-      "es": "Tener bases militares aliadas permanentes en nuestro suelo es fundamental para disuadir a potencias agresoras.",
-      "de": "Die dauerhafte Stationierung verbündeter Militärstützpunkte im Inland ist zur Abschreckung unerlässlich.",
-      "ru": "Постоянное присутствие военных баз союзников на нашей земле необходимо для сдерживания любых агрессоров.",
-      "fr": "La présence de bases militaires alliées permanentes sur notre sol est indispensable pour dissuader toute agression."
+      "pl": "Obecność obcych baz wojskowych sojuszników na naszym terytorium jest konieczna.",
+      "en": "Stationing foreign allied military bases on national soil is essential for defense.",
+      "es": "Disponer de bases militares aliadas permanentes en nuestro territorio es indispensable.",
+      "de": "Die Stationierung von Stützpunkten verbündeter Streitkräfte im Inland ist notwendig.",
+      "ru": "Присутствие военных баз союзников на нашей территории необходимо.",
+      "fr": "La présence de bases militaires alliées sur notre sol national est indispensable."
+    }
+  },
+  {
+    "id": 198,
+    "categoryKey": "security",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Wysyłanie wojsk na misje zagraniczne poza granice kraju powinno być zakazane.",
+      "en": "Deploying national armed forces on foreign combat missions abroad should be prohibited.",
+      "es": "Enviar tropas nacionales a operaciones armadas fuera del país debe estar terminantemente prohibido.",
+      "de": "Militäreinsätze eigener Truppen im Ausland sollten grundsätzlich untersagt sein.",
+      "ru": "Отправка войск на военные операции за рубеж должна быть запрещена.",
+      "fr": "Le déploiement des forces armées nationales sur des théâtres d'opérations extérieurs devrait être interdit."
+    }
+  },
+  {
+    "id": 199,
+    "categoryKey": "security",
+    "axis": "soc",
+    "multiplier": -1,
+    "isQuick": false,
+    "text": {
+      "pl": "Państwo powinno posiadać własną broń jądrową w celu odstraszania wrogów.",
+      "en": "The nation should possess independent nuclear weapons to deter foreign adversaries.",
+      "es": "El país debe contar con armas nucleares propias para disuadir a potenciales enemigos.",
+      "de": "Der Staat sollte eigene Atomwaffen zur Abschreckung möglicher Angreifer besitzen.",
+      "ru": "Страна должна иметь собственное ядерное оружие для сдерживания врагов.",
+      "fr": "Le pays devrait disposer de sa propre force de frappe nucléaire pour dissuader les agresseurs."
+    }
+  },
+  {
+    "id": 200,
+    "categoryKey": "security",
+    "axis": "soc",
+    "multiplier": 1,
+    "isQuick": false,
+    "text": {
+      "pl": "Międzynarodowy handel bronią powinien zostać całkowicie zakazany.",
+      "en": "International cross-border commerce in arms and military weapons should be completely banned.",
+      "es": "El comercio internacional de armas bélicas debe ser totalmente prohibido en todo el mundo.",
+      "de": "Der weltweite Export und Handel mit Kriegswaffen sollte ausnahmslos verboten werden.",
+      "ru": "Международная торговля оружием должна быть полностью запрещена.",
+      "fr": "Le commerce international et l'exportation d'armes devraient être totalement interdits."
     }
   }
 ];

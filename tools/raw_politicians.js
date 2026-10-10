@@ -3260,8 +3260,8 @@ const rawPoliticians = [
       "de": "Du schätzt industrielle Klimatransformation, faire Mindestlöhne, besonnene Sicherheitspolitik (Zeitenwende) und europäische Verlässlichkeit."
     },
     "coordinates": {
-      "econ": -45,
-      "soc": 35
+      "econ": -38,
+      "soc": 30
     },
     "color": "#d81b60",
     "gradient": "linear-gradient(135deg, #d81b60, #880e4f)",
@@ -4809,8 +4809,8 @@ const rawPoliticians = [
       "fr": "Vous admirez l'audace militaire, le génie stratégique, la fusion culturelle de l'Orient et de l'Occident et l'autorité héroïque d'un grand souverain."
     },
     "coordinates": {
-      "econ": 10,
-      "soc": -85
+      "econ": 0,
+      "soc": -92
     },
     "color": "#b45309",
     "gradient": "linear-gradient(135deg, #b45309, #78350f)",

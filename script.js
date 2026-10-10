@@ -1,6 +1,6 @@
 /**
  * TEST POLITYCZNY - GŁÓWNA LOGIKA APLIKACJI (WERSJA GLOBALNA 2026)
- * Obsługa 160 pytań, 44 ideologii, 105 światowych liderów i postaci historycznych (w tym liderów II wojny światowej), 30 partii międzynarodowych
+ * Obsługa 200 pytań, 44 ideologii, 105 światowych liderów i postaci historycznych (w tym liderów II wojny światowej), 30 partii międzynarodowych
  * 6 opcji odpowiedzi (w tym Neutralny / Umiarkowany vs. Nie mam zdania / Pomiń)
  * oraz 6 języków: EN (domyślny), PL, ES, DE, RU, FR.
  */
@@ -2032,11 +2032,11 @@ function showResults(animated = true) {
   if (resultBadge) {
     resultBadge.textContent = currentTestMode === "quick"
       ? (t.badgeResultQuick || "Test Result • Quick Version (30 questions)")
-      : (t.badgeResultFull || "Test Result • Full Version (160 questions)");
+      : (t.badgeResultFull || "Test Result • Full Version (200 questions)");
   }
   if (tryOtherModeBtn) {
     tryOtherModeBtn.textContent = currentTestMode === "quick"
-      ? (t.tryOtherModeFull || "🧭 Take the Full Version (160 questions)")
+      ? (t.tryOtherModeFull || "🧭 Take the Full Version (200 questions)")
       : (t.tryOtherModeQuick || "⚡ Take the Quick Version (30 questions)");
   }
 
