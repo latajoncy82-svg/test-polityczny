@@ -164,7 +164,7 @@ body {
 
 .app-container {
   width: 100%;
-  max-width: 820px;
+  max-width: 880px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -177,12 +177,12 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 20px;
+  padding: 10px 18px;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.25);
-  gap: 16px;
+  gap: 12px;
   position: relative;
   z-index: 20;
   transform: translateZ(0);
@@ -192,14 +192,15 @@ body {
 .logo-area {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 .logo-icon-badge {
-  font-size: 1.4rem;
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
+  font-size: 1.3rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
   background: var(--bg-card-subtle);
   border: 1px solid var(--border-color);
   display: flex;
@@ -218,47 +219,37 @@ body {
 .logo-text-block {
   display: flex;
   flex-direction: column;
+  white-space: nowrap;
 }
 
 .logo-title {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent-primary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  line-height: 1.2;
+  line-height: 1.15;
+  white-space: nowrap;
 }
 
 .logo-sub {
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 600;
   color: var(--text-muted);
   letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
 .header-controls {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
 .header-edition-pill {
-  background: var(--bg-card-subtle);
-  border: 1px solid var(--border-color);
-  color: var(--text-secondary);
-  font-size: 0.74rem;
-  font-weight: 700;
-  padding: 5px 12px;
-  border-radius: 9999px;
-  letter-spacing: 0.2px;
-  white-space: nowrap;
-}
-
-@media (max-width: 640px) {
-  .header-edition-pill {
-    display: none;
-  }
+  display: none; /* Hide redundant edition pill in header to avoid horizontal crowding */
 }
 
 .header-lang-switcher {
@@ -276,17 +267,19 @@ body {
   border: none;
   color: var(--text-secondary);
   font-family: var(--font-family);
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 700;
-  padding: 6px 11px;
+  padding: 5px 8px;
   border-radius: 9999px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
   position: relative;
   overflow: hidden;
+  white-space: nowrap;
+  line-height: 1;
 }
 
 .pill-lang-btn .flag-icon {
@@ -304,7 +297,7 @@ body {
 }
 
 .pill-lang-btn .lang-code {
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.02em;
 }
@@ -325,14 +318,14 @@ body {
   background: var(--bg-card-subtle);
   border: 1px solid var(--border-color);
   color: var(--text-primary);
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-size: 1.05rem;
+  font-size: 1rem;
   transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
   flex-shrink: 0;
   position: relative;
@@ -352,7 +345,7 @@ body {
 }
 
 .palette-toggle-icon {
-  font-size: 1.05rem;
+  font-size: 1rem;
   line-height: 1;
 }
 
@@ -2738,37 +2731,51 @@ body.theme-light .ripple-wave {
 /* ==========================================================
    RESPONSIVENESS (MOBILE & TABLET)
    ========================================================== */
+@media (max-width: 768px) {
+  .pill-lang-btn {
+    padding: 5px 6px;
+    gap: 3px;
+  }
+  .pill-lang-btn .lang-code {
+    font-size: 0.68rem;
+  }
+}
+
 @media (max-width: 680px) {
   body {
     padding: 12px;
   }
 
   .app-header {
-    flex-wrap: wrap;
     padding: 10px 14px;
-    gap: 12px;
+    gap: 10px;
   }
 
   .logo-title {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
   }
 
   .logo-icon-badge {
-    width: 36px;
-    height: 36px;
-    font-size: 1.2rem;
+    width: 34px;
+    height: 34px;
+    font-size: 1.15rem;
   }
 
   .header-controls {
-    gap: 8px;
+    gap: 6px;
   }
 
   .pill-lang-btn {
-    padding: 5px 8px;
+    padding: 5px 6px;
   }
 
   .pill-lang-btn .lang-code {
-    display: none;
+    display: none; /* Show only crisp SVG flags on narrower screens */
+  }
+
+  .header-lang-switcher {
+    padding: 2px;
+    gap: 1px;
   }
 
   .main-card {
@@ -2858,7 +2865,10 @@ body.theme-light .ripple-wave {
 
 @media (max-width: 480px) {
   .app-header {
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
   }
 
   .logo-area {
@@ -2870,6 +2880,8 @@ body.theme-light .ripple-wave {
   .header-controls {
     width: 100%;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
   }
 
   .accent-palette-picker {
