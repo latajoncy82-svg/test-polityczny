@@ -2717,6 +2717,8 @@ const worldParties = [
       "fr": "Alliance internationale des partis libertariens (IALP)"
     },
     "emblem": "🗽",
+    "color": "#eab308",
+    "gradient": "linear-gradient(135deg, #eab308, #ca8a04)",
     "type": {
       "pl": "Globalny ruch wolnościowy i antyetatystyczny",
       "en": "Global libertarian and anti-statist network",
@@ -2743,6 +2745,8 @@ const worldParties = [
       "fr": "Internationale libérale / Alliance mondiale Renew"
     },
     "emblem": "🌐",
+    "color": "#f59e0b",
+    "gradient": "linear-gradient(135deg, #f59e0b, #d97706)",
     "type": {
       "pl": "Globalna federacja partii liberalnych i demokratycznych",
       "en": "Worldwide federation of liberal and reformist democratic parties",
@@ -2769,6 +2773,8 @@ const worldParties = [
       "fr": "Alliance progressiste / Internationale sociale-démocrate"
     },
     "emblem": "🌹",
+    "color": "#ef4444",
+    "gradient": "linear-gradient(135deg, #ef4444, #dc2626)",
     "type": {
       "pl": "Światowa sieć partii socjaldemokratycznych i laburzystowskich",
       "en": "Global network of social democratic and democratic labour parties",
@@ -2795,6 +2801,8 @@ const worldParties = [
       "fr": "Les Verts mondiaux (Global Greens)"
     },
     "emblem": "🌿",
+    "color": "#10b981",
+    "gradient": "linear-gradient(135deg, #10b981, #059669)",
     "type": {
       "pl": "Międzynarodowa federacja partii ekologicznych i zielonych",
       "en": "Worldwide network of ecological, pacifist, and green parties",
@@ -2821,6 +2829,8 @@ const worldParties = [
       "fr": "Union démocrate internationale (IDU / Centre-droit mondial)"
     },
     "emblem": "🛡️",
+    "color": "#2563eb",
+    "gradient": "linear-gradient(135deg, #2563eb, #1d4ed8)",
     "type": {
       "pl": "Światowy sojusz partii konserwatywnych i chadeckich",
       "en": "Worldwide association of conservative and Christian-democratic parties",
@@ -2847,6 +2857,8 @@ const worldParties = [
       "fr": "Internationale démocrate centriste (IDC / Démocratie chrétienne)"
     },
     "emblem": "🤝",
+    "color": "#0284c7",
+    "gradient": "linear-gradient(135deg, #0284c7, #0369a1)",
     "type": {
       "pl": "Światowa wspólnota partii chrześcijańsko-społecznych i ludowych",
       "en": "Global coalition of Christian social and popular democratic parties",
@@ -2873,6 +2885,8 @@ const worldParties = [
       "fr": "Internationale progressiste (PI / Socialisme démocratique)"
     },
     "emblem": "✊",
+    "color": "#dc2626",
+    "gradient": "linear-gradient(135deg, #dc2626, #991b1b)",
     "type": {
       "pl": "Globalny ruch lewicy antykapitalistycznej i związkowej",
       "en": "Worldwide movement uniting socialist, anti-imperialist, and labor movements",
@@ -2899,6 +2913,8 @@ const worldParties = [
       "fr": "Parti Pirate International (PPI)"
     },
     "emblem": "⚓",
+    "color": "#8b5cf6",
+    "gradient": "linear-gradient(135deg, #8b5cf6, #7c3aed)",
     "type": {
       "pl": "Światowy ruch na rzecz wolności cyfrowej, praw autorskich i jawności",
       "en": "Global political movement for digital rights, open source, and transparent government",
@@ -2925,6 +2941,8 @@ const worldParties = [
       "fr": "Mouvement fédéraliste mondial et européen (Volt / WFM)"
     },
     "emblem": "⚡",
+    "color": "#7c3aed",
+    "gradient": "linear-gradient(135deg, #7c3aed, #6d28d9)",
     "type": {
       "pl": "Pannarodowy ruch na rzecz integracji federalnej i nowoczesnej demokracji",
       "en": "Pan-national movement for democratic federalism, smart governance, and borderless citizenship",
@@ -2951,6 +2969,8 @@ const worldParties = [
       "fr": "Réseau mondial des patriotes et souverainistes"
     },
     "emblem": "🦅",
+    "color": "#b45309",
+    "gradient": "linear-gradient(135deg, #b45309, #78350f)",
     "type": {
       "pl": "Międzynarodowa współpraca partii narodowych, tożsamościowych i suwerennościowych",
       "en": "International alliance of sovereignist, national-conservative, and patriotic parties",
@@ -2977,6 +2997,8 @@ const worldParties = [
       "fr": "Internationale des fédérations anarchistes (IFA)"
     },
     "emblem": "Ⓐ",
+    "color": "#374151",
+    "gradient": "linear-gradient(135deg, #4b5563, #1f2937)",
     "type": {
       "pl": "Globalna federacja zrzeszeń anarchistycznych, antyautorytarnych i wolnościowych",
       "en": "Global federation of anti-authoritarian, direct-democratic, and anarchist collectives",
@@ -3003,6 +3025,8 @@ const worldParties = [
       "fr": "Coalition technocratique de développement (Modèle des tigres asiatiques)"
     },
     "emblem": "🚀",
+    "color": "#0f766e",
+    "gradient": "linear-gradient(135deg, #0f766e, #115e59)",
     "type": {
       "pl": "Ruch na rzecz merytokracji, planowania infrastrukturalnego i ładu społecznego",
       "en": "Coalition for meritocratic leadership, strategic industrial modernization, and societal harmony",
@@ -3029,6 +3053,8 @@ const worldParties = [
       "fr": "Coalition Internationale du Travail Patriotique et du Solidarisme"
     },
     "emblem": "🛠️",
+    "color": "#b91c1c",
+    "gradient": "linear-gradient(135deg, #b91c1c, #7f1d1d)",
     "type": {
       "pl": "Tradycyjny ruch robotniczo-społeczny i obrony suwerenności gospodarczej",
       "en": "Traditional working-class movement for economic sovereignty and welfare",
@@ -3055,6 +3081,8 @@ const worldParties = [
       "fr": "Ligue Mondiale du Socialisme d'État et de la Planification"
     },
     "emblem": "🚩",
+    "color": "#991b1b",
+    "gradient": "linear-gradient(135deg, #991b1b, #7f1d1d)",
     "type": {
       "pl": "Ruch socjalizmu państwowego, upaństwowienia przemysłu i dyscypliny społecznej",
       "en": "State socialist movement advocating nationalization and social discipline",
@@ -3081,6 +3109,8 @@ const worldParties = [
       "fr": "Alliance Internationale du Socialisme Chrétien et Distributisme"
     },
     "emblem": "🕊️",
+    "color": "#059669",
+    "gradient": "linear-gradient(135deg, #059669, #047857)",
     "type": {
       "pl": "Ruch solidaryzmu chrześcijańsko-społecznego, spółdzielczości i etyki wspólnotowej",
       "en": "Christian communitarian & distributist movement based on cooperative ownership",

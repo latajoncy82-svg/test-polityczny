@@ -481,7 +481,7 @@ const updatePolMatch = scriptContent.match(/function updatePoliticiansToggleButt
 assert(updatePolMatch && !updatePolMatch[1].includes('toggleIdeologiesIcon'), "updatePoliticiansToggleButton independently targets politicians icon without mutating ideology icon");
 
 const renderPolMatch = scriptContent.match(/function renderPoliticiansRanking\(\)\s*\{([\s\S]*?)\nfunction /);
-assert(renderPolMatch && renderPolMatch[1].includes('slice(0, 10)') && !renderPolMatch[1].includes('slice(1'), "renderPoliticiansRanking includes rank #1 (starts at index 0) allowing full podium return");
+assert(renderPolMatch && renderPolMatch[1].includes('slice(0, 12)') && !renderPolMatch[1].includes('slice(1'), "renderPoliticiansRanking includes rank #1 (starts at index 0) allowing full podium return");
 
 assert(scriptContent.includes('spotlightLeaderTitle'), "spotlightLeaderTitle is actively utilized for runner-up leader spotlights");
 assert(scriptContent.includes('showAllPoliticians') && scriptContent.includes('showAllIdeologies'), "showAllPoliticians and showAllIdeologies keys are actively used on toggle controls");
@@ -609,8 +609,10 @@ const getSim = (code) => vm.runInContext(code, simContext);
 
 assert(getSim('currentRankedPoliticians.length') === 43, "Simulation ranks all 43 politicians");
 assert(getSim('currentRankedIdeologies.length') === 32, "Simulation ranks all 32 ideologies");
-assert(simElements['otherPoliticiansList'].children.length === 10, "Politicians ranking initially renders top 10 (including #1)");
-assert(simElements['secondaryIdeologiesList'].children.length === 8, "Ideology ranking initially renders top 8 (including #1)");
+assert(getSim('currentRankedParties.length') === 15, "Simulation ranks all 15 world parties");
+assert(simElements['otherPoliticiansList'].children.length === 12, "Politicians ranking initially renders top 12 (including #1)");
+assert(simElements['secondaryIdeologiesList'].children.length === 12, "Ideology ranking initially renders top 12 (including #1)");
+assert(simElements['otherPartiesList'].children.length === 8, "Parties ranking initially renders top 8 (including #1)");
 
 // Check Rank #1 presence and spotlighting in politicians ranking
 const simPolCard1 = simElements['otherPoliticiansList'].children[0];
@@ -637,6 +639,11 @@ assert(simElements['toggleMorePoliticiansText'].textContent === uiTranslations.p
 simElements['toggleMoreIdeologiesBtn'].click();
 assert(simElements['secondaryIdeologiesList'].children.length === 32, "Clicking expand on ideologies renders all 32 ideologies");
 assert(simElements['toggleMoreIdeologiesText'].textContent === uiTranslations.pl.showFewerIdeologies, "Toggle button text updates to collapse label");
+
+// Test Expand parties
+simElements['toggleMorePartiesBtn'].click();
+assert(simElements['otherPartiesList'].children.length === 15, "Clicking expand on parties renders all 15 parties");
+assert(simElements['toggleMorePartiesText'].textContent === uiTranslations.pl.showFewerParties, "Toggle button text updates to collapse label");
 
 // Test Language toggling maintains parity and does not break state
 let langTogglesPassed = true;

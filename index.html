@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Test Polityczny – Globalny Kompas Poglądów 2026</title>
   <meta name="referrer" content="no-referrer">
-  <link rel="stylesheet" href="style.css?v=2026.3.2">
+  <link rel="stylesheet" href="style.css?v=2026.4.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -306,6 +306,15 @@
               <h4 id="secondaryIdeologiesTitle">Ranking Twoich poglądów politycznych:</h4>
               <small class="click-hint" id="clickIdeologyHint">Kliknij nurt, aby poznać jego opis i myślicieli</small>
             </div>
+            <!-- Interactive Category Filter Pills for Ideologies -->
+            <div class="filter-pills-row" id="ideologyFilterPills">
+              <button class="filter-pill active" data-filter="top" type="button" id="filterIdeoTopBtn">🔥 Top 12</button>
+              <button class="filter-pill" data-filter="all" type="button" id="filterIdeoAllBtn">🧭 Wszystkie (32)</button>
+              <button class="filter-pill" data-filter="market" type="button" id="filterIdeoMarketBtn">🟦 Wolnorynkowe</button>
+              <button class="filter-pill" data-filter="progressive" type="button" id="filterIdeoProgressiveBtn">🟩 Wolnościowe</button>
+              <button class="filter-pill" data-filter="socialist" type="button" id="filterIdeoSocialistBtn">🟥 Lewicowe</button>
+              <button class="filter-pill" data-filter="conservative" type="button" id="filterIdeoConservativeBtn">🟫 Tradycyjne</button>
+            </div>
             <div id="secondaryIdeologiesList" class="secondary-ideologies-grid"></div>
             <div class="expand-controls-row">
               <button id="toggleMoreIdeologiesBtn" class="btn-toggle-expand" type="button" aria-expanded="false">
@@ -357,6 +366,14 @@
                 <h5 id="otherPoliticiansTitle">Ranking światowych liderów i postaci historycznych:</h5>
                 <small class="click-hint" id="clickLeaderHint">Kliknij profil lidera, aby poznać szczegóły</small>
               </div>
+              <!-- Interactive Category Filter Pills for Politicians -->
+              <div class="filter-pills-row" id="politicianFilterPills">
+                <button class="filter-pill active" data-filter="top" type="button" id="filterTopPoliticiansBtn">🔥 Top 12</button>
+                <button class="filter-pill" data-filter="all" type="button" id="filterAllPoliticiansBtn">🌍 Wszyscy (43)</button>
+                <button class="filter-pill" data-filter="ww2" type="button" id="filterWw2PoliticiansBtn">⚔️ II Wojna Światowa</button>
+                <button class="filter-pill" data-filter="activists" type="button" id="filterActivistsPoliticiansBtn">✊ Działacze i myśliciele</button>
+                <button class="filter-pill" data-filter="contemporary" type="button" id="filterContemporaryPoliticiansBtn">🏛️ Współcześni</button>
+              </div>
               <div id="otherPoliticiansList" class="other-matches-grid"></div>
               <div class="expand-controls-row">
                 <button id="toggleMorePoliticiansBtn" class="btn-toggle-expand" type="button" aria-expanded="false">
@@ -398,10 +415,16 @@
             <!-- Other global parties -->
             <div class="other-matches-section">
               <div class="section-hint-row">
-                <h5 id="otherPartiesTitle">Kolejne międzynarodowe rodziny partyjne:</h5>
+                <h5 id="otherPartiesTitle">Ranking międzynarodowych rodzin partyjnych:</h5>
                 <small class="click-hint" id="clickPartyHint">Kliknij ruch, aby poznać założenia</small>
               </div>
-              <div id="otherPartiesList" class="other-matches-grid"></div>
+              <div id="otherPartiesList" class="other-matches-grid parties-ranking-grid"></div>
+              <div class="expand-controls-row">
+                <button id="toggleMorePartiesBtn" class="btn-toggle-expand" type="button" aria-expanded="false">
+                  <span id="toggleMorePartiesText">Pokaż wszystkie partie (katalog 15 rodzin)</span>
+                  <span class="toggle-icon" id="togglePartiesIcon" aria-hidden="true">▼</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -531,9 +554,9 @@
   </div>
 
   <!-- Scripts -->
-  <script src="translations.js?v=2026.3.2"></script>
-  <script src="questions.js?v=2026.3.2"></script>
-  <script src="worldData.js?v=2026.3.2"></script>
-  <script src="script.js?v=2026.3.2"></script>
+  <script src="translations.js?v=2026.4.0"></script>
+  <script src="questions.js?v=2026.4.0"></script>
+  <script src="worldData.js?v=2026.4.0"></script>
+  <script src="script.js?v=2026.4.0"></script>
 </body>
 </html>

@@ -25,6 +25,9 @@ let activePartyId = null;
 let activeIdeologyId = null;
 let isPoliticiansExpanded = false;
 let isIdeologiesExpanded = false;
+let isPartiesExpanded = false;
+let activePoliticianFilter = "top";
+let activeIdeologyFilter = "top";
 let currentRankedPoliticians = [];
 let currentRankedParties = [];
 let currentRankedIdeologies = [];
@@ -151,6 +154,11 @@ const partyManifestoText = document.getElementById("partyManifestoText");
 const otherPartiesTitle = document.getElementById("otherPartiesTitle");
 const otherPartiesList = document.getElementById("otherPartiesList");
 const clickPartyHint = document.getElementById("clickPartyHint");
+const toggleMorePartiesBtn = document.getElementById("toggleMorePartiesBtn");
+const toggleMorePartiesText = document.getElementById("toggleMorePartiesText");
+const togglePartiesIcon = document.getElementById("togglePartiesIcon");
+const ideologyFilterPills = document.getElementById("ideologyFilterPills");
+const politicianFilterPills = document.getElementById("politicianFilterPills");
 
 // Sectors Breakdown
 const categoryBreakdownTitle = document.getElementById("categoryBreakdownTitle");
@@ -414,6 +422,32 @@ function applyLanguage(lang) {
   updateResumeButtonText();
   if (typeof updatePoliticiansToggleButton === "function") updatePoliticiansToggleButton();
   if (typeof updateIdeologiesToggleButton === "function") updateIdeologiesToggleButton();
+  if (typeof updatePartiesToggleButton === "function") updatePartiesToggleButton();
+
+  // Filter Buttons translations
+  const filterTopPol = document.getElementById("filterTopPoliticiansBtn");
+  if (filterTopPol && t.filterTop12) filterTopPol.textContent = t.filterTop12;
+  const filterAllPol = document.getElementById("filterAllPoliticiansBtn");
+  if (filterAllPol && t.filterAllPoliticians) filterAllPol.textContent = t.filterAllPoliticians;
+  const filterWw2Pol = document.getElementById("filterWw2PoliticiansBtn");
+  if (filterWw2Pol && t.filterWw2) filterWw2Pol.textContent = t.filterWw2;
+  const filterActPol = document.getElementById("filterActivistsPoliticiansBtn");
+  if (filterActPol && t.filterActivists) filterActPol.textContent = t.filterActivists;
+  const filterContPol = document.getElementById("filterContemporaryPoliticiansBtn");
+  if (filterContPol && t.filterContemporary) filterContPol.textContent = t.filterContemporary;
+
+  const filterTopIdeo = document.getElementById("filterIdeoTopBtn");
+  if (filterTopIdeo && t.filterIdeoTop12) filterTopIdeo.textContent = t.filterIdeoTop12;
+  const filterAllIdeo = document.getElementById("filterIdeoAllBtn");
+  if (filterAllIdeo && t.filterIdeoAll) filterAllIdeo.textContent = t.filterIdeoAll;
+  const filterMktIdeo = document.getElementById("filterIdeoMarketBtn");
+  if (filterMktIdeo && t.filterIdeoMarket) filterMktIdeo.textContent = t.filterIdeoMarket;
+  const filterProgIdeo = document.getElementById("filterIdeoProgressiveBtn");
+  if (filterProgIdeo && t.filterIdeoProgressive) filterProgIdeo.textContent = t.filterIdeoProgressive;
+  const filterSocIdeo = document.getElementById("filterIdeoSocialistBtn");
+  if (filterSocIdeo && t.filterIdeoSocialist) filterSocIdeo.textContent = t.filterIdeoSocialist;
+  const filterConsIdeo = document.getElementById("filterIdeoConservativeBtn");
+  if (filterConsIdeo && t.filterIdeoConservative) filterConsIdeo.textContent = t.filterIdeoConservative;
 
   if (answersContainer) answersContainer.innerHTML = "";
   if (questionScreen && questionScreen.classList.contains("active")) {
@@ -569,6 +603,38 @@ function setupEventListeners() {
       renderIdeologiesRanking();
     });
   }
+
+  if (toggleMorePartiesBtn) {
+    toggleMorePartiesBtn.addEventListener("click", (e) => {
+      createRippleEffect(e, toggleMorePartiesBtn);
+      isPartiesExpanded = !isPartiesExpanded;
+      renderPartiesRanking();
+    });
+  }
+
+  // Filter pills for Ideologies
+  const ideoPills = document.querySelectorAll("#ideologyFilterPills .filter-pill");
+  ideoPills.forEach(pill => {
+    pill.addEventListener("click", (e) => {
+      createRippleEffect(e, pill);
+      ideoPills.forEach(p => p.classList.remove("active"));
+      pill.classList.add("active");
+      activeIdeologyFilter = pill.dataset.filter || "top";
+      renderIdeologiesRanking();
+    });
+  });
+
+  // Filter pills for Politicians
+  const polPills = document.querySelectorAll("#politicianFilterPills .filter-pill");
+  polPills.forEach(pill => {
+    pill.addEventListener("click", (e) => {
+      createRippleEffect(e, pill);
+      polPills.forEach(p => p.classList.remove("active"));
+      pill.classList.add("active");
+      activePoliticianFilter = pill.dataset.filter || "top";
+      renderPoliticiansRanking();
+    });
+  });
 }
 
 function setupKeyboardNavigation() {
@@ -1089,10 +1155,74 @@ function renderPoliticianProfile(pol, isTop = false) {
   });
 }
 
+const partyColors = {
+  libertarian_intl: { color: "#eab308", gradient: "linear-gradient(135deg, #eab308, #ca8a04)" },
+  liberal_intl: { color: "#f59e0b", gradient: "linear-gradient(135deg, #f59e0b, #d97706)" },
+  socialist_intl: { color: "#ef4444", gradient: "linear-gradient(135deg, #ef4444, #dc2626)" },
+  global_greens: { color: "#10b981", gradient: "linear-gradient(135deg, #10b981, #059669)" },
+  conservative_idu: { color: "#2563eb", gradient: "linear-gradient(135deg, #2563eb, #1d4ed8)" },
+  christian_cdi: { color: "#0284c7", gradient: "linear-gradient(135deg, #0284c7, #0369a1)" },
+  progressive_intl: { color: "#dc2626", gradient: "linear-gradient(135deg, #dc2626, #991b1b)" },
+  pirate_parties: { color: "#8b5cf6", gradient: "linear-gradient(135deg, #8b5cf6, #7c3aed)" },
+  volt_federalists: { color: "#7c3aed", gradient: "linear-gradient(135deg, #7c3aed, #6d28d9)" },
+  sovereignist_patriots: { color: "#b45309", gradient: "linear-gradient(135deg, #b45309, #78350f)" },
+  anarchist_federations: { color: "#374151", gradient: "linear-gradient(135deg, #4b5563, #1f2937)" },
+  tiger_technocrats: { color: "#0f766e", gradient: "linear-gradient(135deg, #0f766e, #115e59)" },
+  traditional_left_solidarists: { color: "#b91c1c", gradient: "linear-gradient(135deg, #b91c1c, #7f1d1d)" },
+  state_socialist_bloc: { color: "#991b1b", gradient: "linear-gradient(135deg, #991b1b, #7f1d1d)" },
+  christian_social_union_intl: { color: "#059669", gradient: "linear-gradient(135deg, #059669, #047857)" }
+};
+
+function getIdeologySpectrumTag(ideo, lang) {
+  const econ = ideo.coordinates.econ;
+  const soc = ideo.coordinates.soc;
+  if (lang === "pl") {
+    if (econ >= 20 && soc >= 20) return "🟦 Wolny Rynek • 🟩 Progresywizm";
+    if (econ >= 20 && soc < -20) return "🟦 Wolny Rynek • 🟫 Konserwatyzm";
+    if (econ < -20 && soc >= 20) return "🟥 Lewica • 🟩 Progresywizm";
+    if (econ < -20 && soc < -20) return "🟥 Lewica • 🟫 Solidaryzm / Tradycja";
+    if (econ >= 20) return "🟦 Prawica Wolnorynkowa";
+    if (econ <= -20) return "🟥 Lewica Gospodarcza";
+    if (soc >= 20) return "🟩 Progresywizm Społeczny";
+    if (soc <= -20) return "🟫 Konserwatyzm Społeczny";
+    return "⚖️ Nurt Centrowy";
+  } else if (lang === "en") {
+    if (econ >= 20 && soc >= 20) return "🟦 Free Market • 🟩 Progressivism";
+    if (econ >= 20 && soc < -20) return "🟦 Free Market • 🟫 Conservatism";
+    if (econ < -20 && soc >= 20) return "🟥 Social Left • 🟩 Progressivism";
+    if (econ < -20 && soc < -20) return "🟥 Labor Left • 🟫 Traditionalism";
+    if (econ >= 20) return "🟦 Free Market Right";
+    if (econ <= -20) return "🟥 Economic Left";
+    if (soc >= 20) return "🟩 Social Progressivism";
+    if (soc <= -20) return "🟫 Social Conservatism";
+    return "⚖️ Centrist Spectrum";
+  } else if (lang === "ru") {
+    if (econ >= 20 && soc >= 20) return "🟦 Свободный рынок • 🟩 Прогрессивизм";
+    if (econ >= 20 && soc < -20) return "🟦 Свободный рынок • 🟫 Консерватизм";
+    if (econ < -20 && soc >= 20) return "🟥 Левые • 🟩 Прогрессивизм";
+    if (econ < -20 && soc < -20) return "🟥 Левые • 🟫 Традиционализм";
+    if (econ >= 20) return "🟦 Рыночные правые";
+    if (econ <= -20) return "🟥 Экономические левые";
+    if (soc >= 20) return "🟩 Социальный прогрессивизм";
+    if (soc <= -20) return "🟫 Социальный консерватизм";
+    return "⚖️ Центристское русло";
+  } else {
+    if (econ >= 20 && soc >= 20) return "🟦 Libre marché • 🟩 Progressisme";
+    if (econ >= 20 && soc < -20) return "🟦 Libre marché • 🟫 Conservatisme";
+    if (econ < -20 && soc >= 20) return "🟥 Gauche • 🟩 Progressisme";
+    if (econ < -20 && soc < -20) return "🟥 Gauche • 🟫 Traditionalisme";
+    if (econ >= 20) return "🟦 Droite libérale";
+    if (econ <= -20) return "🟥 Gauche économique";
+    if (soc >= 20) return "🟩 Progressisme sociétal";
+    if (soc <= -20) return "🟫 Conservatisme sociétal";
+    return "⚖️ Courant centriste";
+  }
+}
+
 function updatePoliticiansToggleButton() {
   if (!toggleMorePoliticiansBtn || !toggleMorePoliticiansText) return;
   const t = uiTranslations[currentLang] || {};
-  if (isPoliticiansExpanded) {
+  if (isPoliticiansExpanded || activePoliticianFilter === "all") {
     toggleMorePoliticiansBtn.classList.add("is-expanded");
     toggleMorePoliticiansBtn.setAttribute("aria-expanded", "true");
     toggleMorePoliticiansText.textContent = t.showFewerPoliticians || "Zwiń listę liderów";
@@ -1106,13 +1236,27 @@ function updatePoliticiansToggleButton() {
 function renderPoliticiansRanking() {
   if (!otherPoliticiansList || !currentRankedPoliticians.length) return;
   const t = uiTranslations[currentLang] || {};
-  const visiblePoliticians = isPoliticiansExpanded
-    ? currentRankedPoliticians
-    : currentRankedPoliticians.slice(0, 10);
+
+  const ww2Ids = new Set(["franklin_roosevelt", "charles_de_gaulle", "wladyslaw_sikorski", "dwight_eisenhower", "joseph_stalin", "benito_mussolini", "chiang_kaishek"]);
+  const activistIds = new Set(["martin_luther_king", "mahatma_gandhi", "nelson_mandela", "rosa_luxemburg", "milton_friedman", "vaclav_havel", "winston_churchill", "thomas_jefferson", "lech_walesa", "juan_peron"]);
+
+  let filtered = currentRankedPoliticians;
+  if (activePoliticianFilter === "ww2") {
+    filtered = currentRankedPoliticians.filter(p => ww2Ids.has(p.id));
+  } else if (activePoliticianFilter === "activists") {
+    filtered = currentRankedPoliticians.filter(p => activistIds.has(p.id));
+  } else if (activePoliticianFilter === "contemporary") {
+    filtered = currentRankedPoliticians.filter(p => !ww2Ids.has(p.id) && !activistIds.has(p.id));
+  } else if (activePoliticianFilter === "all" || isPoliticiansExpanded) {
+    filtered = currentRankedPoliticians;
+  } else {
+    // Top 12 by default
+    filtered = currentRankedPoliticians.slice(0, 12);
+  }
 
   otherPoliticiansList.innerHTML = "";
-  visiblePoliticians.forEach((pol, index) => {
-    const rankNum = index + 1;
+  filtered.forEach((pol) => {
+    const overallRank = currentRankedPoliticians.findIndex(p => p.id === pol.id) + 1;
     const item = document.createElement("div");
     item.className = "podium-mini-card politician-card-item";
     item.dataset.id = pol.id;
@@ -1130,7 +1274,7 @@ function renderPoliticiansRanking() {
     const flagSvg = getSvgFlagBadgeHtml(pol, "flag-badge-svg");
 
     item.innerHTML = `
-      <span class="podium-rank-tag">#${rankNum}</span>
+      <span class="podium-rank-tag">#${overallRank}</span>
       <div class="podium-mini-avatar-wrap" style="border-color: ${color};">
         <img class="podium-mini-avatar-img" src="${localSrc}" alt="${polDisplayName}" loading="lazy" referrerpolicy="no-referrer" />
         <span class="podium-mini-flag-badge">${flagSvg}</span>
@@ -1233,7 +1377,7 @@ function renderIdeologyProfile(ideo, isTop = false) {
   if (ideologyActiveBanner) {
     ideologyActiveBanner.style.setProperty("--ideology-color", color);
     ideologyActiveBanner.style.borderColor = `${color}80`;
-    ideologyActiveBanner.style.boxShadow = `0 4px 18px ${color}25`;
+    ideologyActiveBanner.style.boxShadow = `0 4px 18px ${color}35`;
   }
   if (ideologyActiveIconWrap) {
     ideologyActiveIconWrap.style.borderColor = color;
@@ -1265,7 +1409,7 @@ function renderIdeologyProfile(ideo, isTop = false) {
 function updateIdeologiesToggleButton() {
   if (!toggleMoreIdeologiesBtn || !toggleMoreIdeologiesText) return;
   const t = uiTranslations[currentLang] || {};
-  if (isIdeologiesExpanded) {
+  if (isIdeologiesExpanded || activeIdeologyFilter === "all") {
     toggleMoreIdeologiesBtn.classList.add("is-expanded");
     toggleMoreIdeologiesBtn.setAttribute("aria-expanded", "true");
     toggleMoreIdeologiesText.textContent = t.showFewerIdeologies || "Zwiń listę poglądów";
@@ -1279,13 +1423,26 @@ function updateIdeologiesToggleButton() {
 function renderIdeologiesRanking() {
   if (!secondaryIdeologiesList || !currentRankedIdeologies.length) return;
   const t = uiTranslations[currentLang] || {};
-  const visibleIdeologies = isIdeologiesExpanded
-    ? currentRankedIdeologies
-    : currentRankedIdeologies.slice(0, 8);
+
+  let filtered = currentRankedIdeologies;
+  if (activeIdeologyFilter === "market") {
+    filtered = currentRankedIdeologies.filter(i => i.coordinates.econ >= 20);
+  } else if (activeIdeologyFilter === "progressive") {
+    filtered = currentRankedIdeologies.filter(i => i.coordinates.soc >= 20);
+  } else if (activeIdeologyFilter === "socialist") {
+    filtered = currentRankedIdeologies.filter(i => i.coordinates.econ <= -20);
+  } else if (activeIdeologyFilter === "conservative") {
+    filtered = currentRankedIdeologies.filter(i => i.coordinates.soc <= -20);
+  } else if (activeIdeologyFilter === "all" || isIdeologiesExpanded) {
+    filtered = currentRankedIdeologies;
+  } else {
+    // Top 12 by default
+    filtered = currentRankedIdeologies.slice(0, 12);
+  }
 
   secondaryIdeologiesList.innerHTML = "";
-  visibleIdeologies.forEach((ideo, index) => {
-    const rankNum = index + 1;
+  filtered.forEach((ideo) => {
+    const overallRank = currentRankedIdeologies.findIndex(i => i.id === ideo.id) + 1;
     const card = document.createElement("div");
     card.className = "secondary-ideology-item";
     card.dataset.id = ideo.id;
@@ -1296,25 +1453,32 @@ function renderIdeologiesRanking() {
     const ideoName = ideo.name[currentLang] || ideo.name.pl;
     const ideoSub = ideo.subtitle[currentLang] || ideo.subtitle.pl;
     const color = ideo.color || "#3b82f6";
-    const gradient = ideo.gradient || `linear-gradient(90deg, ${color}, #1d4ed8)`;
+    const gradient = ideo.gradient || `linear-gradient(135deg, ${color}, #1d4ed8)`;
     const icon = ideo.icon || "🏛️";
+    const spectrumTag = getIdeologySpectrumTag(ideo, currentLang);
 
     card.style.setProperty("--ideo-color", color);
     card.style.setProperty("--ideo-gradient", gradient);
+    card.style.borderColor = `${color}40`;
 
-    const figuresHtml = (ideo.keyFigures || []).slice(0, 3).map(fig => `<span class="secondary-figure-chip">${fig}</span>`).join("");
+    const figuresHtml = (ideo.keyFigures || []).slice(0, 3).map(fig => 
+      `<span class="secondary-figure-chip" style="border-color: ${color}35; background: ${color}10;">${fig}</span>`
+    ).join("");
 
     card.innerHTML = `
       <div class="secondary-item-header">
         <div class="secondary-title-group">
-          <span class="ideology-rank-pill">#${rankNum}</span>
-          <span class="ideology-icon-symbol">${icon}</span>
-          <strong>${ideoName}</strong>
+          <span class="ideology-rank-pill">#${overallRank}</span>
+          <div class="ideology-icon-circle" style="border-color: ${color}; background: ${color}22;">${icon}</div>
+          <div>
+            <strong>${ideoName}</strong>
+            <div class="ideology-spectrum-tag" style="border-color: ${color}50; background: ${color}15; color: ${color};">${spectrumTag}</div>
+          </div>
         </div>
-        <span class="match-mini-badge" style="background: ${color}20; color: ${color}; border-color: ${color}50;">${ideo.similarity}%</span>
+        <span class="match-mini-badge" style="background: ${color}20; color: ${color}; border-color: ${color}60;">${ideo.similarity}%</span>
       </div>
-      <div class="ideology-match-bar-track">
-        <div class="ideology-match-bar-fill" style="width: ${ideo.similarity}%; background: ${gradient};"></div>
+      <div class="ideology-match-bar-track" style="background: var(--bg-hover);">
+        <div class="ideology-match-bar-fill" style="width: ${ideo.similarity}%; background: ${gradient}; box-shadow: 0 0 10px ${color}70;"></div>
       </div>
       <p class="secondary-item-sub">${ideoSub}</p>
       <div class="secondary-item-figures">${figuresHtml}</div>
@@ -1344,14 +1508,113 @@ function renderIdeologiesRanking() {
   updateIdeologiesToggleButton();
 }
 
+function updatePartiesToggleButton() {
+  if (!toggleMorePartiesBtn || !toggleMorePartiesText) return;
+  const t = uiTranslations[currentLang] || {};
+  if (isPartiesExpanded) {
+    toggleMorePartiesBtn.classList.add("is-expanded");
+    toggleMorePartiesBtn.setAttribute("aria-expanded", "true");
+    toggleMorePartiesText.textContent = t.showFewerParties || "Zwiń listę partii";
+  } else {
+    toggleMorePartiesBtn.classList.remove("is-expanded");
+    toggleMorePartiesBtn.setAttribute("aria-expanded", "false");
+    toggleMorePartiesText.textContent = t.showAllParties || "Pokaż wszystkie partie (katalog 15 rodzin)";
+  }
+}
+
+function renderPartiesRanking() {
+  if (!otherPartiesList || !currentRankedParties.length) return;
+  const t = uiTranslations[currentLang] || {};
+  const visibleParties = isPartiesExpanded
+    ? currentRankedParties
+    : currentRankedParties.slice(0, 8);
+
+  otherPartiesList.innerHTML = "";
+  visibleParties.forEach((pty, index) => {
+    const rankNum = index + 1;
+    const item = document.createElement("div");
+    item.className = "podium-mini-card party-card-item";
+    item.dataset.id = pty.id;
+    if (pty.id === activePartyId) {
+      item.classList.add("active-podium");
+    }
+    const color = pty.color || (partyColors[pty.id] && partyColors[pty.id].color) || "#3b82f6";
+    const gradient = pty.gradient || (partyColors[pty.id] && partyColors[pty.id].gradient) || `linear-gradient(135deg, ${color}, #1d4ed8)`;
+    item.style.setProperty("--mini-color", color);
+
+    const partyTitle = pty.name[currentLang] || pty.name.pl;
+    const partyType = pty.type[currentLang] || pty.type.pl;
+
+    item.innerHTML = `
+      <span class="podium-rank-tag">#${rankNum}</span>
+      <div class="podium-mini-flag" style="border-color: ${color}60; background: ${color}15; color: ${color};">${pty.emblem}</div>
+      <div class="podium-mini-info">
+        <strong>${partyTitle}</strong>
+        <div class="podium-mini-meta-row">
+          <span>${partyType}</span>
+        </div>
+      </div>
+      <div class="podium-mini-match-wrap">
+        <div class="podium-mini-match" style="background: ${color}20; color: ${color}; border: 1px solid ${color}45;">${pty.similarity}%</div>
+        <div class="podium-match-mini-bar">
+          <div class="podium-match-mini-bar-fill" style="width: ${pty.similarity}%; background: ${color};"></div>
+        </div>
+      </div>
+    `;
+
+    item.addEventListener("click", (e) => {
+      createRippleEffect(e, item);
+      renderPartyProfile(pty);
+      const cardWrapper = document.querySelector(".party-match-card");
+      if (cardWrapper) {
+        cardWrapper.classList.remove("spotlight-pulse");
+        void cardWrapper.offsetWidth;
+        cardWrapper.classList.add("spotlight-pulse");
+        const cardRect = cardWrapper.getBoundingClientRect();
+        if (cardRect.top < -30) {
+          cardWrapper.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
+    });
+
+    otherPartiesList.appendChild(item);
+  });
+
+  updatePartiesToggleButton();
+}
+
 function renderPartyProfile(party, isTop = false) {
-  const t = uiTranslations[currentLang];
-  partyMatchBadge.textContent = `${t.partyMatchLabel} ${party.similarity}%`;
-  partyEmblem.textContent = party.emblem;
-  partyName.textContent = party.name[currentLang] || party.name.pl;
-  partyType.textContent = party.type[currentLang] || party.type.pl;
-  partyManifestoText.textContent = party.manifesto[currentLang] || party.manifesto.pl;
+  const t = uiTranslations[currentLang] || {};
+  const color = party.color || (partyColors[party.id] && partyColors[party.id].color) || "#3b82f6";
+  const gradient = party.gradient || (partyColors[party.id] && partyColors[party.id].gradient) || `linear-gradient(135deg, ${color}, #1d4ed8)`;
+  
+  const topParty = (currentRankedParties && currentRankedParties[0]) || party;
+  const isActuallyTop = (party.id === topParty.id);
+  const ptyRank = (currentRankedParties && currentRankedParties.findIndex(p => p.id === party.id) + 1) || 1;
+
+  if (partyMatchBadge) {
+    partyMatchBadge.textContent = isActuallyTop
+      ? `${t.partyMatchLabel} ${party.similarity}%`
+      : `#${ptyRank} • ${t.partyMatchLabel} ${party.similarity}%`;
+    partyMatchBadge.style.background = gradient;
+  }
+  if (partyEmblem) {
+    partyEmblem.textContent = party.emblem;
+    partyEmblem.style.borderColor = color;
+    partyEmblem.style.background = `${color}20`;
+    partyEmblem.style.boxShadow = `0 0 16px ${color}40`;
+  }
+  if (partyName) partyName.textContent = party.name[currentLang] || party.name.pl;
+  if (partyType) partyType.textContent = party.type[currentLang] || party.type.pl;
+  if (partyManifestoText) partyManifestoText.textContent = party.manifesto[currentLang] || party.manifesto.pl;
   activePartyId = party.id;
+
+  const cardWrapper = document.querySelector(".party-match-card");
+  if (cardWrapper) {
+    cardWrapper.style.setProperty("--party-card-color", color);
+    cardWrapper.style.borderColor = `${color}45`;
+    cardWrapper.style.boxShadow = `0 12px 36px -8px ${color}28, 0 4px 16px rgba(0, 0, 0, 0.25)`;
+  }
 
   document.querySelectorAll(".podium-mini-card.party-card-item").forEach(card => {
     card.classList.toggle("active-podium", card.dataset.id === party.id);
@@ -1393,30 +1656,9 @@ function showResults(animated = true) {
   }).sort((a, b) => a.dist - b.dist);
 
   const topParty = currentRankedParties[0];
-  const runnerUpParties = currentRankedParties.slice(1, 4);
   const activeParty = currentRankedParties.find(p => p.id === activePartyId) || topParty;
   renderPartyProfile(activeParty, activeParty.id === topParty.id);
-
-  otherPartiesList.innerHTML = "";
-  runnerUpParties.forEach(pty => {
-    const item = document.createElement("div");
-    item.className = "podium-mini-card party-card-item";
-    item.dataset.id = pty.id;
-    const partyTitle = pty.name[currentLang] || pty.name.pl;
-    item.innerHTML = `
-      <div class="podium-mini-flag">${pty.emblem}</div>
-      <div class="podium-mini-info">
-        <strong>${partyTitle}</strong>
-        <span>${pty.type[currentLang] || pty.type.pl}</span>
-      </div>
-      <div class="podium-mini-match">${pty.similarity}%</div>
-    `;
-    item.addEventListener("click", (e) => {
-      createRippleEffect(e);
-      renderPartyProfile(pty);
-    });
-    otherPartiesList.appendChild(item);
-  });
+  renderPartiesRanking();
 
   // 4. Paski osi
   const econSide = econScore > 0 ? t.econLabelRight : econScore < 0 ? t.econLabelLeft : t.centerLabel;
