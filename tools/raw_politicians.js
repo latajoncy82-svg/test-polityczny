@@ -34,7 +34,8 @@ const rawPoliticians = [
     "color": "#f59e0b",
     "gradient": "linear-gradient(135deg, #f59e0b, #d97706)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Javier_Milei_in_pull-aside_meeting_at_the_United_Nations_Headquarters_%283x4_cropped%29.jpg/330px-Javier_Milei_in_pull-aside_meeting_at_the_United_Nations_Headquarters_%283x4_cropped%29.jpg",
-    "localPhoto": "assets/politicians/javier_milei.jpg"
+    "localPhoto": "assets/politicians/javier_milei.jpg",
+    "countryCode": "ar"
   },
   {
     "id": "ron_paul",
@@ -71,7 +72,8 @@ const rawPoliticians = [
     "color": "#10b981",
     "gradient": "linear-gradient(135deg, #10b981, #059669)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Ron_Paul_2023_%283x4_cropped%29.jpg/330px-Ron_Paul_2023_%283x4_cropped%29.jpg",
-    "localPhoto": "assets/politicians/ron_paul.jpg"
+    "localPhoto": "assets/politicians/ron_paul.jpg",
+    "countryCode": "us"
   },
   {
     "id": "margaret_thatcher",
@@ -108,7 +110,8 @@ const rawPoliticians = [
     "color": "#1d4ed8",
     "gradient": "linear-gradient(135deg, #2563eb, #1e40af)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/Margaret_Thatcher_stock_portrait_%28cropped%29.jpg/330px-Margaret_Thatcher_stock_portrait_%28cropped%29.jpg",
-    "localPhoto": "assets/politicians/margaret_thatcher.jpg"
+    "localPhoto": "assets/politicians/margaret_thatcher.jpg",
+    "countryCode": "gb"
   },
   {
     "id": "ronald_reagan",
@@ -145,7 +148,8 @@ const rawPoliticians = [
     "color": "#dc2626",
     "gradient": "linear-gradient(135deg, #ef4444, #b91c1c)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Official_Portrait_of_President_Reagan_1981.jpg/330px-Official_Portrait_of_President_Reagan_1981.jpg",
-    "localPhoto": "assets/politicians/ronald_reagan.jpg"
+    "localPhoto": "assets/politicians/ronald_reagan.jpg",
+    "countryCode": "us"
   },
   {
     "id": "milton_friedman",
@@ -182,7 +186,8 @@ const rawPoliticians = [
     "color": "#0284c7",
     "gradient": "linear-gradient(135deg, #0ea5e9, #0369a1)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Portrait_of_Milton_Friedman_%284x5_cropped%29.jpg/330px-Portrait_of_Milton_Friedman_%284x5_cropped%29.jpg",
-    "localPhoto": "assets/politicians/milton_friedman.jpg"
+    "localPhoto": "assets/politicians/milton_friedman.jpg",
+    "countryCode": "global"
   },
   {
     "id": "emmanuel_macron",
@@ -219,7 +224,8 @@ const rawPoliticians = [
     "color": "#6366f1",
     "gradient": "linear-gradient(135deg, #818cf8, #4f46e5)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Emmanuel_Macron_2025_%28cropped%29.jpg/330px-Emmanuel_Macron_2025_%28cropped%29.jpg",
-    "localPhoto": "assets/politicians/emmanuel_macron.jpg"
+    "localPhoto": "assets/politicians/emmanuel_macron.jpg",
+    "countryCode": "fr"
   },
   {
     "id": "justin_trudeau",
@@ -256,7 +262,8 @@ const rawPoliticians = [
     "color": "#ef4444",
     "gradient": "linear-gradient(135deg, #f87171, #dc2626)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Prime_Minister_Trudeau%27s_message_on_Christmas_2023_%280m29s%29_%28cropped%29.jpg/330px-Prime_Minister_Trudeau%27s_message_on_Christmas_2023_%280m29s%29_%28cropped%29.jpg",
-    "localPhoto": "assets/politicians/justin_trudeau.jpg"
+    "localPhoto": "assets/politicians/justin_trudeau.jpg",
+    "countryCode": "ca"
   },
   {
     "id": "bernie_sanders",
@@ -293,7 +300,8 @@ const rawPoliticians = [
     "color": "#06b6d4",
     "gradient": "linear-gradient(135deg, #22d3ee, #0891b2)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/Bernie_Sanders_February_2026_%28cropped%29.jpg/330px-Bernie_Sanders_February_2026_%28cropped%29.jpg",
-    "localPhoto": "assets/politicians/bernie_sanders.jpg"
+    "localPhoto": "assets/politicians/bernie_sanders.jpg",
+    "countryCode": "us"
   },
   {
     "id": "lula_da_silva",
@@ -330,7 +338,8 @@ const rawPoliticians = [
     "color": "#e11d48",
     "gradient": "linear-gradient(135deg, #fb7185, #be123c)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28ombros%29_denoise_%28cropped%29.jpg/330px-Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28ombros%29_denoise_%28cropped%29.jpg",
-    "localPhoto": "assets/politicians/lula_da_silva.jpg"
+    "localPhoto": "assets/politicians/lula_da_silva.jpg",
+    "countryCode": "br"
   },
   {
     "id": "olof_palme",
@@ -367,7 +376,8 @@ const rawPoliticians = [
     "color": "#ea580c",
     "gradient": "linear-gradient(135deg, #f97316, #c2410c)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/%28Olof_Palme%29_Felipe_Gonz%C3%A1lez_ofrece_una_rueda_de_prensa_junto_al_primer_ministro_de_Suecia._Pool_Moncloa._28_de_septiembre_de_1984_%28cropped%29.jpeg/330px-%28Olof_Palme%29_Felipe_Gonz%C3%A1lez_ofrece_una_rueda_de_prensa_junto_al_primer_ministro_de_Suecia._Pool_Moncloa._28_de_septiembre_de_1984_%28cropped%29.jpeg",
-    "localPhoto": "assets/politicians/olof_palme.jpg"
+    "localPhoto": "assets/politicians/olof_palme.jpg",
+    "countryCode": "se"
   },
   {
     "id": "lee_kuan_yew",
@@ -404,7 +414,8 @@ const rawPoliticians = [
     "color": "#475569",
     "gradient": "linear-gradient(135deg, #64748b, #334155)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Prime_Minister_Lee_Kuan_Yew_of_Singapore_Making_a_Toast_at_a_State_Dinner_Held_in_His_Honor%2C_1975.jpg/330px-Prime_Minister_Lee_Kuan_Yew_of_Singapore_Making_a_Toast_at_a_State_Dinner_Held_in_His_Honor%2C_1975.jpg",
-    "localPhoto": "assets/politicians/lee_kuan_yew.jpg"
+    "localPhoto": "assets/politicians/lee_kuan_yew.jpg",
+    "countryCode": "sg"
   },
   {
     "id": "nayib_bukele",
@@ -441,7 +452,8 @@ const rawPoliticians = [
     "color": "#0ea5e9",
     "gradient": "linear-gradient(135deg, #38bdf8, #0284c7)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Presidente_Nayib_Bukele_%28cropped%29.jpg/330px-Presidente_Nayib_Bukele_%28cropped%29.jpg",
-    "localPhoto": "assets/politicians/nayib_bukele.jpg"
+    "localPhoto": "assets/politicians/nayib_bukele.jpg",
+    "countryCode": "sv"
   },
   {
     "id": "angela_merkel",
@@ -478,7 +490,8 @@ const rawPoliticians = [
     "color": "#4338ca",
     "gradient": "linear-gradient(135deg, #6366f1, #3730a3)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Angela_Merkel_2019_cropped.jpg/330px-Angela_Merkel_2019_cropped.jpg",
-    "localPhoto": "assets/politicians/angela_merkel.jpg"
+    "localPhoto": "assets/politicians/angela_merkel.jpg",
+    "countryCode": "de"
   },
   {
     "id": "narendra_modi",
@@ -515,7 +528,8 @@ const rawPoliticians = [
     "color": "#f97316",
     "gradient": "linear-gradient(135deg, #fb923c, #ea580c)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/The_official_portrait_of_Shri_Narendra_Modi%2C_the_Prime_Minister_of_the_Republic_of_India.jpg/330px-The_official_portrait_of_Shri_Narendra_Modi%2C_the_Prime_Minister_of_the_Republic_of_India.jpg",
-    "localPhoto": "assets/politicians/narendra_modi.jpg"
+    "localPhoto": "assets/politicians/narendra_modi.jpg",
+    "countryCode": "in"
   },
   {
     "id": "jacinda_ardern",
@@ -552,7 +566,8 @@ const rawPoliticians = [
     "color": "#ec4899",
     "gradient": "linear-gradient(135deg, #f472b6, #db2777)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/New_Zealand_Prime_Minister_Jacinda_Ardern_in_2018.jpg/330px-New_Zealand_Prime_Minister_Jacinda_Ardern_in_2018.jpg",
-    "localPhoto": "assets/politicians/jacinda_ardern.jpg"
+    "localPhoto": "assets/politicians/jacinda_ardern.jpg",
+    "countryCode": "nz"
   },
   {
     "id": "pepe_mujica",
@@ -589,7 +604,8 @@ const rawPoliticians = [
     "color": "#84cc16",
     "gradient": "linear-gradient(135deg, #a3e635, #65a30d)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Mujica.jpg/330px-Mujica.jpg",
-    "localPhoto": "assets/politicians/pepe_mujica.jpg"
+    "localPhoto": "assets/politicians/pepe_mujica.jpg",
+    "countryCode": "uy"
   },
   {
     "id": "yanis_varoufakis",
@@ -626,7 +642,8 @@ const rawPoliticians = [
     "color": "#a855f7",
     "gradient": "linear-gradient(135deg, #c084fc, #9333ea)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/2019-04-13_Yanis_Varoufakis_by_Olaf_Kosinsky-0658_%28cropped%29.jpg/330px-2019-04-13_Yanis_Varoufakis_by_Olaf_Kosinsky-0658_%28cropped%29.jpg",
-    "localPhoto": "assets/politicians/yanis_varoufakis.jpg"
+    "localPhoto": "assets/politicians/yanis_varoufakis.jpg",
+    "countryCode": "gr"
   },
   {
     "id": "volodymyr_zelenskyy",
@@ -663,7 +680,8 @@ const rawPoliticians = [
     "color": "#3b82f6",
     "gradient": "linear-gradient(135deg, #60a5fa, #2563eb)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Volodymyr_Zelensky_2022_official_portrait_%28cropped%29.jpg/330px-Volodymyr_Zelensky_2022_official_portrait_%28cropped%29.jpg",
-    "localPhoto": "assets/politicians/volodymyr_zelenskyy.jpg"
+    "localPhoto": "assets/politicians/volodymyr_zelenskyy.jpg",
+    "countryCode": "ua"
   },
   {
     "id": "keir_starmer",
@@ -700,7 +718,8 @@ const rawPoliticians = [
     "color": "#be123c",
     "gradient": "linear-gradient(135deg, #e11d48, #9f1239)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Prime_Minister_Keir_Starmer_Portrait_%28cropped%29.jpg/330px-Prime_Minister_Keir_Starmer_Portrait_%28cropped%29.jpg",
-    "localPhoto": "assets/politicians/keir_starmer.jpg"
+    "localPhoto": "assets/politicians/keir_starmer.jpg",
+    "countryCode": "gb"
   },
   {
     "id": "fumio_kishida",
@@ -737,7 +756,8 @@ const rawPoliticians = [
     "color": "#059669",
     "gradient": "linear-gradient(135deg, #10b981, #047857)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Fumio_Kishida_20211005_%28cropped%29.jpg/330px-Fumio_Kishida_20211005_%28cropped%29.jpg",
-    "localPhoto": "assets/politicians/fumio_kishida.jpg"
+    "localPhoto": "assets/politicians/fumio_kishida.jpg",
+    "countryCode": "jp"
   },
   {
     "id": "thomas_sankara",
@@ -774,7 +794,8 @@ const rawPoliticians = [
     "color": "#15803d",
     "gradient": "linear-gradient(135deg, #22c55e, #166534)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Thomas_Sankara_in_Harlem_%281984%29.png/330px-Thomas_Sankara_in_Harlem_%281984%29.png",
-    "localPhoto": "assets/politicians/thomas_sankara.jpg"
+    "localPhoto": "assets/politicians/thomas_sankara.jpg",
+    "countryCode": "bf"
   },
   {
     "id": "nelson_mandela",
@@ -811,7 +832,8 @@ const rawPoliticians = [
     "color": "#d97706",
     "gradient": "linear-gradient(135deg, #f59e0b, #b45309)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Nelson_Mandela_1994.jpg/330px-Nelson_Mandela_1994.jpg",
-    "localPhoto": "assets/politicians/nelson_mandela.jpg"
+    "localPhoto": "assets/politicians/nelson_mandela.jpg",
+    "countryCode": "za"
   },
   {
     "id": "murray_rothbard",
@@ -848,7 +870,8 @@ const rawPoliticians = [
     "color": "#eab308",
     "gradient": "linear-gradient(135deg, #facc15, #ca8a04)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Murray_Rothbard_Portrait.jpg/330px-Murray_Rothbard_Portrait.jpg",
-    "localPhoto": "assets/politicians/murray_rothbard.jpg"
+    "localPhoto": "assets/politicians/murray_rothbard.jpg",
+    "countryCode": "global"
   },
   {
     "id": "noam_chomsky",
@@ -885,7 +908,8 @@ const rawPoliticians = [
     "color": "#14b8a6",
     "gradient": "linear-gradient(135deg, #2dd4bf, #0f766e)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Noam_Chomsky_portrait_2017_retouched.jpg/330px-Noam_Chomsky_portrait_2017_retouched.jpg",
-    "localPhoto": "assets/politicians/noam_chomsky.jpg"
+    "localPhoto": "assets/politicians/noam_chomsky.jpg",
+    "countryCode": "global"
   },
   {
     "id": "juan_peron",
@@ -922,7 +946,8 @@ const rawPoliticians = [
     "color": "#2563eb",
     "gradient": "linear-gradient(135deg, #3b82f6, #1d4ed8)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Juan_Domingo_Per%C3%B3n_%28cropped%29.jpg/330px-Juan_Domingo_Per%C3%B3n_%28cropped%29.jpg",
-    "localPhoto": "assets/politicians/juan_peron.jpg"
+    "localPhoto": "assets/politicians/juan_peron.jpg",
+    "countryCode": "ar"
   },
   {
     "id": "sahra_wagenknecht",
@@ -959,7 +984,8 @@ const rawPoliticians = [
     "color": "#9333ea",
     "gradient": "linear-gradient(135deg, #a855f7, #7e22ce)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/2025-04-29-Sahra_Wagenknecht-Maischberger-3049_%28cropped_2%29.jpg/330px-2025-04-29-Sahra_Wagenknecht-Maischberger-3049_%28cropped_2%29.jpg",
-    "localPhoto": "assets/politicians/sahra_wagenknecht.jpg"
+    "localPhoto": "assets/politicians/sahra_wagenknecht.jpg",
+    "countryCode": "de"
   },
   {
     "id": "clement_attlee",
@@ -996,7 +1022,8 @@ const rawPoliticians = [
     "color": "#b91c1c",
     "gradient": "linear-gradient(135deg, #dc2626, #991b1b)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Person_attlee2.jpg/330px-Person_attlee2.jpg",
-    "localPhoto": "assets/politicians/clement_attlee.jpg"
+    "localPhoto": "assets/politicians/clement_attlee.jpg",
+    "countryCode": "gb"
   },
   {
     "id": "evo_morales",
@@ -1033,7 +1060,8 @@ const rawPoliticians = [
     "color": "#ca8a04",
     "gradient": "linear-gradient(135deg, #eab308, #a16207)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Evo_Morales_Ayma_%28cropped_3%29.jpg/330px-Evo_Morales_Ayma_%28cropped_3%29.jpg",
-    "localPhoto": "assets/politicians/evo_morales.jpg"
+    "localPhoto": "assets/politicians/evo_morales.jpg",
+    "countryCode": "bo"
   },
   {
     "id": "martin_luther_king",
@@ -1070,7 +1098,8 @@ const rawPoliticians = [
     "color": "#8b5cf6",
     "gradient": "linear-gradient(135deg, #a78bfa, #7c3aed)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Martin_Luther_King%2C_Jr._and_Lyndon_Johnson_%28cropped%29.jpg/330px-Martin_Luther_King%2C_Jr._and_Lyndon_Johnson_%28cropped%29.jpg",
-    "localPhoto": "assets/politicians/martin_luther_king.jpg"
+    "localPhoto": "assets/politicians/martin_luther_king.jpg",
+    "countryCode": "us"
   },
   {
     "id": "mahatma_gandhi",
@@ -1107,7 +1136,8 @@ const rawPoliticians = [
     "color": "#f57c00",
     "gradient": "linear-gradient(135deg, #f57c00, #d84315)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Mahatma-Gandhi%2C_studio%2C_1931.jpg/330px-Mahatma-Gandhi%2C_studio%2C_1931.jpg",
-    "localPhoto": "assets/politicians/mahatma_gandhi.jpg"
+    "localPhoto": "assets/politicians/mahatma_gandhi.jpg",
+    "countryCode": "in"
   },
   {
     "id": "rosa_luxemburg",
@@ -1144,7 +1174,8 @@ const rawPoliticians = [
     "color": "#991b1b",
     "gradient": "linear-gradient(135deg, #991b1b, #7f1d1d)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Rosa_Luxemburg_%28cropped%29.jpg/330px-Rosa_Luxemburg_%28cropped%29.jpg",
-    "localPhoto": "assets/politicians/rosa_luxemburg.jpg"
+    "localPhoto": "assets/politicians/rosa_luxemburg.jpg",
+    "countryCode": "de"
   },
   {
     "id": "vaclav_havel",
@@ -1181,7 +1212,8 @@ const rawPoliticians = [
     "color": "#0891b2",
     "gradient": "linear-gradient(135deg, #0891b2, #0e7490)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Vaclav_Havel.jpg/330px-Vaclav_Havel.jpg",
-    "localPhoto": "assets/politicians/vaclav_havel.jpg"
+    "localPhoto": "assets/politicians/vaclav_havel.jpg",
+    "countryCode": "cz"
   },
   {
     "id": "winston_churchill",
@@ -1218,7 +1250,8 @@ const rawPoliticians = [
     "color": "#334155",
     "gradient": "linear-gradient(135deg, #475569, #1e293b)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Sir_Winston_Churchill_-_19086236948_%28restored%29.jpg/330px-Sir_Winston_Churchill_-_19086236948_%28restored%29.jpg",
-    "localPhoto": "assets/politicians/winston_churchill.jpg"
+    "localPhoto": "assets/politicians/winston_churchill.jpg",
+    "countryCode": "gb"
   },
   {
     "id": "thomas_jefferson",
@@ -1255,7 +1288,8 @@ const rawPoliticians = [
     "color": "#16a34a",
     "gradient": "linear-gradient(135deg, #16a34a, #15803d)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Official_Presidential_portrait_of_Thomas_Jefferson_%28by_Rembrandt_Peale%2C_1800%29.jpg/330px-Official_Presidential_portrait_of_Thomas_Jefferson_%28by_Rembrandt_Peale%2C_1800%29.jpg",
-    "localPhoto": "assets/politicians/thomas_jefferson.jpg"
+    "localPhoto": "assets/politicians/thomas_jefferson.jpg",
+    "countryCode": "us"
   },
   {
     "id": "lech_walesa",
@@ -1292,7 +1326,8 @@ const rawPoliticians = [
     "color": "#e11d2a",
     "gradient": "linear-gradient(135deg, #e11d2a, #b91c1c)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/03.17_%E7%B8%BD%E7%B5%B1%E6%8E%A5%E8%A6%8B%E3%80%8C%E6%B3%A2%E8%98%AD%E5%89%8D%E7%B8%BD%E7%B5%B1%E8%8F%AF%E5%8B%92%E6%B2%99%E4%B9%99%E8%A1%8C%E3%80%8D_-_55151702432_%28cropped%29.jpg/330px-03.17_%E7%B8%BD%E7%B5%B1%E6%8E%A5%E8%A6%8B%E3%80%8C%E6%B3%A2%E8%98%AD%E5%89%8D%E7%B8%BD%E7%B5%B1%E8%8F%AF%E5%8B%92%E6%B2%99%E4%B9%99%E8%A1%8C%E3%80%8D_-_55151702432_%28cropped%29.jpg",
-    "localPhoto": "assets/politicians/lech_walesa.jpg"
+    "localPhoto": "assets/politicians/lech_walesa.jpg",
+    "countryCode": "pl"
   },
   {
     "id": "adam_smith",
@@ -1329,7 +1364,8 @@ const rawPoliticians = [
     "color": "#0d9488",
     "gradient": "linear-gradient(135deg, #14b8a6, #0f766e)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Adam_Smith_The_Muir_portrait.jpg/330px-Adam_Smith_The_Muir_portrait.jpg",
-    "localPhoto": "assets/politicians/adam_smith.jpg"
+    "localPhoto": "assets/politicians/adam_smith.jpg",
+    "countryCode": "sco"
   },
   {
     "id": "franklin_d_roosevelt",
@@ -1366,7 +1402,8 @@ const rawPoliticians = [
     "color": "#1e40af",
     "gradient": "linear-gradient(135deg, #1e40af, #3b82f6)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/FDR-1944-Campaign-Portrait_%283x4_retouched%2C_cropped%29.jpg/330px-FDR-1944-Campaign-Portrait_%283x4_retouched%2C_cropped%29.jpg",
-    "localPhoto": "assets/politicians/franklin_d_roosevelt.jpg"
+    "localPhoto": "assets/politicians/franklin_d_roosevelt.jpg",
+    "countryCode": "us"
   },
   {
     "id": "charles_de_gaulle",
@@ -1403,7 +1440,8 @@ const rawPoliticians = [
     "color": "#312e81",
     "gradient": "linear-gradient(135deg, #312e81, #4338ca)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/De_Gaulle-OWI_%28cropped%29_%28c%29%282%29.jpg/330px-De_Gaulle-OWI_%28cropped%29_%28c%29%282%29.jpg",
-    "localPhoto": "assets/politicians/charles_de_gaulle.jpg"
+    "localPhoto": "assets/politicians/charles_de_gaulle.jpg",
+    "countryCode": "fr"
   },
   {
     "id": "wladyslaw_sikorski",
@@ -1440,7 +1478,8 @@ const rawPoliticians = [
     "color": "#9f1239",
     "gradient": "linear-gradient(135deg, #9f1239, #e11d48)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Wladyslaw_Sikorski_2.jpg/330px-Wladyslaw_Sikorski_2.jpg",
-    "localPhoto": "assets/politicians/wladyslaw_sikorski.jpg"
+    "localPhoto": "assets/politicians/wladyslaw_sikorski.jpg",
+    "countryCode": "pl"
   },
   {
     "id": "dwight_d_eisenhower",
@@ -1477,7 +1516,8 @@ const rawPoliticians = [
     "color": "#4d7c0f",
     "gradient": "linear-gradient(135deg, #4d7c0f, #15803d)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/General_of_the_Army_Dwight_D._Eisenhower_1947.jpg/330px-General_of_the_Army_Dwight_D._Eisenhower_1947.jpg",
-    "localPhoto": "assets/politicians/dwight_d_eisenhower.jpg"
+    "localPhoto": "assets/politicians/dwight_d_eisenhower.jpg",
+    "countryCode": "us"
   },
   {
     "id": "joseph_stalin",
@@ -1514,7 +1554,8 @@ const rawPoliticians = [
     "color": "#7f1d1d",
     "gradient": "linear-gradient(135deg, #7f1d1d, #991b1b)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/StalinCropped1943.jpg/330px-StalinCropped1943.jpg",
-    "localPhoto": "assets/politicians/joseph_stalin.jpg"
+    "localPhoto": "assets/politicians/joseph_stalin.jpg",
+    "countryCode": "ussr"
   },
   {
     "id": "benito_mussolini",
@@ -1551,7 +1592,8 @@ const rawPoliticians = [
     "color": "#18181b",
     "gradient": "linear-gradient(135deg, #27272a, #09090b)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Mussolini_mezzobusto.jpg/330px-Mussolini_mezzobusto.jpg",
-    "localPhoto": "assets/politicians/benito_mussolini.jpg"
+    "localPhoto": "assets/politicians/benito_mussolini.jpg",
+    "countryCode": "it"
   },
   {
     "id": "chiang_kai_shek",
@@ -1588,7 +1630,8 @@ const rawPoliticians = [
     "color": "#0369a1",
     "gradient": "linear-gradient(135deg, #0369a1, #0284c7)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Chiang_Kai-shek_%283x4_cropped%29.jpg/330px-Chiang_Kai-shek_%283x4_cropped%29.jpg",
-    "localPhoto": "assets/politicians/chiang_kai_shek.jpg"
+    "localPhoto": "assets/politicians/chiang_kai_shek.jpg",
+    "countryCode": "tw"
   }
 ];
 

@@ -98,7 +98,18 @@ const uiTranslations = {
     "accentRose": "Różowy",
     "headerEditionBadge": "100 Pytań • Model 2D",
     "clickLeaderHint": "Kliknij profil lidera, aby poznać szczegóły",
-    "clickPartyHint": "Kliknij partię, aby poznać założenia"
+    "clickPartyHint": "Kliknij partię, aby poznać założenia",
+    "showMorePoliticians": "Pokaż więcej liderów ze świata (Top 20)",
+    "showAllPoliticians": "Pokaż wszystkich liderów (katalog 43 postaci)",
+    "showFewerPoliticians": "Zwiń listę liderów",
+    "showMoreIdeologies": "Pokaż więcej poglądów (Top 12)",
+    "showAllIdeologies": "Pokaż wszystkie poglądy (katalog 32 nurtów)",
+    "showFewerIdeologies": "Zwiń listę poglądów",
+    "clickIdeologyHint": "Kliknij nurt, aby poznać jego opis i myślicieli",
+    "ideologyRankingTitle": "Ranking Twoich poglądów politycznych:",
+    "ideologyMatchLabel": "Zgodność:",
+    "spotlightLeaderTitle": "Szczegółowy profil wybranego lidera:",
+    "viewAllRankings": "Pełny ranking dopasowania"
   },
   "en": {
     "appTitle": "Political Compass",
@@ -194,7 +205,18 @@ const uiTranslations = {
     "accentRose": "Neon Rose",
     "headerEditionBadge": "100 Questions • 2D Model",
     "clickLeaderHint": "Click a leader's profile to view full details",
-    "clickPartyHint": "Click a movement to explore its manifesto"
+    "clickPartyHint": "Click a movement to explore its manifesto",
+    "showMorePoliticians": "Show more world leaders (Top 20)",
+    "showAllPoliticians": "Show all leaders (catalog of 43 figures)",
+    "showFewerPoliticians": "Show fewer leaders",
+    "showMoreIdeologies": "Show more views (Top 12)",
+    "showAllIdeologies": "Show all views (catalog of 32 movements)",
+    "showFewerIdeologies": "Show fewer views",
+    "clickIdeologyHint": "Click a movement to view its ideas and key figures",
+    "ideologyRankingTitle": "Ranking of your political views:",
+    "ideologyMatchLabel": "Match:",
+    "spotlightLeaderTitle": "Detailed profile of selected leader:",
+    "viewAllRankings": "Full match ranking"
   },
   "ru": {
     "appTitle": "Политический Компас",
@@ -290,7 +312,18 @@ const uiTranslations = {
     "accentRose": "Розовый",
     "headerEditionBadge": "100 Вопросов • 2D Модель",
     "clickLeaderHint": "Нажмите на лидера, чтобы узнать подробности",
-    "clickPartyHint": "Нажмите на движение, чтобы изучить программу"
+    "clickPartyHint": "Нажмите на движение, чтобы изучить программу",
+    "showMorePoliticians": "Показать больше мировых лидеров (Топ-20)",
+    "showAllPoliticians": "Показать всех лидеров (каталог из 43 деятелей)",
+    "showFewerPoliticians": "Свернуть список лидеров",
+    "showMoreIdeologies": "Показать больше взглядов (Топ-12)",
+    "showAllIdeologies": "Показать все взгляды (каталог из 32 течений)",
+    "showFewerIdeologies": "Свернуть список взглядов",
+    "clickIdeologyHint": "Нажмите на течение, чтобы узнать идеи и мыслителей",
+    "ideologyRankingTitle": "Рейтинг ваших политических взглядов:",
+    "ideologyMatchLabel": "Совпадение:",
+    "spotlightLeaderTitle": "Подробный профиль выбранного лидера:",
+    "viewAllRankings": "Полный рейтинг соответствия"
   },
   "fr": {
     "appTitle": "Boussole Politique",
@@ -386,7 +419,18 @@ const uiTranslations = {
     "accentRose": "Rose néon",
     "headerEditionBadge": "100 Questions • Modèle 2D",
     "clickLeaderHint": "Cliquez sur un profil pour afficher les détails",
-    "clickPartyHint": "Cliquez sur un mouvement pour voir son manifeste"
+    "clickPartyHint": "Cliquez sur un mouvement pour voir son manifeste",
+    "showMorePoliticians": "Afficher plus de dirigeants mondiaux (Top 20)",
+    "showAllPoliticians": "Afficher tous les dirigeants (catalogue de 43 personnalités)",
+    "showFewerPoliticians": "Réduire la liste des dirigeants",
+    "showMoreIdeologies": "Afficher plus de courants (Top 12)",
+    "showAllIdeologies": "Afficher tous les courants (catalogue de 32 courants)",
+    "showFewerIdeologies": "Réduire la liste des courants",
+    "clickIdeologyHint": "Cliquez sur un courant pour voir sa description et ses penseurs",
+    "ideologyRankingTitle": "Classement de vos orientations politiques :",
+    "ideologyMatchLabel": "Affinité :",
+    "spotlightLeaderTitle": "Profil détaillé du dirigeant sélectionné :",
+    "viewAllRankings": "Classement complet des affinités"
   }
 };
 

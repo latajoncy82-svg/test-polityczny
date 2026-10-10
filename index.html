@@ -286,8 +286,17 @@
 
           <!-- Secondary/Alternative Ideologies -->
           <div class="secondary-ideologies-box" id="secondaryIdeologiesBox">
-            <h4 id="secondaryIdeologiesTitle">Bliskie nurty pokrewne:</h4>
+            <div class="section-hint-row">
+              <h4 id="secondaryIdeologiesTitle">Ranking Twoich poglądów politycznych:</h4>
+              <small class="click-hint" id="clickIdeologyHint">Kliknij nurt, aby poznać jego opis i myślicieli</small>
+            </div>
             <div id="secondaryIdeologiesList" class="secondary-ideologies-grid"></div>
+            <div class="expand-controls-row">
+              <button id="toggleMoreIdeologiesBtn" class="btn-toggle-expand" type="button" aria-expanded="false">
+                <span id="toggleMoreIdeologiesText">Pokaż więcej poglądów (Top 12)</span>
+                <span class="toggle-icon" id="toggleIdeologiesIcon" aria-hidden="true">▼</span>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -329,10 +338,16 @@
             <!-- Other global politicians -->
             <div class="other-matches-section">
               <div class="section-hint-row">
-                <h5 id="otherPoliticiansTitle">Kolejne dopasowania ze świata:</h5>
+                <h5 id="otherPoliticiansTitle">Ranking światowych liderów i postaci historycznych:</h5>
                 <small class="click-hint" id="clickLeaderHint">Kliknij profil lidera, aby poznać szczegóły</small>
               </div>
               <div id="otherPoliticiansList" class="other-matches-grid"></div>
+              <div class="expand-controls-row">
+                <button id="toggleMorePoliticiansBtn" class="btn-toggle-expand" type="button" aria-expanded="false">
+                  <span id="toggleMorePoliticiansText">Pokaż więcej liderów ze świata</span>
+                  <span class="toggle-icon" id="togglePoliticiansIcon" aria-hidden="true">▼</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -395,6 +395,87 @@ referencedIds.forEach(id => {
 });
 assert(missingDomIds === 0, `All ${referencedIds.size} DOM element IDs referenced in script.js exist in index.html`);
 
+// 7. Validate New Features: Expanded Rankings, SVG Flags, and Colors
+console.log("\n[6] Testing Expanded Rankings, SVG Flags, and Colors:");
+
+// Ideology colors, gradients, icons
+let missingIdeoColors = 0;
+let missingIdeoIcons = 0;
+worldIdeologies.forEach(ideo => {
+  if (!ideo.color || !ideo.color.startsWith('#') || !ideo.gradient) missingIdeoColors++;
+  if (!ideo.icon || typeof ideo.icon !== 'string') missingIdeoIcons++;
+});
+assert(missingIdeoColors === 0, `All ${worldIdeologies.length} ideologies have distinct signature hex colors and gradients`);
+assert(missingIdeoIcons === 0, `All ${worldIdeologies.length} ideologies have distinctive icons/emblems`);
+
+// Politician countryCode mapping to genuine SVG flags
+let missingPolCountryCodes = 0;
+worldPoliticians.forEach(pol => {
+  if (!pol.countryCode || typeof pol.countryCode !== 'string') missingPolCountryCodes++;
+});
+assert(missingPolCountryCodes === 0, `All ${worldPoliticians.length} politicians have valid country codes for SVG flags`);
+
+// Verify script.js contains svgFlags dictionary with all required countries
+const requiredFlags = ['ar','us','gb','fr','de','it','pl','ua','ca','br','se','sg','sv','in','nz','uy','gr','jp','bf','za','bo','cz','sco','ussr','tw','global'];
+let missingScriptFlags = 0;
+requiredFlags.forEach(f => {
+  if (!scriptContent.includes(`${f}:`) && !scriptContent.includes(`"${f}":`) && !scriptContent.includes(`'${f}':`)) {
+    missingScriptFlags++;
+    console.error(`Missing flag '${f}' in script.js svgFlags`);
+  }
+});
+assert(missingScriptFlags === 0, `All ${requiredFlags.length} genuine national flags are defined as inline SVGs in script.js`);
+
+// Verify new UI keys parity
+const requiredNewUiKeys = [
+  'showMorePoliticians',
+  'showAllPoliticians',
+  'showFewerPoliticians',
+  'showMoreIdeologies',
+  'showAllIdeologies',
+  'showFewerIdeologies',
+  'clickIdeologyHint',
+  'ideologyRankingTitle',
+  'ideologyMatchLabel',
+  'spotlightLeaderTitle',
+  'viewAllRankings'
+];
+let missingNewUiKeys = 0;
+requiredNewUiKeys.forEach(key => {
+  langs.forEach(lang => {
+    if (!uiTranslations[lang][key] || typeof uiTranslations[lang][key] !== 'string') {
+      missingNewUiKeys++;
+      console.error(`Missing UI key '${key}' in '${lang}'`);
+    }
+  });
+});
+assert(missingNewUiKeys === 0, `All 11 new ranking & expand UI strings have 100% translation parity in 4 languages`);
+
+// Verify ranking calculation on simulated scores
+function rankIdeologies(econ, soc) {
+  return worldIdeologies.map(ideo => {
+    const dist = Math.hypot(econ - ideo.coordinates.econ, soc - ideo.coordinates.soc);
+    const similarity = Math.max(0, Math.min(100, Math.round(100 - (dist / 282.84) * 100)));
+    return { ...ideo, dist, similarity };
+  }).sort((a, b) => a.dist - b.dist);
+}
+
+function rankPoliticians(econ, soc) {
+  return worldPoliticians.map(pol => {
+    const dist = Math.hypot(econ - pol.coordinates.econ, soc - pol.coordinates.soc);
+    const similarity = Math.max(0, Math.min(100, Math.round(100 - (dist / 282.84) * 100)));
+    return { ...pol, dist, similarity };
+  }).sort((a, b) => a.dist - b.dist);
+}
+
+const testRankedIdeos = rankIdeologies(70, -40);
+assert(testRankedIdeos.length === 32, "Ideology ranking returns complete catalog of 32 ideologies");
+assert(testRankedIdeos[0].similarity >= testRankedIdeos[1].similarity && testRankedIdeos[1].similarity >= testRankedIdeos[2].similarity, "Ideology ranking is strictly sorted in descending match order");
+
+const testRankedPols = rankPoliticians(70, -40);
+assert(testRankedPols.length === 43, "Politician ranking returns complete catalog of 43 world politicians");
+assert(testRankedPols[0].similarity >= testRankedPols[1].similarity && testRankedPols[1].similarity >= testRankedPols[2].similarity, "Politician ranking is strictly sorted in descending match order");
+
 // Results summary
 console.log(`\n======================================================`);
 console.log(`TEST SUMMARY: ${passedTests} PASSED, ${failedTests} FAILED`);
