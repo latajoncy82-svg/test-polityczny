@@ -1330,6 +1330,265 @@ const rawPoliticians = [
     "gradient": "linear-gradient(135deg, #14b8a6, #0f766e)",
     "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Adam_Smith_The_Muir_portrait.jpg/330px-Adam_Smith_The_Muir_portrait.jpg",
     "localPhoto": "assets/politicians/adam_smith.jpg"
+  },
+  {
+    "id": "franklin_d_roosevelt",
+    "name": "Franklin D. Roosevelt",
+    "flag": "🇺🇸",
+    "country": {
+      "pl": "Stany Zjednoczone",
+      "en": "United States",
+      "ru": "США",
+      "fr": "États-Unis"
+    },
+    "role": {
+      "pl": "32. Prezydent USA (1933–1945), twórca Nowego Ładu (New Deal) i przywódca aliantów",
+      "en": "32nd U.S. President (1933–1945), architect of the New Deal and Allied wartime leader",
+      "ru": "32-й президент США (1933–1945), создатель «Нового курса» и лидер союзников",
+      "fr": "32e président des États-Unis (1933–1945), artisan du New Deal et leader des Alliés"
+    },
+    "quote": {
+      "pl": "„Jedyną rzeczą, której musimy się bać, jest sam strach.”",
+      "en": "“The only thing we have to fear is fear itself.”",
+      "ru": "«Единственное, чего нам следует бояться, — это сам страх.»",
+      "fr": "« La seule chose dont nous devons avoir peur, c'est de la peur elle-même. »"
+    },
+    "whyVote": {
+      "pl": "Oddałbyś na niego głos za stworzenie państwa opiekuńczego (New Deal), ubezpieczeń społecznych, regulację Wall Street, zdecydowaną mobilizację wojenną przeciw tyranii oraz wizję powojennego ładu i ONZ.",
+      "en": "You would vote for him for pioneering the American welfare state (New Deal), Social Security, regulating financial markets, mobilizing industry against fascism, and championing the United Nations.",
+      "ru": "Вы бы проголосовали за него за введение социального обеспечения («Новый курс»), регулирование Уолл-стрит, мощную мобилизацию против фашизма и создание фундамента ООН.",
+      "fr": "Vous voteriez pour lui pour l'instauration de l'État-providence (New Deal), la sécurité sociale, la régulation bancaire, la victoire contre l'Axe et la fondation de l'ONU."
+    },
+    "coordinates": {
+      "econ": -30,
+      "soc": 35
+    },
+    "color": "#1e40af",
+    "gradient": "linear-gradient(135deg, #1e40af, #1d4ed8)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/FDR-1944-Campaign-Portrait_%283x4_retouched%2C_cropped%29.jpg/330px-FDR-1944-Campaign-Portrait_%283x4_retouched%2C_cropped%29.jpg",
+    "localPhoto": "assets/politicians/franklin_d_roosevelt.jpg"
+  },
+  {
+    "id": "charles_de_gaulle",
+    "name": "Charles de Gaulle",
+    "flag": "🇫🇷",
+    "country": {
+      "pl": "Francja",
+      "en": "France",
+      "ru": "Франция",
+      "fr": "France"
+    },
+    "role": {
+      "pl": "Przywódca Wolnej Francji w czasie II wojny światowej, prezydent V Republiki i mąż stanu",
+      "en": "Leader of Free France during World War II, founder of the Fifth Republic and statesman",
+      "ru": "Лидер движения «Свободная Франция», основатель Пятой республики и выдающийся государственный деятель",
+      "fr": "Chef de la France libre pendant la Seconde Guerre mondiale, fondateur de la Ve République et homme d'État"
+    },
+    "quote": {
+      "pl": "„Francja nie może być Francją bez wielkości.”",
+      "en": "“France cannot be France without greatness.”",
+      "ru": "«Франция не может быть Францией без величия.»",
+      "fr": "« La France ne peut être la France sans la grandeur. »"
+    },
+    "whyVote": {
+      "pl": "Głosowałbyś na niego za odmowę kapitulacji w 1940 roku, żelazną obronę suwerenności narodowej, godność państwa, planowanie strategiczne (dirigisme) i niezależność geopolityczną.",
+      "en": "You would vote for him for refusing surrender in 1940, uncompromising defense of national sovereignty, state-led strategic development (dirigisme), and foreign policy independence.",
+      "ru": "Вы бы проголосовали за него за отказ от капитуляции в 1940 году, бескомпромиссную защиту национального суверенитета, сильное государство (дирижизм) и независимую внешнюю политику.",
+      "fr": "Vous voteriez pour lui pour son refus historique de l'armistice en 1940, sa défense intraitable de la souveraineté, la planification économique gaulliste et la grandeur nationale."
+    },
+    "coordinates": {
+      "econ": -15,
+      "soc": -55
+    },
+    "color": "#1e3a8a",
+    "gradient": "linear-gradient(135deg, #1e3a8a, #2563eb)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/De_Gaulle-OWI_%28cropped%29_%28c%29%282%29.jpg/330px-De_Gaulle-OWI_%28cropped%29_%28c%29%282%29.jpg",
+    "localPhoto": "assets/politicians/charles_de_gaulle.jpg"
+  },
+  {
+    "id": "wladyslaw_sikorski",
+    "name": "Władysław Sikorski",
+    "flag": "🇵🇱",
+    "country": {
+      "pl": "Polska",
+      "en": "Poland",
+      "ru": "Польша",
+      "fr": "Pologne"
+    },
+    "role": {
+      "pl": "Premier Rządu RP na Uchodźstwie i Naczelny Wódz Polskich Sił Zbrojnych (1939–1943)",
+      "en": "Prime Minister of the Polish Government-in-Exile and Commander-in-Chief (1939–1943)",
+      "ru": "Премьер-министр польского правительства в изгнании и Верховный главнокомандующий (1939–1943)",
+      "fr": "Premier ministre du gouvernement polonais en exil et commandant en chef (1939–1943)"
+    },
+    "quote": {
+      "pl": "„W imię honoru i wolności narodu będziemy walczyć do ostatecznego zwycięstwa.”",
+      "en": "“In the name of the honour and freedom of the nation, we shall fight until total victory.”",
+      "ru": "«Во имя чести и свободы нации мы будем сражаться до окончательной победы.»",
+      "fr": "« Au nom de l'honneur et de la liberté de la nation, nous combattrons jusqu'à la victoire totale. »"
+    },
+    "whyVote": {
+      "pl": "Poparłbyś go za niezłomną walkę o wolną i niepodległą Polskę, odbudowę armii na obczyźnie, demokratyczny kurs państwa oraz bezkompromisowe dążenie do prawdy o zbrodni katyńskiej.",
+      "en": "You would vote for him for organizing the Polish Armed Forces in exile, unwavering fight against Nazi occupation, democratic integrity, and relentless pursuit of truth regarding Katyn.",
+      "ru": "Вы бы поддержали его за организацию польской армии в изгнании, бескомпромиссную борьбу против оккупации, защиту государственного суверенитета и стремление к демократическому порядку.",
+      "fr": "Vous voteriez pour lui pour la reconstruction héroïque de l'armée polonaise en exil, son engagement démocratique et sa lutte inébranlable pour la libération nationale."
+    },
+    "coordinates": {
+      "econ": -5,
+      "soc": -15
+    },
+    "color": "#9f1239",
+    "gradient": "linear-gradient(135deg, #9f1239, #e11d48)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Wladyslaw_Sikorski_2.jpg/330px-Wladyslaw_Sikorski_2.jpg",
+    "localPhoto": "assets/politicians/wladyslaw_sikorski.jpg"
+  },
+  {
+    "id": "dwight_d_eisenhower",
+    "name": "Dwight D. Eisenhower",
+    "flag": "🇺🇸",
+    "country": {
+      "pl": "Stany Zjednoczone",
+      "en": "United States",
+      "ru": "США",
+      "fr": "États-Unis"
+    },
+    "role": {
+      "pl": "Naczelny Dowódca Sił Alianckich w Europie (SHAEF), 34. Prezydent USA (1953–1961)",
+      "en": "Supreme Allied Commander Europe (SHAEF), 34th U.S. President (1953–1961)",
+      "ru": "Верховный главнокомандующий союзными войсками в Европе, 34-й президент США (1953–1961)",
+      "fr": "Commandant suprême des forces alliées en Europe (SHAEF), 34e président des États-Unis (1953–1961)"
+    },
+    "quote": {
+      "pl": "„W radach rządowych musimy strzec się przed nieuzasadnionym wpływem kompleksu militarno-przemysłowego.”",
+      "en": "“In the councils of government, we must guard against the acquisition of unwarranted influence by the military-industrial complex.”",
+      "ru": "«В органах власти мы должны остерегаться неоправданного влияния военно-промышленного комплекса.»",
+      "fr": "« Dans les conseils du gouvernement, nous devons prendre garde à l'influence injustifiée du complexe militaro-industriel. »"
+    },
+    "whyVote": {
+      "pl": "Oddałbyś na niego głos za genialne dowodzenie operacją Overlord (D-Day), pragmatyczny konserwatyzm („Modern Republicanism”), budowę autostrad międzystanowych, zrównoważony budżet i przestrogę przed militaryzmem.",
+      "en": "You would vote for him for masterminding D-Day, fiscal moderation, creating the Interstate Highway System, defending NATO, and courageously warning of the military-industrial complex.",
+      "ru": "Вы бы проголосовали за него за блестящее руководство высадкой в Нормандии (D-Day), взвешенный консерватизм, создание системы межштатных автомагистралей и сбалансированный бюджет.",
+      "fr": "Vous voteriez pour lui pour le triomphe du débarquement de Normandie, son conservatisme pragmatique et modéré, le réseau autoroutier inter-États et sa lucidité sur le complexe militaro-industriel."
+    },
+    "coordinates": {
+      "econ": 40,
+      "soc": -25
+    },
+    "color": "#4d7c0f",
+    "gradient": "linear-gradient(135deg, #4d7c0f, #15803d)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/General_of_the_Army_Dwight_D._Eisenhower_1947.jpg/330px-General_of_the_Army_Dwight_D._Eisenhower_1947.jpg",
+    "localPhoto": "assets/politicians/dwight_d_eisenhower.jpg"
+  },
+  {
+    "id": "joseph_stalin",
+    "name": "Józef Stalin",
+    "flag": "🚩",
+    "country": {
+      "pl": "Związek Radziecki (ZSRR)",
+      "en": "Soviet Union (USSR)",
+      "ru": "СССР",
+      "fr": "Union soviétique (URSS)"
+    },
+    "role": {
+      "pl": "Przywódca ZSRR (1924–1953), Generalissimus, architekt gospodarki nakazowo-rozdzielczej",
+      "en": "General Secretary of the USSR (1924–1953), Generalissimo, architect of total command economy",
+      "ru": "Генеральный секретарь ЦК ВКП(б) / Председатель Совмина СССР, генералиссимус",
+      "fr": "Dirigeant de l'URSS (1924–1953), généralissime et bâtisseur de l'économie planifiée d'État"
+    },
+    "quote": {
+      "pl": "„Kadry decydują o wszystkim.”",
+      "en": "“Cadres decide everything.”",
+      "ru": "«Кадры решают всё.»",
+      "fr": "« Les cadres décident de tout. »"
+    },
+    "whyVote": {
+      "pl": "Zwolennicy wskazywali na błyskawiczną industrializację, pokonanie hitlerowskich Niemiec pod Stalingradem i Kurskiem, status mocarstwa atomowego oraz całkowite podporządkowanie gospodarki państwu (za cenę brutalnego terroru i braku wolności).",
+      "en": "Historical supporters cited rapid industrialization, decisive defeat of Nazi Germany at Stalingrad and Kursk, superpower status, and total state economic mobilization (at the cost of totalitarian repression and loss of liberties).",
+      "ru": "Сторонники отмечали форсированную индустриализацию, победу в Великой Отечественной войне над нацизмом, статус ядерной сверхдержавы и тотальную мобилизационную экономику (ценой массовых репрессий и тоталитарного контроля).",
+      "fr": "Ses partisans soulignaient l'industrialisation à marche forcée, la victoire militaire décisive contre le nazisme, le statut de superpuissance et l'économie étatisée (au prix de répressions massives et de terreur totalitaire)."
+    },
+    "coordinates": {
+      "econ": -95,
+      "soc": -90
+    },
+    "color": "#7f1d1d",
+    "gradient": "linear-gradient(135deg, #7f1d1d, #991b1b)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/StalinCropped1943.jpg/330px-StalinCropped1943.jpg",
+    "localPhoto": "assets/politicians/joseph_stalin.jpg"
+  },
+  {
+    "id": "benito_mussolini",
+    "name": "Benito Mussolini",
+    "flag": "🇮🇹",
+    "country": {
+      "pl": "Włochy",
+      "en": "Italy",
+      "ru": "Италия",
+      "fr": "Italie"
+    },
+    "role": {
+      "pl": "Premier Włoch (1922–1943), twórca ideologii faszyzmu i państwa korporacyjnego",
+      "en": "Prime Minister of Italy (1922–1943), founder of Fascism and the totalitarian corporate state",
+      "ru": "Премьер-министр Италии (1922–1943), дуче, основатель фашизма и корпоративного государства",
+      "fr": "Président du Conseil d'Italie (1922–1943), duce, fondateur du fascisme et de l'État corporatiste"
+    },
+    "quote": {
+      "pl": "„Wszystko w państwie, nic poza państwem, nic przeciwko państwu.”",
+      "en": "“Everything in the State, nothing outside the State, nothing against the State.”",
+      "ru": "«Всё в государстве, ничего вне государства, ничего против государства.»",
+      "fr": "« Tout dans l'État, rien hors de l'État, rien contre l'État. »"
+    },
+    "whyVote": {
+      "pl": "Zwolennicy wskazywali na skrajny nacjonalizm, kult dyscypliny i siły, korporacjonizm gospodarczy zwalczający zarówno marksizm, jak i liberalny kapitalizm, oraz wielkie roboty publiczne (za cenę likwidacji demokracji i imperialnej agresji).",
+      "en": "Historic supporters pointed to militant nationalism, total social discipline, state-directed corporatism opposing both liberalism and Marxism, and major public infrastructure works (at the price of abolishing democracy and warmongering).",
+      "ru": "Сторонники указывали на ультранационализм, культ дисциплины и порядка, корпоративистскую модель и масштабные общественные стройки (ценой ликвидации демократии и агрессивного милитаризма).",
+      "fr": "Ses partisans mettaient en avant le nationalisme exacerbé, le culte de l'ordre, le corporatisme économique rejetant libéralisme et marxisme, et les grands travaux (au prix de la dictature totale et du bellicisme)."
+    },
+    "coordinates": {
+      "econ": -20,
+      "soc": -95
+    },
+    "color": "#18181b",
+    "gradient": "linear-gradient(135deg, #27272a, #09090b)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Mussolini_mezzobusto.jpg/330px-Mussolini_mezzobusto.jpg",
+    "localPhoto": "assets/politicians/benito_mussolini.jpg"
+  },
+  {
+    "id": "chiang_kai_shek",
+    "name": "Czang Kaj-szek",
+    "flag": "🇹🇼",
+    "country": {
+      "pl": "Chiny (Republika Chińska)",
+      "en": "China (Republic of China)",
+      "ru": "Китай (Китайская Республика)",
+      "fr": "Chine (République de Chine)"
+    },
+    "role": {
+      "pl": "Generalissimus i przywódca Republiki Chińskiej (Kuomintang), dowódca teatru chińskiego II WŚ",
+      "en": "Generalissimo and leader of the Republic of China (Kuomintang), Allied theater commander",
+      "ru": "Генералиссимус и лидер Китайской Республики (Гоминьдан), командующий китайским театром Второй мировой",
+      "fr": "Généralissime et dirigeant de la République de Chine (Kuomintang), commandant allié du théâtre chinois"
+    },
+    "quote": {
+      "pl": "„Dopóki naród zachowuje wolę walki, żadna siła nie jest w stanie go podbić.”",
+      "en": "“As long as a nation retains its will to fight, no power on earth can conquer it.”",
+      "ru": "«Пока у нации есть воля к борьбе, никакая сила в мире не сможет её покорить.»",
+      "fr": "« Tant qu'une nation conserve sa volonté de lutter, aucune force ne peut la conquérir. »"
+    },
+    "whyVote": {
+      "pl": "Oddałbyś na niego głos za wieloletnią obronę Chin przed inwazją imperialnej Japonii, wierność Trzem Zasadom Ludu (nacjonalizm, dobrobyt, suwerenność), antykomunizm i modernizację armii.",
+      "en": "You would vote for him for grueling resistance against imperial Japanese aggression, devotion to Sun Yat-sen's Three Principles, resolute anti-communism, and military nation-building.",
+      "ru": "Вы бы проголосовали за него за многолетнее ожесточённое сопротивление японской агрессии, верность национальным традициям, твёрдый антикоммунизм и сплочение нации.",
+      "fr": "Vous voteriez pour lui pour sa résistance acharnée contre l'agression impériale japonaise, sa fidélité aux Trois Principes du Peuple, son anticommunisme et la modernisation militaire."
+    },
+    "coordinates": {
+      "econ": 20,
+      "soc": -50
+    },
+    "color": "#0369a1",
+    "gradient": "linear-gradient(135deg, #0369a1, #0284c7)",
+    "photoUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Chiang_Kai-shek_%283x4_cropped%29.jpg/330px-Chiang_Kai-shek_%283x4_cropped%29.jpg",
+    "localPhoto": "assets/politicians/chiang_kai_shek.jpg"
   }
 ];
 

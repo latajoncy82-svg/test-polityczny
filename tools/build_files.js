@@ -33,7 +33,7 @@ console.log("✓ Successfully generated questions.js (100 questions, 12 categori
 
 // 2. Build worldData.js
 const worldDataContent = `/**
- * KATALOG 32 IDEOLOGII, 36 ŚWIATOWYCH LIDERÓW I POSTACI HISTORYCZNYCH, 15 MIĘDZYNARODOWYCH PARTII
+ * KATALOG ${rawIdeologies.length} IDEOLOGII, ${rawPoliticians.length} ŚWIATOWYCH LIDERÓW I POSTACI HISTORYCZNYCH, ${rawParties.length} MIĘDZYNARODOWYCH PARTII
  * Test Polityczny - Wersja Globalna 2026
  * Obsługa 4 języków: PL, EN, RU, FR
  */

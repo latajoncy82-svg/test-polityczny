@@ -139,6 +139,34 @@ assert(!!gandhi, "Historical activist Mahatma Gandhi present in dataset");
 const churchill = worldPoliticians.find(p => p.id === "winston_churchill");
 assert(!!churchill, "Historical leader Winston Churchill present in dataset");
 
+// Validate WWII leaders present
+const wwiiLeaderIds = [
+  { id: "franklin_d_roosevelt", name: "Franklin D. Roosevelt" },
+  { id: "charles_de_gaulle", name: "Charles de Gaulle" },
+  { id: "wladyslaw_sikorski", name: "Władysław Sikorski" },
+  { id: "dwight_d_eisenhower", name: "Dwight D. Eisenhower" },
+  { id: "joseph_stalin", name: "Joseph Stalin" },
+  { id: "benito_mussolini", name: "Benito Mussolini" },
+  { id: "chiang_kai_shek", name: "Chiang Kai-shek" }
+];
+
+let missingWwiiLeaders = 0;
+wwiiLeaderIds.forEach(wl => {
+  const found = worldPoliticians.find(p => p.id === wl.id);
+  if (!found) missingWwiiLeaders++;
+});
+assert(missingWwiiLeaders === 0, `All ${wwiiLeaderIds.length} prominent WWII leaders successfully present in dataset`);
+
+let missingLocalPhotos = 0;
+worldPoliticians.forEach(pol => {
+  const photoPath = path.join(__dirname, '..', pol.localPhoto);
+  if (!fs.existsSync(photoPath) || fs.statSync(photoPath).size < 1000) {
+    missingLocalPhotos++;
+    console.error(`Missing or empty portrait file for ${pol.id}: ${pol.localPhoto}`);
+  }
+});
+assert(missingLocalPhotos === 0, `All ${worldPoliticians.length} politicians have verified local portrait photos on disk in assets/politicians/`);
+
 assert(worldParties.length >= 10, `Rich world party families catalog: found ${worldParties.length} parties (>= 10 required)`);
 let missingPartyFields = 0;
 let invalidPartyCoords = 0;
@@ -319,6 +347,18 @@ assert(matchForPeron.id === "juan_peron" && matchForPeron.similarity >= 98, `Coo
 
 const matchForSolidarists = findClosestParty(-65, -50);
 assert(matchForSolidarists.id === "traditional_left_solidarists" && matchForSolidarists.similarity >= 98, `Coordinates (-65, -50) correctly match Traditional Left Solidarists (${matchForSolidarists.similarity}% similarity)`);
+
+const matchForStalin = findClosestPolitician(-95, -90);
+assert(matchForStalin.id === "joseph_stalin" && matchForStalin.similarity === 100, `Coordinates (-95, -90) correctly match Joseph Stalin (100% similarity)`);
+
+const matchForMussolini = findClosestPolitician(-20, -95);
+assert(matchForMussolini.id === "benito_mussolini" && matchForMussolini.similarity === 100, `Coordinates (-20, -95) correctly match Benito Mussolini (100% similarity)`);
+
+const matchForFDR = findClosestPolitician(-30, 35);
+assert(matchForFDR.id === "franklin_d_roosevelt" && matchForFDR.similarity === 100, `Coordinates (-30, 35) correctly match Franklin D. Roosevelt (100% similarity)`);
+
+const matchForSikorski = findClosestPolitician(-5, -15);
+assert(matchForSikorski.id === "wladyslaw_sikorski" && matchForSikorski.similarity === 100, `Coordinates (-5, -15) correctly match Władysław Sikorski (100% similarity)`);
 
 // 6. Test HTML DOM ID references
 console.log("\n[5] Testing HTML DOM elements referenced by script.js:");

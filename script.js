@@ -1,6 +1,6 @@
 /**
  * TEST POLITYCZNY - GŁÓWNA LOGIKA APLIKACJI (WERSJA GLOBALNA 2026)
- * Obsługa 100 pytań, 32 ideologii, 36 światowych liderów i postaci historycznych, 15 partii międzynarodowych
+ * Obsługa 100 pytań, 32 ideologii, 43 światowych liderów i postaci historycznych (w tym liderów II wojny światowej), 15 partii międzynarodowych
  * 6 opcji odpowiedzi (w tym Neutralny / Umiarkowany vs. Nie mam zdania / Pomiń)
  * oraz 4 języków: PL, EN, RU, FR.
  */
@@ -995,7 +995,7 @@ function showResults(animated = true) {
     secondaryIdeologiesList.appendChild(card);
   });
 
-  // 2. Dopasowanie Światowego Lidera (36 liderów i postaci historycznych)
+  // 2. Dopasowanie Światowego Lidera (katalog liderów i postaci historycznych)
   currentRankedPoliticians = worldPoliticians.map(pol => {
     const { dist, similarity } = calculateSimilarity(econScore, socScore, pol.coordinates.econ, pol.coordinates.soc);
     return { ...pol, dist, similarity };
@@ -1641,7 +1641,7 @@ function downloadResultImage() {
   ctx.textAlign = "center";
   ctx.fillStyle = "#64748b";
   ctx.font = "500 15px 'Plus Jakarta Sans', sans-serif";
-  ctx.fillText("Globalny Kompas Poglądów 2026 • 100 Pytań • 32 Ideologie • 36 Liderów i Myślicieli • 15 Rodzin Partyjnych", 540, 1070);
+  ctx.fillText(`Globalny Kompas Poglądów 2026 • 100 Pytań • ${worldIdeologies.length} Ideologii • ${worldPoliticians.length} Liderów i Myślicieli • ${worldParties.length} Rodzin Partyjnych`, 540, 1070);
   ctx.fillText("Wykonaj test online i poznaj swoje miejsce na politycznej mapie świata!", 540, 1100);
 
   const link = document.createElement("a");
