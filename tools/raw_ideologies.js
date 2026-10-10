@@ -1,4 +1,4 @@
-// Baza 44 ideologii politycznych w 4 językach (PL, EN, RU, FR)
+// Baza 44 ideologii politycznych w 6 językach (PL, EN, ES, DE, RU, FR)
 const rawIdeologies = [
   {
     "id": "neocapitalism",
@@ -6,19 +6,25 @@ const rawIdeologies = [
       "pl": "Neokapitalizm / Nowoczesny Wolny Rynek",
       "en": "Neo-Capitalism / Modern Free Market",
       "ru": "Неокапитализм / Современный свободный рынок",
-      "fr": "Néo-capitalisme / Marché libre moderne"
+      "fr": "Néo-capitalisme / Marché libre moderne",
+      "es": "Neocapitalismo / Libre Mercado Moderno",
+      "de": "Neokapitalismus / Moderner Freier Markt"
     },
     "subtitle": {
       "pl": "Maksymalizacja wolności gospodarczej, innowacje technologiczne i redukcja aparatu państwowego",
       "en": "Economic deregulation, technological innovation, and aggressive state retrenchment",
       "ru": "Экономическая дерегуляция, технологические инновации и минимизация госаппарата",
-      "fr": "Dérégulation économique, innovation technologique et réduction drastique de l'État"
+      "fr": "Dérégulation économique, innovation technologique et réduction drastique de l'État",
+      "es": "Desregulación económica, innovación tecnológica y reducción drástica del Estado",
+      "de": "Wirtschaftliche Deregulierung, technologische Innovation und gezielter Staatsrückbau"
     },
     "desc": {
       "pl": "Uważasz, że dynamiczny kapitalizm rynkowy, przedsiębiorczość oraz globalny przepływ kapitału są jedynymi motorami postępu ludzkości. Odrzucasz etatyzm, podatki progresywne i regulacje krępujące biznes, promując jednocześnie pragmatyczny modernizm.",
       "en": "You believe dynamic market capitalism, corporate innovation, and global capital flow are the sole drivers of human prosperity. You reject state intervention, progressive taxation, and stifling regulations in favor of economic liberty.",
       "ru": "Вы убеждены, что динамичный рыночный капитализм, инновации и свободный переток капитала — главные двигатели прогресса. Вы отвергаете этатизм, прогрессивные налоги и бюрократические барьеры.",
-      "fr": "Vous estimez que le capitalisme de marché, l'innovation d'entreprise et les flux de capitaux sont les moteurs du progrès humain. Vous rejetez l'étatisme et la fiscalité confiscatoire au profit de la liberté d'entreprendre."
+      "fr": "Vous estimez que le capitalisme de marché, l'innovation d'entreprise et les flux de capitaux sont les moteurs du progrès humain. Vous rejetez l'étatisme et la fiscalité confiscatoire au profit de la liberté d'entreprendre.",
+      "es": "Crees que el capitalismo de mercado dinámico, la innovación empresarial y el flujo libre de capitales son los únicos motores de la prosperidad humana. Rechazas el estatismo, los impuestos progresivos y las trabas burocráticas a favor de la libertad económica.",
+      "de": "Du bist überzeugt, dass dynamischer Marktkapitalismus, unternehmerische Innovation und weltweiter Kapitalfluss die wahren Motoren des menschlichen Fortschritts sind. Du lehnst Etatismus, progressive Besteuerung und bürokratische Fesseln ab."
     },
     "keyFigures": [
       "Milton Friedman",
@@ -39,19 +45,25 @@ const rawIdeologies = [
       "pl": "Anarchokapitalizm (Akup / Voluntaryzm)",
       "en": "Anarcho-Capitalism (Voluntaryism)",
       "ru": "Анархо-капитализм (Волюнтаризм)",
-      "fr": "Anarcho-capitalisme (Volontarisme)"
+      "fr": "Anarcho-capitalisme (Volontarisme)",
+      "es": "Anarcocapitalismo (Voluntarismo)",
+      "de": "Anarchokapitalismus (Voluntarismus)"
     },
     "subtitle": {
       "pl": "Całkowita likwidacja państwa na rzecz prywatnej własności, wolnego rynku i prawa kontraktów",
       "en": "Total abolition of the state in favor of pure private property and voluntary contracts",
       "ru": "Полное упразднение государства в пользу частной собственности и свободных договоров",
-      "fr": "Abolition totale de l'État au profit de la propriété privée pure et des contrats volontaires"
+      "fr": "Abolition totale de l'État au profit de la propriété privée pure et des contrats volontaires",
+      "es": "Abolición total del Estado en favor de la propiedad privada y contratos voluntarios",
+      "de": "Vollständige Abschaffung des Staates zugunsten von Privateigentum und freien Verträgen"
     },
     "desc": {
       "pl": "Uznajesz państwo za zinstytucjonalizowaną przemoc, a podatki za kradzież. Wszystkie funkcje społeczne — od sądownictwa, przez bezpieczeństwo, po infrastrukturę — powinny być świadczone przez konkurujące prywatne agencje w oparciu o Aksjomat Nieagresji (NAP).",
       "en": "You view the state as institutionalized extortion and taxation as theft. All social functions — from law enforcement and courts to roads and defense — must be provided by private competing agencies governed by the Non-Aggression Principle.",
       "ru": "Вы считаете государство узаконенным насилием, а налоги — грабежом. Все сферы жизни — от судов и охраны до дорог — должны обеспечиваться частными конкурирующими компаниями на основе принципа ненападения (NAP).",
-      "fr": "Vous considérez l'État comme une coercition illégitime et l'impôt comme un vol. Toutes les fonctions régaliennes (justice, sécurité, routes) doivent être assurées par des entreprises privées concurrentes selon le principe de non-agression."
+      "fr": "Vous considérez l'État comme une coercition illégitime et l'impôt comme un vol. Toutes les fonctions régaliennes (justice, sécurité, routes) doivent être assurées par des entreprises privées concurrentes selon le principe de non-agression.",
+      "es": "Consideras al Estado como una extorsión institucionalizada y los impuestos como un robo. Todas las funciones sociales (justicia, seguridad, carreteras y defensa) deben ser provistas por agencias privadas en competencia según el Principio de No Agresión (PNA).",
+      "de": "Du betrachtest den Staat als institutionalisierte Gewalt und Steuern als Raub. Sämtliche gesellschaftlichen Aufgaben – von Justiz und Sicherheit bis zur Infrastruktur – müssen von konkurrierenden privaten Anbietern auf Basis des Nichtaggressionsprinzips (NAP) erbracht werden."
     },
     "keyFigures": [
       "Murray Rothbard",
@@ -72,19 +84,25 @@ const rawIdeologies = [
       "pl": "Minarchizm (Państwo Minimum / Prawicowy Libertarianizm)",
       "en": "Minarchism (Night-Watchman State / Libertarianism)",
       "ru": "Минархизм (Государство-ночной сторож / Либертарианство)",
-      "fr": "Minarchisme (État veilleur de nuit / Libertarisme)"
+      "fr": "Minarchisme (État veilleur de nuit / Libertarisme)",
+      "es": "Minarquismo (Estado Mínimo)",
+      "de": "Minarchismus (Minimalstaat)"
     },
     "subtitle": {
       "pl": "Rola państwa zredukowana wyłącznie do armii, policji i sądów chroniących własność",
       "en": "State power strictly confined to national defense, police protection, and contract courts",
       "ru": "Полномочия государства строго ограничены армией, полицией и судами для защиты прав",
-      "fr": "Pouvoir de l'État strictement limité à l'armée, la police et la justice protectrice des droits"
+      "fr": "Pouvoir de l'État strictement limité à l'armée, la police et la justice protectrice des droits",
+      "es": "Estado guardián nocturno limitado estrictamente a policía, tribunales y defensa militar",
+      "de": "Nachtwächterstaat, strikt beschränkt auf Polizei, Gerichte und Landesverteidigung"
     },
     "desc": {
       "pl": "Wierzysz w państwo jako 'nocnego stróża'. Rząd ma tylko jedno moralne zadanie: chronić obywateli przed przemocą, kradzieżą i oszustwem. Jakakolwiek ingerencja w gospodarkę, edukację, zdrowie czy obyczaje jest niedopuszczalnym nadużyciem władzy.",
       "en": "You advocate for the night-watchman state. The government exists solely to defend individuals against violence, theft, and contract fraud. Any government intervention in healthcare, commerce, or morals constitutes an illegitimate infringement.",
       "ru": "Вы выступаете за концепцию государства — ночного сторожа. Единственная задача власти — защита граждан от внешнего нападения, насилия и мошенничества. Любое вмешательство в экономику или культуру недопустимо.",
-      "fr": "Vous défendez le modèle de l'État veilleur de nuit. La puissance publique n'a pour mission que de protéger les libertés contre la violence et la fraude. Toute ingérence dans l'économie ou les mœurs est proscrite."
+      "fr": "Vous défendez le modèle de l'État veilleur de nuit. La puissance publique n'a pour mission que de protéger les libertés contre la violence et la fraude. Toute ingérence dans l'économie ou les mœurs est proscrite.",
+      "es": "Defiendes que el único propósito legítimo del gobierno es proteger los derechos naturales inalienables: vida, libertad y propiedad privada. Toda intervención económica, monopolio estatal o redistribución forzosa es ilegítima.",
+      "de": "Du vertrittst die Auffassung, dass die einzige legitime Aufgabe des Staates im Schutz der Grundrechte besteht: Leben, Freiheit und Eigentum. Jegliche wirtschaftliche Einmischung, Wohlfahrtsbürokratie oder Regulierung ist unzulässig."
     },
     "keyFigures": [
       "Robert Nozick",
@@ -105,19 +123,25 @@ const rawIdeologies = [
       "pl": "Klasyczny Liberalizm",
       "en": "Classical Liberalism",
       "ru": "Классический либерализм",
-      "fr": "Libéralisme classique"
+      "fr": "Libéralisme classique",
+      "es": "Liberalismo Clásico",
+      "de": "Klassischer Liberalismus"
     },
     "subtitle": {
       "pl": "Rządy prawa, prawa naturalne jednostki, wolny handel i umiarkowany rząd konstytucyjny",
       "en": "Rule of law, natural individual rights, free commerce, and limited constitutional governance",
       "ru": "Верховенство права, неотъемлемые права личности, свободная торговля и конституционализм",
-      "fr": "État de droit, droits naturels de l'individu, libre-échange et gouvernement constitutionnel limité"
+      "fr": "État de droit, droits naturels de l'individu, libre-échange et gouvernement constitutionnel limité",
+      "es": "Libertades individuales, Estado de derecho, gobierno limitado y libre comercio",
+      "de": "Individuelle Freiheit, Rechtsstaatlichkeit, begrenzte Regierung und Freihandel"
     },
     "desc": {
       "pl": "Czerpiesz z myśli Oświecenia: wolność słowa, nietykalność własności prywatnej, trójpodział władzy i wolny handel to filary cywilizacji. Państwo powinno być ograniczone konstytucyjnie i zapewniać ramy prawne dla harmonijnego rozwoju społeczeństwa.",
       "en": "Rooted in Enlightenment philosophy, you cherish freedom of speech, inviolable property rights, separation of powers, and free markets. The state must be governed by strict constitutional limits to foster human flourishing.",
       "ru": "Опираясь на идеалы Просвещения, вы цените свободу слова, неприкосновенность собственности, разделение властей и открытые рынки. Государство должно служить лишь правовым гарантом гармоничного развития общества.",
-      "fr": "Héritier des Lumières, vous valorisez la liberté d'expression, la propriété privée inviolable, la séparation des pouvoirs et le libre marché. L'État doit être strictement encadré par la constitution."
+      "fr": "Héritier des Lumières, vous valorisez la liberté d'expression, la propriété privée inviolable, la séparation des pouvoirs et le libre marché. L'État doit être strictement encadré par la constitution.",
+      "es": "Te inspiras en la Ilustración: división de poderes, igualdad ante la ley, tolerancia religiosa, derechos individuales y mercados abiertos. Consideras la libertad individual el valor supremo de la civilización.",
+      "de": "Du stehst in der Tradition der europäischen Aufklärung: Gewaltenteilung, Gleichheit vor dem Gesetz, Gedankenfreiheit, Eigentumsrechte und offene Märkte. Individuelle Selbstbestimmung ist das höchste Gut."
     },
     "keyFigures": [
       "John Locke",
@@ -138,19 +162,25 @@ const rawIdeologies = [
       "pl": "Konserwatywny Liberalizm",
       "en": "Conservative Liberalism",
       "ru": "Консервативный либерализм",
-      "fr": "Libéralisme conservateur"
+      "fr": "Libéralisme conservateur",
+      "es": "Liberalismo Conservador",
+      "de": "Konservativer Liberalismus"
     },
     "subtitle": {
       "pl": "Wolnorynkowa przedsiębiorczość połączona z poszanowaniem tradycji, porządku i tożsamości",
       "en": "Free-market economics married to cultural tradition, social order, and national cohesion",
       "ru": "Свободная рыночная экономика в сочетании с уважением к традициям, порядку и нации",
-      "fr": "Économie de libre marché associée aux traditions culturelles, à l'ordre social et à la nation"
+      "fr": "Économie de libre marché associée aux traditions culturelles, à l'ordre social et à la nation",
+      "es": "Economía de libre mercado combinada con orden social, estabilidad y valores tradicionales",
+      "de": "Freie Marktwirtschaft verbunden mit gesellschaftlicher Ordnung, Stabilität und Tradition"
     },
     "desc": {
       "pl": "Łączysz wiarę w prywatną przedsiębiorczość, niskie podatki i deregulację z przywiązaniem do tradycyjnych wartości etycznych, patriotyzmu i stabilności instytucjonalnej. Niechętnie patrzysz na radykalne rewolucje obyczajowe i rozrost biurokracji.",
       "en": "You blend pro-business free enterprise, low taxes, and deregulation with reverence for cultural continuity, patriotism, and social stability. You reject moral relativism and top-down social engineering.",
       "ru": "Вы объединяете приверженность низким налогам и рыночной инициативе с верностью традиционным ценностям, патриотизму и общественному порядку, отвергая резкие моральные перевороты.",
-      "fr": "Vous alliez l'esprit d'entreprise, la baisse des impôts et la dérégulation à l'attachement aux valeurs traditionnelles, au patriotisme et à la stabilité morale, sans céder aux bouleversements radicaux."
+      "fr": "Vous alliez l'esprit d'entreprise, la baisse des impôts et la dérégulation à l'attachement aux valeurs traditionnelles, au patriotisme et à la stabilité morale, sans céder aux bouleversements radicaux.",
+      "es": "Combinas una firme convicción en el libre mercado y la baja fiscalidad con un profundo respeto por las instituciones tradicionales, el orden público, la familia y el patrimonio cultural.",
+      "de": "Du verbindest das Eintreten für freies Unternehmertum, niedrige Steuern und schlanken Staat mit dem Respekt vor bewährten Institutionen, gesellschaftlicher Ordnung, Familie und kultureller Identität."
     },
     "keyFigures": [
       "Margaret Thatcher",
@@ -171,19 +201,25 @@ const rawIdeologies = [
       "pl": "Paleokonserwatyzm",
       "en": "Paleoconservatism",
       "ru": "Палеоконсерватизм",
-      "fr": "Paléo-conservatisme"
+      "fr": "Paléo-conservatisme",
+      "es": "Paleoconservadurismo",
+      "de": "Paläokonservatismus"
     },
     "subtitle": {
       "pl": "Obrona tradycyjnej kultury, sceptycyzm wobec globalizmu, silne granice i decentralizacja",
       "en": "Defense of historic culture, deep skepticism of globalism, secure borders, and decentralism",
       "ru": "Защита традиционной культуры, скептицизм к глобализму, крепкие границы и изоляционизм",
-      "fr": "Défense de la culture historique, rejet du mondialisme, frontières hermétiques et décentralisation"
+      "fr": "Défense de la culture historique, rejet du mondialisme, frontières hermétiques et décentralisation",
+      "es": "Tradición religiosa, familia natural, identidad nacional y no intervencionismo exterior",
+      "de": "Religiöse Tradition, Kernfamilie, nationale Identität und außenpolitischer Nichteinmischung"
     },
     "desc": {
       "pl": "Opierasz się na wierze chrześcijańskiej, lokalnej wspólnocie i nierozerwalnej tradycji narodowej. Sprzeciwiasz się globalizmowi, niekontrolowanej imigracji i zagranicznym interwencjom wojskowym, stawiając na suwerenność i odrodzenie rodziny.",
       "en": "Anchored in Christian heritage, regional communities, and national roots, you strongly oppose globalist institutions, open migration, and foreign military adventures, prioritizing cultural survival and the traditional household.",
       "ru": "Основываясь на христианской вере, крепкой семье и национальных традициях, вы решительно выступаете против глобализма, миграции и заграничных военных кампаний, защищая самобытность своего народа.",
-      "fr": "Ancré dans l'héritage chrétien, la cellule familiale et la communauté locale, vous vous opposez résolument au mondialisme, à l'immigration de masse et à l'interventionnisme extérieur."
+      "fr": "Ancré dans l'héritage chrétien, la cellule familiale et la communauté locale, vous vous opposez résolument au mondialisme, à l'immigration de masse et à l'interventionnisme extérieur.",
+      "es": "Valoras el orden moral judeocristiano, las comunidades locales y la herencia nacional. Rechazas el globalismo, la inmigración masiva y las guerras exteriores de cambio de régimen.",
+      "de": "Du legst höchsten Wert auf überlieferte christliche Werte, die traditionelle Familie und gewachsene nationale Kultur. Du lehnst Globalismus, Massenmigration und militärischen Interventionismus entschieden ab."
     },
     "keyFigures": [
       "Pat Buchanan",
@@ -204,19 +240,25 @@ const rawIdeologies = [
       "pl": "Narodowy Konserwatyzm",
       "en": "National Conservatism",
       "ru": "Национальный консерватизм",
-      "fr": "Conservatisme national"
+      "fr": "Conservatisme national",
+      "es": "Conservadurismo Nacional",
+      "de": "Nationalkonservatismus"
     },
     "subtitle": {
       "pl": "Nadrzędność suwerenności państwa narodowego, obrona tożsamości kulturowej i bezpieczeństwo granic",
       "en": "Primacy of nation-state sovereignty, defense of indigenous identity, and border integrity",
       "ru": "Приоритет национального суверенитета, защита идентичности и надежные рубежи",
-      "fr": "Primauté absolue de la souveraineté nationale, défense de l'identité et contrôle des frontières"
+      "fr": "Primauté absolue de la souveraineté nationale, défense de l'identité et contrôle des frontières",
+      "es": "Soberanía nacional indelegable, fronteras seguras y preservación de la identidad cultural",
+      "de": "Unveräußerliche nationale Souveränität, sichere Grenzen und Erhalt der kulturellen Identität"
     },
     "desc": {
       "pl": "Dla Ciebie państwo narodowe jest jedynym prawdziwym gwarantem wolności i demokracji. Odrzucasz dyktat struktur ponadnarodowych. Opowiadasz się za suwerenną polityką demograficzną, ochroną granic i wzmacnianiem więzi patriotycznych.",
       "en": "You view the sovereign nation-state as the irreplaceable guardian of democracy. You reject the overreach of supranational bodies, advocating for decisive border security, cultural patriotism, and strong communal cohesion.",
       "ru": "Вы рассматриваете национальное государство как единственный надежный оплот порядка и демократии. Вы отвергаете диктат наднациональных органов, требуя строгого визового контроля и укрепления патриотизма.",
-      "fr": "Vous voyez dans l'État-nation le rempart indispensable de la démocratie. Rejetant les diktats supranationaux, vous prônez la maîtrise stricte des frontières, le patriotisme civique et la cohésion culturelle."
+      "fr": "Vous voyez dans l'État-nation le rempart indispensable de la démocratie. Rejetant les diktats supranationaux, vous prônez la maîtrise stricte des frontières, le patriotisme civique et la cohésion culturelle.",
+      "es": "Sostienes que el Estado-nación soberano es el único marco garante de la democracia y la seguridad. Te opones a las instituciones supranacionales que diluyen la soberanía de los pueblos.",
+      "de": "Du siehst im Nationalstaat die unverzichtbare Voraussetzung für demokratische Selbstbestimmung und Sicherheit. Du widersetzt dich der Abgabe nationaler Befugnisse an supranationale Bürokratien."
     },
     "keyFigures": [
       "Yoram Hazony",
@@ -237,19 +279,25 @@ const rawIdeologies = [
       "pl": "Tradycjonalizm / Autorytaryzm Konserwatywny",
       "en": "Traditionalist Authoritarianism",
       "ru": "Традиционализм / Консервативный авторитаризм",
-      "fr": "Traditionalisme autoritaire"
+      "fr": "Traditionalisme autoritaire",
+      "es": "Conservadurismo Autoritario",
+      "de": "Autoritärer Konservatismus"
     },
     "subtitle": {
       "pl": "Silna władza państwowa, hierarchia społeczna, dyscyplina moralna i prymat porządku publicznego",
       "en": "Strong state hierarchy, moral discipline, traditional authority, and strict social order",
       "ru": "Сильная централизованная власть, социальная иерархия, моральная дисциплина и строгий порядок",
-      "fr": "Autorité étatique ferme, hiérarchie sociale, rigueur morale et primauté de l'ordre public"
+      "fr": "Autorité étatique ferme, hiérarchie sociale, rigueur morale et primauté de l'ordre public",
+      "es": "Liderazgo estatal fuerte, disciplina cívica, jerarquía y lealtad a la nación",
+      "de": "Starke staatliche Führung, gesellschaftliche Disziplin, Hierarchie und Loyalität zur Nation"
     },
     "desc": {
       "pl": "Uznajesz, że człowiek potrzebuje silnego przewodnictwa, dyscypliny i jasnych norm moralnych. Porządek publiczny, szacunek dla władzy i religijna ortodoksja są ważniejsze niż nieokiełznana swoboda jednostki.",
       "en": "You believe society requires robust moral leadership, established hierarchy, and unwavering public order. The stability of the state, reverence for institutions, and moral clarity take precedence over permissive individualism.",
       "ru": "Вы убеждены, что общество нуждается в сильной руке, авторитете и твердых духовных скрепах. Общественный порядок, законность и традиции стоят выше распущенности и индивидуалистического хаоса.",
-      "fr": "Vous estimez que la société exige un pouvoir ferme, des repères moraux solides et le respect de la hiérarchie. La concorde civile et l'ordre public priment sur l'individualisme permissif."
+      "fr": "Vous estimez que la société exige un pouvoir ferme, des repères moraux solides et le respect de la hiérarchie. La concorde civile et l'ordre public priment sur l'individualisme permissif.",
+      "es": "Crees que el exceso de libertades y el permisivismo disuelven la sociedad en el caos. Un poder ejecutivo firme debe salvaguardar la moral pública, el orden estricto y la autoridad legítima.",
+      "de": "Du bist überzeugt, dass übertriebene Freizügigkeit und Schwäche die gesellschaftliche Ordnung zersetzen. Eine durchsetzungsstarke Staatsführung muss Recht, Ordnung, Sitte und Zusammenhalt garantieren."
     },
     "keyFigures": [
       "Joseph de Maistre",
@@ -270,19 +318,25 @@ const rawIdeologies = [
       "pl": "Narodowy Solidaryzm",
       "en": "National Solidarism",
       "ru": "Национальный солидаризм",
-      "fr": "Solidarisme national"
+      "fr": "Solidarisme national",
+      "es": "Solidarismo Nacional",
+      "de": "Nationaler Solidarismus"
     },
     "subtitle": {
       "pl": "Solidaryzm społeczny, wsparcie dla rodzin i państwowa opieka w ramach tradycyjnej wspólnoty",
       "en": "Social welfare, family support, and state intervention anchored in national identity",
       "ru": "Социальная поддержка семей, патернализм государства и национальная сплоченность",
-      "fr": "Solidarité sociale, soutien aux familles et interventionnisme au sein de la communauté nationale"
+      "fr": "Solidarité sociale, soutien aux familles et interventionnisme au sein de la communauté nationale",
+      "es": "Apoyo social a las familias trabajadoras junto con patriotismo y protección del mercado nacional",
+      "de": "Sozialer Schutz für arbeitende Familien verbunden mit Patriotismus und Binnenmarktschutz"
     },
     "desc": {
       "pl": "Łączysz silny patriotyzm i konserwatywne wartości z państwem opiekuńczym. Uważasz, że państwo ma obowiązek wspierać rodziny, dbać o emerytów i robotników oraz kontrolować strategiczny przemysł przed zagranicznym kapitałem.",
       "en": "You integrate deep national loyalty with generous social safety nets. The state must actively shield domestic workers, provide child benefits, and manage strategic resources to maintain communal harmony.",
       "ru": "Вы совмещаете патриотизм и традиционную мораль с сильным социальным государством, требуя выплат на детей, защиты рабочих и контроля над стратегическими ресурсами ради блага нации.",
-      "fr": "Vous alliez le patriotisme culturel à un modèle social protecteur. L'État a le devoir d'aider les familles, de protéger les travailleurs modestes et de préserver les leviers économiques des intérêts étrangers."
+      "fr": "Vous alliez le patriotisme culturel à un modèle social protecteur. L'État a le devoir d'aider les familles, de protéger les travailleurs modestes et de préserver les leviers économiques des intérêts étrangers.",
+      "es": "Unes una política económica socialmente solidaria con el patriotismo y el respeto a la identidad nacional. El Estado debe proteger a sus ciudadanos tanto de la exclusión social como de la competencia desleal extranjera.",
+      "de": "Du verbindest ein starkes soziales Sicherungsnetz für Familien und Arbeitnehmer mit Patriotismus und nationalem Zusammenhalt. Der Staat muss die heimische Wirtschaft und Schwächere vor globalem Druck schützen."
     },
     "keyFigures": [
       "Stanisław Grabski",
@@ -303,19 +357,25 @@ const rawIdeologies = [
       "pl": "Paternalistyczny Konserwatyzm (One-Nation)",
       "en": "Paternalistic / One-Nation Conservatism",
       "ru": "Патерналистский консерватизм (Единая нация)",
-      "fr": "Conservatisme paternaliste (One-Nation)"
+      "fr": "Conservatisme paternaliste (One-Nation)",
+      "es": "Conservadurismo Paternalista (One-Nation)",
+      "de": "Paternalistischer Konservatismus (One-Nation)"
     },
     "subtitle": {
       "pl": "Odpowiedzialność elit za najuboższych, harmonia klasowa i organiczny rozwój instytucji",
       "en": "Social obligation of the privileged, organic society, and moderate welfare pragmatism",
       "ru": "Ответственность элит перед народом, классовый мир и органическое развитие институтов",
-      "fr": "Devoir social des élites, harmonie entre les classes et réformes organiques prudentes"
+      "fr": "Devoir social des élites, harmonie entre les classes et réformes organiques prudentes",
+      "es": "Deber moral de las élites, cohesión social entre clases e instituciones históricas",
+      "de": "Fürsorgepflicht, sozialer Ausgleich zwischen den Schichten und historische Institutionen"
     },
     "desc": {
       "pl": "Społeczeństwo to żywy organizm, w którym uprzywilejowani mają moralny obowiązek (noblesse oblige) troski o słabszych. Odrzucasz bezwzględny darwinizm społeczny na rzecz umiarkowanej polityki socjalnej przy zachowaniu tradycyjnego ładu.",
       "en": "Viewing society as an interconnected organism, you believe the privileged owe a duty of care to the vulnerable. You reject cutthroat market extremes in favor of cohesive social reforms that preserve stability.",
       "ru": "Рассматривая общество как целостный организм, вы выступаете за ответственность элиты перед народом и умеренные социальные реформы, избегая как дикого рынка, так и социалистических потрясений.",
-      "fr": "Concevant la société comme un corps organique, vous affirmez le devoir moral d'entraide envers les démunis. Vous refusez le capitalisme sauvage tout en préservant l'héritage institutionnel."
+      "fr": "Concevant la société comme un corps organique, vous affirmez le devoir moral d'entraide envers les démunis. Vous refusez le capitalisme sauvage tout en préservant l'héritage institutionnel.",
+      "es": "Defiendes que el libre mercado debe complementarse con la responsabilidad social para evitar la fractura entre clases. Las instituciones históricas y la ayuda social garantizan la paz social.",
+      "de": "Du vertrittst die Auffassung, dass Wohlstand und Markt mit gesellschaftlicher Fürsorge einhergehen müssen, um soziale Spaltungen zu verhindern. Bewährte Institutionen schaffen Stabilität durch Ausgleich."
     },
     "keyFigures": [
       "Benjamin Disraeli",
@@ -336,19 +396,25 @@ const rawIdeologies = [
       "pl": "Chrześcijańska Demokracja (Centroprawica)",
       "en": "Christian Democracy",
       "ru": "Христианская демократия",
-      "fr": "Démocratie chrétienne"
+      "fr": "Démocratie chrétienne",
+      "es": "Democracia Cristiana (Democristianos)",
+      "de": "Christdemokratie"
     },
     "subtitle": {
       "pl": "Godność osoby ludzkiej, pomocniczość państwa, etyka chrześcijańska i społeczna gospodarka rynkowa",
       "en": "Human dignity, subsidiarity, Christian ethics, and a balanced social market economy",
       "ru": "Человеческое достоинство, субсидиарность, христианская этика и социальное рыночное хозяйство",
-      "fr": "Dignité humaine, subsidiarité, éthique chrétienne et économie sociale de marché"
+      "fr": "Dignité humaine, subsidiarité, éthique chrétienne et économie sociale de marché",
+      "es": "Economía social de mercado, subsidiariedad, valores éticos y concordia civil",
+      "de": "Soziale Marktwirtschaft, Subsidiarität, christliche Soziallehre und gesellschaftlicher Konsens"
     },
     "desc": {
       "pl": "Twoje poglądy opierają się na katolickiej nauce społecznej: godności człowieka, solidarności oraz zasadzie pomocniczości (państwo działa tylko tam, gdzie rodzina i samorząd nie dają rady). Popierasz zrównoważoną gospodarkę rynkową z ludzką twarzą.",
       "en": "Grounded in Christian social teaching, you champion human dignity, subsidiarity, and social solidarity. Decisions should be made at the most local level possible, within an ethical, compassionate market framework.",
       "ru": "Опираясь на христианские принципы солидарности и субсидиарности, вы выступаете за социальную рыночную экономику с человеческим лицом, где государство помогает семье и местному самоуправлению.",
-      "fr": "Fondée sur la doctrine sociale chrétienne, votre vision défend la dignité de la personne, la subsidiarité et la solidarité. L'économie de marché doit être régulée par des impératifs éthiques."
+      "fr": "Fondée sur la doctrine sociale chrétienne, votre vision défend la dignité de la personne, la subsidiarité et la solidarité. L'économie de marché doit être régulée par des impératifs éthiques.",
+      "es": "Te basas en la doctrina social cristiana: primacía de la persona humana, solidaridad, subsidiariedad y una economía de mercado con fuerte sentido social y comunitario.",
+      "de": "Du orientierst dich an den Grundwerten christlicher Sozialethik: Menschenwürde, Solidarität, Subsidiarität und einer sozialen Marktwirtschaft, die wirtschaftliche Freiheit mit sozialer Verantwortung verbindet."
     },
     "keyFigures": [
       "Konrad Adenauer",
@@ -370,19 +436,25 @@ const rawIdeologies = [
       "pl": "Dystrybutyzm",
       "en": "Distributism",
       "ru": "Дистрибутизм",
-      "fr": "Distributisme"
+      "fr": "Distributisme",
+      "es": "Distributismo",
+      "de": "Distributismus"
     },
     "subtitle": {
       "pl": "Upowszechnienie drobnej własności prywatnej, spółdzielczość i sprzeciw wobec monopoli i etatyzmu",
       "en": "Widespread private property ownership, guild cooperatives, and opposition to both big monopolies and state monopolies",
       "ru": "Широкое рассредоточение частной собственности, кооперация и неприятие как монополий, так и госплана",
-      "fr": "Diffusion maximale de la propriété privée, coopératives familiales et rejet simultané des monopoles et du collectivisme"
+      "fr": "Diffusion maximale de la propriété privée, coopératives familiales et rejet simultané des monopoles et du collectivisme",
+      "es": "Propiedad productiva ampliamente distribuida entre familias y pequeños productores",
+      "de": "Breite Streuung von Produktiveigentum auf Familien und Kleinbetriebe"
     },
     "desc": {
       "pl": "Własność prywatna jest tak cenna, że każdy powinien ją posiadać. Ani wszechwładny kapitalizm monopoli, ani wszechobecny socjalizm państwowy nie są rozwiązaniem. Przyszłość leży w drobnych gospodarstwach, cechach i rodzinnych warsztatach.",
       "en": "Property is so essential that everyone should own some. You reject both corporate gigantism and state collectivization, advocating for small family businesses, guilds, and decentralized localized production.",
       "ru": "Частная собственность так важна, что она должна принадлежать миллионам семей, а не кучке магнатов или чиновников. Вы выступаете за ремесленные гильдии, фермерство и кооперативы.",
-      "fr": "La propriété est un bien si précieux qu'elle doit être partagée par le plus grand nombre. Rejetant le gigantisme financier et l'étatisme soviétique, vous prônez la petite entreprise familiale et l'artisanat."
+      "fr": "La propriété est un bien si précieux qu'elle doit être partagée par le plus grand nombre. Rejetant le gigantisme financier et l'étatisme soviétique, vous prônez la petite entreprise familiale et l'artisanat.",
+      "es": "Rechazas tanto el capitalismo de grandes monopolios como el socialismo estatista. La verdadera libertad florece cuando la propiedad de los medios de producción está en manos de millones de familias independientes y talleres artesanales.",
+      "de": "Du lehnst sowohl den Monopolkapitalismus als auch den staatlichen Sozialismus ab. Wahre Freiheit existiert erst dann, wenn Produktiveigentum auf möglichst viele selbstständige Familien und Genossenschaften verteilt ist."
     },
     "keyFigures": [
       "G.K. Chesterton",
@@ -403,19 +475,25 @@ const rawIdeologies = [
       "pl": "Ordoliberalizm / Społeczna Gospodarka Rynkowa",
       "en": "Ordoliberalism / Social Market Economy",
       "ru": "Ордолиберализм / Социально-рыночная экономика",
-      "fr": "Ordolibéralisme / Économie sociale de marché"
+      "fr": "Ordolibéralisme / Économie sociale de marché",
+      "es": "Ordoliberalismo / Economía Social de Mercado",
+      "de": "Ordoliberalismus / Soziale Marktwirtschaft"
     },
     "subtitle": {
       "pl": "Silne państwo jako strażnik reguł wolnej konkurencji i stabilności walutowej, z buforem socjalnym",
       "en": "Strong legal framework to safeguard free competition, monetary stability, and baseline social security",
       "ru": "Правовое государство как строгий арбитр свободной конкуренции, стабильной валюты и социальной защиты",
-      "fr": "Cadre étatique solide garantissant la libre concurrence loyale, la stabilité monétaire et un socle social"
+      "fr": "Cadre étatique solide garantissant la libre concurrence loyale, la stabilité monétaire et un socle social",
+      "es": "Marco regulatorio estatal estricto para asegurar competencia leal y estabilidad de precios",
+      "de": "Strikter staatlicher Ordnungsrahmen für fairen Wettbewerb und Preisstabilität"
     },
     "desc": {
       "pl": "Rynek potrzebuje jasnego ładu prawnego (Ordo). Państwo nie powinno samo prowadzić biznesu, lecz bezwzględnie zwalczać monopole i kartele oraz dbać o stabilność waluty. Efektem jest niemiecki powojenny 'cud gospodarczy'.",
       "en": "Markets require an ironclad legal framework (Ordo). The state must not direct commerce but rigorously police monopolies and preserve monetary integrity, delivering sustainable prosperity with a social safety net.",
       "ru": "Рынку необходим твердый правовой порядок (Ordo). Власть не должна управлять заводами, но обязана жестко пресекать сговоры монополий и обеспечивать твердую валюту, создавая прочный фундамент достатка.",
-      "fr": "Le marché a besoin d'un ordre juridique strict (Ordo). L'État ne gère pas les entreprises mais neutralise sans pitié les cartels et garantit la stabilité monétaire pour une prospérité partagée."
+      "fr": "Le marché a besoin d'un ordre juridique strict (Ordo). L'État ne gère pas les entreprises mais neutralise sans pitié les cartels et garantit la stabilité monétaire pour une prospérité partagée.",
+      "es": "Crees en el modelo que reconstruyó la Europa de posguerra: el Estado actúa como árbitro imparcial que garantiza reglas claras, combate carteles monopólicos y mantiene una moneda estable.",
+      "de": "Du stehst für das Erfolgsmodell der deutschen Nachkriegsordnung: Der Staat fungiert als Schiedsrichter, der Monopole verhindert, Geldwertstabilität wahrt und faire Wettbewerbsregeln für alle garantiert."
     },
     "keyFigures": [
       "Walter Eucken",
@@ -436,19 +514,25 @@ const rawIdeologies = [
       "pl": "Neoliberalizm",
       "en": "Neoliberalism",
       "ru": "Неолиберализм",
-      "fr": "Néolibéralisme"
+      "fr": "Néolibéralisme",
+      "es": "Neoliberalismo",
+      "de": "Neoliberalismus"
     },
     "subtitle": {
       "pl": "Globalna prywatyzacja, dyscyplina budżetowa, otwarcie rynków i zaufanie do mechanizmów cenowych",
       "en": "Global privatization, fiscal rectitude, open trade, and reliance on price mechanisms",
       "ru": "Глобальная приватизация, бюджетная дисциплина, открытая торговля и приоритет ценовых механизмов",
-      "fr": "Privatisation généralisée, rigueur budgétaire, ouverture des échanges et primauté des signaux de prix"
+      "fr": "Privatisation généralisée, rigueur budgétaire, ouverture des échanges et primauté des signaux de prix",
+      "es": "Globalización, libre circulación de bienes y capitales, privatizaciones y disciplina fiscal",
+      "de": "Globalisierung, freier Waren- und Kapitalverkehr, Privatisierung und Haushaltsdisziplin"
     },
     "desc": {
       "pl": "Uważasz, że rynki alokują zasoby efektywniej niż jakikolwiek urzędnik. Popierasz prywatyzację, znoszenie barier handlowych, reformy podatkowe sprzyjające inwestycjom oraz dyscyplinę monetarną banków centralnych.",
       "en": "You believe competitive price signals allocate resources far better than central planning. You favor deregulation, international capital flow, privatization of state assets, and sound monetary governance.",
       "ru": "Вы убеждены, что рыночная конкуренция распределяет ресурсы куда эффективнее любого чиновника. Вы поддерживаете приватизацию, свободу инвестиций и независимость центральных банков.",
-      "fr": "Vous estimez que les marchés et le mécanisme des prix allouent les ressources bien plus efficacement que l'État. Vous soutenez la déréglementation, la libre concurrence et la mondialisation des échanges."
+      "fr": "Vous estimez que les marchés et le mécanisme des prix allouent les ressources bien plus efficacement que l'État. Vous soutenez la déréglementation, la libre concurrence et la mondialisation des échanges.",
+      "es": "Consideras que la apertura económica internacional, la estabilidad macroeconómica y los mercados competitivos son los catalizadores más eficaces del bienestar material en todo el mundo.",
+      "de": "Du siehst in offenen Weltmärkten, Haushaltsdisziplin, Privatisierungen und internationaler Arbeitsteilung die wirksamsten Instrumente zur weltweiten Steigerung des materiellen Wohlstands."
     },
     "keyFigures": [
       "Gary Becker",
@@ -469,19 +553,25 @@ const rawIdeologies = [
       "pl": "Technokracja / Rządy Ekspertów",
       "en": "Technocracy / Scientific Governance",
       "ru": "Технократия / Власть экспертов",
-      "fr": "Technocratie / Gouvernance des experts"
+      "fr": "Technocratie / Gouvernance des experts",
+      "es": "Tecnocracia / Gobierno de Expertos",
+      "de": "Technokratie / Expertenregierung"
     },
     "subtitle": {
       "pl": "Decyzje oparte na danych, nauce i efektywności inżynieryjnej ponad politycznymi sporami partyjnymi",
       "en": "Data-driven policy, scientific management, and technical competence over partisan rhetoric",
       "ru": "Управление на основе данных, науки и инженерной эффективности вместо партийных споров",
-      "fr": "Décisions fondées sur la science, la gestion rationnelle des données et la compétence technique"
+      "fr": "Décisions fondées sur la science, la gestion rationnelle des données et la compétence technique",
+      "es": "Toma de decisiones basada en datos científicos, evidencia y gestión profesional sin demagogia",
+      "de": "Evidenzbasierte, wissenschaftliche Entscheidungen und professionelle Verwaltung statt Populismus"
     },
     "desc": {
       "pl": "Polityka powinna być sztuką optymalizacji, a nie walką ideologiczną. Kluczowe decyzje gospodarcze, klimatyczne i infrastrukturalne powinni podejmować wykwalifikowani specjaliści, inżynierowie i naukowcy w oparciu o twarde dane.",
       "en": "Governance should be about evidence-based optimization rather than ideological theater. Policy in economics, tech, and public health must be steered by certified experts, scientists, and engineers.",
       "ru": "Управление государством должно быть решением инженерных задач, а не популизмом. Ключевые решения в науке, экономике и медицине должны принимать признанные специалисты на основе фактов.",
-      "fr": "La politique doit être une science de l'optimisation rationnelle et non une querelle idéologique. Les grandes orientations doivent être confiées à des experts et scientifiques qualifiés."
+      "fr": "La politique doit être une science de l'optimisation rationnelle et non une querelle idéologique. Les grandes orientations doivent être confiées à des experts et scientifiques qualifiés.",
+      "es": "Consideras que los problemas modernos son demasiado complejos para dejarse al arbitrio de la demagogia política. El gobierno debe ser gestionado por científicos, economistas y expertos profesionales cualificados.",
+      "de": "Du bist überzeugt, dass komplexe Zukunftsfragen von sachkundigen Wissenschaftlern und Fachleuten auf Basis von Daten und Evidenz gelöst werden müssen, nicht durch parteipolitische Demagogie."
     },
     "keyFigures": [
       "Lee Kuan Yew",
@@ -502,19 +592,25 @@ const rawIdeologies = [
       "pl": "Pragmatyczne Centrum",
       "en": "Pragmatic Centrism",
       "ru": "Прагматический центризм",
-      "fr": "Centrisme pragmatique"
+      "fr": "Centrisme pragmatique",
+      "es": "Centrismo Pragmático",
+      "de": "Pragmatisches Zentrum"
     },
     "subtitle": {
       "pl": "Zdroworozsądkowy kompromis, stabilność, ewolucyjne reformy i unikanie ideologicznych skrajności",
       "en": "Common-sense compromise, steady institutional evolution, and rejection of polar extremes",
       "ru": "Здравый компромисс, эволюционные реформы и отказ от идеологических крайностей",
-      "fr": "Compromis équilibré, évolution prudente des institutions et refus des radicalités"
+      "fr": "Compromis équilibré, évolution prudente des institutions et refus des radicalités",
+      "es": "Moderación, diálogo, búsqueda de acuerdos razonables y rechazo a los extremos doctrinarios",
+      "de": "Mäßigung, Ausgleich, lösungsorientierter Kompromiss und Ablehnung ideologischer Extreme"
     },
     "desc": {
       "pl": "Stawiasz na złoty środek. Doceniasz zalety wolnego rynku, ale dostrzegasz potrzebę rozsądnej osłony socjalnej i dobrych usług publicznych. W sprawach społecznych preferujesz dialog, stopniowe zmiany i szacunek dla instytucji.",
       "en": "You champion the golden mean. You value market innovation alongside a sensible social safety net. In culture, you favor gradual consensus-building, constitutional balance, and evidence over dogma.",
       "ru": "Вы придерживаетесь золотой середины, признавая пользу рынка, но требуя качественной медицины и образования. В культуре цените диалог, взаимное уважение и взвешенные компромиссы.",
-      "fr": "Vous privilégiez la voie médiane. Vous appréciez le dynamisme économique tout en garantissant des services publics de qualité. Sur le plan sociétal, vous recherchez le consensus et la stabilité."
+      "fr": "Vous privilégiez la voie médiane. Vous appréciez le dynamisme économique tout en garantissant des services publics de qualité. Sur le plan sociétal, vous recherchez le consensus et la stabilité.",
+      "es": "Evitas los dogmas ideológicos inflexibles. Crees en el sentido común, la reforma gradual ponderada y la síntesis constructiva entre iniciativas privadas y protección pública.",
+      "de": "Du meidest starre ideologische Dogmen. Deine Politik setzt auf gesunden Menschenverstand, schrittweise Reformen und die praktische Verbindung von wirtschaftlicher Vernunft und sozialem Ausgleich."
     },
     "keyFigures": [
       "Dwight Eisenhower",
@@ -535,19 +631,25 @@ const rawIdeologies = [
       "pl": "Trzecia Droga / Radykalne Centrum",
       "en": "Third Way / Radical Centrism",
       "ru": "Третий путь / Радикальный центризм",
-      "fr": "Troisième voie / Centrisme radical"
+      "fr": "Troisième voie / Centrisme radical",
+      "es": "Tercera Vía / Centro Radical",
+      "de": "Dritter Weg / Radikale Mitte"
     },
     "subtitle": {
       "pl": "Synteza dynamiki rynkowej, globalizacji i nowoczesnej modernizacji społecznej",
       "en": "Synthesis of dynamic market economics, globalization, and progressive social investment",
       "ru": "Синтез рыночной гибкости, глобализации и прогрессивных социальных инвестиций",
-      "fr": "Synthèse de l'économie de marché mondialisée et d'investissements sociaux progressistes"
+      "fr": "Synthèse de l'économie de marché mondialisée et d'investissements sociaux progressistes",
+      "es": "Síntesis de dinamismo de mercado con justicia social, educación e innovación moderna",
+      "de": "Synthese aus marktwirtschaftlicher Dynamik, sozialer Gerechtigkeit und moderner Bildung"
     },
     "desc": {
       "pl": "Odrzucasz staroświecki podział na tradycyjną lewicę i prawicę. Łączysz proinwestycyjną politykę gospodarczą, elastyczność rynku pracy i integrację międzynarodową z inwestycjami w edukację, kapitał ludzki i równe szanse.",
       "en": "Transcending outdated dogmas, you merge fiscal responsibility, market flexibility, and global openness with robust public investments in human capital, lifelong education, and meritocratic opportunity.",
       "ru": "Вы преодолеваете старое деление на левых и правых. Гибкость рынка труда и открытость миру сочетаются у вас с инвестициями в образование, технологии и равные стартовые возможности.",
-      "fr": "Dépassant les clivages archaïques, vous combinez flexibilité entrepreneuriale, ouverture internationale et investissements massifs dans l'éducation, la formation et l'égalité des chances."
+      "fr": "Dépassant les clivages archaïques, vous combinez flexibilité entrepreneuriale, ouverture internationale et investissements massifs dans l'éducation, la formation et l'égalité des chances.",
+      "es": "Inspirado en las reformas progresistas modernas: aceptar la economía de mercado y la competitividad mientras se invierte masivamente en capital humano, educación e igualdad de oportunidades.",
+      "de": "Du vertrittst den reformierten Ansatz: Anerkennung von Marktwirtschaft und Wettbewerbsfähigkeit bei gleichzeitiger massiver Investition in Bildung, Chancengleichheit und soziale Mobilität."
     },
     "keyFigures": [
       "Tony Blair",
@@ -569,19 +671,25 @@ const rawIdeologies = [
       "pl": "Socjalliberalizm",
       "en": "Social Liberalism",
       "ru": "Социал-либерализм",
-      "fr": "Social-libéralisme"
+      "fr": "Social-libéralisme",
+      "es": "Liberalismo Social",
+      "de": "Sozialliberalismus"
     },
     "subtitle": {
       "pl": "Maksymalna wolność osobista, prawa człowieka, tolerancja i państwo gwarantujące równe szanse",
       "en": "Comprehensive civil liberties, human rights, progressive pluralism, and an enabling welfare state",
       "ru": "Широкие гражданские свободы, права человека, инклюзивность и поддерживающее социальное государство",
-      "fr": "Libertés individuelles totales, droits humains, tolérance et État garant de l'égalité des chances"
+      "fr": "Libertés individuelles totales, droits humains, tolérance et État garant de l'égalité des chances",
+      "es": "Libertades civiles individuales complementadas con oportunidades sociales reales y sanidad pública",
+      "de": "Bürgerliche Freiheiten ergänzt durch echte soziale Chancengleichheit und öffentliche Daseinsvorsorge"
     },
     "desc": {
       "pl": "Wolność to nie tylko brak zakazów, ale też realna możliwość samorealizacji (wolność pozytywna). Popierasz prawa mniejszości, świeckie państwo, ekologię oraz edukację i opiekę zdrowotną, które wyrównują start życiowy.",
       "en": "Real freedom requires not just the absence of restraint, but positive capability. You champion secular governance, civil rights for minorities, environmental stewardship, and public funding for equal opportunity.",
       "ru": "Истинная свобода — это не просто отсутствие запретов, но и возможность развивать потенциал. Вы защищаете права меньшинств, светскость, экологию и качественное всеобщее образование.",
-      "fr": "La liberté véritable suppose l'autonomie réelle de la personne. Vous défendez ardemment les droits civiques, la laïcité, l'écologie et des services publics qui corrigent les inégalités de départ."
+      "fr": "La liberté véritable suppose l'autonomie réelle de la personne. Vous défendez ardemment les droits civiques, la laïcité, l'écologie et des services publics qui corrigent les inégalités de départ.",
+      "es": "Sostienes que la libertad formal es vacía si las personas carecen de medios materiales básicos. El Estado debe asegurar educación de calidad, sanidad universal e igualdad real para que todos florezcan.",
+      "de": "Du betonst, dass formale Freiheit wertlos ist, wenn Menschen die materiellen Mittel zur Entfaltung fehlen. Der Staat muss Chancengleichheit, starke Bürgerrechte und ein verlässliches Sicherheitsnetz garantieren."
     },
     "keyFigures": [
       "John Stuart Mill",
@@ -603,19 +711,25 @@ const rawIdeologies = [
       "pl": "Progresywizm Obywatelski",
       "en": "Civic Progressivism",
       "ru": "Гражданский прогрессивизм",
-      "fr": "Progressisme civique"
+      "fr": "Progressisme civique",
+      "es": "Progresismo Cívico",
+      "de": "Bürgerlicher Progressivismus"
     },
     "subtitle": {
       "pl": "Modernizacja kulturowa, walka z dyskryminacją, prawa mniejszości i inkluzywne społeczeństwo",
       "en": "Cultural modernization, systemic anti-discrimination, minority empowerment, and inclusive democracy",
       "ru": "Культурная модернизация, искоренение дискриминации, права меньшинств и инклюзивность",
-      "fr": "Modernisation des mœurs, lutte contre les discriminations, droits des minorités et société inclusive"
+      "fr": "Modernisation des mœurs, lutte contre les discriminations, droits des minorités et société inclusive",
+      "es": "Defensa de los derechos humanos, igualdad de género, diversidad y modernización institucional",
+      "de": "Einsatz für Menschenrechte, Gleichberechtigung, gesellschaftliche Vielfalt und zeitgemäße Institutionen"
     },
     "desc": {
       "pl": "Twoim celem jest demontaż barier kulturowych i dyskryminacji. Dążysz do pełnego równouprawnienia osób LGBT+, sprawiedliwości reprodukcyjnej, dekarbonizacji oraz reformy wymiaru sprawiedliwości na rzecz resocjalizacji.",
       "en": "You focus on dismantling historical discrimination and expanding inclusion. You passionately advocate for LGBTQ+ equality, reproductive rights, climate action, and humane criminal justice reform.",
       "ru": "Ваша цель — преодоление любых предрассудков и барьеров. Вы решительно выступаете за равноправие ЛГБТ+, репродуктивные права женщин, зеленую повестку и гуманное правосудие.",
-      "fr": "Votre priorité est d'abattre les préjugés et les discriminations structurelles. Vous portez avec force les droits LGBTQ+, la justice reproductive, la transition écologique et l'humanisation des peines."
+      "fr": "Votre priorité est d'abattre les préjugés et les discriminations structurelles. Vous portez avec force les droits LGBTQ+, la justice reproductive, la transition écologique et l'humanisation des peines.",
+      "es": "Impulsas la transformación cultural hacia una sociedad más justa, inclusiva y libre de prejuicios. Respaldas con firmeza el laicismo, los derechos de las minorías y la libre elección individual.",
+      "de": "Du setzt dich für eine offene, inklusive und diskriminierungsfreie Gesellschaft ein. Säkularismus, Gleichstellung aller Lebensentwürfe und der Schutz von Minderheiten stehen für dich im Mittelpunkt."
     },
     "keyFigures": [
       "Jacinda Ardern",
@@ -636,19 +750,25 @@ const rawIdeologies = [
       "pl": "Zielona Polityka / Ekologizm",
       "en": "Green Politics / Ecologism",
       "ru": "Зеленая политика / Экологизм",
-      "fr": "Écologie politique / Les Verts"
+      "fr": "Écologie politique / Les Verts",
+      "es": "Política Verde / Ecologismo",
+      "de": "Grüne Politik / Ökologismus"
     },
     "subtitle": {
       "pl": "Priorytet ochrony biosfery, neutralność węglowa, pacyfizm i demokracja uczestnicząca",
       "en": "Planetary boundary preservation, renewable energy revolution, non-violence, and grassroots democracy",
       "ru": "Спасение биосферы, возобновляемая энергетика, ненасилие и прямая демократия",
-      "fr": "Préservation de la biosphère, transition énergétique verte, non-violence et démocratie participative"
+      "fr": "Préservation de la biosphère, transition énergétique verte, non-violence et démocratie participative",
+      "es": "Sostenibilidad ambiental, transición energética renovable, justicia climática y paz",
+      "de": "Ökologische Nachhaltigkeit, erneuerbare Energiewende, Klimagerechtigkeit und Frieden"
     },
     "desc": {
       "pl": "Kryzys klimatyczny i bioróżnorodność to najważniejsze wyzwania XXI wieku. Gospodarka musi funkcjonować w granicach możliwości planety. Popierasz odnawialne źródła energii, prawa zwierząt, zrównoważony transport i pacyfizm.",
       "en": "Ecological balance and planetary survival are the supreme emergencies of our age. The economy must operate within Earth's ecological boundaries. You champion renewable energy, animal rights, and peaceful grassroots democracy.",
       "ru": "Климатический кризис — главный вызов эпохи. Экономика должна подчиняться законам природы. Вы поддерживаете переход на солнце и ветер, защиту животных, экологичный транспорт и отказ от войн.",
-      "fr": "L'urgence climatique et la biodiversité conditionnent l'avenir de l'humanité. L'économie doit respecter les limites planétaires. Vous défendez les énergies renouvelables, la cause animale et la démocratie citoyenne."
+      "fr": "L'urgence climatique et la biodiversité conditionnent l'avenir de l'humanité. L'économie doit respecter les limites planétaires. Vous défendez les énergies renouvelables, la cause animale et la démocratie citoyenne.",
+      "es": "Consideras la crisis ecológica y climática la mayor amenaza para el futuro de la humanidad. La economía debe subordinarse a los límites biofísicos del planeta mediante energías limpias y circularidad.",
+      "de": "Du siehst in der ökologischen Krise die größte Herausforderung unserer Zeit. Wirtschaftliches Handeln muss sich den natürlichen planetaren Grenzen unterordnen, um künftigen Generationen eine lebenswerte Welt zu hinterlassen."
     },
     "keyFigures": [
       "Petra Kelly",
@@ -669,19 +789,25 @@ const rawIdeologies = [
       "pl": "Eko-Socjalizm / Czerwono-Zieloni",
       "en": "Eco-Socialism / Red-Green Alliance",
       "ru": "Эко-социализм / Красно-зелёные",
-      "fr": "Éco-socialisme"
+      "fr": "Éco-socialisme",
+      "es": "Ecosocialismo",
+      "de": "Ökosozialismus"
     },
     "subtitle": {
       "pl": "Kryzys ekologiczny to skutek kapitalizmu — rozwiązaniem jest demokratyczna kontrola nad zasobami",
       "en": "Ecological breakdown is an inherent outcome of capitalist growth — democratic planning is the cure",
       "ru": "Экологический кризис порожден погоней за прибылью — спасение в общественной собственности",
-      "fr": "La crise écologique découle de la logique du profit — la solution réside dans la planification démocratique"
+      "fr": "La crise écologique découle de la logique du profit — la solution réside dans la planification démocratique",
+      "es": "Superación del modelo de acumulación capitalista para salvar el planeta y democratizar la economía",
+      "de": "Überwindung der kapitalistischen Wachstumslogik zur Rettung des Klimas und Wirtschaftsdemokratie"
     },
     "desc": {
       "pl": "Nieskończony wzrost gospodarczy na skończonej planecie to iluzja. Uważasz, że motyw zysku korporacji niszczy biosferę. Tylko uspołecznienie energetyki, planowanie ekologiczne i sprawiedliwy podział dóbr mogą ocalić klimat.",
       "en": "Infinite compounding growth on a finite planet is suicidal. You see environmental collapse as the logical fruit of corporate greed. Only replacing capitalism with collective democratic planning can heal our world.",
       "ru": "Бесконечный рост на ограниченной планете невозможен. Корпоративная жажда наживы разрушает природу. Единственный выход — перевод ключевых отраслей под контроль общества и экологическое планирование.",
-      "fr": "La croissance infinie dans un monde fini est une impasse. La course au profit détruit le vivant. Seule une rupture avec le capitalisme par la planification collective peut assurer la justice climatique."
+      "fr": "La croissance infinie dans un monde fini est une impasse. La course au profit détruit le vivant. Seule une rupture avec le capitalisme par la planification collective peut assurer la justice climatique.",
+      "es": "Afirmas que la explotación de los trabajadores y la destrucción de la biosfera tienen la misma raíz: el afán de lucro capitalista desmedido. La respuesta ecológica requiere socializar los recursos clave.",
+      "de": "Du bist überzeugt, dass Umweltzerstörung und soziale Ausbeutung untrennbar mit dem kapitalistischen Profitstreben verknüpft sind. Nur ein grundlegender Systemwechsel mit demokratischer Planung schützt Natur und Mensch."
     },
     "keyFigures": [
       "Chico Mendes",
@@ -702,19 +828,25 @@ const rawIdeologies = [
       "pl": "Socjaldemokracja (Model Nordycki)",
       "en": "Social Democracy (Nordic Model)",
       "ru": "Социал-демократия (Скандинавская модель)",
-      "fr": "Social-démocratie (Modèle nordique)"
+      "fr": "Social-démocratie (Modèle nordique)",
+      "es": "Socialdemocracia (Modelo Nórdico)",
+      "de": "Sozialdemokratie (Nordisches Modell)"
     },
     "subtitle": {
       "pl": "Silne państwo opiekuńcze, progresywne podatki, prawa pracownicze w ramach gospodarki rynkowej",
       "en": "Robust welfare state, high progressive taxes, strong unions, and universal public services within a market frame",
       "ru": "Развитое социальное государство, прогрессивные налоги, права профсоюзов и качественные госуслуги",
-      "fr": "État-providence protecteur, fiscalité progressive, syndicalisme fort et services publics universels"
+      "fr": "État-providence protecteur, fiscalité progressive, syndicalisme fort et services publics universels",
+      "es": "Estado del bienestar integral, servicios públicos universales y negociación colectiva sólida",
+      "de": "Umfassender Sozialstaat, universelle öffentliche Dienste und starke Tarifpartnerschaft"
     },
     "desc": {
       "pl": "Inspirujesz się Skandynawią: rynek tworzy bogactwo, ale państwo musi je sprawiedliwie dzielić. Popierasz bezpłatną opiekę zdrowotną, edukację, silne związki zawodowe i wysokie podatki dla najbogatszych, by zredukować ubóstwo do zera.",
       "en": "Inspired by the Scandinavian model, you believe markets generate wealth while the state must guarantee fair redistribution. You support universal healthcare, tuition-free universities, union rights, and high taxes on the wealthy.",
       "ru": "Вдохновляясь Швецией и Норвегией, вы считаете, что рынок создает богатство, а государство должно гарантировать справедливость: бесплатную медицину, образование, сильные профсоюзы и налоги на богатых.",
-      "fr": "Inspiré par le modèle scandinave, vous voulez combiner marché efficace et redistribution rigoureuse : santé et enseignement gratuits, syndicats puissants et forte imposition des hauts revenus pour abolir la pauvreté."
+      "fr": "Inspiré par le modèle scandinave, vous voulez combiner marché efficace et redistribution rigoureuse : santé et enseignement gratuits, syndicats puissants et forte imposition des hauts revenus pour abolir la pauvreté.",
+      "es": "Crees en el éxito del modelo nórdico: fiscalidad progresiva, sanidad y educación gratuitas de alta calidad, fuerte diálogo social y derechos laborales que mitigan las asperezas del mercado.",
+      "de": "Du stehst für das bewährte nordische Wohlfahrtsmodell: Starke Gewerkschaften, progressive Besteuerung, universelle öffentliche Bildung und Gesundheit bei gleichzeitiger wirtschaftlicher Wettbewerbsfähigkeit."
     },
     "keyFigures": [
       "Olof Palme",
@@ -736,19 +868,25 @@ const rawIdeologies = [
       "pl": "Demokratyczny Socjalizm",
       "en": "Democratic Socialism",
       "ru": "Демократический социализм",
-      "fr": "Socialisme démocratique"
+      "fr": "Socialisme démocratique",
+      "es": "Socialismo Democrático",
+      "de": "Demokratischer Sozialismus"
     },
     "subtitle": {
       "pl": "Demokratyzacja gospodarki, własność publiczna kluczowych sektorów i prymat ludzi nad zyskiem",
       "en": "Economic democracy, public ownership of strategic sectors, and putting human needs before corporate profit",
       "ru": "Экономическая демократия, общественная собственность на стратегические отрасли и благо людей выше прибыли",
-      "fr": "Démocratie économique, propriété collective des secteurs stratégiques et priorité à l'humain sur le profit"
+      "fr": "Démocratie économique, propriété collective des secteurs stratégiques et priorité à l'humain sur le profit",
+      "es": "Control democrático de la economía, propiedad social y fin de la explotación capitalista",
+      "de": "Demokratische Kontrolle der Wirtschaft, gesellschaftliches Eigentum und Überwindung der Ausbeutung"
     },
     "desc": {
       "pl": "Uważasz, że sama demokracja polityczna nie wystarczy — potrzebujemy demokracji w miejscu pracy i gospodarce. Wspierasz publiczną własność banków, energetyki i mieszkalnictwa oraz radykalne ograniczenie potęgi oligarchów kapitałowych.",
       "en": "Political voting is incomplete without democracy in the economy. You demand public ownership of commanding economic heights (utilities, banking, healthcare) and empowering workers over financial oligarchs.",
       "ru": "Политической демократии недостаточно — необходима демократия на рабочих местах. Вы выступаете за обобществление энергетики, медицины и банков, чтобы поставить ресурсы на службу всему народу.",
-      "fr": "Le vote politique ne suffit pas sans démocratie dans l'entreprise. Vous revendiquez la propriété publique des secteurs clés (banques, énergie, logement) pour briser l'emprise des oligarques financiers."
+      "fr": "Le vote politique ne suffit pas sans démocratie dans l'entreprise. Vous revendiquez la propriété publique des secteurs clés (banques, énergie, logement) pour briser l'emprise des oligarques financiers.",
+      "es": "Sostienes que la democracia política real es incompleta sin democracia económica. Sectores estratégicos y grandes corporaciones deben pasar al control de los trabajadores y la sociedad civil.",
+      "de": "Du vertrittst die Ansicht, dass politische Demokratie unvollständig bleibt, solange die Wirtschaft von wenigen Konzernen beherrscht wird. Schlüsselindustrien müssen in Gemeineigentum überführt und demokratisiert werden."
     },
     "keyFigures": [
       "Bernie Sanders",
@@ -770,19 +908,25 @@ const rawIdeologies = [
       "pl": "Wolnościowy Socjalizm / Anarchizm Społeczny",
       "en": "Libertarian Socialism / Social Anarchism",
       "ru": "Либертарный социализм / Социальный анархизм",
-      "fr": "Socialisme libertaire / Anarchisme social"
+      "fr": "Socialisme libertaire / Anarchisme social",
+      "es": "Socialismo Libertario / Anarquismo Social",
+      "de": "Libertärer Sozialismus / Sozialer Anarchismus"
     },
     "subtitle": {
       "pl": "Samorządność pracownicza, zniesienie hierarchii i państwa na rzecz dobrowolnych komun i federacji",
       "en": "Worker self-management, abolition of hierarchical coercion and the state for bottom-up federations",
       "ru": "Рабочее самоуправление, упразднение государственной иерархии в пользу свободных коммун и федераций",
-      "fr": "Autogestion ouvrière, abolition des hiérarchies et de l'État au profit de communes libres et fédérées"
+      "fr": "Autogestion ouvrière, abolition des hiérarchies et de l'État au profit de communes libres et fédérées",
+      "es": "Autogestión obrera directa, confederación horizontal y abolición simultánea de Estado y capital",
+      "de": "Arbeiterselbstverwaltung, herrschaftsfreie Föderation und gleichzeitige Beseitigung von Staat und Kapital"
     },
     "desc": {
       "pl": "Odrzucasz zarówno dyktat wielkiego kapitału, jak i tyranię państwowego aparatu biurokratycznego. Wierzysz w oddolne zrzeszanie się wolnych ludzi w komunach i spółdzielniach, opartych na pomocy wzajemnej i bezpośredniej demokracji.",
       "en": "You reject both corporate monopoly power and authoritarian state bureaucracy. You dream of a cooperative society constructed from the bottom up through mutual aid, workplace councils, and non-hierarchical federations.",
       "ru": "Вы одинаково отвергаете власть корпораций и диктат государственного аппарата, веря в самоорганизацию людей в свободных общинах на принципах взаимопомощи и прямой демократии.",
-      "fr": "Vous refusez tout autant le règne du grand capital que l'oppression bureaucratique de l'État. Vous croyez à l'organisation spontanée en coopératives et communes libres, fondées sur l'entraide mutuelle."
+      "fr": "Vous refusez tout autant le règne du grand capital que l'oppression bureaucratique de l'État. Vous croyez à l'organisation spontanée en coopératives et communes libres, fondées sur l'entraide mutuelle.",
+      "es": "Rechazas tanto el autoritarismo estatal como la tiranía corporativa. La verdadera libertad nace de asambleas populares horizontales, cooperativas federadas y la gestión colectiva sin gobernantes.",
+      "de": "Du lehnst sowohl staatliche Bevormundung als auch kapitalistische Lohnarbeit ab. Wahre Freiheit entsteht durch basisdemokratische Räte, freiwillige Föderationen und kollektive Selbstverwaltung auf Augenhöhe."
     },
     "keyFigures": [
       "Michaił Bakunin",
@@ -804,19 +948,25 @@ const rawIdeologies = [
       "pl": "Mutualizm / Wzajemizm",
       "en": "Mutualism / Free-Market Socialism",
       "ru": "Мутуализм / Рыночный социализм",
-      "fr": "Mutualisme"
+      "fr": "Mutualisme",
+      "es": "Mutualismo (Anarquismo de Mercado)",
+      "de": "Mutualismus (Marktanarchismus)"
     },
     "subtitle": {
       "pl": "Rynek bez kapitalistycznego wyzysku: wolna wymiana, banki darmowego kredytu i własność użytkowa",
       "en": "Markets without capitalist wage-slavery: free exchange, mutual credit banking, and usufruct possession",
       "ru": "Рынок без эксплуатации: свободный обмен результатами труда, кассы взаимного кредита и трудовая собственность",
-      "fr": "Marché sans exploitation capitaliste : échange réciproque, banques de crédit mutuel et possession par l'usage"
+      "fr": "Marché sans exploitation capitaliste : échange réciproque, banques de crédit mutuel et possession par l'usage",
+      "es": "Bancos de crédito mutuo sin usura, cooperativas libres y valor basado en el trabajo",
+      "de": "Zinslose Kreditgenossenschaften, freie Arbeiterselbsthilfe und Tausch auf Arbeitswertbasis"
     },
     "desc": {
       "pl": "Dostrzegasz wartość w rynkowej wymianie towarów, ale odrzucasz pobieranie zysku z cudzej pracy, lichwę i rentę kapitałową. Opowiadasz się za bankami wzajemnymi udzielającymi nieoprocentowanych pożyczek oraz własnością opartą na użytkowaniu.",
       "en": "You appreciate the efficiency of market trade but reject unearned absentee rent, usury, and wage exploitation. You favor mutual-credit banks offering zero-interest capital and property based on direct occupancy and use.",
       "ru": "Вы цените рыночный обмен, но категорически против ростовщичества и присвоения чужого труда. Вы предлагаете систему касс взаимопомощи с беспроцентными займами и владение землей только по факту работы на ней.",
-      "fr": "Vous admettez l'échange sur le marché mais refusez la rente spéculative, l'usure et le salariat aliénant. Vous proposez le crédit mutuel sans intérêt et la propriété fondée sur l'usage effectif."
+      "fr": "Vous admettez l'échange sur le marché mais refusez la rente spéculative, l'usure et le salariat aliénant. Vous proposez le crédit mutuel sans intérêt et la propriété fondée sur l'usage effectif.",
+      "es": "Inspirado en Proudhon: libre intercambio cooperativo en mercados sin monopolios ni privilegios bancarios, donde cada trabajador conserva el fruto íntegro de su labor mediante el apoyo mutuo.",
+      "de": "Geprägt von Pierre-Joseph Proudhon: Freie Kooperation in einem staatenlosen Markt ohne Monopole, getragen von genossenschaftlichen Banken, Gegenseitigkeit und dem gerechten Austausch von Arbeitsprodukten."
     },
     "keyFigures": [
       "Pierre-Joseph Proudhon",
@@ -837,19 +987,25 @@ const rawIdeologies = [
       "pl": "Syndykalizm Robotniczy",
       "en": "Syndicalism / Revolutionary Trade Unionism",
       "ru": "Синдикализм / Революционный профсоюзный социализм",
-      "fr": "Syndicalisme révolutionnaire"
+      "fr": "Syndicalisme révolutionnaire",
+      "es": "Anarcosindicalismo / Sindicalismo Revolucionario",
+      "de": "Anarchosyndikalismus"
     },
     "subtitle": {
       "pl": "Przejęcie fabryk i gospodarki bezpośrednio przez zrzeszone związki zawodowe w drodze strajku generalnego",
       "en": "Direct collective takeover of the economy and industries by organized labor unions via the general strike",
       "ru": "Прямой переход фабрик и заводов в руки профсоюзов через всеобщую стачку без политических партий",
-      "fr": "Prise en main directe des moyens de production par les syndicats ouvriers par la grève générale"
+      "fr": "Prise en main directe des moyens de production par les syndicats ouvriers par la grève générale",
+      "es": "Organización de la sociedad a través de sindicatos obreros autogestionados y huelga general",
+      "de": "Organisation der Gesellschaft durch selbstverwaltete Gewerkschaften und Generalstreik"
     },
     "desc": {
       "pl": "Uważasz, że partie polityczne i parlamentaryzm są nieskuteczne. Prawdziwa władza należy do pracujących ludzi. Związki zawodowe powinny przejąć bezpośrednie zarządzanie fabrykami, kopalniami i transportem, likwidując wyzysk.",
       "en": "You believe political parties and electoral parliaments are corrupt dead ends. Real power belongs at the point of production. Organized labor unions must coordinate factories and logistics directly through a general strike.",
       "ru": "Вы считаете выборы и парламенты бесполезной говорильней. Настоящая сила — в руках рабочего класса. Профсоюзы должны взять на себя управление промышленностью и распределением благ.",
-      "fr": "Vous tenez les partis et le parlementarisme pour des impasses. La vraie force réside dans la production. Les syndicats de travailleurs doivent gérer directement les ateliers et services par la grève générale."
+      "fr": "Vous tenez les partis et le parlementarisme pour des impasses. La vraie force réside dans la production. Les syndicats de travailleurs doivent gérer directement les ateliers et services par la grève générale.",
+      "es": "Crees en la fuerza directa de la clase trabajadora autoorganizada en sindicatos independientes. A través de la acción directa y la huelga revolucionaria, los trabajadores deben tomar la gestión de la producción.",
+      "de": "Du setzt auf die unmittelbare Kraft der organisierten Arbeiterschaft. Gewerkschaften sind nicht bloß Verhandlungspartner, sondern die Keimzellen einer künftigen staatenlosen, basisdemokratischen Wirtschaftsordnung."
     },
     "keyFigures": [
       "Georges Sorel",
@@ -870,19 +1026,25 @@ const rawIdeologies = [
       "pl": "Państwowy Socjalizm / Gospodarka Nakazowa",
       "en": "State Socialism / Planned Economy",
       "ru": "Государственный социализм / Плановая экономика",
-      "fr": "Socialisme d'État / Économie planifiée"
+      "fr": "Socialisme d'État / Économie planifiée",
+      "es": "Socialismo de Estado",
+      "de": "Staatssozialismus"
     },
     "subtitle": {
       "pl": "Pełna nacjonalizacja przemysłu, centralne planowanie gospodarcze i likwidacja prywatnego kapitału",
       "en": "Full nationalization of industry, centralized economic planning, and abolition of private capital",
       "ru": "Полная национализация промышленности, централизованное госпланирование и ликвидация частного капитала",
-      "fr": "Nationalisation intégrale de l'industrie, planification centralisée et suppression du capital privé"
+      "fr": "Nationalisation intégrale de l'industrie, planification centralisée et suppression du capital privé",
+      "es": "Planificación económica centralizada, nacionalización de la producción y dirección estatal",
+      "de": "Zentral gesteuerte Planwirtschaft, Verstaatlichung der Produktionsmittel und staatliche Lenkung"
     },
     "desc": {
       "pl": "Uważasz, że anarchia wolnego rynku rodzi kryzysy i nierówności. Wszystkie środki produkcji powinny należeć do państwa, które centralnie planuje produkcję, gwarantuje każdemu zatrudnienie, dach nad głową i równy podział dóbr.",
       "en": "Market chaos breeds recurring crisis and structural misery. You argue all major means of production must belong to the socialist state, which centrally allocates resources, guarantees full employment, and eliminates class division.",
       "ru": "Хаос рыночной стихии порождает кризисы и нищету. Все фабрики и ресурсы должны принадлежать государству, которое централизованно планирует производство и гарантирует каждому работу и жилье.",
-      "fr": "L'anarchie du marché engendre crises et exploitation. Tous les moyens de production doivent appartenir à l'État, qui planifie la production, garantit le plein emploi et éradique les privilèges de classe."
+      "fr": "L'anarchie du marché engendre crises et exploitation. Tous les moyens de production doivent appartenir à l'État, qui planifie la production, garantit le plein emploi et éradique les privilèges de classe.",
+      "es": "Consideras que solo un Estado centralizado y poderoso puede planificar la economía racionalmente, erradicar el beneficio privado caótico y garantizar bienestar para todos los ciudadanos.",
+      "de": "Du bist überzeugt, dass nur eine starke zentrale Staatsmacht die Wirtschaft planvoll zum Wohle aller lenken, den Marktchaos beseitigen und soziale Sicherheit für die gesamte Bevölkerung garantieren kann."
     },
     "keyFigures": [
       "Włodzimierz Lenin",
@@ -903,19 +1065,25 @@ const rawIdeologies = [
       "pl": "Autorytarny Kapitalizm / Państwowy Merkantylizm",
       "en": "Authoritarian State Capitalism",
       "ru": "Авторитарный капитализм / Государственный меркантилизм",
-      "fr": "Capitalisme d'État autoritaire"
+      "fr": "Capitalisme d'État autoritaire",
+      "es": "Capitalismo de Estado",
+      "de": "Staatskapitalismus"
     },
     "subtitle": {
       "pl": "Potęga rynkowa i korporacyjna podporządkowana celom geopolitycznym i dyscyplinie silnego państwa",
       "en": "Commercial corporate muscle subordinated to geopolitical dominance and strong state discipline",
       "ru": "Рыночная и корпоративная мощь, подчиненная геополитическим целям и железной дисциплине власти",
-      "fr": "Puissance commerciale de marché asservie aux ambitions géopolitiques et à l'autorité d'État"
+      "fr": "Puissance commerciale de marché asservie aux ambitions géopolitiques et à l'autorité d'État",
+      "es": "Dirección política de la economía con grandes corporaciones públicas compitiendo en el mercado",
+      "de": "Staatliche Leitplanken für Marktwirtschaft und global agierende Staatskonzerne"
     },
     "desc": {
       "pl": "Popierasz rynkową dynamikę i generowanie zysków, ale pod warunkiem, że służą one potędze państwa i armii. Sprzeciwiasz się liberalnym swobodom obyczajowym, stawiając na dyscyplinę, strategiczne czebole i twardą rękę rządu.",
       "en": "You support market productivity and industrial power, but insist they must obey the strategic imperatives of a strong regime. You distrust civil unrest and cultural permissiveness, exalting discipline and national might.",
       "ru": "Вы цените рыночную эффективность и технологии, но требуете, чтобы бизнес беспрекословно служил величию державы. Вы отвергаете либеральные свободы, делая ставку на дисциплину и контроль.",
-      "fr": "Vous encouragez le dynamisme économique et l'industrie privée, à condition qu'ils servent la puissance de la nation et de l'État. Vous rejetez le laxisme sociétal au profit de la rigueur et de l'autorité."
+      "fr": "Vous encouragez le dynamisme économique et l'industrie privée, à condition qu'ils servent la puissance de la nation et de l'État. Vous rejetez le laxisme sociétal au profit de la rigueur et de l'autorité.",
+      "es": "El gobierno orienta estratégicamente el desarrollo industrial y comercial mediante empresas estatales y fondos soberanos, aprovechando la disciplina de mercado bajo estricto control nacional.",
+      "de": "Der Staat steuert die strategische Wirtschaftsentwicklung über Beteiligungen, Staatsunternehmen und Investitionsfonds, nutzt marktwirtschaftliche Effizienz aber unter strenger nationaler Kontrolle."
     },
     "keyFigures": [
       "Deng Xiaoping",
@@ -936,19 +1104,25 @@ const rawIdeologies = [
       "pl": "Agoryzm / Lewicowy Rynkowy Anarchizm",
       "en": "Agorism / Left-Wing Market Anarchism",
       "ru": "Агоризм / Левый рыночный анархизм",
-      "fr": "Agorisme / Anarchisme de marché"
+      "fr": "Agorisme / Anarchisme de marché",
+      "es": "Agorismo (Contramercado)",
+      "de": "Agorismus (Gegenwirtschaft)"
     },
     "subtitle": {
       "pl": "Kontrekonomia: pokonanie państwa poprzez nieopodatkowany czarny rynek, krypto i wolną agorę",
       "en": "Counter-economics: subverting state power through illicit untaxed markets, crypto, and direct trade",
       "ru": "Контрэкономика: мирное разрушение государства через безналоговый черный рынок, крипту и агору",
-      "fr": "Contre-économie : contourner l'État par le marché noir libre, les cryptomonnaies et le troc sans impôt"
+      "fr": "Contre-économie : contourner l'État par le marché noir libre, les cryptomonnaies et le troc sans impôt",
+      "es": "Desobediencia fiscal, economía sumergida voluntaria y mercados negros no violentos",
+      "de": "Steuerverweigerung, freiwillige Schattenwirtschaft und friedlicher Schwarzmarkt"
     },
     "desc": {
       "pl": "Nie wierzysz w wybory polityczne ani zbrojną rewolucję. Państwo należy po prostu zignorować i uczynić przestarzałym poprzez kontrekonomię: nieopodatkowaną pracę, kryptowaluty, handel na szarym rynku i wolną współpracę jednostek.",
       "en": "You reject political voting and armed rebellion alike. The state must be made obsolete through counter-economics: untaxed black/grey markets, peer-to-peer crypto protocols, and peaceful voluntary commerce.",
       "ru": "Вы не верите в выборы и политиков. Государство нужно мирно вытеснить с помощью контрэкономики: серых рынков, криптографии, торговли без налогов и прямого сотрудничества свободных людей.",
-      "fr": "Vous refusez la politique politicienne comme la violence armée. L'État doit être rendu obsolète par la contre-économie : transactions de gré à gré non taxées, cryptomonnaies et désobéissance fiscale pacifique."
+      "fr": "Vous refusez la politique politicienne comme la violence armée. L'État doit être rendu obsolète par la contre-économie : transactions de gré à gré non taxées, cryptomonnaies et désobéissance fiscale pacifique.",
+      "es": "Crees en la superación del Estado mediante la 'contraeconomía': comerciar voluntariamente al margen de los impuestos, licencias y regulaciones gubernamentales hasta dejar obsoleto el aparato estatal.",
+      "de": "Du willst den Staat nicht durch Wahlen, sondern durch praktische Gegenökonomie überwinden: Steuerfreie, friedliche Tauschgeschäfte im Untergrund machen die staatliche Bürokratie überflüssig."
     },
     "keyFigures": [
       "Samuel Edward Konkin III",
@@ -969,19 +1143,25 @@ const rawIdeologies = [
       "pl": "Kosmopolityzm / Globalizm Demokratyczny",
       "en": "Democratic Cosmopolitanism / World Federalism",
       "ru": "Космополитизм / Демократический глобализм",
-      "fr": "Cosmopolitisme / Fédéralisme mondial"
+      "fr": "Cosmopolitisme / Fédéralisme mondial",
+      "es": "Cosmopolitismo / Globalismo Democrático",
+      "de": "Kosmopolitismus / Weltbürgertum"
     },
     "subtitle": {
       "pl": "Obywatel świata: znoszenie granic narodowych, powszechne prawa człowieka i federacja planetarna",
       "en": "Citizen of the world: dissolving national borders, universal human rights, and planetary federal governance",
       "ru": "Гражданин мира: стирание государственных границ, права человека и планетарная демократическая федерация",
-      "fr": "Citoyen du monde : effacement des frontières, droits humains universels et fédération planétaire"
+      "fr": "Citoyen du monde : effacement des frontières, droits humains universels et fédération planétaire",
+      "es": "Ciudadanía universal, gobernanza democrática global y eliminación de barreras fronterizas",
+      "de": "Weltbürgerrecht, globale demokratische Institutionen und Abbau nationaler Grenzen"
     },
     "desc": {
       "pl": "Uważasz granice państwowe za sztuczne i anachroniczne podziały. Każdy człowiek rodzi się obywatelem Ziemi. Dążysz do otwarcia granic, wzmocnienia trybunałów międzynarodowych i globalnej współpracy w obliczu kryzysów planetarnych.",
       "en": "You view national borders as arbitrary historical accidents. Every human is a citizen of planet Earth. You advocate for free migration, universal human rights courts, and democratic global governance for global challenges.",
       "ru": "Вы считаете государственные границы пережитком прошлого. Каждый человек — гражданин планеты Земля. Вы выступаете за свободное передвижение, верховенство мирового права и глобальное единство.",
-      "fr": "Vous considérez les frontières nationales comme des constructions archaïques. Tout être humain est citoyen de la Terre. Vous défendez la libre circulation, la justice internationale et une gouvernance planétaire solidaire."
+      "fr": "Vous considérez les frontières nationales comme des constructions archaïques. Tout être humain est citoyen de la Terre. Vous défendez la libre circulation, la justice internationale et une gouvernance planétaire solidaire.",
+      "es": "Consideras a todos los seres humanos ciudadanos del mundo por igual. Los retos globales (paz, clima, derechos) requieren una federación mundial democrática y la libre movilidad internacional.",
+      "de": "Du begreifst alle Menschen als gleichberechtigte Weltbürger. Globale Herausforderungen verlangen universelle Menschenrechte, offene Grenzen und handlungsfähige demokratische Weltinstitutionen."
     },
     "keyFigures": [
       "Immanuel Kant",
@@ -1003,19 +1183,25 @@ const rawIdeologies = [
       "pl": "Korporacjonizm Społeczny / Dialog Trójstronny",
       "en": "Social Corporatism / Tripartite Consensus",
       "ru": "Социальный корпоративизм / Трёхсторонний диалог",
-      "fr": "Corporatisme social / Concertation tripartite"
+      "fr": "Corporatisme social / Concertation tripartite",
+      "es": "Corporativismo Social",
+      "de": "Sozialer Korporatismus"
     },
     "subtitle": {
       "pl": "Zinstytucjonalizowane negocjacje rządu, związków zawodowych i pracodawców dla pokoju społecznego",
       "en": "Institutionalized partnership between organized labor, employer federations, and the state",
       "ru": "Институциональный союз профсоюзов, бизнеса и государства ради классового мира и стабильности",
-      "fr": "Partenariat institutionnel entre syndicats, patronat et État pour garantir la concorde sociale"
+      "fr": "Partenariat institutionnel entre syndicats, patronat et État pour garantir la concorde sociale",
+      "es": "Concertación tripartita entre Estado, asociaciones empresariales y federaciones sindicales",
+      "de": "Sozialpartnerschaft zwischen Staat, Arbeitgeberverbänden und Gewerkschaften"
     },
     "desc": {
       "pl": "Wierzysz w pokój społeczny i unikanie wstrząsów. Płace, warunki pracy i reformy powinny być stale uzgadniane przy jednym stole przez zrzeszenia pracodawców, centrale związkowe i rząd, eliminując konieczność brutalnych strajków.",
       "en": "You champion industrial peace and systemic consensus. Wages, labor standards, and economic reforms should be negotiated centrally between trade union federations, employer associations, and government mediators.",
       "ru": "Вы верите в социальный мир без забастовок и потрясений. Зарплаты и условия труда должны согласовываться за круглым столом представителями профсоюзов, союзами промышленников и государством.",
-      "fr": "Vous prônez la paix sociale par la négociation collective permanente. Salaires et réformes doivent être arrêtés conjointement par le patronat, les centrales syndicales et l'État pour éviter les conflits violents."
+      "fr": "Vous prônez la paix sociale par la négociation collective permanente. Salaires et réformes doivent être arrêtés conjointement par le patronat, les centrales syndicales et l'État pour éviter les conflits violents.",
+      "es": "Defiendes la paz social y la estabilidad a través de acuerdos vinculantes entre los agentes sociales y el gobierno, evitando tanto el conflicto destructivo como el individualismo salvaje.",
+      "de": "Du befürwortest den institutionalisierten Interessenausgleich zwischen organisierten Wirtschaftsverbänden, Gewerkschaften und dem Staat, um sozialen Frieden und wirtschaftliche Stabilität zu sichern."
     },
     "keyFigures": [
       "Gøsta Esping-Andersen",
@@ -1036,19 +1222,25 @@ const rawIdeologies = [
       "pl": "Turbokapitalizm / Finansowy Globalizm",
       "en": "Turbo-Capitalism / Hyper-Financialism",
       "ru": "Турбокапитализм / Гиперфинансовый глобализм",
-      "fr": "Turbo-capitalisme"
+      "fr": "Turbo-capitalisme",
+      "es": "Turbocapitalismo / Hipercapitalismo",
+      "de": "Turbokapitalismus / Hyperkapitalismus"
     },
     "subtitle": {
       "pl": "Radykalny rynkowy darwinizm, prymat rynków finansowych i brak jakichkolwiek barier dla zysku",
       "en": "Uninhibited financial markets, aggressive corporate agility, and borderless capital acceleration",
       "ru": "Тотальный рыночный дарвинизм, абсолютная власть финансовых рынков и снятие всех барьеров",
-      "fr": "Marchés financiers tout-puissants, agilité darwinienne des entreprises et profit sans frontières"
+      "fr": "Marchés financiers tout-puissants, agilité darwinienne des entreprises et profit sans frontières",
+      "es": "Velocidad extrema de flujos de capital, automatización radical y libre competencia implacable",
+      "de": "Entfesselte Finanzmärkte, radikale Automatisierung und gnadenloser globaler Wettbewerb"
     },
     "desc": {
       "pl": "Uważasz, że rynki finansowe i globalne korporacje muszą działać z maksymalną prędkością bez krępujących regulacji, podatków czy sentymentów narodowych. Kto nie nadąża za innowacją i tempem zmian, sam ponosi tego konsekwencje.",
       "en": "You believe financial markets and multinational capital must operate at maximum velocity, unburdened by national barriers, social sentiment, or heavy taxation. Economic efficiency is the supreme measure of success.",
       "ru": "Вы убеждены, что финансовые рынки и транснациональные корпорации должны развиваться с максимальной скоростью без оглядки на национальные границы и сантименты. Выживает быстрейший и самый гибкий.",
-      "fr": "Vous estimez que la haute finance et les multinationales doivent pouvoir investir et arbitrer instantanément, libres de tout carcan fiscal ou national. L'efficacité économique prime sur toute autre considération."
+      "fr": "Vous estimez que la haute finance et les multinationales doivent pouvoir investir et arbitrer instantanément, libres de tout carcan fiscal ou national. L'efficacité économique prime sur toute autre considération.",
+      "es": "Abrazas la aceleración tecnológica y la destrucción creativa sin restricciones éticas o proteccionistas. La rentabilidad y la vanguardia técnica deciden el rumbo del progreso humano.",
+      "de": "Du befürwortest maximale Marktdynamik, ungebändigte Finanzströme und technologische Disruption ohne nostalgische Bremsen. Nur wer sich im globalen Wettbewerb anpasst, besteht."
     },
     "keyFigures": [
       "Edward Luttwak (krytyk/definiujący)",
@@ -1069,19 +1261,25 @@ const rawIdeologies = [
       "pl": "Narodowy Socjalizm (Nazizm)",
       "en": "National Socialism (Nazism)",
       "ru": "Национал-социализм (Нацизм)",
-      "fr": "National-socialisme (Nazisme)"
+      "fr": "National-socialisme (Nazisme)",
+      "es": "Nacionalsocialismo (Totalitarismo Nazi)",
+      "de": "Nationalsozialismus (NS-Ideologie)"
     },
     "subtitle": {
       "pl": "Totalitarny etatyzm, skrajny rasizm biologiczny, antysemityzm i militarystyczna autarkia",
       "en": "Totalitarian statism, extreme biological racism, antisemitism, and militarized autarky",
       "ru": "Тоталитарный этатизм, крайний биологический расизм, антисемитизм и милитаристская автаркия",
-      "fr": "Étatisme totalitaire, racisme biologique extrême, antisémitisme et autarcie militarisée"
+      "fr": "Étatisme totalitaire, racisme biologique extrême, antisémitisme et autarcie militarisée",
+      "es": "Totalitarismo racista, militarismo agresivo, principio del líder y subordinación total al Estado",
+      "de": "Rassistischer Totalitarismus, aggressiver Militarismus, Führerprinzip und Volksgemeinschaft"
     },
     "desc": {
       "pl": "Ideologia III Rzeszy oparta na bezwzględnym podporządkowaniu jednostki totalitarnemu państwu (Führerprinzip), biologicznej teorii rasowej, likwidacji wolności obywatelskich, zbrojeniach i agresywnej ekspansji wojennej (Lebensraum). Gospodarka była ściśle podporządkowana machinie wojennej pod nadzorem państwa.",
       "en": "The totalitarian ideology of Nazi Germany built on absolute subservience to the Führer, racial purity doctrines, annihilation of civil liberties, autarky, and genocidal expansionism (Lebensraum). The economy was directed toward militarized production.",
       "ru": "Тоталитарная идеология нацистской Германии, основанная на культе вождя (фюрерпринцип), расовой теории, уничтожении гражданских свобод и агрессивной военной экспансии. Экономика подчинялась военной машине.",
-      "fr": "L'idéologie totalitaire du Troisième Reich fondée sur le principe du chef (Führerprinzip), le racisme biologique, la suppression des libertés et l'expansionnisme militaire génocidaire (Lebensraum)."
+      "fr": "L'idéologie totalitaire du Troisième Reich fondée sur le principe du chef (Führerprinzip), le racisme biologique, la suppression des libertés et l'expansionnisme militaire génocidaire (Lebensraum).",
+      "es": "Ideología totalitaria destructiva basada en el supremacismo racial biológico, la guerra de conquista, el culto cieguísimo al líder y la eliminación absoluta de las libertades humanas.",
+      "de": "Verbrecherische totalitäre Ideologie gegründet auf biologischem Rassenwahn, aggressivem Expansionskrieg, Führerprinzip und der vollständigen Vernichtung individueller Menschenrechte."
     },
     "keyFigures": [
       "Adolf Hitler",
@@ -1102,19 +1300,25 @@ const rawIdeologies = [
       "pl": "Klasyczny Faszyzm (Włoski)",
       "en": "Classical Fascism (Italian)",
       "ru": "Классический фашизм (Итальянский)",
-      "fr": "Fascisme classique (Italien)"
+      "fr": "Fascisme classique (Italien)",
+      "es": "Fascismo Clásico (Corporativismo Autoritario)",
+      "de": "Klassischer Faschismus"
     },
     "subtitle": {
       "pl": "Totalitarny korporacjonizm, prymat państwa nad jednostką i zbrojny nacjonalizm",
       "en": "Totalitarian corporatism, supremacy of the state over the individual, and militarized nationalism",
       "ru": "Тоталитарный корпоративизм, примат государства над личностью и милитаристский национализм",
-      "fr": "Corporatisme totalitaire, suprématie de l'État sur l'individu et nationalisme armé"
+      "fr": "Corporatisme totalitaire, suprématie de l'État sur l'individu et nationalisme armé",
+      "es": "Todo dentro del Estado, nada contra el Estado; estatismo totalitario y nacionalismo exaltado",
+      "de": "Alles im Staate, nichts außerhalb des Staates; totalitärer Etatismus und aggressiver Nationalismus"
     },
     "desc": {
       "pl": "„Wszystko w państwie, nic poza państwem, nic przeciw państwu”. Faszyzm odrzucał liberalną demokrację, indywidualizm i marksizm, zastępując je dyktaturą wodza, zorganizowanym w korporacje społeczeństwem oraz kultem heroizmu i wojny.",
       "en": "“Everything in the State, nothing outside the State, nothing against the State.” Classical fascism rejected liberal democracy, individualism, and Marxism in favor of a one-party dictatorship, corporatist economic organization, and imperial conquest.",
       "ru": "«Всё в государстве, ничего вне государства, ничего против государства». Фашизм отвергает либеральную демократию, индивидуализм и марксизм в пользу культа вождя, корпоративного строя и имперской экспансии.",
-      "fr": "« Tout dans l'État, rien hors de l'État, rien contre l'État ». Le fascisme classique rejetait la démocratie libérale et le marxisme au profit de la dictature du chef et de l'organisation corporatiste."
+      "fr": "« Tout dans l'État, rien hors de l'État, rien contre l'État ». Le fascisme classique rejetait la démocratie libérale et le marxisme au profit de la dictature du chef et de l'organisation corporatiste.",
+      "es": "Modelo totalitario italiano que subordina al individuo por entero a la grandeza imperial del Estado, militarizando la vida social y anulando las libertades cívicas y parlamentarias.",
+      "de": "Totalitäres Herrschaftsmodell, das das Individuum vollständig dem Machtanspruch des Staates unterwirft, Gesellschaft und Wirtschaft militarisiert und jede parlamentarische Opposition unterdrückt."
     },
     "keyFigures": [
       "Benito Mussolini",
@@ -1134,19 +1338,25 @@ const rawIdeologies = [
       "pl": "Imperializm i Militaryzm",
       "en": "Imperialism & Militarism",
       "ru": "Империализм и милитаризм",
-      "fr": "Impérialisme et militarisme"
+      "fr": "Impérialisme et militarisme",
+      "es": "Militarismo Imperialista",
+      "de": "Militarismus / Imperialismus"
     },
     "subtitle": {
       "pl": "Potęga zbrojna, ekspansja terytorialna mocarstwa i hierarchiczny porządek państwowy",
       "en": "Armed strength, territorial expansion of great powers, and hierarchical state discipline",
       "ru": "Военная мощь, территориальная экспансия великих держав и строгая государственная дисциплина",
-      "fr": "Puissance armée, expansion territoriale des empires et discipline étatique hiérarchique"
+      "fr": "Puissance armée, expansion territoriale des empires et discipline étatique hiérarchique",
+      "es": "Expansión territorial armada, culto a la jerarquía castrense y gloria del imperio",
+      "de": "Territoriale Expansion mit Waffengewalt, Dominanz des Militärs und imperiales Machtstreben"
     },
     "desc": {
       "pl": "Pogląd, wedle którego miarą wielkości narodu i państwa jest jego siła militarna, zdolność do prowadzenia wojen oraz podporządkowywania sobie innych terytoriów. Gospodarka i społeczeństwo są zorganizowane hierarchicznie z prymatem armii.",
       "en": "The political doctrine holding that national greatness is defined by armed power, conquest, and dominating spheres of influence. Civil society and industry are subordinated to military preparedness and imperial ambition.",
       "ru": "Доктрина, согласно которой величие нации измеряется военной мощью, завоеваниями и геополитическим доминированием. Промышленность и общество подчинены военным целям.",
-      "fr": "Doctrine politique considérant que la grandeur d'une nation repose sur la puissance militaire, la conquête coloniale et la subordination de la société aux impératifs armés."
+      "fr": "Doctrine politique considérant que la grandeur d'une nation repose sur la puissance militaire, la conquête coloniale et la subordination de la société aux impératifs armés.",
+      "es": "Consideras que la grandeza de una nación se mide por la fuerza de sus armas y la extensión de sus conquistas. La vida civil y la economía se estructuran para la victoria bélica constante.",
+      "de": "Macht und Prestige einer Nation bemessen sich an der Schlagkraft ihrer Streitkräfte und territorialen Eroberungen. Wirtschaft und Gesellschaft sind bedingungslos dem Sieg untergeordnet."
     },
     "keyFigures": [
       "Kaiser Wilhelm II",
@@ -1167,19 +1377,25 @@ const rawIdeologies = [
       "pl": "Bolszewizm (Marksizm-Leninizm)",
       "en": "Bolshevism (Marxism-Leninism)",
       "ru": "Большевизм (Марксизм-ленинизм)",
-      "fr": "Bolchevisme (Marxisme-léninisme)"
+      "fr": "Bolchevisme (Marxisme-léninisme)",
+      "es": "Bolchevismo / Marxismo-Leninismo",
+      "de": "Bolschewismus / Marxismus-Leninismus"
     },
     "subtitle": {
       "pl": "Awangarda partii robotniczej, dyktatura proletariatu, likwidacja własności prywatnej i centralne planowanie",
       "en": "Vanguard party rule, dictatorship of the proletariat, abolition of private capital, and central planning",
       "ru": "Авангардная партия, диктатура пролетариата, ликвидация частной собственности и плановая экономика",
-      "fr": "Parti d'avant-garde, dictature du prolétariat, abolition du capital privé et planification centrale"
+      "fr": "Parti d'avant-garde, dictature du prolétariat, abolition du capital privé et planification centrale",
+      "es": "Dictadura del proletariado, partido de vanguardia centralizado y colectivización total",
+      "de": "Diktatur des Proletariats, autoritäre Kaderpartei und vollständige Zwangskollektivierung"
     },
     "desc": {
       "pl": "Radykalny nurt rewolucyjnego komunizmu stworzony przez Włodzimierza Lenina. Zakładał obalenie kapitalizmu drogą zbrojnej rewolucji, monopol władzy partii komunistycznej, nacjonalizację całego przemysłu i bezwzględną walkę z klasami posiadającymi.",
       "en": "The revolutionary communist doctrine formulated by Vladimir Lenin. It advocated violent overthrow of bourgeois capitalism, a disciplined vanguard party monopoly, total nationalization of production, and suppressing class enemies.",
       "ru": "Революционное коммунистическое учение, созданное Лениным. Предусматривает свержение буржуазии путем вооруженной революции, монополию партии, тотальное обобществление средств производства и классовую борьбу.",
-      "fr": "Doctrine communiste révolutionnaire fondée par Lénine, préconisant le renversement du capitalisme par la force, le rôle dirigeant du parti d'avant-garde et la nationalisation intégrale de l'économie."
+      "fr": "Doctrine communiste révolutionnaire fondée par Lénine, préconisant le renversement du capitalisme par la force, le rôle dirigeant du parti d'avant-garde et la nationalisation intégrale de l'économie.",
+      "es": "Doctrina revolucionaria soviética que preconiza la toma armada del poder por una vanguardia disciplinada, la abolición radical de la propiedad privada y la dirección total de la sociedad.",
+      "de": "Sowjetische Revolutionslehre, die die gewaltsame Errichtung einer Parteiherrschaft zur Erreichung des Kommunismus, Enteignung des Privatbesitzes und totale staatliche Kontrolle postuliert."
     },
     "keyFigures": [
       "Vladimir Lenin",
@@ -1200,19 +1416,25 @@ const rawIdeologies = [
       "pl": "Kemalizm (Republikański Sekularyzm)",
       "en": "Kemalism (Turkish Republicanism)",
       "ru": "Кемализм (Республиканский секуляризм)",
-      "fr": "Kémalisme (Sécularisme républicain)"
+      "fr": "Kémalisme (Sécularisme républicain)",
+      "es": "Kemalismo (Modernización Laica Republicana)",
+      "de": "Kemalismus"
     },
     "subtitle": {
       "pl": "Radykalny laicyzm, modernizacja, republikanizm i reformizm narodowy",
       "en": "Radical secularism, rapid state-led modernization, republicanism, and civic reformism",
       "ru": "Радикальный секуляризм, форсированная модернизация, республиканизм и реформизм",
-      "fr": "Laïcité républicaine stricte, modernisation rapide impulsée par l'État et réformisme national"
+      "fr": "Laïcité républicaine stricte, modernisation rapide impulsée par l'État et réformisme national",
+      "es": "Laicismo estricto, modernización occidentalizante, republicanismo y unidad estatal firme",
+      "de": "Strikter Laizismus, pro-westliche Modernisierung, Republikanismus und nationale Einheit"
     },
     "desc": {
       "pl": "Fundament ustrojowy Republiki Turcji oparty na Sześciu Strzałach Atatürka: republikanizmie, nacjonalizmie obywatelskim, ludowizmie, etatyzmie gospodarczym, laicyzmie i rewolucyjnym reformizmie. Dążył do przekształcenia tradycyjnego społeczeństwa w nowoczesny naród europejskiego typu.",
       "en": "The founding ideology of modern Turkey based on Atatürk's Six Arrows: republicanism, civic nationalism, populism, statism, strict secularism (laicism), and reformism. It aimed to transform a feudal imperial realm into a progressive, secular nation-state.",
       "ru": "Основополагающая идеология Турции, базирующаяся на «Шести стрелах» Ататюрка: республиканизм, национализм, народность, лаицизм (светскость), этатизм и реформизм. Превратила страну в современное светское государство.",
-      "fr": "L'idéologie fondatrice de la Turquie moderne reposant sur les « Six Flèches » d'Atatürk : républicanisme, nationalisme civique, populisme, étatisme, laïcité intransigeante et réformisme permanent."
+      "fr": "L'idéologie fondatrice de la Turquie moderne reposant sur les « Six Flèches » d'Atatürk : républicanisme, nationalisme civique, populisme, étatisme, laïcité intransigeante et réformisme permanent.",
+      "es": "Inspirado en Mustafa Kemal Atatürk: transformación laica radical del Estado, desmantelamiento del poder religioso en la vida pública, educación secularizada y patriotismo cívico reformista.",
+      "de": "Die Staatsdoktrin Atatürks: Radikale Trennung von Staat und Religion, konsequente Verwestlichung, republikanische Bürgertugend und eine staatlich gelenkte Industrialisierung."
     },
     "keyFigures": [
       "Mustafa Kemal Atatürk",
@@ -1232,19 +1454,25 @@ const rawIdeologies = [
       "pl": "Maoizm (Marksizm-Leninizm-Maoizm)",
       "en": "Maoism (Marxism-Leninism-Maoism)",
       "ru": "Маоизм (Идеи Мао Цзэдуна)",
-      "fr": "Maoïsme"
+      "fr": "Maoïsme",
+      "es": "Maoísmo (Guerra Popular y Movilización de Masas)",
+      "de": "Maoismus"
     },
     "subtitle": {
       "pl": "Wiejska rewolucja chłopska, wojna ludowa, nieustanna walka klasowa i rewolucja kulturalna",
       "en": "Peasant-based agrarian communism, protracted people's war, continuous cultural revolution",
       "ru": "Опора на крестьянство, народная война, непрерывная классовая борьба и культурная революция",
-      "fr": "Communisme agraire paysan, guerre populaire prolongée et révolution culturelle permanente"
+      "fr": "Communisme agraire paysan, guerre populaire prolongée et révolution culturelle permanente",
+      "es": "Revolución campesina continua, primacía ideológica voluntarista y control del Partido",
+      "de": "Bäuerliche Dauermobilisierung, ideologischer Voluntarismus und allumfassende Parteikontrolle"
     },
     "desc": {
       "pl": "Wariant komunizmu rozwinięty przez Mao Zedonga w Chinach. W przeciwieństwie do marksizmu radzieckiego, główną siłą napędową rewolucji uczynił chłopstwo. Charakteryzował się masową mobilizacją społeczną, wojną partyzancką i dążeniem do wykorzenienia „burżuazyjnych naleciałości” w kulturze.",
       "en": "Chinese variant of revolutionary communism adapted by Mao Zedong. Centered on the peasantry as the primary revolutionary class rather than urban proletariat, it championed continuous class struggle, guerrilla people's war, and anti-revisionism.",
       "ru": "Китайская адаптация марксизма-ленинизма Мао Цзэдуном. Сделала ставку на крестьянские массы, народную войну, непрерывную чистку от «буржуазного перерождения» и мобилизационную экономику.",
-      "fr": "Adaptation chinoise du marxisme-léninisme par Mao Zedong, plaçant la paysannerie au cœur de la révolution et préconisant la guerre populaire ainsi que la révolution culturelle."
+      "fr": "Adaptation chinoise du marxisme-léninisme par Mao Zedong, plaçant la paysannerie au cœur de la révolution et préconisant la guerre populaire ainsi que la révolution culturelle.",
+      "es": "Adaptación comunista de Mao Zedong que sitúa al campesinado en el centro de la revolución armada, promoviendo la lucha ideológica constante contra los elementos burgueses residuales.",
+      "de": "Chinesische Variante des Marxismus-Leninismus, die das revolutionäre Potenzial der Bauernschaft betont und durch Massenkampagnen die Gesellschaft rigoros umformt."
     },
     "keyFigures": [
       "Mao Zedong",
@@ -1264,19 +1492,25 @@ const rawIdeologies = [
       "pl": "Neokonserwatyzm (Interwencjonizm Hawkish)",
       "en": "Neoconservatism (Hawkish Global Leadership)",
       "ru": "Неоконсерватизм (Геополитический интервенционизм)",
-      "fr": "Néo-conservatisme (Interventionnisme libéral)"
+      "fr": "Néo-conservatisme (Interventionnisme libéral)",
+      "es": "Neoconservadurismo",
+      "de": "Neokonservatismus"
     },
     "subtitle": {
       "pl": "Amerykańskie przywództwo moralne, wolny rynek i zbrojna promocja demokracji na świecie",
       "en": "Moral realism, free enterprise, assertive defense buildup, and promoting democracy abroad",
       "ru": "Американское лидерство, свободный рынок, мощный ВПК и продвижение демократии силой",
-      "fr": "Leadership géopolitique affirmé, libre entreprise et interventionnisme militaire démocratique"
+      "fr": "Leadership géopolitique affirmé, libre entreprise et interventionnisme militaire démocratique",
+      "es": "Defensa armada activa de la democracia en el exterior y firmeza en valores morales en casa",
+      "de": "Aktive militärische Durchsetzung westlicher Werte weltweit und gesellschaftliche Werttreue"
     },
     "desc": {
       "pl": "Nurt polityczny łączący wiarę w wolny rynek i tradycyjne wartości z agresywną, interwencjonistyczną polityką zagraniczną. Odrzuca izolacjonizm, uznając, że wolny świat musi aktywnie eliminować reżimy autorytarne i terroryzm za pomocą potęgi militarnej.",
       "en": "A political philosophy combining free-market economics with hawkish, interventionist foreign policy. Neoconservatives reject isolationism, arguing that democracies have a moral obligation and strategic need to project military strength against rogue regimes.",
       "ru": "Политическое направление, сочетающее рыночную экономику с жестким внешнеполитическим интервенционизмом. Сторонники выступают за превентивные военные удары против диктатур и глобальную роль США.",
-      "fr": "Courant politique alliant libéralisme économique et politique étrangère interventionniste inflexible. Il soutient l'usage de la force militaire pour renverser les régimes autoritaires."
+      "fr": "Courant politique alliant libéralisme économique et politique étrangère interventionniste inflexible. Il soutient l'usage de la force militaire pour renverser les régimes autoritaires.",
+      "es": "Defiendes una política exterior intervencionista y un ejército incontestable para derrotar a las tiranías globales, respaldando el capitalismo de mercado y valores cívicos firmes en el interior.",
+      "de": "Du trittst für eine werteorientierte, interventionistische Außenpolitik und militärische Führungsstärke ein, um Tyranneien weltweit abzuwehren und freie Demokratien zu verteidigen."
     },
     "keyFigures": [
       "George W. Bush",
@@ -1297,19 +1531,25 @@ const rawIdeologies = [
       "pl": "Prawicowy Populizm (Suwerenizm Ludowy)",
       "en": "Right-Wing Populism (National Sovereignism)",
       "ru": "Правый популизм (Национальный суверенизм)",
-      "fr": "Populisme de droite (Souverainisme populaire)"
+      "fr": "Populisme de droite (Souverainisme populaire)",
+      "es": "Populismo de Derecha",
+      "de": "Rechtspopulismus"
     },
     "subtitle": {
       "pl": "Sprzeciw wobec globalistycznych elit, obrona granic, tożsamości kulturowej i interesu zwykłych obywateli",
       "en": "Rejection of globalist elites, strict borders, defense of cultural identity, and working-class patriotism",
       "ru": "Борьба с глобалистскими элитами, закрытие границ, защита традиционной культуры и интересов народа",
-      "fr": "Rejet des élites mondialistes, contrôle strict des frontières, identité nationale et patriotisme populaire"
+      "fr": "Rejet des élites mondialistes, contrôle strict des frontières, identité nationale et patriotisme populaire",
+      "es": "Rebelión del pueblo común contra las élites globalistas, defensa de fronteras e identidad",
+      "de": "Widerstand des einfachen Bürgers gegen globale Eliten, Grenzschutz und nationale Identität"
     },
     "desc": {
       "pl": "Ruch polityczny przeciwstawiający „uczciwy lud” skorumpowanym elitom, instytucjom ponadnarodowym i masowej imigracji. Łączy patriotyzm gospodarczy z bezkompromisową ochroną granic narodowych i sprzeciwem wobec ideologii progresywnych.",
       "en": "A populist ideology pitting 'the virtuous people' against detached globalist establishments, multinational bureaucrats, and open-border policies. It combines national protectionism or deregulation with strict border security and cultural patriotism.",
       "ru": "Движение, противопоставляющее интересы простого народа наднациональным институтам и либеральным элитам. Требует пресечения нелегальной миграции, протекционизма и защиты национального суверенитета.",
-      "fr": "Mouvement politique opposant le peuple aux oligarchies mondialistes et aux institutions supranationales. Il défend la souveraineté des frontières, la priorité nationale et l'identité culturelle."
+      "fr": "Mouvement politique opposant le peuple aux oligarchies mondialistes et aux institutions supranationales. Il défend la souveraineté des frontières, la priorité nationale et l'identité culturelle.",
+      "es": "Canalizas la indignación ciudadana frente al 'establishment' político y mediático. Exiges soberanía nacional incondicional, freno a la inmigración masiva y prioridad para los ciudadanos nacionales.",
+      "de": "Du artikulierst den Protest normaler Bürger gegen das politische Establishment. Du forderst den Schutz der heimischen Kultur, strikte Einwanderungskontrollen und Vorrang für Einheimische."
     },
     "keyFigures": [
       "Donald Trump",
@@ -1330,19 +1570,25 @@ const rawIdeologies = [
       "pl": "Radykalna Lewica Klimatyczna (Eko-Sprawiedliwość)",
       "en": "Radical Climate Left (Climate Justice)",
       "ru": "Радикальные левые климатисты (Эко-справедливость)",
-      "fr": "Gauche radicale écologiste (Justice climatique)"
+      "fr": "Gauche radicale écologiste (Justice climatique)",
+      "es": "Izquierda Verde Radical",
+      "de": "Radikale Grüne Linke"
     },
     "subtitle": {
       "pl": "Konieczność zmiany systemu, odejście od wzrostu gospodarczego (degrowth), dekarbonizacja i sprawiedliwość społeczna",
       "en": "System change over climate change, post-growth economics (degrowth), rapid decarbonization, and social justice",
       "ru": "Смена системы вместо изменения климата, концепция антироста (degrowth) и немедленный запрет ископаемого топлива",
-      "fr": "Changement de système, décroissance, neutralité carbone immédiate et justice écologique"
+      "fr": "Changement de système, décroissance, neutralité carbone immédiate et justice écologique",
+      "es": "Desobediencia civil por el clima, decrecimiento planificado y desmantelamiento del poder corporativo",
+      "de": "Klima-Zivildiskussion, geplante Schrumpfung (Degrowth) und Entmachtung von Großkonzernen"
     },
     "desc": {
       "pl": "„System change, not climate change”. Uznajesz, że kryzys klimatyczny jest bezpośrednim skutkiem kapitalistycznej eksploatacji i dążenia do nieskończonego zysku. Wymagasz natychmiastowego zamknięcia energetyki kopalnej, drastycznej redystrybucji bogactwa i podporządkowania gospodarki planecie.",
       "en": "“System change, not climate change.” This philosophy asserts that global ecological breakdown is an inevitable outcome of capitalist profit motives. It demands immediate halting of fossil fuels, radical wealth redistribution, and post-growth ecological planning.",
       "ru": "Убеждение, что климатический кризис порожден капиталистической погоней за прибылью. Требует немедленного отказа от нефти и газа, введения жестких климатических налогов и экологического социализма.",
-      "fr": "Ce courant affirme que le dérèglement climatique découle de la prédation capitaliste. Il exige l'arrêt immédiat des énergies fossiles, une redistribution radicale et la décroissance planifiée."
+      "fr": "Ce courant affirme que le dérèglement climatique découle de la prédation capitaliste. Il exige l'arrêt immédiat des énergies fossiles, une redistribution radicale et la décroissance planifiée.",
+      "es": "Sostienes que ante la catástrofe climática los métodos parlamentarios tibios no bastan. Se requiere acción directa noviolenta masiva, abandono del crecimiento capitalista y reestructuración total.",
+      "de": "Du hältst konventionelle Reformen angesichts des Klimanotstands für unzureichend. Erforderlich sind ziviler Ungehorsam, eine Abkehr vom Wachstumsdogma und eine radikale gesellschaftliche Transformation."
     },
     "keyFigures": [
       "Greta Thunberg",
@@ -1362,19 +1608,25 @@ const rawIdeologies = [
       "pl": "Nieliberalna Demokracja (Konserwatywny Suwerenizm)",
       "en": "Illiberal Democracy (Conservative Sovereignism)",
       "ru": "Нелиберальная демократия (Суверенная демократия)",
-      "fr": "Démocratie illibérale (Souverainisme conservateur)"
+      "fr": "Démocratie illibérale (Souverainisme conservateur)",
+      "es": "Democracia Iliberal",
+      "de": "Illiberale Demokratie"
     },
     "subtitle": {
       "pl": "Rządy większości bez liberalnych dogmatów, tradycyjna rodzina, suwerenność i prorodzinny etatyzm",
       "en": "Majoritarian rule free from progressive dogmas, traditional family policy, and national constitutional supremacy",
       "ru": "Правление большинства без навязанного либерализма, традиционные ценности и примат национального права",
-      "fr": "Gouvernement majoritaire souverain affranchi du libéralisme sociétal, politique familiale et primauté constitutionnelle"
+      "fr": "Gouvernement majoritaire souverain affranchi du libéralisme sociétal, politique familiale et primauté constitutionnelle",
+      "es": "Mayoría electoral con soberanía absoluta sobre frenos institucionales y minorías",
+      "de": "Mehrheitsherrschaft über institutionelle Schranken und liberale Kontrollmechanismen hinweg"
     },
     "desc": {
       "pl": "Koncepcja ustrojowa odrzucająca zachodni liberalizm światopoglądowy na rzecz tożsamości narodowej i wartości chrześcijańskich. Podkreśla, że państwo ma prawo bronić swojej kultury, wspierać dzietność rodzimych obywateli i podporządkowywać instytucje woli większości wyborców.",
       "en": "A governing model arguing that democratic legitimacy does not require adopting Western social liberalism. It prioritizes Christian cultural heritage, strong pronatalist family subsidies, judicial independence from foreign courts, and state defense of national identity.",
       "ru": "Концепция, утверждающая право суверенного государства защищать национальные и религиозные традиции от давления транснациональных органов, поддерживать рождаемость и защищать границы.",
-      "fr": "Modèle institutionnel affirmant que la démocratie populaire n'implique pas le libéralisme sociétal. Il met en avant les racines chrétiennes, l'aide massive aux familles et l'autorité souveraine face aux instances internationales."
+      "fr": "Modèle institutionnel affirmant que la démocratie populaire n'implique pas le libéralisme sociétal. Il met en avant les racines chrétiennes, l'aide massive aux familles et l'autorité souveraine face aux instances internationales.",
+      "es": "Crees que la legitimidad del gobierno dimana exclusivamente del voto popular mayoritario, el cual no debe verse paralizado por jueces no electos, ONG internacionales o imposiciones exteriores.",
+      "de": "Du siehst im Wählerwillen der parlamentarischen Mehrheit das höchste Gesetz, das nicht durch übernationale Gerichte, NGOs oder liberale Veto-Instanzen beschnitten werden darf."
     },
     "keyFigures": [
       "Viktor Orbán",
@@ -1394,19 +1646,25 @@ const rawIdeologies = [
       "pl": "Gaullizm (Niezależność i Wielkość Państwa)",
       "en": "Gaullism (National Grandeur & Dirigisme)",
       "ru": "Голлизм (Величие нации и дирижизм)",
-      "fr": "Gaullisme (Grandeur nationale et dirigisme)"
+      "fr": "Gaullisme (Grandeur nationale et dirigisme)",
+      "es": "Gaullismo",
+      "de": "Gaullismus"
     },
     "subtitle": {
       "pl": "Wielkość narodu, strategiczna autonomia geopolityczna, silna władza wykonawcza i państwowy planizm",
       "en": "National independence, strategic geopolitical autonomy, strong presidential executive, and economic dirigisme",
       "ru": "Национальное величие («грандёр»), независимая внешняя политика, сильный президент и государственное планирование",
-      "fr": "Indépendance nationale, souveraineté stratégique, exécutif fort et dirigisme économique"
+      "fr": "Indépendance nationale, souveraineté stratégique, exécutif fort et dirigisme économique",
+      "es": "Independencia estratégica de la nación, Estado fuerte y liderazgo presidencial decisivo",
+      "de": "Nationale strategische Unabhängigkeit, handlungsfähiger Staat und starke Präsidialführung"
     },
     "desc": {
       "pl": "Francuska doktryna polityczna sformułowana przez Charles'a de Gaulle'a. Oparta na niezależności militarnej (własny arsenał nuklearny), odrzuceniu dominacji supermocarstw, silnej roli prezydenta w konstytucji oraz państwowym sterowaniu strategicznymi sektorami przemysłu (dirigisme).",
       "en": "The political legacy of Charles de Gaulle centered on French national sovereignty, nuclear independence, rejecting subservience to foreign powers, an assertive presidential executive, and state-directed economic planning (dirigisme).",
       "ru": "Французская доктрина, созданная Шарлем де Голлем. Базируется на ядерном сдерживании, независимости от сверхдержав, сильной президентской власти и государственном участии в стратегической индустрии (дирижизм).",
-      "fr": "Héritage politique de Charles de Gaulle fondé sur la souveraineté absolue de la France, la dissuasion nucléaire indépendante, le refus des hégémonies et la planification économique stratégique."
+      "fr": "Héritage politique de Charles de Gaulle fondé sur la souveraineté absolue de la France, la dissuasion nucléaire indépendante, le refus des hégémonies et la planification économique stratégique.",
+      "es": "Inspirado en Charles de Gaulle: soberanía militar y diplomática irrenunciable, rechazo al vasallaje respecto a superpotencias, una presidencia ejecutiva fuerte y orgullo patriótico unificador.",
+      "de": "Geprägt von Charles de Gaulle: Unbedingte geopolitische Souveränität, eine starke, richtungsweisende Exekutive, strategische Schlüsselindustrien und die stolze Eigenständigkeit der Nation."
     },
     "keyFigures": [
       "Charles de Gaulle",
@@ -1426,19 +1684,25 @@ const rawIdeologies = [
       "pl": "Dengizm (Socjalizm z Chińską Charakterystyką)",
       "en": "Dengism (Socialism with Chinese Characteristics)",
       "ru": "Дэнсизм (Социализм с китайской спецификой)",
-      "fr": "Dengisme (Socialisme aux caractéristiques chinoises)"
+      "fr": "Dengisme (Socialisme aux caractéristiques chinoises)",
+      "es": "Denguismo (Socialismo con Características Chinas)",
+      "de": "Dengismus"
     },
     "subtitle": {
       "pl": "Pragmatyczny rynek, Specjalne Strefy Ekonomiczne, cztery modernizacje i monopol partii komunistycznej",
       "en": "Pragmatic market mechanisms, Special Economic Zones, rapid industrialization under Communist Party rule",
       "ru": "Прагматичные рыночные реформы, специальные экономические зоны и сохранение монополии компартии",
-      "fr": "Pragmatisme économique de marché, zones économiques spéciales et monopole politique du parti"
+      "fr": "Pragmatisme économique de marché, zones économiques spéciales et monopole politique du parti",
+      "es": "Pragmatismo económico de mercado ('el color del gato no importa') bajo monopolio del Partido",
+      "de": "Wirtschaftlicher Marktpragmatismus unter alleinigem Führungsanspruch der Kommunistischen Partei"
     },
     "desc": {
       "pl": "Architektura współczesnego rozwoju Chin stworzona przez Deng Xiaopinga. Oparta na haśle: „Nieważne, czy kot jest czarny, czy biały, byle łapał myszy”. Połączyła reformy wolnorynkowe, prywatną przedsiębiorczość i zagraniczne inwestycje z żelaznym monopolem władzy Komunistycznej Partii Chin.",
       "en": "The governing philosophy pioneered by Deng Xiaoping: 'It doesn't matter whether a cat is black or white, as long as it catches mice.' It introduced free-market incentives, foreign capital, and Special Economic Zones while preserving total political hegemony of the Communist Party.",
       "ru": "Курс реформ и открытости Дэн Сяопина. Сочетание элементов рыночного капитализма, частной инициативы и привлечения иностранных инвестиций при незыблемой политической монополии Компартии Китая.",
-      "fr": "Philosophie de développement impulsée par Deng Xiaoping : « Peu importe qu'un chat soit noir ou blanc, pourvu qu'il attrape les souris ». Alliance du dynamisme capitaliste et de la poigne du Parti communiste."
+      "fr": "Philosophie de développement impulsée par Deng Xiaoping : « Peu importe qu'un chat soit noir ou blanc, pourvu qu'il attrape les souris ». Alliance du dynamisme capitaliste et de la poigne du Parti communiste.",
+      "es": "Fórmula de Deng Xiaoping: abrir la economía al capital privado y extranjero para desarrollar las fuerzas productivas a velocidad récord, manteniendo férreamente el control político del Estado.",
+      "de": "Die Erfolgsformel von Deng Xiaoping: Pragmatische Öffnung für Unternehmertum und globale Märkte zur massiven Steigerung der Produktivität, bei eiserner Bewahrung der staatlichen Parteiführung."
     },
     "keyFigures": [
       "Deng Xiaoping",

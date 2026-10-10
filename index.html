@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test Polityczny – Globalny Kompas Poglądów 2026</title>
+  <title>Political Compass Test – Global Compass 2026</title>
   <meta name="referrer" content="no-referrer">
   <link rel="stylesheet" href="style.css?v=2026.7.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,31 +18,17 @@
       <div class="logo-area">
         <div class="logo-icon-badge">⚖️</div>
         <div class="logo-text-block">
-          <h1 class="logo-title" id="headerAppTitle">Test Polityczny</h1>
-          <p class="logo-sub" id="headerAppSubtitle">Globalny Kompas Poglądów 2026</p>
+          <h1 class="logo-title" id="headerAppTitle">Political Compass Test</h1>
+          <p class="logo-sub" id="headerAppSubtitle">Global Compass 2026</p>
         </div>
       </div>
 
       <div class="header-controls">
-        <span class="header-edition-pill" id="headerEditionBadge">Kompas 2D • Szybka & Pełna</span>
+        <span class="header-edition-pill" id="headerEditionBadge">2D Compass • Quick & Full</span>
 
         <!-- Sleek segmented language pill selector with crisp SVG flags (Glitch-free on all OS) -->
         <div class="header-lang-switcher" role="group" aria-label="Wybór języka">
-          <button type="button" class="lang-card-btn pill-lang-btn active" data-lang="pl" title="Polski">
-            <span class="flag-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 16" width="18" height="12" class="flag-svg">
-                <clipPath id="f-pl"><rect width="24" height="16" rx="2"/></clipPath>
-                <g clip-path="url(#f-pl)">
-                  <rect width="24" height="8" fill="#ffffff"/>
-                  <rect y="8" width="24" height="8" fill="#dc2626"/>
-                </g>
-                <rect width="24" height="16" rx="2" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
-              </svg>
-            </span>
-            <span class="lang-code">PL</span>
-          </button>
-
-          <button type="button" class="lang-card-btn pill-lang-btn" data-lang="en" title="English">
+          <button type="button" class="lang-card-btn pill-lang-btn active" data-lang="en" title="English">
             <span class="flag-icon" aria-hidden="true">
               <svg viewBox="0 0 24 16" width="18" height="12" class="flag-svg">
                 <clipPath id="f-uk"><rect width="24" height="16" rx="2"/></clipPath>
@@ -57,6 +43,50 @@
               </svg>
             </span>
             <span class="lang-code">EN</span>
+          </button>
+
+          <button type="button" class="lang-card-btn pill-lang-btn" data-lang="pl" title="Polski">
+            <span class="flag-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 16" width="18" height="12" class="flag-svg">
+                <clipPath id="f-pl"><rect width="24" height="16" rx="2"/></clipPath>
+                <g clip-path="url(#f-pl)">
+                  <rect width="24" height="8" fill="#ffffff"/>
+                  <rect y="8" width="24" height="8" fill="#dc2626"/>
+                </g>
+                <rect width="24" height="16" rx="2" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+              </svg>
+            </span>
+            <span class="lang-code">PL</span>
+          </button>
+
+          <button type="button" class="lang-card-btn pill-lang-btn" data-lang="es" title="Español">
+            <span class="flag-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 16" width="18" height="12" class="flag-svg">
+                <clipPath id="f-es"><rect width="24" height="16" rx="2"/></clipPath>
+                <g clip-path="url(#f-es)">
+                  <rect width="24" height="4" fill="#aa151b"/>
+                  <rect y="4" width="24" height="8" fill="#f1bf00"/>
+                  <rect y="12" width="24" height="4" fill="#aa151b"/>
+                </g>
+                <rect width="24" height="16" rx="2" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+              </svg>
+            </span>
+            <span class="lang-code">ES</span>
+          </button>
+
+          <button type="button" class="lang-card-btn pill-lang-btn" data-lang="de" title="Deutsch">
+            <span class="flag-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 16" width="18" height="12" class="flag-svg">
+                <clipPath id="f-de"><rect width="24" height="16" rx="2"/></clipPath>
+                <g clip-path="url(#f-de)">
+                  <rect width="24" height="5.33" fill="#000000"/>
+                  <rect y="5.33" width="24" height="5.33" fill="#dd0000"/>
+                  <rect y="10.66" width="24" height="5.34" fill="#ffce00"/>
+                </g>
+                <rect width="24" height="16" rx="2" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+              </svg>
+            </span>
+            <span class="lang-code">DE</span>
           </button>
 
           <button type="button" class="lang-card-btn pill-lang-btn" data-lang="ru" title="Русский">
@@ -111,33 +141,33 @@
         <div class="hero-header-box">
           <div class="badge-pill" id="badgePill">
             <span class="badge-dot"></span>
-            Edycja Globalna 2026 • 30 Pytań (Wersja Szybka)
+            Global Edition 2026 • 30 Questions (Quick Version)
           </div>
-          <h2 class="hero-title" id="heroTitle">Odkryj swoje prawdziwe miejsce na mapie politycznej świata</h2>
+          <h2 class="hero-title" id="heroTitle">Discover your true place on the global political spectrum</h2>
           <p class="hero-desc" id="heroDesc">
-            Kompleksowy test badający Twoje przekonania w 12 kluczowych obszarach: od wolnego rynku, podatków i pracy, przez sztuczną inteligencję, prywatność i ekologię, po prawa człowieka, tradycję i geopolitykę. Dowiedz się, na jakiego światowego lidera i międzynarodową partię oddałbyś głos.
+            A comprehensive assessment across 12 key dimensions: from free market, taxation, and labor to AI ethics, digital privacy, climate action, civil liberties, and geopolitics. Find your closest alignment among 105 world leaders, 44 ideologies, and 30 party families.
           </p>
         </div>
 
-        <!-- Mode Selector: Szybka (30 pytań) vs Pełna (120 pytań) -->
+        <!-- Mode Selector: Quick (30 questions) vs Full (140 questions) -->
         <div class="mode-selector-container">
-          <span class="mode-selector-label" id="modeSelectLabel">Wybierz wersję testu:</span>
+          <span class="mode-selector-label" id="modeSelectLabel">Choose test mode:</span>
           <div class="mode-options-grid">
             <button type="button" class="mode-option-card active" data-mode="quick" id="modeQuickBtn">
               <div class="mode-card-top-row">
                 <span class="mode-icon">⚡</span>
-                <span class="mode-title" id="modeQuickTitle">Wersja Szybka</span>
-                <span class="mode-pill-tag badge-quick" id="modeQuickBadge">Szybka</span>
+                <span class="mode-title" id="modeQuickTitle">Quick Mode</span>
+                <span class="mode-pill-tag badge-quick" id="modeQuickBadge">Quick</span>
               </div>
-              <p class="mode-card-desc" id="modeQuickDesc">30 pytań • ~3-5 min • Szybka diagnoza poglądów</p>
+              <p class="mode-card-desc" id="modeQuickDesc">30 questions • ~3-5 min • Rapid diagnosis</p>
             </button>
             <button type="button" class="mode-option-card" data-mode="full" id="modeFullBtn">
               <div class="mode-card-top-row">
                 <span class="mode-icon">🧭</span>
-                <span class="mode-title" id="modeFullTitle">Wersja Pełna</span>
-                <span class="mode-pill-tag badge-full" id="modeFullBadge">Pełna</span>
+                <span class="mode-title" id="modeFullTitle">Full Mode</span>
+                <span class="mode-pill-tag badge-full" id="modeFullBadge">Full</span>
               </div>
-              <p class="mode-card-desc" id="modeFullDesc">120 pytań • ~12-15 min • Kompletny, precyzyjny audyt poglądów</p>
+              <p class="mode-card-desc" id="modeFullDesc">140 questions • ~12-15 min • Comprehensive political audit</p>
             </button>
           </div>
         </div>
@@ -148,16 +178,16 @@
             <div class="axis-card-top">
               <div class="axis-icon">📈</div>
               <div class="axis-info">
-                <h3 id="axisEconTitle">Oś Gospodarcza</h3>
-                <p id="axisEconDesc">Lewica (usługi publiczne, solidaryzm) ⟷ Prawica (wolny rynek, deregulacja)</p>
+                <h3 id="axisEconTitle">Economic Axis</h3>
+                <p id="axisEconDesc">Left (public welfare, solidarity) ⟷ Right (free market, deregulation)</p>
               </div>
             </div>
             <div class="axis-spectrum-track">
-              <span class="spectrum-hint">Lewica</span>
+              <span class="spectrum-hint">Left</span>
               <div class="spectrum-bar econ-bar">
                 <div class="spectrum-center-point"></div>
               </div>
-              <span class="spectrum-hint">Wolny rynek</span>
+              <span class="spectrum-hint">Free market</span>
             </div>
           </div>
 
@@ -165,25 +195,25 @@
             <div class="axis-card-top">
               <div class="axis-icon">🏛️</div>
               <div class="axis-info">
-                <h3 id="axisSocTitle">Oś Społeczno-Światopoglądowa</h3>
-                <p id="axisSocDesc">Konserwatyzm (tradycja, porządek, suwerenność) ⟷ Progresywizm (swobody, sekularyzm, globalizm)</p>
+                <h3 id="axisSocTitle">Social & Cultural Axis</h3>
+                <p id="axisSocDesc">Conservative (tradition, order, sovereignty) ⟷ Progressive (liberties, secularism, globalism)</p>
               </div>
             </div>
             <div class="axis-spectrum-track">
-              <span class="spectrum-hint">Konserwatyzm</span>
+              <span class="spectrum-hint">Conservative</span>
               <div class="spectrum-bar soc-bar">
                 <div class="spectrum-center-point"></div>
               </div>
-              <span class="spectrum-hint">Progresywizm</span>
+              <span class="spectrum-hint">Progressive</span>
             </div>
           </div>
         </div>
 
         <!-- Key Features List -->
         <div class="test-features">
-          <div class="feature-item" id="featureTime">⏱️ Czas: ok. 3-5 minut (30 pytań)</div>
-          <div class="feature-item" id="featureAnon">🔒 W 100% anonimowe i bez rejestracji</div>
-          <div class="feature-item" id="featureResults">📊 Dokładny kompas 2D, 44 ideologie, 89 liderów i 30 partii</div>
+          <div class="feature-item" id="featureTime">⏱️ Time: approx. 3-5 minutes (30 questions)</div>
+          <div class="feature-item" id="featureAnon">🔒 100% anonymous & zero registration</div>
+          <div class="feature-item" id="featureResults">📊 Precision 2D compass, 44 ideologies, 105 leaders and 30 parties</div>
         </div>
 
         <!-- Start Actions (Single Prominent Hero CTA + Subtle Resume) -->
@@ -193,18 +223,18 @@
             <div class="resume-prompt-info">
               <span class="resume-save-icon">💾</span>
               <div>
-                <strong class="resume-prompt-title">Niezakończona sesja w pamięci</strong>
-                <p class="resume-prompt-sub" id="resumePromptLabel">Możesz dokończyć test od zapisanego pytania lub rozpocząć go od nowa.</p>
+                <strong class="resume-prompt-title">Unfinished session in memory</strong>
+                <p class="resume-prompt-sub" id="resumePromptLabel">You can resume the test from your saved progress or start fresh.</p>
               </div>
             </div>
             <button id="resumeTestBtn" type="button" class="resume-action-btn hidden">
-              Kontynuuj test ➔
+              Resume test ➔
             </button>
           </div>
 
           <!-- Single Prominent, Gorgeous Primary CTA -->
           <button id="startTestBtn" type="button" class="primary-btn btn-large cta-start-btn">
-            <span class="cta-btn-text" id="startTestBtnText">Rozpocznij wersję szybką (30 pytań)</span>
+            <span class="cta-btn-text" id="startTestBtnText">Start quick version (30 questions)</span>
             <span class="cta-btn-arrow">➔</span>
           </button>
         </div>
@@ -392,16 +422,16 @@
               <!-- Interactive Category Filter Pills for Politicians -->
               <div class="filter-pills-row" id="politicianFilterPills">
                 <button class="filter-pill active" data-filter="top" type="button" id="filterTopPoliticiansBtn">🔥 Top 12</button>
-                <button class="filter-pill" data-filter="all" type="button" id="filterAllPoliticiansBtn">🌍 Wszyscy (89)</button>
-                <button class="filter-pill" data-filter="contemporary" type="button" id="filterContemporaryPoliticiansBtn">🏛️ Współcześni</button>
-                <button class="filter-pill" data-filter="ww2" type="button" id="filterWw2PoliticiansBtn">⚔️ II Wojna Światowa</button>
-                <button class="filter-pill" data-filter="history" type="button" id="filterHistoryPoliticiansBtn">📜 Historia i XX w.</button>
-                <button class="filter-pill" data-filter="activists" type="button" id="filterActivistsPoliticiansBtn">✊ Działacze i myśliciele</button>
+                <button class="filter-pill" data-filter="all" type="button" id="filterAllPoliticiansBtn">🌍 All (105)</button>
+                <button class="filter-pill" data-filter="contemporary" type="button" id="filterContemporaryPoliticiansBtn">🏛️ Contemporary</button>
+                <button class="filter-pill" data-filter="ww2" type="button" id="filterWw2PoliticiansBtn">⚔️ World War II</button>
+                <button class="filter-pill" data-filter="history" type="button" id="filterHistoryPoliticiansBtn">📜 History & 20th C.</button>
+                <button class="filter-pill" data-filter="activists" type="button" id="filterActivistsPoliticiansBtn">✊ Activists & Thinkers</button>
               </div>
               <div id="otherPoliticiansList" class="other-matches-grid"></div>
               <div class="expand-controls-row">
                 <button id="toggleMorePoliticiansBtn" class="btn-toggle-expand" type="button" aria-expanded="false">
-                  <span id="toggleMorePoliticiansText">Pokaż wszystkich liderów (katalog 89 postaci)</span>
+                  <span id="toggleMorePoliticiansText">Show all leaders (105 entries catalog)</span>
                   <span class="toggle-icon" id="togglePoliticiansIcon" aria-hidden="true">▼</span>
                 </button>
               </div>
@@ -482,18 +512,18 @@
             📝 Zobacz swoje odpowiedzi
           </button>
           <button id="tryOtherModeBtn" class="btn-action btn-try-mode">
-            🧭 Rozwiąż wersję pełną (120 pytań)
+            🧭 Take full version (140 questions)
           </button>
           <button id="restartBtn" class="btn-action btn-primary-outline">
-            🔄 Rozwiąż ponownie
+            🔄 Retake test
           </button>
         </div>
 
         <!-- Answers Review Modal / Drawer -->
         <div id="answersReviewSection" class="review-answers-box hidden">
           <div class="review-header">
-            <h3 id="reviewTitle">Twoje odpowiedzi na pytania</h3>
-            <button id="closeReviewBtn" class="btn-text">✕ Zamknij</button>
+            <h3 id="reviewTitle">Your answers to questions</h3>
+            <button id="closeReviewBtn" class="btn-text">✕ Close</button>
           </div>
           <div id="reviewList" class="review-list"></div>
         </div>
@@ -504,7 +534,7 @@
 
     <!-- Footer -->
     <footer class="app-footer">
-      <p id="footerText">Globalny Test Polityczny &copy; 2026 • Wersja Szybka (30 pytań) oraz Pełna (120 pytań) • Model 2D z katalogiem 44 ideologii, liderów i partii świata.</p>
+      <p id="footerText">Global Political Compass Test &copy; 2026 • Quick Version (30 questions) & Full Version (140 questions) • 2D Model with 44 ideologies, world leaders, and international parties.</p>
     </footer>
 
   </div>

@@ -24,34 +24,33 @@ const { uiTranslations } = require('../translations.js');
 
 // 2. Validate Questions
 console.log("\n[1] Testing questions.js dataset:");
-assert(Array.isArray(questions) && questions.length === 120, "Dataset contains exactly 120 questions");
+assert(Array.isArray(questions) && questions.length === 140, "Dataset contains exactly 140 questions");
 
 const ids = questions.map(q => q.id);
 const uniqueIds = new Set(ids);
-assert(uniqueIds.size === 120 && ids[0] === 1 && ids[119] === 120, "Question IDs are sequential from 1 to 120");
+assert(uniqueIds.size === 140 && ids[0] === 1 && ids[139] === 140, "Question IDs are sequential from 1 to 140");
 
 const econQuestions = questions.filter(q => q.axis === "econ");
 const socQuestions = questions.filter(q => q.axis === "soc");
-assert(econQuestions.length === 60 && socQuestions.length === 60, "Perfect 60:60 balance between Economic and Social axes");
+assert(econQuestions.length === 70 && socQuestions.length === 70, "Perfect 70:70 balance between Economic and Social axes");
 
 const econPos = econQuestions.filter(q => q.multiplier === 1).length;
 const econNeg = econQuestions.filter(q => q.multiplier === -1).length;
-assert(econPos === 30 && econNeg === 30, "Economic axis has exactly 30 (+1) and 30 (-1) questions");
+assert(econPos === 35 && econNeg === 35, "Economic axis has exactly 35 (+1) and 35 (-1) questions");
 
 const socPos = socQuestions.filter(q => q.multiplier === 1).length;
 const socNeg = socQuestions.filter(q => q.multiplier === -1).length;
-assert(socPos === 30 && socNeg === 30, "Social axis has exactly 30 (+1) and 30 (-1) questions");
+assert(socPos === 35 && socNeg === 35, "Social axis has exactly 35 (+1) and 35 (-1) questions");
 
-// Validate 10 questions per category (5 pos, 5 neg)
+// Validate questions per category have balanced pos and neg (+1 and -1)
 let categoryBalanceErrors = 0;
 Object.keys(categories).forEach(catKey => {
   const catQs = questions.filter(q => q.categoryKey === catKey);
-  if (catQs.length !== 10) categoryBalanceErrors++;
   const pos = catQs.filter(q => q.multiplier === 1).length;
   const neg = catQs.filter(q => q.multiplier === -1).length;
-  if (pos !== 5 || neg !== 5) categoryBalanceErrors++;
+  if (catQs.length < 10 || pos !== neg) categoryBalanceErrors++;
 });
-assert(categoryBalanceErrors === 0, "All 12 categories have exactly 10 questions each with 5 (+1) and 5 (-1) balance");
+assert(categoryBalanceErrors === 0, "All 12 categories have balanced questions with 1:1 pos and neg multiplier balance");
 
 // Validate Quick Mode questions (30 questions)
 const quickQuestions = questions.filter(q => q.isQuick === true);
@@ -64,7 +63,7 @@ assert(quickMultSum === 0, "Quick mode questions have net multiplier sum of 0 (1
 const quickCats = new Set(quickQuestions.map(q => q.categoryKey));
 assert(quickCats.size === 12, "Quick mode covers all 12 categories");
 
-const langs = ['pl', 'en', 'ru', 'fr'];
+const langs = ['pl', 'en', 'es', 'de', 'ru', 'fr'];
 let missingQuestionTexts = 0;
 let invalidCategoryKeys = 0;
 questions.forEach(q => {
@@ -77,7 +76,7 @@ questions.forEach(q => {
     invalidCategoryKeys++;
   }
 });
-assert(missingQuestionTexts === 0, "All 120 questions have complete, non-empty translations in PL, EN, RU, FR");
+assert(missingQuestionTexts === 0, "All 140 questions have complete, non-empty translations in PL, EN, ES, DE, RU, FR");
 assert(invalidCategoryKeys === 0, "All questions reference valid category keys");
 
 assert(Object.keys(categories).length === 12, "Exactly 12 distinct categories/sectors present");
@@ -87,7 +86,7 @@ Object.entries(categories).forEach(([key, val]) => {
     if (!val[lang] || typeof val[lang] !== 'string') missingCategoryTranslations++;
   });
 });
-assert(missingCategoryTranslations === 0, "All 12 categories have complete translations in 4 languages");
+assert(missingCategoryTranslations === 0, "All 12 categories have complete translations in 6 languages");
 
 assert(answerOptions.length === 6, "Exactly 6 answer options configured (including distinct Neutral and Skip)");
 const neutralOpt = answerOptions.find(o => o.value === 0);
@@ -104,8 +103,8 @@ answerOptions.forEach(opt => {
     if (opt.badge && !opt.badge[lang]) missingOptionHintsBadges++;
   });
 });
-assert(missingOptionTranslations === 0, "All 6 answer options translated in PL, EN, RU, FR");
-assert(missingOptionHintsBadges === 0, "All 6 answer options have complete hints and badges in 4 languages");
+assert(missingOptionTranslations === 0, "All 6 answer options translated in PL, EN, ES, DE, RU, FR");
+assert(missingOptionHintsBadges === 0, "All 6 answer options have complete hints and badges in 6 languages");
 
 // 3. Validate World Data (Ideologies, Politicians, Parties)
 console.log("\n[2] Testing worldData.js (Ideologies, Politicians, Parties):");
@@ -125,10 +124,10 @@ worldIdeologies.forEach(ideo => {
     invalidIdeologyCoords++;
   }
 });
-assert(missingIdeologyFields === 0, "All ideologies have complete translations (name, subtitle, desc) in 4 languages");
+assert(missingIdeologyFields === 0, "All ideologies have complete translations (name, subtitle, desc) in 6 languages");
 assert(invalidIdeologyCoords === 0, "All ideology coordinates fall within valid [-100, 100] bounds");
 
-assert(worldPoliticians.length >= 20, `Rich world politicians catalog: found ${worldPoliticians.length} politicians (>= 20 required)`);
+assert(worldPoliticians.length === 105, `Rich world politicians catalog: found ${worldPoliticians.length} politicians (105 required)`);
 let missingPoliticianFields = 0;
 let invalidPoliticianCoords = 0;
 worldPoliticians.forEach(pol => {
@@ -140,7 +139,7 @@ worldPoliticians.forEach(pol => {
     invalidPoliticianCoords++;
   }
 });
-assert(missingPoliticianFields === 0, "All politicians have complete translations (country, role, quote, whyVote) in 4 languages");
+assert(missingPoliticianFields === 0, "All politicians have complete translations (country, role, quote, whyVote) in 6 languages");
 assert(invalidPoliticianCoords === 0, "All politician coordinates fall within valid [-100, 100] bounds");
 
 let missingPoliticianMeta = 0;
@@ -198,7 +197,11 @@ const requiredNewFigures = [
   "viktor_orban", "jaroslaw_kaczynski", "mateusz_morawiecki", "ursula_von_der_leyen",
   "greta_thunberg", "elon_musk", "otto_von_bismarck", "abraham_lincoln",
   "theodore_roosevelt", "neville_chamberlain", "konrad_adenauer", "deng_xiaoping",
-  "tony_blair", "silvio_berlusconi", "alexandria_ocasio_cortez", "marine_le_pen"
+  "tony_blair", "silvio_berlusconi", "alexandria_ocasio_cortez", "marine_le_pen",
+  "napoleon_bonaparte", "otto_von_habsburg", "francisco_franco", "josip_broz_tito",
+  "golda_meir", "hugo_chavez", "sanna_marin", "recep_tayyip_erdogan",
+  "benjamin_netanyahu", "nicolas_maduro", "shinzo_abe", "park_geun_hye",
+  "sebastian_kurz", "alexander_lukashenko", "mark_rutte", "alexander_the_great"
 ];
 let missingNewFigures = 0;
 requiredNewFigures.forEach(id => {
@@ -248,7 +251,7 @@ worldParties.forEach(pty => {
     invalidPartyCoords++;
   }
 });
-assert(missingPartyFields === 0, "All world parties have complete translations (name, type, manifesto) in 4 languages");
+assert(missingPartyFields === 0, "All world parties have complete translations (name, type, manifesto) in 6 languages");
 assert(invalidPartyCoords === 0, "All party coordinates fall within valid [-100, 100] bounds");
 
 // 4. Validate UI Translations
@@ -265,7 +268,7 @@ langs.forEach(lang => {
     }
   });
 });
-assert(missingUiKeys === 0, "All 4 languages have 100% complete parity across all UI translation keys");
+assert(missingUiKeys === 0, "All 6 languages have 100% complete parity across all UI translation keys");
 
 // 5. Test Scoring Engine & Matching Algorithms
 console.log("\n[4] Testing calculation engine & distance matching:");
@@ -314,8 +317,8 @@ const allSkipped = runScoringSimulation(() => "skip");
 assert(allSkipped.econScore === 0 && allSkipped.socScore === 0, `All skipped answers yield safe center (0%, 0%) without zero-division error`);
 
 // Case E: Distinct Neutral (0 in denominator) vs. Skip (excluded from denominator)
-// Answer +2 on 6 econ questions (with multiplier=1). Total econ questions = 60.
-// Scenario 1: Answer Neutral (0) on remaining 54 econ questions -> score must dilute towards 0: 12/120 = 10%
+// Answer +2 on 6 econ questions (with multiplier=1). Total econ questions = 70.
+// Scenario 1: Answer Neutral (0) on remaining 64 econ questions -> score must dilute towards 0: 12/140 = 9%
 const diluteNeutral = runScoringSimulation((q) => {
   if (q.axis === "econ") {
     if (q.id <= 12 && q.multiplier === 1) return 2; // IDs 1, 3, 5, 7, 9, 11 (6 questions)
@@ -324,7 +327,7 @@ const diluteNeutral = runScoringSimulation((q) => {
   return 0;
 });
 
-// Scenario 2: Answer Skip ('skip') on remaining 54 questions -> score stays undiluted at 100%!
+// Scenario 2: Answer Skip ('skip') on remaining 64 questions -> score stays undiluted at 100%!
 const pureSkip = runScoringSimulation((q) => {
   if (q.axis === "econ") {
     if (q.id <= 12 && q.multiplier === 1) return 2;
@@ -333,7 +336,7 @@ const pureSkip = runScoringSimulation((q) => {
   return "skip";
 });
 
-assert(diluteNeutral.econScore === 10 && pureSkip.econScore === 100, `Mathematical proof: Neutral (0) dilutes score towards center (${diluteNeutral.econScore}%), while Skip excludes question without diluting (${pureSkip.econScore}%)`);
+assert(diluteNeutral.econScore === Math.round((12 / 140) * 100) && pureSkip.econScore === 100, `Mathematical proof: Neutral (0) dilutes score towards center (${diluteNeutral.econScore}%), while Skip excludes question without diluting (${pureSkip.econScore}%)`);
 
 // Sector breakdown calculation validation (12 sectors)
 function calculateMockSectorBreakdown(answers) {
@@ -353,12 +356,12 @@ function calculateMockSectorBreakdown(answers) {
   return scores;
 }
 
-const mockAnswersSkip = new Array(120).fill("skip");
+const mockAnswersSkip = new Array(140).fill("skip");
 mockAnswersSkip[0] = 2; // Q1 is economy with multiplier 1
 const sectorSkipResult = calculateMockSectorBreakdown(mockAnswersSkip);
 assert(sectorSkipResult.economy.scorePct === 100 && sectorSkipResult.economy.answered === 1, `Sector breakdown: Skip excludes unanswered questions, preserving 100% sector score for single answered question`);
 
-const mockAnswersNeutral = new Array(120).fill("skip");
+const mockAnswersNeutral = new Array(140).fill("skip");
 mockAnswersNeutral[0] = 2;
 // answer neutral (0) on other 9 economy questions (Q2 - Q10)
 for (let i = 1; i < 10; i++) mockAnswersNeutral[i] = 0;
@@ -482,7 +485,7 @@ worldPoliticians.forEach(pol => {
 assert(missingPolCountryCodes === 0, `All ${worldPoliticians.length} politicians have valid country codes for SVG flags`);
 
 // Verify script.js contains svgFlags dictionary with all required countries
-const requiredFlags = ['ar','us','gb','fr','de','it','pl','ua','ca','br','se','sg','sv','in','nz','uy','gr','jp','bf','za','bo','cz','sco','ussr','tw','global','tr','cn','ru','es','hu','eu'];
+const requiredFlags = ['ar','us','gb','fr','de','it','pl','ua','ca','br','se','sg','sv','in','nz','uy','gr','jp','bf','za','bo','cz','sco','ussr','tw','global','tr','cn','ru','es','hu','eu','at','yu','il','ve','fi','kr','by','nl','mk'];
 let missingScriptFlags = 0;
 requiredFlags.forEach(f => {
   if (!scriptContent.includes(`${f}:`) && !scriptContent.includes(`"${f}":`) && !scriptContent.includes(`'${f}':`)) {
@@ -522,7 +525,7 @@ requiredNewUiKeys.forEach(key => {
     }
   });
 });
-assert(missingNewUiKeys === 0, `All ${requiredNewUiKeys.length} new ranking & expand UI strings have 100% translation parity in 4 languages`);
+assert(missingNewUiKeys === 0, `All ${requiredNewUiKeys.length} new ranking & expand UI strings have 100% translation parity in 6 languages`);
 
 // Verify test mode UI keys parity (Quick vs Full modes)
 const requiredModeKeys = [
@@ -542,7 +545,7 @@ requiredModeKeys.forEach(k => {
     }
   });
 });
-assert(missingModeKeys === 0, "All 20 test mode keys have 100% translation parity in PL, EN, RU, FR");
+assert(missingModeKeys === 0, "All 20 test mode keys have 100% translation parity in PL, EN, ES, DE, RU, FR");
 
 // Verify ranking calculation on simulated scores
 function rankIdeologies(econ, soc) {
@@ -746,7 +749,7 @@ assert(simElements['modeQuickBtn'].classList.contains('active') && !simElements[
 
 vm.runInContext('setTestMode("full");', simContext);
 assert(getSim('currentTestMode') === 'full', "Setting test mode to full updates currentTestMode");
-assert(getSim('getActiveQuestions().length') === 120, "Full mode provides exactly 120 active questions");
+assert(getSim('getActiveQuestions().length') === 140, "Full mode provides exactly 140 active questions");
 assert(simElements['modeFullBtn'].classList.contains('active') && !simElements['modeQuickBtn'].classList.contains('active'), "Full mode button is active and Quick mode button is inactive");
 
 // Simulate quiz completion and results view
@@ -774,12 +777,13 @@ assert(simElements['politicianCardSubtitle'].textContent.includes('#4'), "Spotli
 // Click back to Rank #1
 simPolCard1.click();
 assert(getSim('activePoliticianId') === topPolId, "Clicking Rank #1 card restores Top Match activePoliticianId seamlessly");
-assert(simElements['politicianCardTitle'].textContent === uiTranslations.pl.politicianCardTitle, "Card title reverts to primary Top Match title");
+const activeLang = getSim('currentLang');
+assert(simElements['politicianCardTitle'].textContent === uiTranslations[activeLang].politicianCardTitle, "Card title reverts to primary Top Match title");
 
 // Test Expand politicians
 simElements['toggleMorePoliticiansBtn'].click();
 assert(simElements['otherPoliticiansList'].children.length === worldPoliticians.length, `Clicking expand on politicians renders all ${worldPoliticians.length} politicians`);
-assert(simElements['toggleMorePoliticiansText'].textContent === uiTranslations.pl.showFewerPoliticians, "Toggle button text updates to collapse label");
+assert(simElements['toggleMorePoliticiansText'].textContent === uiTranslations[activeLang].showFewerPoliticians, "Toggle button text updates to collapse label");
 
 // Collapse politicians back to test category filtering
 simElements['toggleMorePoliticiansBtn'].click();
@@ -792,7 +796,7 @@ assert(simElements['otherPoliticiansList'].children.length === 11, `WWII categor
 
 simElements['filterHistoryPoliticiansBtn'].click();
 assert(getSim('activePoliticianFilter') === 'history', "Clicking History filter pill updates activePoliticianFilter to 'history'");
-assert(simElements['otherPoliticiansList'].children.length === 27, `History & 20th century filter renders all 27 leaders (found ${simElements['otherPoliticiansList'].children.length})`);
+assert(simElements['otherPoliticiansList'].children.length === 33, `History & 20th century filter renders all 33 leaders (found ${simElements['otherPoliticiansList'].children.length})`);
 
 simElements['filterActivistsPoliticiansBtn'].click();
 assert(getSim('activePoliticianFilter') === 'activists', "Clicking Activists filter pill updates activePoliticianFilter to 'activists'");
@@ -800,7 +804,7 @@ assert(simElements['otherPoliticiansList'].children.length === 14, `Activists an
 
 simElements['filterContemporaryPoliticiansBtn'].click();
 assert(getSim('activePoliticianFilter') === 'contemporary', "Clicking Contemporary filter pill updates activePoliticianFilter to 'contemporary'");
-assert(simElements['otherPoliticiansList'].children.length === 37, `Contemporary filter renders all 37 modern leaders (found ${simElements['otherPoliticiansList'].children.length})`);
+assert(simElements['otherPoliticiansList'].children.length === 47, `Contemporary filter renders all 47 modern leaders (found ${simElements['otherPoliticiansList'].children.length})`);
 
 simElements['filterTopPoliticiansBtn'].click();
 assert(getSim('activePoliticianFilter') === 'top', "Clicking Top 12 filter pill updates activePoliticianFilter to 'top'");
@@ -808,29 +812,29 @@ assert(simElements['otherPoliticiansList'].children.length === 12, "Top 12 filte
 
 simElements['filterAllPoliticiansBtn'].click();
 assert(getSim('activePoliticianFilter') === 'all', "Clicking All filter pill updates activePoliticianFilter to 'all'");
-assert(simElements['otherPoliticiansList'].children.length === 89, `All filter renders all 89 leaders (found ${simElements['otherPoliticiansList'].children.length})`);
+assert(simElements['otherPoliticiansList'].children.length === 105, `All filter renders all 105 leaders (found ${simElements['otherPoliticiansList'].children.length})`);
 
 // Verify that neither index.html nor UI translations contain outdated catalog counts
-for (const l of ['pl', 'en', 'ru', 'fr']) {
-  assert(!uiTranslations[l].showAllPoliticians.includes('43'), `showAllPoliticians in ${l} does not reference outdated 43`);
+for (const l of ['pl', 'en', 'es', 'de', 'ru', 'fr']) {
+  assert(!uiTranslations[l].showAllPoliticians.includes('43') && !uiTranslations[l].showAllPoliticians.includes('89'), `showAllPoliticians in ${l} does not reference outdated counts`);
   assert(!uiTranslations[l].showAllIdeologies.includes('32'), `showAllIdeologies in ${l} does not reference outdated 32`);
-  assert(!uiTranslations[l].filterAllPoliticians.includes('43'), `filterAllPoliticians in ${l} does not reference outdated 43`);
+  assert(!uiTranslations[l].filterAllPoliticians.includes('43') && !uiTranslations[l].filterAllPoliticians.includes('89'), `filterAllPoliticians in ${l} does not reference outdated counts`);
   assert(!uiTranslations[l].filterIdeoAll.includes('32'), `filterIdeoAll in ${l} does not reference outdated 32`);
   assert(!uiTranslations[l].showAllParties.includes('15'), `showAllParties in ${l} does not reference outdated 15`);
 }
-assert(!simHtml.includes('(43)') && !simHtml.includes('43 postaci'), "index.html has no outdated '43' count references");
+assert(!simHtml.includes('(43)') && !simHtml.includes('43 postaci') && !simHtml.includes('(89)') && !simHtml.includes('89 postaci'), "index.html has no outdated '43' or '89' count references");
 assert(!simHtml.includes('(32)') && !simHtml.includes('32 nurtów') && !simHtml.includes('32 ideologi'), "index.html has no outdated '32' count references");
 assert(!simHtml.includes('(15)') && !simHtml.includes('15 partii') && !simHtml.includes('15 ruchów'), "index.html has no outdated '15' count references");
 
 // Test Expand ideologies
 simElements['toggleMoreIdeologiesBtn'].click();
 assert(simElements['secondaryIdeologiesList'].children.length === worldIdeologies.length, `Clicking expand on ideologies renders all ${worldIdeologies.length} ideologies`);
-assert(simElements['toggleMoreIdeologiesText'].textContent === uiTranslations.pl.showFewerIdeologies, "Toggle button text updates to collapse label");
+assert(simElements['toggleMoreIdeologiesText'].textContent === uiTranslations[activeLang].showFewerIdeologies, "Toggle button text updates to collapse label");
 
 // Test Expand parties
 simElements['toggleMorePartiesBtn'].click();
 assert(simElements['otherPartiesList'].children.length === 30, "Clicking expand on parties renders all 30 parties");
-assert(simElements['toggleMorePartiesText'].textContent === uiTranslations.pl.showFewerParties, "Toggle button text updates to collapse label");
+assert(simElements['toggleMorePartiesText'].textContent === uiTranslations[activeLang].showFewerParties, "Toggle button text updates to collapse label");
 
 // Collapse parties back to test category filtering
 simElements['toggleMorePartiesBtn'].click();
@@ -863,13 +867,13 @@ assert(simElements['otherPartiesList'].children.length === 30, `All filter rende
 
 // Test Language toggling maintains parity and does not break state
 let langTogglesPassed = true;
-['en', 'ru', 'fr', 'pl'].forEach(l => {
+['en', 'es', 'de', 'ru', 'fr', 'pl'].forEach(l => {
   vm.runInContext(`setLanguage('${l}');`, simContext);
   if (simElements['toggleMorePoliticiansText'].textContent !== uiTranslations[l].showFewerPoliticians) {
     langTogglesPassed = false;
   }
 });
-assert(langTogglesPassed, "Language toggling updates expand button labels across all 4 languages dynamically");
+assert(langTogglesPassed, "Language toggling updates expand button labels across all 6 languages dynamically");
 
 // Test tryOtherModeBtn toggling between Full and Quick modes
 simElements['tryOtherModeBtn'].click();

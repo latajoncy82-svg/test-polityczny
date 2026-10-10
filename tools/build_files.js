@@ -14,7 +14,7 @@ console.log("== Starting Political Compass Build ==");
 const questionsFileContent = `/**
  * BAZA ${rawQuestions.length} PYTAŃ, KATEGORII ORAZ OPCJI ODPOWIEDZI
  * Test Polityczny - Wersja Globalna 2026
- * Obsługa 4 języków: PL, EN, RU, FR
+ * Obsługa 6 języków: EN, PL, ES, DE, RU, FR
  */
 
 const categories = ${JSON.stringify(categories, null, 2)};
@@ -35,7 +35,7 @@ console.log(`✓ Successfully generated questions.js (${rawQuestions.length} que
 const worldDataContent = `/**
  * KATALOG ${rawIdeologies.length} IDEOLOGII, ${rawPoliticians.length} ŚWIATOWYCH LIDERÓW I POSTACI HISTORYCZNYCH, ${rawParties.length} MIĘDZYNARODOWYCH PARTII
  * Test Polityczny - Wersja Globalna 2026
- * Obsługa 4 języków: PL, EN, RU, FR
+ * Obsługa 6 języków: EN, PL, ES, DE, RU, FR
  */
 
 const worldIdeologies = ${JSON.stringify(rawIdeologies, null, 2)};
@@ -55,7 +55,7 @@ console.log(`✓ Successfully generated worldData.js (${rawIdeologies.length} id
 // 3. Build translations.js
 const translationsContent = `/**
  * SŁOWNIK TŁUMACZEŃ INTERFEJSU UŻYTKOWNIKA (UI)
- * Języki: Polski (pl), English (en), Русский (ru), Français (fr)
+ * Języki: English (en), Polski (pl), Español (es), Deutsch (de), Русский (ru), Français (fr)
  */
 
 const uiTranslations = ${JSON.stringify(uiTranslations, null, 2)};
@@ -66,6 +66,6 @@ if (typeof module !== "undefined" && module.exports) {
 `;
 
 fs.writeFileSync(path.join(__dirname, '../translations.js'), translationsContent, 'utf-8');
-console.log(`✓ Successfully generated translations.js (${Object.keys(uiTranslations.pl).length} UI keys in 4 languages)`);
+console.log(`✓ Successfully generated translations.js (${Object.keys(uiTranslations.pl).length} UI keys in 6 languages)`);
 
 console.log("== Build Completed Successfully ==");

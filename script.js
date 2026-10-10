@@ -6,7 +6,7 @@
  */
 
 // Stan testu
-let currentLang = localStorage.getItem("ptp_lang") || "pl";
+let currentLang = localStorage.getItem("ptp_lang") || "en";
 let currentTheme = localStorage.getItem("ptp_theme") || "theme-dark";
 let currentTone = localStorage.getItem("ptp_tone") || "standard";
 let currentAccent = localStorage.getItem("ptp_accent") || "blue";
@@ -216,7 +216,7 @@ const reviewList = document.getElementById("reviewList");
 const footerText = document.getElementById("footerText");
 
 // =========================================================================
-// OBSŁUGA TRYBU TESTU (SZYBKA 30 vs PEŁNA 120)
+// OBSŁUGA TRYBU TESTU (SZYBKA 30 vs PEŁNA 140)
 // =========================================================================
 function setTestMode(mode) {
   if (mode !== "quick" && mode !== "full") mode = "quick";
@@ -233,25 +233,25 @@ function updateModeUI() {
   if (modeQuickBtn) modeQuickBtn.classList.toggle("active", currentTestMode === "quick");
   if (modeFullBtn) modeFullBtn.classList.toggle("active", currentTestMode === "full");
 
-  const t = uiTranslations[currentLang] || uiTranslations.pl || {};
+  const t = uiTranslations[currentLang] || uiTranslations.en || uiTranslations.pl || {};
   const isQuick = currentTestMode === "quick";
 
   if (badgePill) {
-    badgePill.innerHTML = `<span class="badge-dot"></span>${isQuick ? (t.badgePillQuick || "Edycja Globalna 2026 • 30 Pytań (Wersja Szybka)") : (t.badgePillFull || "Edycja Globalna 2026 • 120 Pytań (Wersja Pełna)")}`;
+    badgePill.innerHTML = `<span class="badge-dot"></span>${isQuick ? (t.badgePillQuick || "Global Edition 2026 • 30 Questions (Quick Version)") : (t.badgePillFull || "Global Edition 2026 • 140 Questions (Full Version)")}`;
   }
   if (featureTime) {
-    featureTime.textContent = isQuick ? (t.featureTimeQuick || "⏱️ Czas: ok. 3-5 minut (30 pytań)") : (t.featureTimeFull || "⏱️ Czas: ok. 12-15 minut (120 pytań)");
+    featureTime.textContent = isQuick ? (t.featureTimeQuick || "⏱️ Time: approx. 3-5 minutes (30 questions)") : (t.featureTimeFull || "⏱️ Time: approx. 12-15 minutes (140 questions)");
   }
   if (startTestBtnText) {
     const rawBtn = isQuick
-      ? (t.startTestBtnQuick || "Rozpocznij wersję szybką (30 pytań) ➔")
-      : (t.startTestBtnFull || "Rozpocznij wersję pełną (120 pytań) ➔");
+      ? (t.startTestBtnQuick || "Start Quick Test (30 questions) ➔")
+      : (t.startTestBtnFull || "Start Full Test (140 questions) ➔");
     startTestBtnText.textContent = rawBtn.replace(/\s*➔\s*$/, "");
   }
   if (tryOtherModeBtn) {
     tryOtherModeBtn.textContent = isQuick
-      ? (t.tryOtherModeFull || "🧭 Rozwiąż wersję pełną (120 pytań)")
-      : (t.tryOtherModeQuick || "⚡ Rozwiąż wersję szybką (30 pytań)");
+      ? (t.tryOtherModeFull || "🧭 Take the Full Version (140 questions)")
+      : (t.tryOtherModeQuick || "⚡ Take the Quick Version (30 questions)");
   }
   updateResumeButtonText();
 }
@@ -1126,6 +1126,15 @@ const svgFlags = {
   es: `<svg viewBox="0 0 640 480" width="100%" height="100%"><path fill="#aa151b" d="M0 0h640v120H0zm0 360h640v120H0z"/><path fill="#f1bf00" d="M0 120h640v240H0z"/><circle cx="180" cy="240" r="40" fill="#aa151b"/><circle cx="180" cy="240" r="28" fill="#f1bf00"/><polygon points="180,218 190,238 170,238" fill="#aa151b"/></svg>`,
   hu: `<svg viewBox="0 0 640 480" width="100%" height="100%"><path fill="#ce2939" d="M0 0h640v160H0z"/><path fill="#fff" d="M0 160h640v160H0z"/><path fill="#477050" d="M0 320h640v160H0z"/></svg>`,
   eu: `<svg viewBox="0 0 640 480" width="100%" height="100%"><path fill="#003399" d="M0 0h640v480H0z"/><g fill="#ffcc00" transform="translate(320 240)"><circle cx="0" cy="-140" r="14"/><circle cx="70" cy="-121" r="14"/><circle cx="121" cy="-70" r="14"/><circle cx="140" cy="0" r="14"/><circle cx="121" cy="70" r="14"/><circle cx="70" cy="121" r="14"/><circle cx="0" cy="140" r="14"/><circle cx="-70" cy="121" r="14"/><circle cx="-121" cy="70" r="14"/><circle cx="-140" cy="0" r="14"/><circle cx="-121" cy="-70" r="14"/><circle cx="-70" cy="-121" r="14"/></g></svg>`,
+  at: `<svg viewBox="0 0 640 480" width="100%" height="100%"><path fill="#ed2939" d="M0 0h640v160H0zm0 320h640v160H0z"/><path fill="#fff" d="M0 160h640v160H0z"/></svg>`,
+  yu: `<svg viewBox="0 0 640 480" width="100%" height="100%"><path fill="#003893" d="M0 0h640v160H0z"/><path fill="#fff" d="M0 160h640v160H0z"/><path fill="#de0000" d="M0 320h640v160H0z"/><polygon points="320,165 338,222 398,222 349,257 368,314 320,279 272,314 291,257 242,222 302,222" fill="#de0000" stroke="#ffda00" stroke-width="12"/></svg>`,
+  il: `<svg viewBox="0 0 640 480" width="100%" height="100%"><path fill="#fff" d="M0 0h640v480H0z"/><path fill="#0038b8" d="M0 45h640v55H0zm0 335h640v55H0z"/><g stroke="#0038b8" stroke-width="14" fill="none"><polygon points="320,160 380,265 260,265"/><polygon points="320,300 380,195 260,195"/></g></svg>`,
+  ve: `<svg viewBox="0 0 640 480" width="100%" height="100%"><path fill="#ffcc00" d="M0 0h640v160H0z"/><path fill="#00247d" d="M0 160h640v160H0z"/><path fill="#cf142b" d="M0 320h640v160H0z"/><g fill="#fff" transform="translate(320,240)"><circle cx="-80" cy="15" r="7"/><circle cx="-55" cy="-10" r="7"/><circle cx="-25" cy="-25" r="7"/><circle cx="0" cy="-30" r="7"/><circle cx="25" cy="-25" r="7"/><circle cx="55" cy="-10" r="7"/><circle cx="80" cy="15" r="7"/></g></svg>`,
+  fi: `<svg viewBox="0 0 640 480" width="100%" height="100%"><path fill="#fff" d="M0 0h640v480H0z"/><path fill="#003580" d="M175 0h90v480h-90zM0 195h640v90H0z"/></svg>`,
+  kr: `<svg viewBox="0 0 640 480" width="100%" height="100%"><path fill="#fff" d="M0 0h640v480H0z"/><g transform="translate(320,240) rotate(-34)"><path fill="#c60c30" d="M0 0a80 80 0 0 0 0-160 80 80 0 0 1 0 160z"/><path fill="#003478" d="M0 0a80 80 0 0 1 0 160 80 80 0 0 0 0-160z"/><circle cx="0" cy="-40" r="40" fill="#c60c30"/><circle cx="0" cy="40" r="40" fill="#003478"/></g></svg>`,
+  by: `<svg viewBox="0 0 640 480" width="100%" height="100%"><path fill="#c8313e" d="M0 0h640v320H0z"/><path fill="#4aa564" d="M0 320h640v160H0z"/><path fill="#fff" d="M0 0h75v480H0z"/><path fill="#c8313e" d="M37 0l37 75-37 75-37-75zm0 150l37 75-37 75-37-75zm0 150l37 75-37 75-37-75z"/></svg>`,
+  nl: `<svg viewBox="0 0 640 480" width="100%" height="100%"><path fill="#ae1c28" d="M0 0h640v160H0z"/><path fill="#fff" d="M0 160h640v160H0z"/><path fill="#21468b" d="M0 320h640v160H0z"/></svg>`,
+  mk: `<svg viewBox="0 0 640 480" width="100%" height="100%"><path fill="#d20000" d="M0 0h640v480H0z"/><circle cx="320" cy="240" r="40" fill="#ffcc00"/><g stroke="#ffcc00" stroke-width="12"><line x1="320" y1="90" x2="320" y2="390"/><line x1="170" y1="240" x2="470" y2="240"/><line x1="214" y1="134" x2="426" y2="346"/><line x1="214" y1="346" x2="426" y2="134"/></g></svg>`,
   global: `<svg viewBox="0 0 640 480" width="100%" height="100%"><path fill="#4189dd" d="M0 0h640v480H0z"/><circle cx="320" cy="240" r="140" fill="none" stroke="#fff" stroke-width="14"/><ellipse cx="320" cy="240" rx="90" ry="140" fill="none" stroke="#fff" stroke-width="10"/><line x1="180" y1="240" x2="460" y2="240" stroke="#fff" stroke-width="12"/><line x1="205" y1="170" x2="435" y2="170" stroke="#fff" stroke-width="9"/><line x1="205" y1="310" x2="435" y2="310" stroke="#fff" stroke-width="9"/><line x1="320" y1="100" x2="320" y2="380" stroke="#fff" stroke-width="10"/></svg>`
 };
 
@@ -1218,7 +1227,23 @@ const politicianFlagMap = {
   tony_blair: "gb",
   silvio_berlusconi: "it",
   alexandria_ocasio_cortez: "us",
-  marine_le_pen: "fr"
+  marine_le_pen: "fr",
+  napoleon_bonaparte: "fr",
+  otto_von_habsburg: "at",
+  francisco_franco: "es",
+  josip_broz_tito: "yu",
+  golda_meir: "il",
+  hugo_chavez: "ve",
+  sanna_marin: "fi",
+  recep_tayyip_erdogan: "tr",
+  benjamin_netanyahu: "il",
+  nicolas_maduro: "ve",
+  shinzo_abe: "jp",
+  park_geun_hye: "kr",
+  sebastian_kurz: "at",
+  alexander_lukashenko: "by",
+  mark_rutte: "nl",
+  alexander_the_great: "mk"
 };
 
 function getSvgFlagBadgeHtml(countryCodeOrPol, className = "flag-badge-svg") {
@@ -1434,7 +1459,7 @@ function updatePoliticiansToggleButton() {
   } else {
     toggleMorePoliticiansBtn.classList.remove("is-expanded");
     toggleMorePoliticiansBtn.setAttribute("aria-expanded", "false");
-    toggleMorePoliticiansText.textContent = t.showAllPoliticians || "Pokaż wszystkich liderów (katalog 89 postaci)";
+    toggleMorePoliticiansText.textContent = t.showAllPoliticians || "Pokaż wszystkich liderów (katalog 105 postaci)";
   }
 }
 
@@ -1462,7 +1487,9 @@ function renderPoliticiansRanking() {
     "lyndon_b_johnson", "richard_nixon", "mao_zedong", "mikhail_gorbachev",
     "helmut_kohl", "francois_mitterrand", "indira_gandhi", "margaret_thatcher",
     "ronald_reagan", "konrad_adenauer", "deng_xiaoping", "olof_palme",
-    "lee_kuan_yew", "clement_attlee", "juan_peron"
+    "lee_kuan_yew", "clement_attlee", "juan_peron",
+    "napoleon_bonaparte", "otto_von_habsburg", "francisco_franco", "josip_broz_tito",
+    "golda_meir", "alexander_the_great"
   ]);
 
   const contemporaryIds = new Set([
@@ -1475,7 +1502,10 @@ function renderPoliticiansRanking() {
     "marine_le_pen", "javier_milei", "ron_paul", "bernie_sanders",
     "nayib_bukele", "jacinda_ardern", "pepe_mujica", "yanis_varoufakis",
     "volodymyr_zelenskyy", "keir_starmer", "fumio_kishida", "sahra_wagenknecht",
-    "evo_morales"
+    "evo_morales",
+    "hugo_chavez", "sanna_marin", "recep_tayyip_erdogan", "benjamin_netanyahu",
+    "nicolas_maduro", "shinzo_abe", "park_geun_hye", "sebastian_kurz",
+    "alexander_lukashenko", "mark_rutte"
   ]);
 
   let filtered = currentRankedPoliticians;
@@ -1959,13 +1989,13 @@ function showResults(animated = true) {
   // 6. Przełączenie ekranu i rysowanie kompasu
   if (resultBadge) {
     resultBadge.textContent = currentTestMode === "quick"
-      ? (t.badgeResultQuick || "Wynik • Wersja Szybka (30 pytań)")
-      : (t.badgeResultFull || "Wynik • Wersja Pełna (120 pytań)");
+      ? (t.badgeResultQuick || "Test Result • Quick Version (30 questions)")
+      : (t.badgeResultFull || "Test Result • Full Version (140 questions)");
   }
   if (tryOtherModeBtn) {
     tryOtherModeBtn.textContent = currentTestMode === "quick"
-      ? (t.tryOtherModeFull || "🧭 Rozwiąż wersję pełną (120 pytań)")
-      : (t.tryOtherModeQuick || "⚡ Rozwiąż wersję szybką (30 pytań)");
+      ? (t.tryOtherModeFull || "🧭 Take the Full Version (140 questions)")
+      : (t.tryOtherModeQuick || "⚡ Take the Quick Version (30 questions)");
   }
 
   switchScreen(resultScreen);
