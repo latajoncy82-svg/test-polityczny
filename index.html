@@ -27,7 +27,7 @@
         <span class="header-edition-pill" id="headerEditionBadge">2D Compass • Quick & Full</span>
 
         <!-- Sleek segmented language pill selector with crisp SVG flags (Glitch-free on all OS) -->
-        <div class="header-lang-switcher" role="group" aria-label="Wybór języka">
+        <div class="header-lang-switcher" role="group" aria-label="Choose language">
           <button type="button" class="lang-card-btn pill-lang-btn active" data-lang="en" title="English">
             <span class="flag-icon" aria-hidden="true">
               <svg viewBox="0 0 24 16" width="18" height="12" class="flag-svg">
@@ -121,12 +121,12 @@
         </div>
 
         <!-- Sleek theme toggle button -->
-        <button id="themeToggleBtn" type="button" class="theme-toggle-btn" aria-label="Przełącz motyw" title="Przełącz motyw (Ciemny / Jasny)">
+        <button id="themeToggleBtn" type="button" class="theme-toggle-btn" aria-label="Toggle theme" title="Toggle theme (Dark / Light)">
           <span id="themeIcon" class="theme-toggle-icon">🌙</span>
         </button>
 
         <!-- Sleek palette & contrast customization button -->
-        <button id="openSettingsBtn" type="button" class="theme-toggle-btn palette-toggle-btn" aria-label="Personalizacja wyglądu" title="Personalizacja wyglądu (kontrast i kolor akcentu)">
+        <button id="openSettingsBtn" type="button" class="theme-toggle-btn palette-toggle-btn" aria-label="Appearance settings" title="Appearance settings (contrast & accent)">
           <span class="palette-toggle-icon">🎨</span>
         </button>
       </div>
@@ -183,11 +183,11 @@
               </div>
             </div>
             <div class="axis-spectrum-track">
-              <span class="spectrum-hint">Left</span>
+              <span class="spectrum-hint" id="spectrumHintEconLeft">Left</span>
               <div class="spectrum-bar econ-bar">
                 <div class="spectrum-center-point"></div>
               </div>
-              <span class="spectrum-hint">Free market</span>
+              <span class="spectrum-hint" id="spectrumHintEconRight">Free market</span>
             </div>
           </div>
 
@@ -200,11 +200,11 @@
               </div>
             </div>
             <div class="axis-spectrum-track">
-              <span class="spectrum-hint">Conservative</span>
+              <span class="spectrum-hint" id="spectrumHintSocLeft">Conservative</span>
               <div class="spectrum-bar soc-bar">
                 <div class="spectrum-center-point"></div>
               </div>
-              <span class="spectrum-hint">Progressive</span>
+              <span class="spectrum-hint" id="spectrumHintSocRight">Progressive</span>
             </div>
           </div>
         </div>
@@ -244,15 +244,15 @@
       <section id="questionScreen" class="screen">
         <div class="quiz-topbar">
           <button id="prevBtn" class="btn-text" disabled>
-            ← Poprzednie
+            ← Previous
           </button>
           <div class="quiz-counter">
-            <span id="questionCounterText">Pytanie 1 z 30 • Wersja Szybka</span>
+            <span id="questionCounterText">Question 1 of 30 • Quick Mode</span>
           </div>
           <button id="nextBtn" class="btn-text" disabled>
-            Następne →
+            Next →
           </button>
-          <span id="questionCategory" class="badge-category">Gospodarka</span>
+          <span id="questionCategory" class="badge-category">Economy</span>
         </div>
 
         <!-- Progress bar -->
@@ -262,7 +262,7 @@
 
         <!-- Question Box -->
         <div class="question-container">
-          <h2 id="questionText" class="question-title">Ładowanie pytania...</h2>
+          <h2 id="questionText" class="question-title">Loading question...</h2>
         </div>
 
         <!-- Answer Options (6 options: Agree, Mild Agree, Neutral 0, Mild Disagree, Disagree, Skip) -->
@@ -272,7 +272,7 @@
 
         <!-- Keyboard Hint -->
         <div class="keyboard-hint" id="keyboardHint">
-          ⌨️ Wskazówka: Klawisze 1-5 to wybór (3 = Neutralny), klawisz 6 = Nie mam zdania (pomiń).
+          ⌨️ Pro-tip: Keys 1-5 scale your agreement (3 = Neutral), key 6 = No opinion (skip).
         </div>
       </section>
 
@@ -280,10 +280,10 @@
       <section id="resultScreen" class="screen">
         <div class="result-header">
           <div class="result-badge-row">
-            <span class="badge-pill" id="resultBadge">Twoje Wyniki</span>
-            <span class="match-percentage-badge ideology-badge" id="ideologyMatchBadge">Zgodność: 98%</span>
+            <span class="badge-pill" id="resultBadge">Your Results</span>
+            <span class="match-percentage-badge ideology-badge" id="ideologyMatchBadge">Alignment: 98%</span>
           </div>
-          <h2 id="ideologyTitle" class="result-ideology-name">Obliczanie...</h2>
+          <h2 id="ideologyTitle" class="result-ideology-name">Calculating...</h2>
           <p id="ideologySubtitle" class="result-ideology-subtitle"></p>
         </div>
 
@@ -291,10 +291,10 @@
         <div class="canvas-wrapper">
           <canvas id="compassCanvas" width="560" height="560"></canvas>
           <div class="canvas-legend">
-            <div class="legend-item"><span class="color-dot dot-red"></span> <span id="legendRedText">Lewica Tradycyjna</span></div>
-            <div class="legend-item"><span class="color-dot dot-green"></span> <span id="legendGreenText">Socjalliberalizm</span></div>
-            <div class="legend-item"><span class="color-dot dot-blue"></span> <span id="legendBlueText">Konserwatywny Liberalizm</span></div>
-            <div class="legend-item"><span class="color-dot dot-yellow"></span> <span id="legendYellowText">Libertarianizm</span></div>
+            <div class="legend-item"><span class="color-dot dot-red"></span> <span id="legendRedText">Traditional Left</span></div>
+            <div class="legend-item"><span class="color-dot dot-green"></span> <span id="legendGreenText">Social Liberalism</span></div>
+            <div class="legend-item"><span class="color-dot dot-blue"></span> <span id="legendBlueText">Conservative Liberalism</span></div>
+            <div class="legend-item"><span class="color-dot dot-yellow"></span> <span id="legendYellowText">Libertarianism</span></div>
           </div>
         </div>
 
@@ -302,9 +302,9 @@
         <div class="meters-container">
           <div class="meter-box">
             <div class="meter-labels">
-              <span class="left-label" id="econMeterLeft">Lewica Gospodarcza</span>
+              <span class="left-label" id="econMeterLeft">Economic Left</span>
               <strong id="econScoreText" class="score-center">0%</strong>
-              <span class="right-label" id="econMeterRight">Prawica Wolnorynkowa</span>
+              <span class="right-label" id="econMeterRight">Free Market Right</span>
             </div>
             <div class="meter-track">
               <div id="econFillBar" class="meter-fill econ-bar"></div>
@@ -315,9 +315,9 @@
 
           <div class="meter-box">
             <div class="meter-labels">
-              <span class="left-label" id="socMeterLeft">Konserwatyzm Społeczny</span>
+              <span class="left-label" id="socMeterLeft">Social Conservatism</span>
               <strong id="socScoreText" class="score-center">0%</strong>
-              <span class="right-label" id="socMeterRight">Progresywizm Społeczny</span>
+              <span class="right-label" id="socMeterRight">Social Progressivism</span>
             </div>
             <div class="meter-track">
               <div id="socFillBar" class="meter-fill soc-bar"></div>
@@ -331,9 +331,9 @@
         <div class="ideology-card">
           <div class="match-card-header">
             <div class="match-card-titles">
-              <h3 id="ideologySectionTitle">Charakterystyka Twoich poglądów</h3>
+              <h3 id="ideologySectionTitle">Overview of your political convictions</h3>
             </div>
-            <div class="match-percentage-badge ideology-badge" id="ideologyCardActiveBadge">Zgodność: 98%</div>
+            <div class="match-percentage-badge ideology-badge" id="ideologyCardActiveBadge">Alignment: 98%</div>
           </div>
 
           <div class="ideology-active-banner" id="ideologyActiveBanner">
@@ -341,37 +341,37 @@
               <span class="ideology-active-icon" id="ideologyActiveIcon">🏛️</span>
             </div>
             <div class="ideology-active-details">
-              <h4 class="ideology-active-name" id="ideologyActiveName">Neokapitalizm</h4>
-              <p class="ideology-active-sub" id="ideologyActiveSub">Nowoczesny Wolny Rynek</p>
+              <h4 class="ideology-active-name" id="ideologyActiveName">Neocapitalism</h4>
+              <p class="ideology-active-sub" id="ideologyActiveSub">Modern Free Market</p>
             </div>
           </div>
 
           <p id="ideologyDescription" class="ideology-text"></p>
           
           <div class="key-figures-box" id="keyFiguresBox">
-            <h4 id="keyFiguresLabel">Kluczowi myśliciele i postacie nurtu:</h4>
+            <h4 id="keyFiguresLabel">Key figures & historical thinkers:</h4>
             <div id="keyFiguresList" class="key-figures-tags"></div>
           </div>
 
           <!-- Secondary/Alternative Ideologies -->
           <div class="secondary-ideologies-box" id="secondaryIdeologiesBox">
             <div class="section-hint-row">
-              <h4 id="secondaryIdeologiesTitle">Ranking Twoich poglądów politycznych:</h4>
-              <small class="click-hint" id="clickIdeologyHint">Kliknij nurt, aby poznać jego opis i myślicieli</small>
+              <h4 id="secondaryIdeologiesTitle">Ranking of your political views:</h4>
+              <small class="click-hint" id="clickIdeologyHint">Click an ideology to view its details</small>
             </div>
             <!-- Interactive Category Filter Pills for Ideologies -->
             <div class="filter-pills-row" id="ideologyFilterPills">
               <button class="filter-pill active" data-filter="top" type="button" id="filterIdeoTopBtn">🔥 Top 12</button>
-              <button class="filter-pill" data-filter="all" type="button" id="filterIdeoAllBtn">🧭 Wszystkie (44)</button>
-              <button class="filter-pill" data-filter="market" type="button" id="filterIdeoMarketBtn">🟦 Wolnorynkowe</button>
-              <button class="filter-pill" data-filter="progressive" type="button" id="filterIdeoProgressiveBtn">🟩 Wolnościowe</button>
-              <button class="filter-pill" data-filter="socialist" type="button" id="filterIdeoSocialistBtn">🟥 Lewicowe</button>
-              <button class="filter-pill" data-filter="conservative" type="button" id="filterIdeoConservativeBtn">🟫 Tradycyjne</button>
+              <button class="filter-pill" data-filter="all" type="button" id="filterIdeoAllBtn">🧭 All (44)</button>
+              <button class="filter-pill" data-filter="market" type="button" id="filterIdeoMarketBtn">🟦 Free Market</button>
+              <button class="filter-pill" data-filter="progressive" type="button" id="filterIdeoProgressiveBtn">🟩 Libertarian</button>
+              <button class="filter-pill" data-filter="socialist" type="button" id="filterIdeoSocialistBtn">🟥 Left-wing</button>
+              <button class="filter-pill" data-filter="conservative" type="button" id="filterIdeoConservativeBtn">🟫 Traditional</button>
             </div>
             <div id="secondaryIdeologiesList" class="secondary-ideologies-grid"></div>
             <div class="expand-controls-row">
               <button id="toggleMoreIdeologiesBtn" class="btn-toggle-expand" type="button" aria-expanded="false">
-                <span id="toggleMoreIdeologiesText">Pokaż wszystkie poglądy (katalog 44 nurtów)</span>
+                <span id="toggleMoreIdeologiesText">Show all ideologies (44 movements catalog)</span>
                 <span class="toggle-icon" id="toggleIdeologiesIcon" aria-hidden="true">▼</span>
               </button>
             </div>
@@ -382,8 +382,8 @@
         <div class="world-match-card politician-match-card">
           <div class="match-card-header">
             <div class="match-card-titles">
-              <h3 id="politicianCardTitle">🌐 Twój Światowy Lider Polityczny</h3>
-              <p id="politicianCardSubtitle" class="match-card-subtitle">Światowy przywódca o najbardziej zbliżonym kompasie poglądów:</p>
+              <h3 id="politicianCardTitle">🌐 Your Global Political Leader</h3>
+              <p id="politicianCardSubtitle" class="match-card-subtitle">World leader closest to your political convictions:</p>
             </div>
             <div class="match-percentage-badge" id="politicianMatchBadge">95%</div>
           </div>
@@ -391,33 +391,33 @@
           <div class="politician-profile-body">
             <div class="politician-hero-row" id="politicianHeroRow">
               <div class="politician-avatar-container" id="politicianAvatarContainer">
-                <img id="politicianPhoto" class="politician-photo" src="" alt="Portret lidera" loading="lazy" referrerpolicy="no-referrer" />
+                <img id="politicianPhoto" class="politician-photo" src="" alt="Leader portrait" loading="lazy" referrerpolicy="no-referrer" />
                 <span class="politician-flag" id="politicianFlag">🇦🇷</span>
               </div>
               <div class="politician-identity-block">
                 <h4 class="politician-name" id="politicianName">Javier Milei</h4>
                 <div class="politician-meta">
-                  <span id="politicianCountry">Argentyna</span> • <span id="politicianRole">Prezydent</span>
+                  <span id="politicianCountry">Argentina</span> • <span id="politicianRole">President</span>
                 </div>
               </div>
             </div>
 
             <div class="politician-quote-bubble">
-              <div class="quote-header-tag" id="politicianQuoteLabel">Motto polityczne:</div>
+              <div class="quote-header-tag" id="politicianQuoteLabel">Political motto:</div>
               <span class="quote-icon">“</span>
               <p id="politicianQuote" class="quote-text"></p>
             </div>
 
             <div class="politician-why-vote">
-              <h5 id="politicianWhyVoteLabel">Dlaczego oddałbyś na niego głos:</h5>
+              <h5 id="politicianWhyVoteLabel">Why you would vote for them:</h5>
               <p id="politicianWhyVoteText"></p>
             </div>
 
             <!-- Other global politicians -->
             <div class="other-matches-section">
               <div class="section-hint-row">
-                <h5 id="otherPoliticiansTitle">Ranking światowych liderów i postaci historycznych:</h5>
-                <small class="click-hint" id="clickLeaderHint">Kliknij profil lidera, aby poznać szczegóły</small>
+                <h5 id="otherPoliticiansTitle">Ranking of world leaders & historical figures:</h5>
+                <small class="click-hint" id="clickLeaderHint">Click a leader's profile to view details</small>
               </div>
               <!-- Interactive Category Filter Pills for Politicians -->
               <div class="filter-pills-row" id="politicianFilterPills">
@@ -443,8 +443,8 @@
         <div class="world-match-card party-match-card">
           <div class="match-card-header">
             <div class="match-card-titles">
-              <h3 id="partyCardTitle">🏛️ Międzynarodowa Partia / Ruch Polityczny</h3>
-              <p id="partyCardSubtitle" class="match-card-subtitle">Światowa rodzina polityczna najlepiej reprezentująca Twój program:</p>
+              <h3 id="partyCardTitle">🏛️ International Party / Political Movement</h3>
+              <p id="partyCardSubtitle" class="match-card-subtitle">Global political family best representing your platform:</p>
             </div>
             <div class="match-percentage-badge party-badge" id="partyMatchBadge">92%</div>
           </div>
@@ -455,36 +455,36 @@
               <div>
                 <h4 class="party-name" id="partyName">International Alliance of Libertarian Parties</h4>
                 <div class="party-meta-line">
-                  <span id="partyTypeLabel" class="party-type-label">Profil ruchu:</span>
-                  <span class="party-type-text" id="partyType">Ruch wolnościowy</span>
+                  <span id="partyTypeLabel" class="party-type-label">Movement profile:</span>
+                  <span class="party-type-text" id="partyType">Libertarian movement</span>
                 </div>
               </div>
             </div>
 
             <div class="party-manifesto-box">
-              <h5 id="partyManifestoLabel">Główne założenia programowe:</h5>
+              <h5 id="partyManifestoLabel">Core policy positions:</h5>
               <p id="partyManifestoText"></p>
             </div>
 
             <!-- Other global parties -->
             <div class="other-matches-section">
               <div class="section-hint-row">
-                <h5 id="otherPartiesTitle">Ranking międzynarodowych rodzin partyjnych:</h5>
-                <small class="click-hint" id="clickPartyHint">Kliknij ruch, aby poznać założenia</small>
+                <h5 id="otherPartiesTitle">Ranking of international party families:</h5>
+                <small class="click-hint" id="clickPartyHint">Click a movement to view details</small>
               </div>
               <!-- Interactive Category Filter Pills for Parties -->
               <div class="filter-pills-row" id="partyFilterPills">
                 <button class="filter-pill active" data-filter="top" type="button" id="filterPartyTopBtn">🔥 Top 8</button>
-                <button class="filter-pill" data-filter="all" type="button" id="filterPartyAllBtn">🏛️ Wszystkie (30)</button>
-                <button class="filter-pill" data-filter="left" type="button" id="filterPartyLeftBtn">🟥 Lewicowe i Społeczne</button>
-                <button class="filter-pill" data-filter="market" type="button" id="filterPartyMarketBtn">🟦 Rynkowe i Centroprawica</button>
-                <button class="filter-pill" data-filter="libertarian" type="button" id="filterPartyLibBtn">🟩 Wolnościowe i Zielone</button>
-                <button class="filter-pill" data-filter="traditional" type="button" id="filterPartyTradBtn">🟫 Konserwatywne i Narodowe</button>
+                <button class="filter-pill" data-filter="all" type="button" id="filterPartyAllBtn">🏛️ All (30)</button>
+                <button class="filter-pill" data-filter="left" type="button" id="filterPartyLeftBtn">🟥 Left & Social</button>
+                <button class="filter-pill" data-filter="market" type="button" id="filterPartyMarketBtn">🟦 Market & Center-Right</button>
+                <button class="filter-pill" data-filter="libertarian" type="button" id="filterPartyLibBtn">🟩 Libertarian & Green</button>
+                <button class="filter-pill" data-filter="traditional" type="button" id="filterPartyTradBtn">🟫 Conservative & National</button>
               </div>
               <div id="otherPartiesList" class="other-matches-grid parties-ranking-grid"></div>
               <div class="expand-controls-row">
                 <button id="toggleMorePartiesBtn" class="btn-toggle-expand" type="button" aria-expanded="false">
-                  <span id="toggleMorePartiesText">Pokaż wszystkie partie (katalog 30 rodzin)</span>
+                  <span id="toggleMorePartiesText">Show all parties (30 families catalog)</span>
                   <span class="toggle-icon" id="togglePartiesIcon" aria-hidden="true">▼</span>
                 </button>
               </div>
@@ -494,7 +494,7 @@
 
         <!-- Detailed Sector Breakdown (12 Domains) -->
         <div class="sectors-card">
-          <h3 id="categoryBreakdownTitle">📊 Profil w poszczególnych dziedzinach (12 sektorów)</h3>
+          <h3 id="categoryBreakdownTitle">📊 Policy breakdown across 12 sectors</h3>
           <div id="sectorsGrid" class="sectors-grid">
             <!-- Dynamically inserted category meter items -->
           </div>
@@ -503,13 +503,13 @@
         <!-- Action Buttons -->
         <div class="action-buttons-group">
           <button id="downloadResultBtn" class="btn-action">
-            📥 Pobierz wykres (PNG)
+            📥 Download chart (PNG)
           </button>
           <button id="copyShareBtn" class="btn-action">
-            📋 Kopiuj podsumowanie
+            📋 Copy summary
           </button>
           <button id="toggleAnswersBtn" class="btn-action">
-            📝 Zobacz swoje odpowiedzi
+            📝 Review your answers
           </button>
           <button id="tryOtherModeBtn" class="btn-action btn-try-mode">
             🧭 Take full version (140 questions)
@@ -545,73 +545,73 @@
       <div class="settings-modal-header">
         <div class="modal-title-group">
           <span class="settings-header-icon">🎨</span>
-          <h3 id="setupTitle" class="modal-title-text">Personalizacja Wyglądu</h3>
+          <h3 id="setupTitle" class="modal-title-text">Appearance Settings</h3>
         </div>
-        <button type="button" id="closeSettingsBtn" class="modal-close-btn" aria-label="Zamknij">✕</button>
+        <button type="button" id="closeSettingsBtn" class="modal-close-btn" aria-label="Close">✕</button>
       </div>
       <div class="advanced-settings-body">
-        <p class="setup-panel-desc" id="setupDesc">Dostosuj kontrast i akcent kolorystyczny interfejsu według własnych preferencji.</p>
+        <p class="setup-panel-desc" id="setupDesc">Customize contrast and interface accent color according to your preference.</p>
 
         <div class="advanced-hidden-sync" style="display:none;" aria-hidden="true">
-          <label id="langSelectLabel">Wybierz język testu:</label>
-          <label id="setupThemeLabel">Motyw kolorystyczny</label>
-          <button type="button" id="themeDarkBtn" class="theme-choice-btn"><span id="themeDarkText">Ciemny</span></button>
-          <button type="button" id="themeLightBtn" class="theme-choice-btn"><span id="themeLightText">Jasny</span></button>
+          <label id="langSelectLabel">Choose test language:</label>
+          <label id="setupThemeLabel">Color theme</label>
+          <button type="button" id="themeDarkBtn" class="theme-choice-btn"><span id="themeDarkText">Dark</span></button>
+          <button type="button" id="themeLightBtn" class="theme-choice-btn"><span id="themeLightText">Light</span></button>
         </div>
 
         <div class="advanced-controls-grid">
-          <!-- Kontrast i jasność -->
+          <!-- Brightness and contrast -->
           <div class="advanced-control-box">
             <div class="setup-label-row">
               <span class="setup-icon-small">👁️</span>
-              <label class="setup-label" id="setupToneLabel">Jasność i Kontrast</label>
+              <label class="setup-label" id="setupToneLabel">Brightness & Contrast</label>
             </div>
             <div class="setup-pill-group tone-grid">
               <button type="button" class="setup-pill-btn tone-choice-btn active" data-tone="standard" id="toneStandardBtn">
                 <span class="pill-icon">🔆</span>
-                <span class="pill-text" id="toneStandardText">Standardowy</span>
+                <span class="pill-text" id="toneStandardText">Standard</span>
               </button>
               <button type="button" class="setup-pill-btn tone-choice-btn" data-tone="contrast" id="toneContrastBtn">
                 <span class="pill-icon">⚡</span>
-                <span class="pill-text" id="toneContrastText">Wysoki kontrast</span>
+                <span class="pill-text" id="toneContrastText">High contrast</span>
               </button>
               <button type="button" class="setup-pill-btn tone-choice-btn" data-tone="soft" id="toneSoftBtn">
                 <span class="pill-icon">🕯️</span>
-                <span class="pill-text" id="toneSoftText">Łagodny (Nocny)</span>
+                <span class="pill-text" id="toneSoftText">Soft (Night)</span>
               </button>
             </div>
           </div>
 
-          <!-- Kolor akcentu -->
+          <!-- Accent color -->
           <div class="advanced-control-box">
             <div class="setup-label-row">
               <span class="setup-icon-small">🎨</span>
-              <label class="setup-label" id="setupAccentLabel">Kolor akcentu interfejsu</label>
+              <label class="setup-label" id="setupAccentLabel">Interface accent color</label>
             </div>
             <div class="accent-palette-picker" id="accentPickerGroup">
-              <button type="button" class="accent-color-btn active" data-accent="blue" title="Błękitny" style="--swatch-color: #3b82f6;">
+              <button type="button" class="accent-color-btn active" data-accent="blue" title="Blue" style="--swatch-color: #3b82f6;">
                 <span class="accent-swatch-circle" style="background: #3b82f6;"></span>
-                <span class="accent-name-label" id="accentBlueText">Błękit</span>
+                <span class="accent-name-label" id="accentBlueText">Blue</span>
               </button>
-              <button type="button" class="accent-color-btn" data-accent="emerald" title="Szmaragdowy" style="--swatch-color: #10b981;">
+              <button type="button" class="accent-color-btn" data-accent="emerald" title="Emerald" style="--swatch-color: #10b981;">
                 <span class="accent-swatch-circle" style="background: #10b981;"></span>
-                <span class="accent-name-label" id="accentEmeraldText">Szmaragd</span>
+                <span class="accent-name-label" id="accentEmeraldText">Emerald</span>
               </button>
-              <button type="button" class="accent-color-btn" data-accent="purple" title="Fioletowy" style="--swatch-color: #8b5cf6;">
+              <button type="button" class="accent-color-btn" data-accent="purple" title="Purple" style="--swatch-color: #8b5cf6;">
                 <span class="accent-swatch-circle" style="background: #8b5cf6;"></span>
-                <span class="accent-name-label" id="accentPurpleText">Fiolet</span>
+                <span class="accent-name-label" id="accentPurpleText">Purple</span>
               </button>
-              <button type="button" class="accent-color-btn" data-accent="amber" title="Bursztynowy" style="--swatch-color: #f59e0b;">
+              <button type="button" class="accent-color-btn" data-accent="amber" title="Amber" style="--swatch-color: #f59e0b;">
                 <span class="accent-swatch-circle" style="background: #f59e0b;"></span>
-                <span class="accent-name-label" id="accentAmberText">Bursztyn</span>
+                <span class="accent-name-label" id="accentAmberText">Amber</span>
               </button>
-              <button type="button" class="accent-color-btn" data-accent="crimson" title="Karmazynowy" style="--swatch-color: #ef4444;">
+              <button type="button" class="accent-color-btn" data-accent="crimson" title="Crimson" style="--swatch-color: #ef4444;">
                 <span class="accent-swatch-circle" style="background: #ef4444;"></span>
-                <span class="accent-name-label" id="accentCrimsonText">Rubin</span>
+                <span class="accent-name-label" id="accentCrimsonText">Crimson</span>
               </button>
-              <button type="button" class="accent-color-btn" data-accent="rose" title="Różowy" style="--swatch-color: #ec4899;">
+              <button type="button" class="accent-color-btn" data-accent="rose" title="Rose" style="--swatch-color: #ec4899;">
                 <span class="accent-swatch-circle" style="background: #ec4899;"></span>
-                <span class="accent-name-label" id="accentRoseText">Róż</span>
+                <span class="accent-name-label" id="accentRoseText">Rose</span>
               </button>
             </div>
           </div>

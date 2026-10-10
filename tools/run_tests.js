@@ -881,6 +881,63 @@ assert(getSim('currentTestMode') === 'quick', "Clicking tryOtherModeBtn switches
 assert(getSim('getActiveQuestions().length') === 30, "Active questions updated to 30 following mode toggle");
 assert(simElements['modeQuickBtn'].classList.contains('active'), "Quick mode card is highlighted active after mode toggle");
 
+// [8] Testing Contiguous Question Grouping, 6-Language Spectrum Tags, Authentic JPEG Validation & English Defaults:
+console.log("\n[8] Testing Contiguous Grouping, Spectrum Tags, JPEG Headers & English Defaults:");
+
+let seenCats = new Set();
+let currentCat = null;
+let categoryGroupingViolations = 0;
+questions.forEach(q => {
+  if (q.categoryKey !== currentCat) {
+    if (seenCats.has(q.categoryKey)) {
+      categoryGroupingViolations++;
+      console.error(`Category ${q.categoryKey} is fragmented/non-contiguous at question ${q.id}`);
+    }
+    seenCats.add(q.categoryKey);
+    currentCat = q.categoryKey;
+  }
+});
+assert(categoryGroupingViolations === 0, "All 12 categories are arranged in contiguous, uninterrupted blocks");
+
+let invalidJpegCount = 0;
+worldPoliticians.forEach(pol => {
+  const pPath = path.join(__dirname, '..', pol.localPhoto);
+  if (!fs.existsSync(pPath)) {
+    invalidJpegCount++;
+    console.error(`Missing image: ${pol.localPhoto}`);
+  } else {
+    const buf = fs.readFileSync(pPath);
+    if (buf.length < 1000 || buf[0] !== 0xFF || buf[1] !== 0xD8 || buf[2] !== 0xFF) {
+      invalidJpegCount++;
+      console.error(`Invalid JPEG: ${pol.localPhoto}`);
+    }
+  }
+});
+assert(invalidJpegCount === 0, `All ${worldPoliticians.length} politician portrait files are authentic JPEGs with valid FF D8 FF headers (>1KB)`);
+
+const dummyIdeo = { coordinates: { econ: 50, soc: 50 } };
+const esTag = vm.runInContext(`getIdeologySpectrumTag(${JSON.stringify(dummyIdeo)}, 'es')`, simContext);
+const deTag = vm.runInContext(`getIdeologySpectrumTag(${JSON.stringify(dummyIdeo)}, 'de')`, simContext);
+assert(esTag.includes("Mercado") && !esTag.includes("marché"), "getIdeologySpectrumTag for Spanish ('es') returns authentic Spanish text");
+assert(deTag.includes("Markt") && !deTag.includes("marché"), "getIdeologySpectrumTag for German ('de') returns authentic German text");
+
+let outdatedCountsInTranslations = 0;
+['pl', 'en', 'es', 'de', 'ru', 'fr'].forEach(l => {
+  const trans = uiTranslations[l];
+  if (trans.badgePill && (trans.badgePill.includes('100') || trans.badgePill.includes('120'))) outdatedCountsInTranslations++;
+  if (trans.startBtn && (trans.startBtn.includes('100') || trans.startBtn.includes('120'))) outdatedCountsInTranslations++;
+  if (trans.featureTime && (trans.featureTime.includes('100') || trans.featureTime.includes('120'))) outdatedCountsInTranslations++;
+});
+assert(outdatedCountsInTranslations === 0, "No badgePill, startBtn, or featureTime strings in any language contain outdated 100 or 120 counts");
+
+const htmlRaw = fs.readFileSync(path.join(__dirname, '../index.html'), 'utf8');
+assert(htmlRaw.includes('aria-label="Choose language"'), "index.html has English aria-label for language switcher");
+assert(htmlRaw.includes('aria-label="Toggle theme"'), "index.html has English aria-label for theme toggle button");
+assert(htmlRaw.includes('aria-label="Appearance settings"'), "index.html has English aria-label for appearance button");
+assert(htmlRaw.includes('← Previous'), "index.html question screen defaults to English Previous button");
+assert(htmlRaw.includes('Next →'), "index.html question screen defaults to English Next button");
+assert(htmlRaw.includes('Appearance Settings'), "index.html appearance modal defaults to English title");
+
 // Results summary
 console.log(`\n======================================================`);
 console.log(`TEST SUMMARY: ${passedTests} PASSED, ${failedTests} FAILED`);

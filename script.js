@@ -1,8 +1,8 @@
 /**
  * TEST POLITYCZNY - GŁÓWNA LOGIKA APLIKACJI (WERSJA GLOBALNA 2026)
- * Obsługa 100 pytań, 32 ideologii, 43 światowych liderów i postaci historycznych (w tym liderów II wojny światowej), 15 partii międzynarodowych
+ * Obsługa 140 pytań, 44 ideologii, 105 światowych liderów i postaci historycznych (w tym liderów II wojny światowej), 30 partii międzynarodowych
  * 6 opcji odpowiedzi (w tym Neutralny / Umiarkowany vs. Nie mam zdania / Pomiń)
- * oraz 4 języków: PL, EN, RU, FR.
+ * oraz 6 języków: EN (domyślny), PL, ES, DE, RU, FR.
  */
 
 // Stan testu
@@ -431,13 +431,35 @@ function applyLanguage(lang) {
   if (modeFullBadge && t.modeFullBadge) modeFullBadge.textContent = t.modeFullBadge;
   if (modeFullDesc && t.modeFullDesc) modeFullDesc.textContent = t.modeFullDesc;
 
+  const langSwitcher = document.querySelector(".header-lang-switcher");
+  if (langSwitcher && t.langSelectLabel) langSwitcher.setAttribute("aria-label", t.langSelectLabel);
+  if (themeToggleBtn) {
+    themeToggleBtn.title = t.themeToggleTitle || "Toggle theme";
+    themeToggleBtn.setAttribute("aria-label", t.themeToggleTitle || "Toggle theme");
+  }
+  if (openSettingsBtn) {
+    openSettingsBtn.title = `${t.setupTitle || "Appearance Settings"} (${t.setupToneLabel || "Contrast"} & ${t.setupAccentLabel || "Accent"})`;
+    openSettingsBtn.setAttribute("aria-label", t.setupTitle || "Appearance Settings");
+  }
+  if (closeSettingsBtn) {
+    closeSettingsBtn.setAttribute("aria-label", t.closeBtn || "Close");
+  }
+
   // Welcome Screen
   if (heroTitle) heroTitle.textContent = t.heroTitle;
   if (heroDesc) heroDesc.textContent = t.heroDesc;
   if (axisEconTitle) axisEconTitle.textContent = t.axisEconTitle;
   if (axisEconDesc) axisEconDesc.textContent = t.axisEconDesc;
+  const hintEconLeft = document.getElementById("spectrumHintEconLeft");
+  if (hintEconLeft && t.econLabelLeft) hintEconLeft.textContent = t.econLabelLeft;
+  const hintEconRight = document.getElementById("spectrumHintEconRight");
+  if (hintEconRight && t.econLabelRight) hintEconRight.textContent = t.econLabelRight;
   if (axisSocTitle) axisSocTitle.textContent = t.axisSocTitle;
   if (axisSocDesc) axisSocDesc.textContent = t.axisSocDesc;
+  const hintSocLeft = document.getElementById("spectrumHintSocLeft");
+  if (hintSocLeft && t.socLabelLeft) hintSocLeft.textContent = t.socLabelLeft;
+  const hintSocRight = document.getElementById("spectrumHintSocRight");
+  if (hintSocRight && t.socLabelRight) hintSocRight.textContent = t.socLabelRight;
   if (featureAnon) featureAnon.textContent = t.featureAnon;
   if (featureResults) featureResults.textContent = t.featureResults;
   updateModeUI();
@@ -835,7 +857,7 @@ function updateResumeButtonText() {
   const saved = checkSavedProgress();
   const resumeContainer = document.getElementById("resumePromptContainer");
   if (saved) {
-    const t = uiTranslations[currentLang] || uiTranslations.pl || {};
+    const t = uiTranslations[currentLang] || uiTranslations.en || uiTranslations.pl || {};
     const savedMode = saved.mode || currentTestMode;
     const modeQs = (savedMode === "quick")
       ? (typeof questions !== "undefined" ? questions.filter(q => q.isQuick) : [])
@@ -897,7 +919,7 @@ function renderQuestion() {
   const activeQs = getActiveQuestions();
   if (!activeQs.length) return;
   const q = activeQs[currentQuestionIndex];
-  const t = uiTranslations[currentLang] || uiTranslations.pl || {};
+  const t = uiTranslations[currentLang] || uiTranslations.en || uiTranslations.pl || {};
   const isQuick = currentTestMode === "quick";
   const modeTag = isQuick ? (t.questionCounterModeQuick || "Wersja Szybka") : (t.questionCounterModeFull || "Wersja Pełna");
 
@@ -908,10 +930,10 @@ function renderQuestion() {
 
   // Kategoria
   const catObj = categories[q.categoryKey];
-  if (questionCategory) questionCategory.textContent = catObj ? (catObj[currentLang] || catObj.pl) : q.categoryKey;
+  if (questionCategory) questionCategory.textContent = catObj ? (catObj[currentLang] || catObj.en || catObj.pl) : q.categoryKey;
 
   // Treść pytania
-  if (questionText) questionText.textContent = q.text[currentLang] || q.text.pl;
+  if (questionText) questionText.textContent = q.text[currentLang] || q.text.en || q.text.pl;
 
   // Pasek postępu
   const progressPct = ((currentQuestionIndex) / activeQs.length) * 100;
@@ -936,9 +958,9 @@ function renderQuestion() {
       btn.type = "button";
       btn.className = `answer-btn ${opt.className}`;
 
-      const labelText = opt.label[currentLang] || opt.label.pl;
-      const hintText = opt.hint ? (opt.hint[currentLang] || opt.hint.pl) : "";
-      const badgeText = opt.badge ? (opt.badge[currentLang] || opt.badge.pl) : `${idx + 1}`;
+      const labelText = opt.label[currentLang] || opt.label.en || opt.label.pl;
+      const hintText = opt.hint ? (opt.hint[currentLang] || opt.hint.en || opt.hint.pl) : "";
+      const badgeText = opt.badge ? (opt.badge[currentLang] || opt.badge.en || opt.badge.pl) : `${idx + 1}`;
 
       btn.innerHTML = `
         <div class="answer-left">
@@ -1318,12 +1340,12 @@ function renderPoliticianProfile(pol, isTop = false) {
   if (politicianFlag) politicianFlag.innerHTML = getSvgFlagBadgeHtml(pol, "politician-flag-svg-badge");
   if (politicianName) politicianName.textContent = displayName;
   if (politicianCountry) {
-    const cName = pol.country[currentLang] || pol.country.pl;
+    const cName = pol.country[currentLang] || pol.country.en || pol.country.pl;
     politicianCountry.innerHTML = `${getSvgFlagBadgeHtml(pol, "flag-badge-svg")} <span>${cName}</span>`;
   }
-  if (politicianRole) politicianRole.textContent = pol.role[currentLang] || pol.role.pl;
-  if (politicianQuote) politicianQuote.textContent = pol.quote[currentLang] || pol.quote.pl;
-  if (politicianWhyVoteText) politicianWhyVoteText.textContent = pol.whyVote[currentLang] || pol.whyVote.pl;
+  if (politicianRole) politicianRole.textContent = pol.role[currentLang] || pol.role.en || pol.role.pl;
+  if (politicianQuote) politicianQuote.textContent = pol.quote[currentLang] || pol.quote.en || pol.quote.pl;
+  if (politicianWhyVoteText) politicianWhyVoteText.textContent = pol.whyVote[currentLang] || pol.whyVote.en || pol.whyVote.pl;
 
   const color = pol.color || "#3b82f6";
   const gradient = pol.gradient || `linear-gradient(135deg, ${color}, #1d4ed8)`;
@@ -1426,6 +1448,26 @@ function getIdeologySpectrumTag(ideo, lang) {
     if (soc >= 20) return "🟩 Social Progressivism";
     if (soc <= -20) return "🟫 Social Conservatism";
     return "⚖️ Centrist Spectrum";
+  } else if (lang === "es") {
+    if (econ >= 20 && soc >= 20) return "🟦 Libre Mercado • 🟩 Progresismo";
+    if (econ >= 20 && soc < -20) return "🟦 Libre Mercado • 🟫 Conservadurismo";
+    if (econ < -20 && soc >= 20) return "🟥 Izquierda • 🟩 Progresismo";
+    if (econ < -20 && soc < -20) return "🟥 Izquierda • 🟫 Tradición / Solidarismo";
+    if (econ >= 20) return "🟦 Derecha de Libre Mercado";
+    if (econ <= -20) return "🟥 Izquierda Económica";
+    if (soc >= 20) return "🟩 Progresismo Social";
+    if (soc <= -20) return "🟫 Conservadurismo Social";
+    return "⚖️ Espectro Centrista";
+  } else if (lang === "de") {
+    if (econ >= 20 && soc >= 20) return "🟦 Freier Markt • 🟩 Progressivismus";
+    if (econ >= 20 && soc < -20) return "🟦 Freier Markt • 🟫 Konservatismus";
+    if (econ < -20 && soc >= 20) return "🟥 Linke • 🟩 Progressivismus";
+    if (econ < -20 && soc < -20) return "🟥 Linke • 🟫 Solidarismus / Tradition";
+    if (econ >= 20) return "🟦 Marktliberale Rechte";
+    if (econ <= -20) return "🟥 Wirtschaftliche Linke";
+    if (soc >= 20) return "🟩 Gesellschaftlicher Progressivismus";
+    if (soc <= -20) return "🟫 Gesellschaftlicher Konservatismus";
+    return "⚖️ Zentristisches Spektrum";
   } else if (lang === "ru") {
     if (econ >= 20 && soc >= 20) return "🟦 Свободный рынок • 🟩 Прогрессивизм";
     if (econ >= 20 && soc < -20) return "🟦 Свободный рынок • 🟫 Консерватизм";
@@ -1534,8 +1576,8 @@ function renderPoliticiansRanking() {
       item.classList.add("active-podium");
     }
     const polDisplayName = getPoliticianName(pol);
-    const countryName = pol.country[currentLang] || pol.country.pl;
-    const roleName = pol.role[currentLang] || pol.role.pl;
+    const countryName = pol.country[currentLang] || pol.country.en || pol.country.pl;
+    const roleName = pol.role[currentLang] || pol.role.en || pol.role.pl;
     const color = pol.color || "#3b82f6";
     item.style.setProperty("--mini-color", color);
 
@@ -1887,8 +1929,8 @@ function renderPartyProfile(party, isTop = false) {
     partyEmblem.style.background = `${color}20`;
     partyEmblem.style.boxShadow = `0 0 16px ${color}40`;
   }
-  if (partyName) partyName.textContent = party.name[currentLang] || party.name.pl;
-  if (partyType) partyType.textContent = party.type[currentLang] || party.type.pl;
+  if (partyName) partyName.textContent = party.name[currentLang] || party.name.en || party.name.pl;
+  if (partyType) partyType.textContent = party.type[currentLang] || party.type.en || party.type.pl;
   if (partyManifestoText) partyManifestoText.textContent = party.manifesto[currentLang] || party.manifesto.pl;
   activePartyId = party.id;
 
@@ -2018,7 +2060,7 @@ function renderSectorBreakdown() {
     if (!data) return;
 
     const catObj = categories[catKey];
-    const catName = catObj ? (catObj[currentLang] || catObj.pl) : catKey;
+    const catName = catObj ? (catObj[currentLang] || catObj.en || catObj.pl) : catKey;
     const isEcon = data.axis === "econ";
 
     const leftTerm = isEcon ? t.econLabelLeft : t.socLabelLeft;
@@ -2222,7 +2264,7 @@ function drawCompass(econ, soc, isFinal = true) {
 function buildAnswersReview() {
   if (!reviewList) return;
   reviewList.innerHTML = "";
-  const t = uiTranslations[currentLang] || uiTranslations.pl || {};
+  const t = uiTranslations[currentLang] || uiTranslations.en || uiTranslations.pl || {};
   const activeQs = getActiveQuestions();
 
   if (toggleAnswersBtn) {
@@ -2238,8 +2280,8 @@ function buildAnswersReview() {
     const val = userAnswers[idx];
     const opt = answerOptions.find(o => o.value === val);
     const catObj = categories[q.categoryKey];
-    const catName = catObj ? (catObj[currentLang] || catObj.pl) : q.categoryKey;
-    const qText = q.text[currentLang] || q.text.pl;
+    const catName = catObj ? (catObj[currentLang] || catObj.en || catObj.pl) : q.categoryKey;
+    const qText = q.text[currentLang] || q.text.en || q.text.pl;
 
     let optText = t.noAnswerLabel;
     let badgeClass = "badge-neutral";
@@ -2251,10 +2293,10 @@ function buildAnswersReview() {
       optText = t.neutralBadge || "Neutralny / Umiarkowany (0)";
       badgeClass = "badge-neutral";
     } else if (val === 2 || val === 1) {
-      optText = opt ? (opt.label[currentLang] || opt.label.pl) : "";
+      optText = opt ? (opt.label[currentLang] || opt.label.en || opt.label.pl) : "";
       badgeClass = "badge-agree";
     } else if (val === -1 || val === -2) {
-      optText = opt ? (opt.label[currentLang] || opt.label.pl) : "";
+      optText = opt ? (opt.label[currentLang] || opt.label.en || opt.label.pl) : "";
       badgeClass = "badge-disagree";
     }
 
@@ -2348,8 +2390,8 @@ function downloadResultImage() {
   ctx.fillText(`⚖️ ${t.appTitle.toUpperCase()} 2026 • ${t.badgePill.toUpperCase()}`, 540, 55);
 
   // 3. Główna ideologia
-  const ideoName = topIdeology.name[currentLang] || topIdeology.name.pl;
-  const ideoSub = topIdeology.subtitle[currentLang] || topIdeology.subtitle.pl;
+  const ideoName = topIdeology.name[currentLang] || topIdeology.name.en || topIdeology.name.pl;
+  const ideoSub = topIdeology.subtitle[currentLang] || topIdeology.subtitle.en || topIdeology.subtitle.pl;
 
   ctx.fillStyle = "#ffffff";
   ctx.font = "800 38px 'Plus Jakarta Sans', sans-serif";
@@ -2485,8 +2527,8 @@ function downloadResultImage() {
   const polName = getPoliticianName(pol);
   ctx.fillText(`${pol.flag} ${polName}`, 85, cardY + 76);
 
-  const polCountry = pol.country[currentLang] || pol.country.pl;
-  const polRole = pol.role[currentLang] || pol.role.pl;
+  const polCountry = pol.country[currentLang] || pol.country.en || pol.country.pl;
+  const polRole = pol.role[currentLang] || pol.role.en || pol.role.pl;
   ctx.fillStyle = "#94a3b8";
   ctx.font = "500 15px 'Plus Jakarta Sans', sans-serif";
   ctx.fillText(`${polCountry} • ${polRole.substring(0, 38)}...`, 85, cardY + 106);
@@ -2507,13 +2549,13 @@ function downloadResultImage() {
   ctx.font = "bold 15px 'Plus Jakarta Sans', sans-serif";
   ctx.fillText(`🏛️ ${t.partyCardTitle}`, 585, cardY + 36);
 
-  const partyName = party.name[currentLang] || party.name.pl;
+  const partyName = party.name[currentLang] || party.name.en || party.name.pl;
   ctx.fillStyle = "#ffffff";
   ctx.font = "bold 21px 'Plus Jakarta Sans', sans-serif";
   const displayParty = partyName.length > 28 ? partyName.substring(0, 26) + '...' : partyName;
   ctx.fillText(`${party.emblem} ${displayParty}`, 585, cardY + 76);
 
-  const partyType = party.type[currentLang] || party.type.pl;
+  const partyType = party.type[currentLang] || party.type.en || party.type.pl;
   ctx.fillStyle = "#94a3b8";
   ctx.font = "500 15px 'Plus Jakarta Sans', sans-serif";
   ctx.fillText(partyType.substring(0, 42) + '...', 585, cardY + 106);
@@ -2544,7 +2586,7 @@ function downloadResultImage() {
 }
 
 function copyResultSummary() {
-  const t = uiTranslations[currentLang] || uiTranslations.pl || {};
+  const t = uiTranslations[currentLang] || uiTranslations.en || uiTranslations.pl || {};
   const activeQs = getActiveQuestions();
   const { econScore, socScore } = calculateScores();
 
@@ -2557,8 +2599,8 @@ function copyResultSummary() {
   const topPolitician = currentRankedPoliticians[0] || worldPoliticians[0];
   const topParty = currentRankedParties[0] || worldParties[0];
 
-  const ideoName = topIdeology.name[currentLang] || topIdeology.name.pl;
-  const ideoSub = topIdeology.subtitle[currentLang] || topIdeology.subtitle.pl;
+  const ideoName = topIdeology.name[currentLang] || topIdeology.name.en || topIdeology.name.pl;
+  const ideoSub = topIdeology.subtitle[currentLang] || topIdeology.subtitle.en || topIdeology.subtitle.pl;
   const polName = topPolitician.name;
   const polCountry = topPolitician.country[currentLang] || topPolitician.country.pl;
   const partyTitle = topParty.name[currentLang] || topParty.name.pl;
