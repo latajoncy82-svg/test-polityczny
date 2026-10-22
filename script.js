@@ -5,12 +5,27 @@
  * oraz 6 języków: EN (domyślny), PL, ES, DE, RU, FR.
  */
 
+// Storage can be unavailable (privacy settings, embedded browsers, quota).
+// The quiz remains usable even when preferences and progress cannot persist.
+function readStorage(key) {
+  try { return localStorage.getItem(key); } catch (e) { return null; }
+}
+
+function writeStorage(key, value) {
+  try { localStorage.setItem(key, value); } catch (e) {}
+}
+
+function readPreference(key, allowed, fallback) {
+  const value = readStorage(key);
+  return allowed.includes(value) ? value : fallback;
+}
+
 // Stan testu
-let currentLang = localStorage.getItem("ptp_lang") || "en";
-let currentTheme = localStorage.getItem("ptp_theme") || "theme-dark";
-let currentTone = localStorage.getItem("ptp_tone") || "standard";
-let currentAccent = localStorage.getItem("ptp_accent") || "blue";
-let currentTestMode = localStorage.getItem("ptp_mode") || "quick";
+let currentLang = readPreference("ptp_lang", Object.keys(uiTranslations), "en");
+let currentTheme = readPreference("ptp_theme", ["theme-dark", "theme-light"], "theme-dark");
+let currentTone = readPreference("ptp_tone", ["standard", "contrast", "soft"], "standard");
+let currentAccent = readPreference("ptp_accent", ["blue", "emerald", "purple", "amber", "crimson", "rose"], "blue");
+let currentTestMode = readPreference("ptp_mode", ["quick", "full"], "quick");
 
 function getActiveQuestions() {
   if (typeof questions === "undefined" || !Array.isArray(questions)) return [];
@@ -216,17 +231,18 @@ const reviewList = document.getElementById("reviewList");
 const footerText = document.getElementById("footerText");
 
 // =========================================================================
-// OBSŁUGA TRYBU TESTU (SZYBKA 30 vs PEŁNA 160)
+// OBSŁUGA TRYBU TESTU (SZYBKA 30 vs PEŁNA 200)
 // =========================================================================
 function setTestMode(mode) {
   if (mode !== "quick" && mode !== "full") mode = "quick";
+  if (mode === currentTestMode) return;
+  cancelQuestionTransition();
   currentTestMode = mode;
-  localStorage.setItem("ptp_mode", mode);
+  writeStorage("ptp_mode", mode);
   const activeQs = getActiveQuestions();
   userAnswers = new Array(activeQs.length).fill(null);
   currentQuestionIndex = 0;
   updateModeUI();
-  resetProgress();
 }
 
 function updateModeUI() {
@@ -237,20 +253,20 @@ function updateModeUI() {
   const isQuick = currentTestMode === "quick";
 
   if (badgePill) {
-    badgePill.innerHTML = `<span class="badge-dot"></span>${isQuick ? (t.badgePillQuick || "Global Edition 2026 • 30 Questions (Quick Version)") : (t.badgePillFull || "Global Edition 2026 • 160 Questions (Full Version)")}`;
+    badgePill.innerHTML = `<span class="badge-dot"></span>${isQuick ? (t.badgePillQuick || "Global Edition 2026 • 30 Questions (Quick Version)") : (t.badgePillFull || "Global Edition 2026 • 200 Questions (Full Version)")}`;
   }
   if (featureTime) {
-    featureTime.textContent = isQuick ? (t.featureTimeQuick || "⏱️ Time: approx. 3-5 minutes (30 questions)") : (t.featureTimeFull || "⏱️ Time: approx. 14-18 minutes (160 questions)");
+    featureTime.textContent = isQuick ? (t.featureTimeQuick || "⏱️ Time: approx. 3-5 minutes (30 questions)") : (t.featureTimeFull || "⏱️ Time: approx. 18-24 minutes (200 questions)");
   }
   if (startTestBtnText) {
     const rawBtn = isQuick
       ? (t.startTestBtnQuick || "Start Quick Test (30 questions) ➔")
-      : (t.startTestBtnFull || "Start Full Test (160 questions) ➔");
+      : (t.startTestBtnFull || "Start Full Test (200 questions) ➔");
     startTestBtnText.textContent = rawBtn.replace(/\s*➔\s*$/, "");
   }
   if (tryOtherModeBtn) {
     tryOtherModeBtn.textContent = isQuick
-      ? (t.tryOtherModeFull || "🧭 Take the Full Version (160 questions)")
+      ? (t.tryOtherModeFull || "🧭 Take the Full Version (200 questions)")
       : (t.tryOtherModeQuick || "⚡ Take the Quick Version (30 questions)");
   }
   updateResumeButtonText();
@@ -322,7 +338,7 @@ function applyTheme(theme, save = true) {
   document.body.classList.remove("theme-dark", "theme-light");
   document.body.classList.add(theme);
 
-  if (save) localStorage.setItem("ptp_theme", theme);
+  if (save) writeStorage("ptp_theme", theme);
 
   if (themeIcon) {
     themeIcon.textContent = theme === "theme-dark" ? "☀️" : "🌙";
@@ -348,7 +364,7 @@ function applyTone(tone, save = true) {
   document.body.classList.remove("tone-standard", "tone-contrast", "tone-soft");
   document.body.classList.add(`tone-${tone}`);
 
-  if (save) localStorage.setItem("ptp_tone", tone);
+  if (save) writeStorage("ptp_tone", tone);
 
   document.querySelectorAll(".tone-choice-btn").forEach(btn => {
     btn.classList.toggle("active", btn.dataset.tone === tone);
@@ -361,7 +377,7 @@ function applyAccent(accent, save = true) {
   palettes.forEach(p => document.body.classList.remove(`theme-${p}`));
   document.body.classList.add(`theme-${accent}`);
 
-  if (save) localStorage.setItem("ptp_accent", accent);
+  if (save) writeStorage("ptp_accent", accent);
 
   document.querySelectorAll(".accent-color-btn").forEach(btn => {
     btn.classList.toggle("active", btn.dataset.accent === accent);
@@ -378,10 +394,11 @@ function applyAccent(accent, save = true) {
 function setLanguage(lang) {
   if (!uiTranslations[lang]) return;
   currentLang = lang;
-  localStorage.setItem("ptp_lang", lang);
+  writeStorage("ptp_lang", lang);
   applyLanguage(lang);
 
   if (questionScreen && questionScreen.classList.contains("active")) {
+    answersContainer.innerHTML = "";
     renderQuestion();
   }
 
@@ -391,6 +408,7 @@ function setLanguage(lang) {
 }
 
 function applyLanguage(lang) {
+  if (document.documentElement) document.documentElement.lang = lang;
   const t = uiTranslations[lang];
   if (!t) return;
 
@@ -789,6 +807,10 @@ function setupKeyboardNavigation() {
       }
     }
     if (!questionScreen || !questionScreen.classList.contains("active")) return;
+    if (appearanceModal && !appearanceModal.classList.contains("hidden")) return;
+    if (e.repeat || e.ctrlKey || e.altKey || e.metaKey || e.shiftKey) return;
+    const target = e.target;
+    if (target && (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName))) return;
 
     let targetIdx = -1;
     let targetVal = null;
@@ -800,14 +822,17 @@ function setupKeyboardNavigation() {
     else if (e.key === "5") { targetIdx = 4; targetVal = -2; }
     else if (e.key === "6" || e.key.toLowerCase() === "s" || e.key === "0") { targetIdx = 5; targetVal = "skip"; } // Pomiń / Nie mam zdania
     else if (e.key === "ArrowLeft" || e.key === "Backspace") {
+      e.preventDefault();
       goToPreviousQuestion();
       return;
     } else if (e.key === "ArrowRight") {
+      e.preventDefault();
       goToNextQuestion();
       return;
     }
 
     if (targetIdx !== -1) {
+      e.preventDefault();
       const btns = answersContainer.children;
       const targetBtn = btns[targetIdx];
       if (targetBtn) {
@@ -834,20 +859,29 @@ function saveProgress() {
     const data = {
       mode: currentTestMode,
       answers: userAnswers,
-      currentIndex: currentQuestionIndex
+      currentIndex: currentQuestionIndex,
+      questionIds: getActiveQuestions().map(q => q.id)
     };
-    localStorage.setItem("ptp_progress", JSON.stringify(data));
+    writeStorage("ptp_progress", JSON.stringify(data));
   } catch (e) {}
 }
 
 function checkSavedProgress() {
   try {
-    const raw = localStorage.getItem("ptp_progress");
+    const raw = readStorage("ptp_progress");
     if (!raw) return null;
     const data = JSON.parse(raw);
-    if (data && Array.isArray(data.answers) && data.answers.some(a => a !== null)) {
-      return data;
-    }
+    if (!data || !["quick", "full"].includes(data.mode)) return null;
+    const activeQs = data.mode === "quick" ? questions.filter(q => q.isQuick) : questions;
+    if (!Array.isArray(data.answers) || data.answers.length !== activeQs.length) return null;
+    const validAnswers = [null, "skip", -2, -1, 0, 1, 2];
+    if (!data.answers.every(a => validAnswers.includes(a)) || !data.answers.some(a => a !== null)) return null;
+    if (!Number.isInteger(data.currentIndex) || data.currentIndex < 0 || data.currentIndex >= activeQs.length) return null;
+    // Legacy saves without IDs remain compatible if their shape is valid.
+    if (data.questionIds !== undefined && (!Array.isArray(data.questionIds) ||
+        data.questionIds.length !== activeQs.length ||
+        !data.questionIds.every((id, idx) => id === activeQs[idx].id))) return null;
+    return data;
   } catch (e) {}
   return null;
 }
@@ -887,11 +921,12 @@ function resetProgress() {
 }
 
 function resumeQuiz() {
+  cancelQuestionTransition();
   const saved = checkSavedProgress();
   if (saved) {
     if (saved.mode && saved.mode !== currentTestMode) {
       currentTestMode = saved.mode;
-      localStorage.setItem("ptp_mode", currentTestMode);
+      writeStorage("ptp_mode", currentTestMode);
       updateModeUI();
     }
     const activeQs = getActiveQuestions();
@@ -908,6 +943,8 @@ function resumeQuiz() {
 // PRZEBIEG TESTU (QUIZ ENGINE)
 // =========================================================================
 function startQuiz() {
+  cancelQuestionTransition();
+  activePoliticianId = activePartyId = activeIdeologyId = null;
   const activeQs = getActiveQuestions();
   currentQuestionIndex = 0;
   userAnswers = new Array(activeQs.length).fill(null);
@@ -990,16 +1027,16 @@ function renderQuestion() {
   }
 }
 
+function cancelQuestionTransition() {
+  if (transitionTimeoutId !== null) clearTimeout(transitionTimeoutId);
+  transitionTimeoutId = null;
+  isTransitioning = false;
+}
+
 function handleAnswerSelect(val, clickedBtn = null) {
   const activeQs = getActiveQuestions();
-  // If user answers quickly while a timeout is already ticking, immediately advance previous question
-  if (transitionTimeoutId) {
-    clearTimeout(transitionTimeoutId);
-    transitionTimeoutId = null;
-    if (currentQuestionIndex < activeQs.length - 1) {
-      currentQuestionIndex++;
-    }
-  }
+  // Repeated clicks belong to the visible question, never the next one.
+  if (isTransitioning || !activeQs.length || !answerOptions.some(opt => opt.value === val)) return;
 
   userAnswers[currentQuestionIndex] = val;
   saveProgress();
@@ -1018,10 +1055,11 @@ function handleAnswerSelect(val, clickedBtn = null) {
     isTransitioning = false;
     if (currentQuestionIndex < activeQs.length - 1) {
       currentQuestionIndex++;
+      saveProgress();
       renderQuestion();
     } else {
       if (progressBar) progressBar.style.width = "100%";
-      setTimeout(() => showResults(true), 50);
+      showResults(true);
     }
   }, 50);
 }
@@ -1029,14 +1067,18 @@ function handleAnswerSelect(val, clickedBtn = null) {
 function goToNextQuestion() {
   const activeQs = getActiveQuestions();
   if (currentQuestionIndex < activeQs.length - 1 && userAnswers[currentQuestionIndex] !== null) {
+    cancelQuestionTransition();
     currentQuestionIndex++;
+    saveProgress();
     renderQuestion();
   }
 }
 
 function goToPreviousQuestion() {
+  cancelQuestionTransition();
   if (currentQuestionIndex > 0) {
     currentQuestionIndex--;
+    saveProgress();
     renderQuestion();
   }
 }
@@ -2634,6 +2676,7 @@ function copyResultSummary() {
 }
 
 function resetQuiz() {
+  cancelQuestionTransition();
   currentQuestionIndex = 0;
   userAnswers.fill(null);
   resetProgress();

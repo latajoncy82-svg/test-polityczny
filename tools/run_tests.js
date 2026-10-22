@@ -726,6 +726,8 @@ simElements['compassCanvas'].getContext = () => ({
   roundRect: () => {}
 });
 
+const pendingTimers = new Map();
+let nextTimerId = 1;
 const simContext = {
   window: {
     addEventListener: () => {},
@@ -771,16 +773,22 @@ const simContext = {
     },
     createElement: (tag) => new MockElement('', tag),
     body: new MockElement('body'),
+    documentElement: new MockElement('html'),
     readyState: 'complete'
   },
   localStorage: {
     store: {},
     getItem: (k) => simContext.localStorage.store[k] || null,
-    setItem: (k, v) => { simContext.localStorage.store[k] = v; }
+    setItem: (k, v) => { simContext.localStorage.store[k] = v; },
+    removeItem: (k) => { delete simContext.localStorage.store[k]; }
   },
   console: { log: () => {}, error: () => {}, warn: () => {} },
-  setTimeout: (fn) => setTimeout(fn, 0),
-  clearTimeout: () => {},
+  setTimeout: (fn) => {
+    const id = nextTimerId++;
+    pendingTimers.set(id, fn);
+    return id;
+  },
+  clearTimeout: (id) => { pendingTimers.delete(id); },
   Math: Math
 };
 
@@ -995,6 +1003,175 @@ assert(htmlRaw.includes('aria-label="Appearance settings"'), "index.html has Eng
 assert(htmlRaw.includes('← Previous'), "index.html question screen defaults to English Previous button");
 assert(htmlRaw.includes('Next →'), "index.html question screen defaults to English Next button");
 assert(htmlRaw.includes('Appearance Settings'), "index.html appearance modal defaults to English title");
+
+
+{
+console.log("\n[9] Regression tests: quiz transitions, persistence, language and keyboard:");
+function finishAnswerTransition() {
+  const id = getSim('transitionTimeoutId');
+  const callback = pendingTimers.get(id);
+  if (callback) {
+    pendingTimers.delete(id);
+    callback();
+  }
+}
+pendingTimers.clear();
+getSim('setTestMode("quick"); startQuiz();');
+getSim('handleAnswerSelect(2); handleAnswerSelect(-2);');
+assert(getSim('currentQuestionIndex === 0 && userAnswers[0] === 2 && userAnswers[1] === null'),
+  "Double click cannot answer a question that is not displayed yet");
+finishAnswerTransition();
+assert(getSim('currentQuestionIndex') === 1, "Single answer advances exactly one question");
+assert(JSON.parse(simContext.localStorage.store.ptp_progress).currentIndex === 1,
+  "Saved progress follows the automatically displayed question");
+
+getSim('handleAnswerSelect(1);');
+const nextTimer = getSim('transitionTimeoutId');
+getSim('goToNextQuestion();');
+assert(!pendingTimers.has(nextTimer) && getSim('currentQuestionIndex') === 2,
+  "Manual Next cancels automatic transition and advances once");
+getSim('handleAnswerSelect(-1);');
+const previousTimer = getSim('transitionTimeoutId');
+getSim('goToPreviousQuestion();');
+assert(!pendingTimers.has(previousTimer) && getSim('currentQuestionIndex') === 1,
+  "Previous cancels automatic transition");
+assert(JSON.parse(simContext.localStorage.store.ptp_progress).currentIndex === 1,
+  "Manual navigation saves the current position");
+
+getSim('handleAnswerSelect(0);');
+const restartTimer = getSim('transitionTimeoutId');
+getSim('resetQuiz();');
+assert(!pendingTimers.has(restartTimer) && getSim('!isTransitioning'),
+  "Restart cancels pending question callbacks");
+assert(simContext.localStorage.store.ptp_progress === undefined, "Restart removes saved progress");
+
+getSim('startQuiz(); handleAnswerSelect(2);');
+const startTimer = getSim('transitionTimeoutId');
+getSim('startQuiz();');
+assert(!pendingTimers.has(startTimer) && getSim('userAnswers.every(a => a === null)'),
+  "Starting a new quiz cancels pending callbacks and clears answers");
+
+getSim('handleAnswerSelect(1);');
+const modeTimer = getSim('transitionTimeoutId');
+getSim('setTestMode("full");');
+assert(!pendingTimers.has(modeTimer) && getSim('getActiveQuestions().length') === 200,
+  "Changing mode cancels pending callbacks and selects the correct questions");
+assert(getSim('checkSavedProgress().mode') === 'quick',
+  "Selecting another mode preserves the resumable test");
+getSim('resumeQuiz();');
+assert(getSim('currentTestMode === "quick" && userAnswers[0] === 1'),
+  "Resume restores the saved mode and answers");
+getSim('setTestMode("quick");');
+assert(getSim('userAnswers[0]') === 1, "Selecting the active mode does not erase answers");
+
+const validSave = {
+  mode: 'quick',
+  answers: Array(30).fill(null),
+  currentIndex: 1
+};
+validSave.answers[0] = 2;
+function putSave(value) {
+  simContext.localStorage.store.ptp_progress = JSON.stringify(value);
+}
+putSave(validSave);
+assert(getSim('checkSavedProgress() !== null'), "Valid legacy progress without question IDs remains usable");
+const badSaves = [
+  { ...validSave, mode: 'unknown' },
+  { ...validSave, answers: [2] },
+  { ...validSave, answers: Array(30).fill('2') },
+  { ...validSave, answers: Array(30).fill({ value: 2 }) },
+  { ...validSave, answers: Array(30).fill(null) },
+  { ...validSave, currentIndex: -1 },
+  { ...validSave, currentIndex: 30 },
+  { ...validSave, currentIndex: 1.5 },
+  { ...validSave, currentIndex: '1' },
+  { ...validSave, questionIds: Array(30).fill(-1) },
+  { ...validSave, questionIds: [] },
+  null
+];
+badSaves.forEach((save, index) => {
+  putSave(save);
+  assert(getSim('checkSavedProgress() === null'), `Invalid saved progress is rejected (case ${index + 1})`);
+});
+simContext.localStorage.store.ptp_progress = '{invalid JSON';
+assert(getSim('checkSavedProgress() === null'), "Malformed JSON does not crash resume");
+
+getSim('startQuiz(); saveProgress();');
+const ids = JSON.parse(simContext.localStorage.store.ptp_progress).questionIds;
+assert(Array.isArray(ids) && ids.length === 30 && ids[0] === quickQuestions[0].id,
+  "New saves record question IDs to detect changed or reordered datasets");
+
+getSim('setLanguage("en"); startQuiz(); setLanguage("pl");');
+assert(simElements.answersContainer.children[0].innerHTML.includes(answerOptions[0].label.pl),
+  "Changing language rebuilds answer button labels");
+assert(simContext.document.documentElement.lang === 'pl', "Page language follows the chosen translation");
+getSim('handleAnswerSelect(0);');
+finishAnswerTransition();
+assert(simElements.answersContainer.children[0].innerHTML.includes(answerOptions[0].label.pl),
+  "Translated answer labels stay correct on the next question");
+
+// Exercise the registered keyboard handler with actual quiz state.
+let keyHandler;
+const originalAddEventListener = simContext.window.addEventListener;
+simContext.window.addEventListener = (type, handler) => { if (type === 'keydown') keyHandler = handler; };
+getSim('setupKeyboardNavigation();');
+simContext.window.addEventListener = originalAddEventListener;
+simElements.appearanceModal.classList.add('hidden');
+getSim('startQuiz();');
+const pressKey = (overrides = {}) => keyHandler({
+  key: '1', target: {}, preventDefault() {}, ...overrides
+});
+[
+  { repeat: true }, { ctrlKey: true }, { altKey: true }, { metaKey: true }, { shiftKey: true },
+  { target: { tagName: 'INPUT' } }, { target: { tagName: 'TEXTAREA' } },
+  { target: { tagName: 'SELECT' } }, { target: { isContentEditable: true } }
+].forEach(event => pressKey(event));
+assert(getSim('userAnswers[0] === null'), "Keyboard ignores repeats, modifiers and editable fields");
+simElements.appearanceModal.classList.remove('hidden');
+pressKey();
+assert(getSim('userAnswers[0] === null'), "Quiz shortcuts are disabled while settings are open");
+simElements.appearanceModal.classList.add('hidden');
+let prevented = false;
+pressKey({ preventDefault() { prevented = true; } });
+assert(prevented && getSim('userAnswers[0]') === 2,
+  "Normal keyboard answers work and prevent browser default actions");
+getSim('resetQuiz();');
+
+// A fresh VM proves that failures before initApp cannot stop script loading.
+function loadWithStorage(storage) {
+  const context = vm.createContext({
+    ...simContext, localStorage: storage,
+    document: { ...simContext.document, readyState: 'loading', addEventListener() {} }
+  });
+  for (const name of ['questions.js', 'worldData.js', 'translations.js', 'script.js']) {
+    vm.runInContext(fs.readFileSync(path.join(__dirname, '..', name), 'utf8'), context);
+  }
+  return context;
+}
+let blockedStorageContext;
+try {
+  blockedStorageContext = loadWithStorage({
+    getItem() { throw new Error('SecurityError'); },
+    setItem() { throw new Error('QuotaExceededError'); },
+    removeItem() { throw new Error('SecurityError'); }
+  });
+} catch (error) {}
+assert(!!blockedStorageContext, "Application loads when localStorage access throws");
+if (blockedStorageContext) {
+  let usable = true;
+  try {
+    vm.runInContext('startQuiz(); setLanguage("pl"); applyTheme("theme-light"); applyTone("soft"); applyAccent("rose"); handleAnswerSelect(2); resetQuiz();',
+      blockedStorageContext);
+  } catch (error) { usable = false; }
+  assert(usable, "Quiz, language and appearance stay usable when storage is blocked");
+}
+const invalidPreferences = loadWithStorage({
+  getItem() { return 'invalid preference'; }, setItem() {}, removeItem() {}
+});
+assert(vm.runInContext('currentLang === "en" && currentTheme === "theme-dark" && currentTone === "standard" && currentAccent === "blue" && currentTestMode === "quick"', invalidPreferences),
+  "Invalid stored preferences fall back to supported defaults");
+
+}
 
 // Results summary
 console.log(`\n======================================================`);
